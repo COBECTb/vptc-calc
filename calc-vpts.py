@@ -12,7 +12,7 @@ def prompt_value(prompt, default, value_type=float):
         print("Ошибка: некорректное значение. Используем значение по умолчанию.")
         return default
 
-# === Ввод параметров (аналогично calc-vptc_001.txt) ===
+# === Ввод параметров ===
 RESOLUTION = prompt_value("Количество точек построения профиля жесткого колеса", 600, int)
 i = prompt_value("Передаточное число", 17, int)
 d_roller = prompt_value("Диаметр роликов (мм)", 6.0)
@@ -22,7 +22,7 @@ D = prompt_value("Внешний диаметр редуктора (мм)", 90.0
 h_reducer = prompt_value("Общая высота редуктора (мм)", 15.0)
 u = 1  # число волн — не трогать
 
-# === Расчёты (как в calc-vptc_001.txt, но dsh → d_roller) ===
+# === Расчёты ===
 e = 0.2 * d_roller
 zg = (i + 1) * u
 z_rollers = i
