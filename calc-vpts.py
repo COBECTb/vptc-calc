@@ -38,7 +38,7 @@ Rsep_in = Rsep_m - hc / 2
 # === Определение количества отверстий по диаметру ===
 if D <= 60:
     n_holes = 4
-elif D <= 90:
+elif D < 90:
     n_holes = 6
 else:
     n_holes = 8
