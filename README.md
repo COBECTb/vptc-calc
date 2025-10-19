@@ -1,5 +1,5 @@
 # vptc-calc
-Калькулятор ВПТС
+Калькулятор ВПТК
 
 docker build -t vptc-calculator .
 
