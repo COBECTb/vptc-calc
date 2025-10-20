@@ -12,4 +12,16 @@ docker run --rm -it \
   vptc-calculator
 ```
 
+в папрку output помещается файл vptc-calc.scad который необходимо открыть в программе OpenScad.
+Внизу, в секции "Сборка", перечисляются детали, можно их создание раскоментировать и подвигать функцией translate
+
+```
+// === Сборка ===
+rigid_gear();
+translate([0, 0, 10]) separator();
+translate([0, 0, 10]) rollers();
+translate([0, 0, 10]) eccentric();
+```
+Пока закончено только формирование нижней части редуктора с цветочком)
+
 ![alt text](images/vptc_roller_12_8_34_90.png "vptc_roller_12_8_34_90")
