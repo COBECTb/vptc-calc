@@ -1,6 +1,6 @@
 // ВПТК редуктор с роликами
 
-$fn = 60;
+$fn = 128;
 
 // Параметры
 d_roller = 8.000;
@@ -694,6 +694,6 @@ module eccentric() {
 
 // === Сборка ===
 rigid_gear();
-//translate([0, 0, 10]) separator();
-//rollers();
-//eccentric();
+translate([0, 0, 10]) separator();
+translate([0, 0, 10]) rollers();
+translate([0, 0, 10]) eccentric();
