@@ -182,7 +182,6 @@ rigid_points_str = format_points(x_rigid, y_rigid)
 
 # === Генерация OpenSCAD-кода ===
 openscad_code = f"""// ВПТК редуктор с роликами
-// Сгенерировано на основе calc-vptc_001.txt
 
 $fn = 60;
 
