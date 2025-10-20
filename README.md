@@ -11,3 +11,5 @@ docker run --rm -it \
   -v "$(pwd)/output":/app/output \
   vptc-calculator
 ```
+
+![alt text](images/vptc_roller_12_8_34_90.png "vptc_roller_12_8_34_90")
