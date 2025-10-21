@@ -310,7 +310,7 @@ module eccentric() {{
         // Посадка под подшипник 6803ZZ
         cylinder(h = 1, r = 24/2, center = false);
         translate([0, 0, 1])
-            cylinder(h = 5.0, r = 26.0/2, center = false);
+            cylinder(h = eccentric_h, r = 26.0/2, center = false);
     }}
 }}
 
