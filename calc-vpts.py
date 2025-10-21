@@ -14,26 +14,49 @@ def prompt_value(prompt, default, value_type=float):
 
 # === Ввод параметров ===
 RESOLUTION = prompt_value("Количество точек построения профиля жесткого колеса", 600, int)
-i = prompt_value("Передаточное число", 12, int)
+i = prompt_value("Передаточное число", 8, int)
 d_roller = prompt_value("Диаметр роликов (мм)", 8.0)
-h_roller = prompt_value("Высота роликов (мм)", 6)
-Rout = prompt_value("Внешний радиус впадин жесткого колеса (мм)", 38.0)
-D = prompt_value("Внешний диаметр редуктора (мм)", 90.0)
-h_reducer = prompt_value("Общая высота редуктора (мм)", 15.0)
-u = 1  # число волн — не трогать
+h_roller = prompt_value("Высота роликов (мм)", 6.0)
+Rout = prompt_value("Внешний радиус впадин жесткого колеса (мм)", 28.0)
+D = prompt_value("Внешний диаметр редуктора (мм)", 70.0)
 
-# === Расчёты  ===
+u = 1
+
+# === Расчёты ===
 e = 0.2 * d_roller
-zg = (i + 1) * u          # число впадин жёсткого колеса
-z_rollers = i             # число роликов
+zg = (i + 1) * u
+z_rollers = i
 Rin = Rout - 2 * e
 r_roller = d_roller / 2
 rd = Rin + e - d_roller
-hc = 2.2 * e              # толщина сепаратора
+hc = 2.2 * e  # толщина сепаратора (для радиусов)
 
+# Радиусы сепаратора (как в оригинале)
 Rsep_m = rd + r_roller
 Rsep_out = Rsep_m + hc / 2
 Rsep_in = Rsep_m - hc / 2
+
+# Высоты деталей
+separator_h = h_roller + 4          # высота сепаратора
+eccentric_h = h_roller + 2          # высота эксцентрика ← как вы просили
+
+h_reducer = eccentric_h+5+1+3 # высота ролика + высота подшипника + упор + подъем эксцентрика
+
+# === Выбор подшипника для сепаратора ===
+if 2 * Rsep_out < 50:
+    bearing_name = "16005-2RS"
+    bearing_inner = 25.0
+    bearing_width = 8.0
+    flange_extra = 8.5
+    cut_z_offset = 12.0
+    chamfer_z_offset = 12.5
+else:
+    bearing_name = "6810-2RS"
+    bearing_inner = 50.0
+    bearing_width = 7.0
+    flange_extra = 7.5
+    cut_z_offset = 11.0
+    chamfer_z_offset = 11.5
 
 # === Определение количества отверстий по диаметру ===
 if D <= 60:
@@ -53,7 +76,10 @@ print(f"- Число впадин: {zg}")
 print(f"- Число роликов: {z_rollers}")
 print(f"- Диаметр роликов: {d_roller} мм")
 print(f"- Высота роликов: {h_roller} мм")
-print(f"- Толщина сепаратора: {hc:.3f} мм")
+print(f"- Толщина сепаратора (расчётная): {hc:.3f} мм")
+print(f"- Высота сепаратора: {separator_h:.3f} мм")
+print(f"- Высота эксцентрика: {eccentric_h:.3f} мм")
+print(f"- Подшипник на сепараторе: {bearing_name}")
 
 # Проверка геометрии
 if Rin <= (1.03 * d_roller) / np.sin(np.pi / zg):
@@ -93,7 +119,6 @@ for deg in range(0, 360, 1):
         rotated_x.append(x_rot)
         rotated_y.append(y_rot)
     total_dist = 0
-    # Найдём впадины в оригинальном профиле
     r_rigid_orig = np.sqrt(x_rigid**2 + y_rigid**2)
     valleys_orig = []
     for j in range(1, len(r_rigid_orig)-1):
@@ -129,11 +154,9 @@ for i in range(n_holes):
         hole_x.append((R_out - min_thickness / 2) * np.cos(angle))
         hole_y.append((R_out - min_thickness / 2) * np.sin(angle))
 
-# === Отверстия B: 4 симметричных, с проверкой на 10° ===
+# === Отверстия B: 4 симметричных ===
 base_motor_angles_deg = np.array([0.0, 90.0, 180.0, 270.0])
 motor_angles_deg = (base_motor_angles_deg + np.degrees(best_angle)) % 360
-
-# Углы отверстий A
 angles_A_deg = np.degrees(np.arctan2(hole_y, hole_x)) % 360
 
 adjusted_motor_angles_deg = []
@@ -147,8 +170,8 @@ motor_radius = R_out - 3.0
 motor_x = [motor_radius * np.cos(np.deg2rad(a)) for a in adjusted_motor_angles_deg]
 motor_y = [motor_radius * np.sin(np.deg2rad(a)) for a in adjusted_motor_angles_deg]
 
-# === Вывод списка деталей и отверстий ===
-print("\n=== СПИСОК ДЕТАЛЕЙ И ОТВЕРСТИЙ ===")
+# === СПИСОК ДЕТАЛЕЙ, ОТВЕРСТИЙ, БОЛТОВ И ПОДШИПНИКОВ ===
+print("\n=== СПИСОК ДЕТАЛЕЙ ===")
 PARTS = {
     "HW": "Жёсткое колесо (корпус редуктора)",
     "SEP": "Сепаратор",
@@ -164,8 +187,13 @@ for i in range(n_holes):
     print(f"- A{i+1}: Крепёжное отверстие корпуса (M3), x={hole_x[i]:.2f}, y={hole_y[i]:.2f}")
 for i in range(4):
     print(f"- B{i+1}: Отверстие под кожух мотора (M3), x={motor_x[i]:.2f}, y={motor_y[i]:.2f}")
-print("- C1: Сквозное отверстие под вал (Ø25 мм)")
-print("- D1: Глухое отверстие под наружное кольцо подшипника (Ø26 мм)")
+
+print("\n=== КРЕПЁЖ И ПОДШИПНИКИ ===")
+print("- Винты M3×10 мм: 4 шт. (для кожуха мотора)")
+print("- Винты M3×15 мм: {} шт. (для корпуса)".format(n_holes))
+print("- Гайки M3: {} шт.".format(n_holes + 4))
+print("- Подшипники 6803ZZ (17×26×5 мм): 2 шт.")
+print(f"- Подшипник на сепараторе: {bearing_name}")
 
 # === Форматирование точек для OpenSCAD ===
 def format_points(x, y):
@@ -174,36 +202,34 @@ def format_points(x, y):
 rigid_points_str = format_points(x_rigid, y_rigid)
 
 # === Генерация OpenSCAD-кода ===
-openscad_code = f"""// ВПТК редуктор с роликами
+openscad_code = f"""// ВПТК редуктор с роликами (для 3D-печати)
 
 $fn = 60;
 
 // Параметры
 d_roller = {d_roller:.3f};
 h_roller = {h_roller:.3f};
-hc = {hc:.3f};
+separator_h = {separator_h:.3f};
+eccentric_h = {eccentric_h:.3f};
 Rsep_m = {Rsep_m:.3f};
 Rsep_out = {Rsep_out:.3f};
 Rsep_in = {Rsep_in:.3f};
 D_out = {D:.3f};
 h_reducer = {h_reducer:.3f};
+bearing_inner = {bearing_inner:.1f};
 
-// Высота профильного выреза (на 4 мм выше роликов)
+// Высота профильного выреза
 h_cut = h_roller + 4;
 
 // === Корпус (жёсткое колесо) ===
 module rigid_gear() {{
     difference() {{
-        // Гладкий внешний цилиндр
         cylinder(h = h_reducer, r = D_out / 2, center = false);
-        
-        // Профильная внутренняя поверхность (только сверху)
         translate([0, 0, h_reducer - h_cut])
             linear_extrude(height = h_cut, center = false)
                 polygon(points = [
                 {rigid_points_str}
             ]);
-        
         // === Группа A: основные крепёжные отверстия ===
         for (i = [0 : {n_holes - 1}]) {{
             x_hole = [{', '.join([f'{x:.5f}' for x in hole_x])}][i];
@@ -213,42 +239,56 @@ module rigid_gear() {{
             translate([x_hole, y_hole, 0])
                 cylinder(h = 3.0, r = 3.0, center = false);
         }}
-        
         // === Группа B: отверстия под кожух мотора ===
+        motor_angles = [{', '.join([f'{a:.1f}' for a in adjusted_motor_angles_deg])}];
+        motor_radius = {motor_radius:.3f};
         for (i = [0 : 3]) {{
-            x_hole = [{', '.join([f'{x:.5f}' for x in motor_x])}][i];
-            y_hole = [{', '.join([f'{y:.5f}' for y in motor_y])}][i];
-            translate([x_hole, y_hole, 0])
-                cylinder(h = 8.0, r = 1.6, center = false);
-            translate([x_hole, y_hole, 5.0])
-                cube(size = [6.0, 6.0, 3.0], center = true);
+            angle = motor_angles[i];
+            rotate([0, 0, angle])
+                translate([motor_radius, 0, 0])
+                    cylinder(h = 8.0, r = 1.6, center = false);
+            rotate([0, 0, angle])
+                translate([motor_radius, 0, 5.0])
+                    cube(size = [6.0, 6.0, 3.0], center = true);
         }}
-        
-        // === Группа C/D: подшипник ===
-        cylinder(h = h_reducer, r = 25/2, center = false);
-        translate([0, 0, 0.5])
-            cylinder(h = h_reducer - 0.5, r = 26/2, center = false);
+        // === Посадка подшипника 6803ZZ в корпусе ===
+        cylinder(h = 1, r = 24/2, center = false);
+        translate([0, 0, 1])
+            cylinder(h = 5.0, r = 26.0/2, center = false);
     }}
 }}
 
-// === Сепаратор ===
-separator_h = h_roller + 4; // Высота сепаратора
-slot_clearance = 0.1;       // Зазор по бокам паза
-slot_w = d_roller + 2 * slot_clearance;  // Ширина паза
-slot_h = h_roller + 2 * slot_clearance;  // Высота паза
-
+// === Сепаратор с фланцем под подшипник ===
 module separator() {{
     difference() {{
-        // Основное кольцо
-        cylinder(h = separator_h, r = Rsep_out, center = true);
-        cylinder(h = separator_h + 1, r = Rsep_in, center = true);
+        cylinder(h = separator_h + {flange_extra}, r = Rsep_out, center = false);
 
-        // Вычитаем пазы под ролики
+        translate([0, 0, {cut_z_offset}])
+            difference() {{
+                cylinder(h = {flange_extra}, r = Rsep_out, center = false);
+                cylinder(h = {flange_extra}, r = bearing_inner/2, center = false);
+            }}
+
+        translate([0, 0, {chamfer_z_offset}])
+            difference() {{
+                cylinder(h = {flange_extra}, r = Rsep_out, center = false);
+                cylinder(h = {flange_extra}, r = bearing_inner/2 - 1, center = false);
+            }}
+            
+        translate([0, 0, h_roller+3]) // отверстие под подшипник 16x8x5 (688zz)
+            cylinder(h = 5, r = 8, center = false);
+        translate([0, 0, h_roller+3+0.5]) // отверстие под упор подшипника
+            cylinder(h = 5, r = 7, center = false);
+        translate([0, 0, h_roller+3+1]) // отверстие под вал эксцентрика
+            cylinder(h = 5, r = 5, center = false);
+        
+        cylinder(h = separator_h - 1, r = Rsep_in, center = false);
+
         for (angle = [0 : 360/{z_rollers} : 359]) {{
             rotate([0, 0, angle])
-                translate([Rsep_m, 0, 0])
+                translate([Rsep_m, 0, separator_h/2])
                     rotate([0, 90, 0])
-                        cube([slot_h, slot_w, separator_h], center = true);
+                        cube([h_roller + 0.4, d_roller + 0.4, separator_h + 1], center = true);
         }}
     }}
 }}
@@ -265,13 +305,17 @@ module rollers() {{
 
 // === Эксцентрик ===
 module eccentric() {{
-    translate([0, {e:.3f}, 0])
-        cylinder(r = {rd:.3f}, h = hc, center = true);
+    difference() {{
+        cylinder(r = {rd:.3f}, h = eccentric_h, center = false);
+        cylinder(h = 1, r = 24/2, center = false);
+        translate([0, 0, 1])
+            cylinder(h = eccentric_h, r = 26.0/2, center = false);
+    }}
 }}
 
 // === Сборка ===
 rigid_gear();
-//translate([0, 0, 10]) separator();
+//separator();
 //rollers();
 //eccentric();
 """
@@ -282,4 +326,4 @@ output_file = "./output/vptc_roller.scad"
 with open(output_file, "w") as f:
     f.write(openscad_code)
 
-print(f"\n✅ OpenSCAD-модель сохранена в файл: {output_file}")
+print(f"\n✅ OpenSCAD-модель сохранена в: {output_file}")
