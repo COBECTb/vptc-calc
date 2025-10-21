@@ -38,7 +38,7 @@ Rsep_in = Rsep_m - hc / 2
 # Высоты деталей
 separator_h = h_roller + 4          # высота сепаратора
 eccentric_h = h_roller + 2          # высота эксцентрика
-h_reducer = eccentric_h + 5 + 1 + 3 # высота корпуса: эксцентрик + подшипник 6803ZZ + упор + запас
+h_reducer = eccentric_h + 5 + 1 + 3 # высота корпуса
 
 # === Выбор подшипника для сепаратора ===
 if 2 * Rsep_out < 50:
@@ -262,30 +262,28 @@ module separator() {{
     difference() {{
         cylinder(h = separator_h + {flange_extra}, r = Rsep_out, center = false);
 
-        // Фланец под основной подшипник
+        // Фланец под основной подшипник (ступенчатая посадка)
         translate([0, 0, {cut_z_offset}])
             difference() {{
                 cylinder(h = {flange_extra}, r = Rsep_out, center = false);
-                cylinder(h = {flange_extra}, r = bearing_inner/2+1, center = false);
+                cylinder(h = {flange_extra}, r = bearing_inner/2 + 1, center = false);  // +1 мм зазор
             }}
         translate([0, 0, {chamfer_z_offset}])
             difference() {{
                 cylinder(h = {flange_extra}, r = Rsep_out, center = false);
-                cylinder(h = {flange_extra}, r = bearing_inner/2, center = false);
+                cylinder(h = {flange_extra}, r = bearing_inner/2, center = false);      // точный диаметр
             }}
 
         // Посадочное место под мини-подшипник 688ZZ (8x16x5)
-        translate([0, 0, h_roller + 3])      // под наружное кольцо (Ø16)
+        translate([0, 0, h_roller + 3])
             cylinder(h = 5, r = 8, center = false);
-        translate([0, 0, h_roller + 3 + 0.5]) // под упорное кольцо (Ø14)
+        translate([0, 0, h_roller + 3 + 0.5])
             cylinder(h = 5, r = 7, center = false);
-        translate([0, 0, h_roller + 3 + 1])   // под вал (Ø10)
+        translate([0, 0, h_roller + 3 + 1])
             cylinder(h = 5, r = 5, center = false);
 
-        // Внутренний цилиндр (основная полость)
         cylinder(h = separator_h - 1, r = Rsep_in, center = false);
 
-        // Пазы под ролики
         for (angle = [0 : 360/{z_rollers} : 359]) {{
             rotate([0, 0, angle])
                 translate([Rsep_m, 0, separator_h/2])
@@ -308,7 +306,7 @@ module rollers() {{
 // === Эксцентрик ===
 module eccentric() {{
     difference() {{
-            cylinder(r = {rd:.3f}, h = eccentric_h, center = false);
+        cylinder(r = {rd:.3f}, h = eccentric_h, center = false);
         // Посадка под подшипник 6803ZZ
         cylinder(h = 1, r = 24/2, center = false);
         translate([0, 0, 1])
