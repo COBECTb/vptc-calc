@@ -44,7 +44,7 @@ eccentric_h = h_roller + 2          # высота эксцентрика
 ecc_shaft_h1 = 5.0    # основание под 6803ZZ в корпусе (ширина подшипника)
 ecc_spacer_h = 1.5    # проставка
 ecc_shaft_h2 = 5.0    # эксцентриковая ступень под 6803ZZ в ECC
-ecc_pin_h = 6.0       # шип под 688ZZ в сепараторе
+ecc_pin_h = 5.0       # шип под 688ZZ в сепараторе
 eccentricity = e
 
 # Общая высота корпуса с учётом вала (для справки, не влияет на сборку напрямую)
@@ -209,9 +209,15 @@ print("- Подшипники 6803ZZ (17×26×5 мм): 2 шт. (в корпус�
 print("- Подшипник 688ZZ (8×16×5 мм): 1 шт. (в сепараторе)")
 print(f"- Подшипник {bearing_name}: 1 шт. (на сепараторе)")
 
-# === Форматирование точек для OpenSCAD ===
+# === Форматирование точек для OpenSCAD (по 5 в строке) ===
 def format_points(x, y):
-    return ",\n        ".join([f"[{x[i]:.5f}, {y[i]:.5f}]" for i in range(len(x))])
+    points = [f"[{x[i]:.5f}, {y[i]:.5f}]" for i in range(len(x))]
+    lines = []
+    for i in range(0, len(points), 5):
+        line = ", ".join(points[i:i+5])
+        lines.append(line)
+    return ",\n        ".join(lines)
+    
 
 rigid_points_str = format_points(x_rigid, y_rigid)
 
@@ -231,10 +237,10 @@ h_reducer = {h_reducer:.3f};
 bearing_inner = {bearing_inner:.1f};
 eccentricity = {eccentricity:.3f};
 // --- Параметры вала эксцентрика ---
-ecc_shaft_h1 = 5.0;   // основание под 6803ZZ
-ecc_spacer_h = 2.0;   // проставка
-ecc_shaft_h2 = 5.0;   // эксцентриковая ступень
-ecc_pin_h = 6.0;      // шип под 688ZZ
+ecc_shaft_h1 = {ecc_shaft_h1:.3f};   // основание под 6803ZZ
+ecc_spacer_h = {ecc_spacer_h:.3f};   // проставка
+ecc_shaft_h2 = {ecc_shaft_h2:.3f};   // эксцентриковая ступень
+ecc_pin_h = {ecc_pin_h:.3f};      // шип под 688ZZ
 
 // Высота профильного выреза
 h_cut = h_roller + 4;
@@ -336,7 +342,7 @@ module eccentric_shaft() {{
         cylinder(h = ecc_shaft_h1, r = 17/2, center = false);
         // Проставка 2 мм
         translate([0, 0, ecc_shaft_h1])
-            cylinder(h = ecc_spacer_h, r = 17/2, center = false);
+            cylinder(h = ecc_spacer_h, r = 17/2+1, center = false);
         // Эксцентриковая ступень (в подшипник эксцентрика)
         translate([eccentricity, 0, ecc_shaft_h1 + ecc_spacer_h])
             cylinder(h = ecc_shaft_h2, r = 17/2, center = false);
