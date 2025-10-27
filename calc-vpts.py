@@ -470,7 +470,7 @@ module motor_cover() {{
         }}
         
         // --- Закладные площадки под гайки (внутри кожуха, на верхней стороне плиты) ---
-        rotate([0, 0, 45]) {{
+        {{
             for (angle = motor_angles) {{
                 rotate([0, 0, angle]){{
                     translate([mc_nut_pad_radius/2, 0, mc_base_thickness-2])
