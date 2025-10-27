@@ -15,7 +15,7 @@ def prompt_value(prompt, default, value_type=float):
 # === Ввод параметров ===
 RESOLUTION = prompt_value("Количество точек построения профиля жесткого колеса", 600, int)
 i = prompt_value("Передаточное число", 8, int)
-d_roller = prompt_value("Диаметр роликов (мм)", 8.0)
+d_roller = prompt_value("Диаметр роликов (мм)", 7.83)
 h_roller = prompt_value("Высота роликов (мм)", 6.0)
 Rout = prompt_value("Внешний радиус впадин жесткого колеса (мм)", 28.0)
 D = prompt_value("Внешний диаметр редуктора (мм)", 70.0)
@@ -43,7 +43,7 @@ h_reducer = eccentric_h + 5 + 1 + 3
 # === Выбор подшипника для сепаратора ===
 if 2 * Rsep_out < 50:
     bearing_name = "16005-2RS"
-    bearing_inner = 25.0
+    bearing_inner = 25.2 # а то болтается
     bearing_outer = 47.0   # добавлено
     bearing_width = 8.0
     flange_extra = 8.5
@@ -59,7 +59,7 @@ else:
     chamfer_z_offset = 11.5
 
 # Толщина крышки
-cap_thickness = bearing_width + 1 + 3  # подшипник + запас + возвышение
+cap_thickness = bearing_width + 1 + 2  # подшипник + запас + возвышение
 
 # === Определение количества отверстий по диаметру ===
 if D <= 60:
@@ -273,7 +273,7 @@ module separator() {{
         translate([0, 0, {cut_z_offset}])
             difference() {{
                 cylinder(h = {flange_extra}, r = Rsep_out, center = false);
-                cylinder(h = {flange_extra}, r = bearing_inner/2 + 1, center = false);  // +1 мм зазор
+                cylinder(h = {flange_extra}, r = bearing_inner/2 + 2, center = false);  // +2 мм зазор
             }}
         translate([0, 0, {chamfer_z_offset}])
             difference() {{
@@ -327,6 +327,8 @@ module cap() {{
             cylinder(h = cap_thickness, r = {bearing_outer / 2:.1f}, center = false);
         // Внутреннее отверстие под упор подшипника
         cylinder(h = cap_thickness, r = {bearing_outer / 2:.1f} -2, center = false);
+        // Внутреннее отверстие под сепаратор
+        cylinder(h = 3, r = Rsep_out+1, center = false);
         // Отверстия под винты (группа A)
         for (i = [0 : {n_holes - 1}]) {{
             x_hole = [{', '.join([f'{x:.5f}' for x in hole_x])}][i];
