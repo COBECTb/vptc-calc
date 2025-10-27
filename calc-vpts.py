@@ -19,7 +19,6 @@ d_roller = prompt_value("Диаметр роликов (мм)", 7.83)
 h_roller = prompt_value("Высота роликов (мм)", 6.0)
 Rout = prompt_value("Внешний радиус впадин жесткого колеса (мм)", 28.0)
 D = prompt_value("Внешний диаметр редуктора (мм)", 70.0)
-
 u = 1
 
 # === Расчёты ===
@@ -37,7 +36,6 @@ Rsep_out = Rsep_m + hc / 2
 Rsep_in = Rsep_m - hc / 2
 
 # Высоты деталей
-
 separator_h = h_roller + 4          # высота сепаратора
 eccentric_h = h_roller + 2          # высота эксцентрика
 
@@ -47,6 +45,20 @@ ecc_spacer_h = 1.5    # проставка
 ecc_shaft_h2 = 5.0    # эксцентриковая ступень под 6803ZZ в ECC
 ecc_pin_h = 5.0       # шип под 688ZZ в сепараторе
 eccentricity = e
+
+# === Параметры защитного кожуха мотора ===
+mc_motor_plate_d = 50.0   # диаметр площадки под двигатель
+mc_base_thickness = 4.0   # толщина нижней плиты
+mc_encoder_hole_d = 10.0  # центральное отверстие под магнит
+mc_motor_hole_1 = 16.0    # расстояние между первой парой отверстий
+mc_motor_hole_2 = 19.0    # расстояние между второй парой отверстий
+mc_nut_pad_radius = 24.0  # радиус закладных площадок
+mc_nut_pad_d = 6.0        # диаметр площадки под гайку
+mc_nut_pad_h = 3.0        # высота выступа площадки
+mc_ring_width = 4.0       # ширина кольца
+mc_ring_height = 5.0      # высота кольца
+mc_countersink_d = 6.0    # диаметр потайного отверстия
+mc_countersink_h = 2.0    # глубина потайного отверстия
 
 # Общая высота корпуса с учётом вала (для справки, не влияет на сборку напрямую)
 h_reducer = eccentric_h + 5 + 1 + 3
@@ -184,6 +196,7 @@ for ang in motor_angles_deg:
     if min_diff < 10.0:
         ang = (ang + 15.0) % 360
     adjusted_motor_angles_deg.append(ang)
+
 motor_radius = R_out - 3.0
 motor_x = [motor_radius * np.cos(np.deg2rad(a)) for a in adjusted_motor_angles_deg]
 motor_y = [motor_radius * np.sin(np.deg2rad(a)) for a in adjusted_motor_angles_deg]
@@ -197,7 +210,7 @@ PARTS = {
     "ECC": "Эксцентрик",
     "MC": "Защитный кожух мотора",
     "CAP": "Крышка редуктора",
-    "ECC_SHAFT": "Вал эксцентрика"  # <-- ДОБАВЛЕНО
+    "ECC_SHAFT": "Вал эксцентрика"
 }
 for code, name in PARTS.items():
     print(f"- {code}: {name}")
@@ -224,13 +237,15 @@ def format_points(x, y):
         line = ", ".join(points[i:i+5])
         lines.append(line)
     return ",\n        ".join(lines)
-    
 
 rigid_points_str = format_points(x_rigid, y_rigid)
 
 # Параметры потайных отверстий
 countersink_dia = 6.0
 countersink_depth = 2.0
+
+# Общая высота кожуха мотора
+mc_total_height = 23.5 + mc_base_thickness
 
 # === Генерация OpenSCAD-кода ===
 openscad_code = f"""// ВПТК редуктор с роликами (для 3D-печати)
@@ -246,7 +261,6 @@ Rsep_in = {Rsep_in:.3f};
 D_out = {D:.3f};
 h_reducer = {h_reducer:.3f};
 bearing_inner = {bearing_inner:.1f};
-
 // Высота профильного выреза
 h_cut = h_roller + 5;
 cap_thickness = {cap_thickness:.1f};
@@ -256,6 +270,24 @@ ecc_shaft_h1 = {ecc_shaft_h1:.3f};   // основание под 6803ZZ
 ecc_spacer_h = {ecc_spacer_h:.3f};   // проставка
 ecc_shaft_h2 = {ecc_shaft_h2:.3f};   // эксцентриковая ступень
 ecc_pin_h = {ecc_pin_h:.3f};      // шип под 688ZZ
+// --- Параметры кожуха мотора ---
+mc_motor_plate_d = {mc_motor_plate_d:.1f};
+mc_base_thickness = {mc_base_thickness:.1f};
+mc_encoder_hole_d = {mc_encoder_hole_d:.1f};
+mc_motor_hole_1 = {mc_motor_hole_1:.1f};
+mc_motor_hole_2 = {mc_motor_hole_2:.1f};
+mc_nut_pad_radius = {mc_nut_pad_radius:.1f};
+mc_nut_pad_d = {mc_nut_pad_d:.1f};
+mc_nut_pad_h = {mc_nut_pad_h:.1f};
+mc_total_height = {mc_total_height:.1f};
+mc_ring_width = {mc_ring_width:.1f};
+mc_ring_height = {mc_ring_height:.1f};
+mc_countersink_d = {mc_countersink_d:.1f};
+mc_countersink_h = {mc_countersink_h:.1f};
+
+// === Группа B: отверстия под кожух мотора нужны в двух функциях===
+motor_angles = [{', '.join([f'{a:.1f}' for a in adjusted_motor_angles_deg])}];
+motor_radius = {motor_radius:.3f};
 
 // === Корпус (жёсткое колесо) ===
 module rigid_gear() {{
@@ -275,9 +307,7 @@ module rigid_gear() {{
             translate([x_hole, y_hole, 0])
                 cylinder(h = 3.0, r = 3.0, center = false);
         }}
-        // === Группа B: отверстия под кожух мотора ===
-        motor_angles = [{', '.join([f'{a:.1f}' for a in adjusted_motor_angles_deg])}];
-        motor_radius = {motor_radius:.3f};
+
         for (i = [0 : 3]) {{
             angle = motor_angles[i];
             rotate([0, 0, angle])
@@ -386,17 +416,114 @@ module eccentric_shaft() {{
         // Шип по общей оси (в подшипник сепаратора)
         translate([0, 0, ecc_shaft_h1 + ecc_spacer_h + ecc_shaft_h2])
             cylinder(h = ecc_pin_h, r = 8/2, center = false);
+    }}
+}}
 
+// === Защитный кожух мотора ===
+module motor_cover() {{
+    difference() {{
+        union() {{
+            // --- Нижняя плита ---
+            cylinder(h = mc_base_thickness, r = mc_motor_plate_d / 2, center = false);
+
+            // --- Опоры и кольцо ---
+            motor_angles = [{', '.join([f'{a:.1f}' for a in adjusted_motor_angles_deg])}];
+            for (angle = motor_angles) {{
+                rotate([0, 0, angle]) {{
+                    // Наклонные стойки
+                    hull() {{
+                        translate([mc_motor_plate_d/2-3, 0, 0])
+                            cylinder(h = 0.1, r1 = 4, center = false);
+                        translate([D_out / 2+4, 0, mc_total_height-0.1])
+                            cylinder(h = 0.1, r1 = 3, center = false);
+                    }}
+                }}
+            }}
+            
+            // --- Стойки вертикальные у отверстий B для усиления ---
+            for (angle = motor_angles) {{
+                rotate([0, 0, angle]) {{
+                    translate([motor_radius, 0, 0])
+                        cylinder(h = mc_total_height, r = 6.5, center = false);
+                }}
+            }}
+            
+            // --- Верхнее кольцо ---
+            translate([0, 0, mc_total_height - mc_ring_height])
+                difference() {{
+                    cylinder(h = mc_ring_height, r = D_out / 2, center = false);
+                    cylinder(h = mc_ring_height, r = D_out / 2 - mc_ring_width, center = false);
+                }}
+        }}
+        
+        // --- Удаление выступающих за D_out деталей ---
+        difference() {{
+            cylinder(h = mc_total_height, r = D_out / 2+10, center = false);
+            cylinder(h = mc_total_height, r = D_out / 2, center = false);
+        }}
+
+        // --- Удаление выступающих за стойки деталей пирамидой ---
+        translate([0, 0, 0])
+         difference() {{
+            cylinder(h = mc_total_height, r1 = mc_motor_plate_d / 2+10, r2=D_out / 2+10, center = false);
+            cylinder(h = mc_total_height, r1 = mc_motor_plate_d / 2, r2=D_out / 2+3, center = false);
+        }}
+        
+        // --- Закладные площадки под гайки (внутри кожуха, на верхней стороне плиты) ---
+        rotate([0, 0, 45]) {{
+            for (angle = motor_angles) {{
+                rotate([0, 0, angle]){{
+                    translate([mc_nut_pad_radius/2, 0, mc_base_thickness-2])
+                        cylinder(h = mc_nut_pad_h, r = mc_nut_pad_d / 2, center = false);
+                     translate([mc_nut_pad_radius/2, 0, 0])
+                        cylinder(h = mc_base_thickness, r = 1.6, center = false);
+                }}
+            }}   
+        }}
+
+        // --- Отверстия в нижней плите ---
+
+        // Центральное отверстие под магнит
+        cylinder(h = mc_base_thickness + 0.1, r = mc_encoder_hole_d / 2, center = false);
+
+        // Отверстия под крепление двигателя (по осям)
+        // Пара 1: по X (16 мм)
+        translate([ mc_motor_hole_1/2, 0, 0]) cylinder(h = mc_base_thickness + 0.1, r = 1.6, center = false);
+        // Потайное отверстие под крепление двигателя под шляпку M3
+        translate([ mc_motor_hole_1/2, 0, 0]) cylinder(h = mc_countersink_h, r1 = mc_countersink_d / 2, r2 = 1.6, center = false);
+        translate([-mc_motor_hole_1/2, 0, 0]) cylinder(h = mc_base_thickness + 0.1, r = 1.6, center = false);
+        // Потайное отверстие под крепление двигателя под шляпку M3
+        translate([-mc_motor_hole_1/2, 0, 0]) cylinder(h = mc_countersink_h, r1 = mc_countersink_d / 2, r2 = 1.6, center = false);
+        // Пара 2: по Y (19 мм)
+        translate([0,  mc_motor_hole_2/2, 0]) cylinder(h = mc_base_thickness + 0.1, r = 1.6, center = false);
+        // Потайное отверстие под крепление двигателя под шляпку M3
+        translate([0,  mc_motor_hole_2/2, 0]) cylinder(h = mc_countersink_h, r1 = mc_countersink_d / 2, r2 = 1.6, center = false);
+        translate([0, -mc_motor_hole_2/2, 0]) cylinder(h = mc_base_thickness + 0.1, r = 1.6, center = false);
+        // Потайное отверстие под крепление двигателя под шляпку M3
+        translate([0, -mc_motor_hole_2/2, 0]) cylinder(h = mc_countersink_h, r1 = mc_countersink_d / 2, r2 = 1.6, center = false);       
+
+        // --- Отверстия в кольце и стойках под винты B ---
+        for (angle = motor_angles) {{
+            rotate([0, 0, angle]) {{
+                // Сквозное отверстие через кольцо и стойку под м3
+                translate([motor_radius, 0, 0])
+                    cylinder(h = mc_total_height + 0.1, r = 1.6, center = false);
+                // Сквозное отверстие через кольцо и стойку под шляпку м3
+                translate([motor_radius, 0, 0])
+                    cylinder(h = mc_total_height-4, r = 3.0, center = false);
+            }}
+        }}
     }}
 }}
 
 // === Сборка ===
 rigid_gear();
 // translate([0, 0, h_reducer]) cap();
-translate([0, 0, 0]) eccentric_shaft();
+// translate([0, 0, 0]) eccentric_shaft();
 // translate([0, 0, 0]) eccentric();
 // translate([0, 0, ecc_shaft_h1 + ecc_spacer_h + ecc_shaft_h2]) separator();
 // translate([0, 0, ecc_shaft_h1 + ecc_spacer_h + ecc_shaft_h2]) rollers();
+// translate([0, 0, -mc_total_height]) motor_cover(); // кожух снизу
 """
 
 # === Сохранение ===
@@ -404,5 +531,4 @@ os.makedirs("./output", exist_ok=True)
 output_file = "./output/vptc_roller.scad"
 with open(output_file, "w") as f:
     f.write(openscad_code)
-
 print(f"\n✅ OpenSCAD-модель сохранена в: {output_file}")
