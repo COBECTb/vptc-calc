@@ -19,6 +19,7 @@ d_roller = prompt_value("Диаметр роликов (мм)", 7.83)
 h_roller = prompt_value("Высота роликов (мм)", 6.0)
 Rout = prompt_value("Внешний радиус впадин жесткого колеса (мм)", 28.0)
 D = prompt_value("Внешний диаметр редуктора (мм)", 70.0)
+
 u = 1
 
 # === Расчёты ===
@@ -36,8 +37,18 @@ Rsep_out = Rsep_m + hc / 2
 Rsep_in = Rsep_m - hc / 2
 
 # Высоты деталей
-separator_h = h_roller + 4
-eccentric_h = h_roller + 2
+
+separator_h = h_roller + 4          # высота сепаратора
+eccentric_h = h_roller + 2          # высота эксцентрика
+
+# === Параметры вала эксцентрика ===
+ecc_shaft_h1 = 5.0    # основание под 6803ZZ в корпусе (ширина подшипника)
+ecc_spacer_h = 1.5    # проставка
+ecc_shaft_h2 = 5.0    # эксцентриковая ступень под 6803ZZ в ECC
+ecc_pin_h = 5.0       # шип под 688ZZ в сепараторе
+eccentricity = e
+
+# Общая высота корпуса с учётом вала (для справки, не влияет на сборку напрямую)
 h_reducer = eccentric_h + 5 + 1 + 3
 
 # === Выбор подшипника для сепаратора ===
@@ -124,6 +135,7 @@ for deg in range(0, 360, 1):
         y_rot = x * np.sin(angle_rad) + y * np.cos(angle_rad)
         rotated_x.append(x_rot)
         rotated_y.append(y_rot)
+
     total_dist = 0
     r_rigid_orig = np.sqrt(x_rigid**2 + y_rigid**2)
     valleys_orig = []
@@ -131,6 +143,7 @@ for deg in range(0, 360, 1):
         if r_rigid_orig[j] < r_rigid_orig[j-1] and r_rigid_orig[j] < r_rigid_orig[j+1]:
             valleys_orig.append(j)
     valley_coords = np.array([(x_rigid[i], y_rigid[i]) for i in valleys_orig])
+
     for i in range(n_holes):
         point = np.array([rotated_x[i], rotated_y[i]])
         if len(valley_coords) > 0:
@@ -138,6 +151,7 @@ for deg in range(0, 360, 1):
             total_dist += np.min(dists)
         else:
             total_dist += 1e6
+
     if total_dist < min_total_dist:
         min_total_dist = total_dist
         best_angle = angle_rad
@@ -182,7 +196,8 @@ PARTS = {
     "ROL": "Ролики",
     "ECC": "Эксцентрик",
     "MC": "Защитный кожух мотора",
-    "CAP": "Крышка редуктора"
+    "CAP": "Крышка редуктора",
+    "ECC_SHAFT": "Вал эксцентрика"  # <-- ДОБАВЛЕНО
 }
 for code, name in PARTS.items():
     print(f"- {code}: {name}")
@@ -201,9 +216,15 @@ print("- Подшипники 6803ZZ (17×26×5 мм): 2 шт. (в корпус�
 print("- Подшипник 688ZZ (8×16×5 мм): 1 шт. (в сепараторе)")
 print(f"- Подшипник {bearing_name}: 1 шт. (на сепараторе)")
 
-# === Форматирование точек для OpenSCAD ===
+# === Форматирование точек для OpenSCAD (по 5 в строке) ===
 def format_points(x, y):
-    return ",\n        ".join([f"[{x[i]:.5f}, {y[i]:.5f}]" for i in range(len(x))])
+    points = [f"[{x[i]:.5f}, {y[i]:.5f}]" for i in range(len(x))]
+    lines = []
+    for i in range(0, len(points), 5):
+        line = ", ".join(points[i:i+5])
+        lines.append(line)
+    return ",\n        ".join(lines)
+    
 
 rigid_points_str = format_points(x_rigid, y_rigid)
 
@@ -225,8 +246,16 @@ Rsep_in = {Rsep_in:.3f};
 D_out = {D:.3f};
 h_reducer = {h_reducer:.3f};
 bearing_inner = {bearing_inner:.1f};
+
+// Высота профильного выреза
 h_cut = h_roller + 5;
 cap_thickness = {cap_thickness:.1f};
+eccentricity = {eccentricity:.3f};
+// --- Параметры вала эксцентрика ---
+ecc_shaft_h1 = {ecc_shaft_h1:.3f};   // основание под 6803ZZ
+ecc_spacer_h = {ecc_spacer_h:.3f};   // проставка
+ecc_shaft_h2 = {ecc_shaft_h2:.3f};   // эксцентриковая ступень
+ecc_pin_h = {ecc_pin_h:.3f};      // шип под 688ZZ
 
 // === Корпус (жёсткое колесо) ===
 module rigid_gear() {{
@@ -343,12 +372,31 @@ module cap() {{
     }}
 }}
 
+// === Вал эксцентрика ===
+module eccentric_shaft() {{
+    union() {{
+        // Основание (в подшипник корпуса)
+        cylinder(h = ecc_shaft_h1, r = 17/2, center = false);
+        // Проставка 2 мм
+        translate([0, 0, ecc_shaft_h1])
+            cylinder(h = ecc_spacer_h, r = 17/2+1, center = false);
+        // Эксцентриковая ступень (в подшипник эксцентрика)
+        translate([eccentricity, 0, ecc_shaft_h1 + ecc_spacer_h])
+            cylinder(h = ecc_shaft_h2, r = 17/2, center = false);
+        // Шип по общей оси (в подшипник сепаратора)
+        translate([0, 0, ecc_shaft_h1 + ecc_spacer_h + ecc_shaft_h2])
+            cylinder(h = ecc_pin_h, r = 8/2, center = false);
+
+    }}
+}}
+
 // === Сборка ===
 rigid_gear();
 // translate([0, 0, h_reducer]) cap();
-// translate([0, 0, 8]) separator();
-// translate([0, 0, 13]) rollers();
-// translate([0, 0, 8]) eccentric();
+translate([0, 0, 0]) eccentric_shaft();
+// translate([0, 0, 0]) eccentric();
+// translate([0, 0, ecc_shaft_h1 + ecc_spacer_h + ecc_shaft_h2]) separator();
+// translate([0, 0, ecc_shaft_h1 + ecc_spacer_h + ecc_shaft_h2]) rollers();
 """
 
 # === Сохранение ===
@@ -356,4 +404,5 @@ os.makedirs("./output", exist_ok=True)
 output_file = "./output/vptc_roller.scad"
 with open(output_file, "w") as f:
     f.write(openscad_code)
+
 print(f"\n✅ OpenSCAD-модель сохранена в: {output_file}")
