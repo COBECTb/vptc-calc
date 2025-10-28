@@ -189,13 +189,21 @@ for i in range(n_holes):
 # === Отверстия B: 4 симметричных ===
 base_motor_angles_deg = np.array([0.0, 90.0, 180.0, 270.0])
 motor_angles_deg = (base_motor_angles_deg + np.degrees(best_angle)) % 360
+
+# Проверяем, есть ли хотя бы одно отверстие B, слишком близкое к любому отверстию A
 angles_A_deg = np.degrees(np.arctan2(hole_y, hole_x)) % 360
-adjusted_motor_angles_deg = []
-for ang in motor_angles_deg:
-    min_diff = np.min(np.abs((angles_A_deg - ang + 180) % 360 - 180))
+needs_shift = False
+for ang_B in motor_angles_deg:
+    min_diff = np.min(np.abs((angles_A_deg - ang_B + 180) % 360 - 180))
     if min_diff < 10.0:
-        ang = (ang + 15.0) % 360
-    adjusted_motor_angles_deg.append(ang)
+        needs_shift = True
+        break
+
+# Если нужно — смещаем ВСЕ отверстия B на +15°
+if needs_shift:
+    adjusted_motor_angles_deg = (motor_angles_deg + 15.0) % 360
+else:
+    adjusted_motor_angles_deg = motor_angles_deg
 
 motor_radius = R_out - 3.0
 motor_x = [motor_radius * np.cos(np.deg2rad(a)) for a in adjusted_motor_angles_deg]
