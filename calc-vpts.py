@@ -41,9 +41,9 @@ eccentric_h = h_roller + 2          # высота эксцентрика
 
 # === Параметры вала эксцентрика ===
 ecc_shaft_h1 = 5.0    # основание под 6803ZZ в корпусе (ширина подшипника)
-ecc_spacer_h = 1.5    # проставка
-ecc_shaft_h2 = 5.0    # эксцентриковая ступень под 6803ZZ в ECC
-ecc_pin_h = 5.0       # шип под 688ZZ в сепараторе
+ecc_spacer_h = 2.0    # проставка
+ecc_shaft_h2 = 7.0    # эксцентриковая ступень под 6803ZZ в ECC
+ecc_pin_h = 6.0       # шип под 688ZZ в сепараторе
 eccentricity = e
 
 # === Параметры защитного кожуха мотора ===
@@ -65,13 +65,13 @@ h_reducer = eccentric_h + 5 + 1 + 3
 
 # === Выбор подшипника для сепаратора ===
 if 2 * Rsep_out < 50:
-    bearing_name = "16005-2RS"
-    bearing_inner = 25.2 # а то болтается
-    bearing_outer = 47.0   # добавлено
-    bearing_width = 8.0
-    flange_extra = 8.5
-    cut_z_offset = 12.0
-    chamfer_z_offset = 12.5
+    bearing_name = "6808-2RS"
+    bearing_inner = 40.0
+    bearing_outer = 52.0
+    bearing_width = 7.0
+    flange_extra = 7.5
+    cut_z_offset = 11.0
+    chamfer_z_offset = 11.5
 else:
     bearing_name = "6810-2RS"
     bearing_inner = 50.0
@@ -412,18 +412,28 @@ module cap() {{
 
 // === Вал эксцентрика ===
 module eccentric_shaft() {{
-    union() {{
-        // Основание (в подшипник корпуса)
-        cylinder(h = ecc_shaft_h1, r = 17/2, center = false);
-        // Проставка 2 мм
-        translate([0, 0, ecc_shaft_h1])
-            cylinder(h = ecc_spacer_h, r = 17/2+1, center = false);
-        // Эксцентриковая ступень (в подшипник эксцентрика)
-        translate([eccentricity, 0, ecc_shaft_h1 + ecc_spacer_h])
-            cylinder(h = ecc_shaft_h2, r = 17/2, center = false);
-        // Шип по общей оси (в подшипник сепаратора)
-        translate([0, 0, ecc_shaft_h1 + ecc_spacer_h + ecc_shaft_h2])
-            cylinder(h = ecc_pin_h, r = 8/2, center = false);
+    difference() {
+        union() {{
+            // Основание (в подшипник корпуса)
+            cylinder(h = ecc_shaft_h1, r = 17/2, center = false);
+            // Проставка 2 мм
+            translate([0, 0, ecc_shaft_h1])
+                cylinder(h = ecc_spacer_h, r = 17/2+1, center = false);
+            // Эксцентриковая ступень (в подшипник эксцентрика)
+            translate([eccentricity, 0, ecc_shaft_h1 + ecc_spacer_h])
+                cylinder(h = ecc_shaft_h2, r = 17/2, center = false);
+            // Шип по общей оси (в подшипник сепаратора)
+            translate([0, 0, ecc_shaft_h1 + ecc_spacer_h + ecc_shaft_h2])
+                cylinder(h = ecc_pin_h, r = 8/2, center = false);
+        }}
+        cylinder(h = 2.0, r = 2.0, center = false);
+        pas_angles = [0.0, 180.0];
+        for (angle = pas_angles) {{
+            rotate([0, 0, angle]) {{
+                translate([17/2-1, 0, 0])
+                cylinder(h = 3, r = 3, center = false);
+            }}    
+        }}
     }}
 }}
 
