@@ -41,8 +41,8 @@ eccentric_h = h_roller + 2          # высота эксцентрика
 
 # === Параметры вала эксцентрика ===
 ecc_shaft_h1 = 5.0    # основание под 6803ZZ в корпусе (ширина подшипника)
-ecc_spacer_h = 2.0    # проставка
-ecc_shaft_h2 = 7.0    # эксцентриковая ступень под 6803ZZ в ECC
+ecc_spacer_h = 2.5    # проставка
+ecc_shaft_h2 = 6.0    # эксцентриковая ступень под 6803ZZ в ECC
 ecc_pin_h = 6.0       # шип под 688ZZ в сепараторе
 eccentricity = e
 
@@ -61,15 +61,15 @@ mc_countersink_d = 6.0    # диаметр потайного отверстия
 mc_countersink_h = 2.0    # глубина потайного отверстия
 
 # Общая высота корпуса с учётом вала (для справки, не влияет на сборку напрямую)
-h_reducer = eccentric_h + 5 + 1 + 3
+h_reducer = eccentric_h + 5 + 1 + 2.5
 
 # === Выбор подшипника для сепаратора ===
-if 2 * Rsep_out < 50:
+if 2 * Rsep_out < 80:
     bearing_name = "6808-2RS"
     bearing_inner = 40.0
     bearing_outer = 52.0
     bearing_width = 7.0
-    flange_extra = 7.5
+    flange_extra = 9.5
     cut_z_offset = 11.0
     chamfer_z_offset = 11.5
 else:
@@ -77,12 +77,12 @@ else:
     bearing_inner = 50.0
     bearing_outer = 65.0   # добавлено
     bearing_width = 7.0
-    flange_extra = 7.5
+    flange_extra = 9.5
     cut_z_offset = 11.0
     chamfer_z_offset = 11.5
 
 # Толщина крышки
-cap_thickness = bearing_width + 1 + 2  # подшипник + запас + возвышение
+cap_thickness = bearing_width + 1 + 3  # подшипник + запас + возвышение
 
 # === Определение количества отверстий по диаметру ===
 if D <= 60:
@@ -361,6 +361,24 @@ module separator() {{
                     rotate([0, 90, 0])
                         cube([h_roller + 0.4, d_roller + 0.4, separator_h + 1], center = true);
         }}
+        // Посадочные места под крепеж нагрузки m3
+        for (angle = motor_angles) {{
+            rotate([0, 0, angle]) {{
+                translate([bearing_inner/2-4, 0, 0])
+                    cylinder(h = separator_h  + {flange_extra}, r = 1.6, center = false);
+                translate([bearing_inner/2-4, 0, 0])
+                    cylinder(h =separator_h+2, r = 3.0, center = false);
+            }}
+        }}
+       // Посадочные места под крепеж нагрузки m4
+        for (angle = motor_angles) {{
+            rotate([0, 0, angle+45]) {{
+                translate([bearing_inner/2-5, 0, 0])
+                    cylinder(h = separator_h  + {flange_extra}, r = 2.1, center = false);
+                translate([bearing_inner/2-5, 0, 0])
+                    cylinder(h =separator_h+2, r = 7.66/2, center = false);
+            }}
+        }}
     }}
 }}
 
@@ -412,16 +430,22 @@ module cap() {{
 
 // === Вал эксцентрика ===
 module eccentric_shaft() {{
-    difference() {
+    difference() {{
         union() {{
             // Основание (в подшипник корпуса)
-            cylinder(h = ecc_shaft_h1, r = 17/2, center = false);
-            // Проставка 2 мм
+            cylinder(h = ecc_shaft_h1, r = 17/2+0.07, center = false);
+            // Проставка ecc_spacer_h мм
             translate([0, 0, ecc_shaft_h1])
-                cylinder(h = ecc_spacer_h, r = 17/2+1, center = false);
+                cylinder(h = ecc_spacer_h, r = 17/2+2, center = false);
+            // Пподставка под подшипник в эксцентрике
+            translate([eccentricity, 0, ecc_shaft_h1+ecc_spacer_h])
+                cylinder(h = 0.5, r = 17/2+1, center = false);
             // Эксцентриковая ступень (в подшипник эксцентрика)
             translate([eccentricity, 0, ecc_shaft_h1 + ecc_spacer_h])
                 cylinder(h = ecc_shaft_h2, r = 17/2, center = false);
+            // Подставка под подшипник сепаратора)
+            translate([0, 0, ecc_shaft_h1 + ecc_spacer_h + ecc_shaft_h2])
+                cylinder(h = 0.5, r = 5, center = false);
             // Шип по общей оси (в подшипник сепаратора)
             translate([0, 0, ecc_shaft_h1 + ecc_spacer_h + ecc_shaft_h2])
                 cylinder(h = ecc_pin_h, r = 8/2, center = false);
@@ -430,8 +454,10 @@ module eccentric_shaft() {{
         pas_angles = [0.0, 180.0];
         for (angle = pas_angles) {{
             rotate([0, 0, angle]) {{
-                translate([17/2-1, 0, 0])
-                cylinder(h = 3, r = 3, center = false);
+                translate([17/2-1.65, 0, 0])
+                    cylinder(h = 3, r = 3, center = false);
+                translate([17/2-1.65, -3, 0])
+                   cube([3,6,3]);
             }}    
         }}
     }}
@@ -445,7 +471,7 @@ module motor_cover() {{
             cylinder(h = mc_base_thickness, r = mc_motor_plate_d / 2, center = false);
 
             // --- Опоры и кольцо ---
-            motor_angles = [{', '.join([f'{a:.1f}' for a in adjusted_motor_angles_deg])}];
+
             for (angle = motor_angles) {{
                 rotate([0, 0, angle]) {{
                     // Наклонные стойки
@@ -490,7 +516,7 @@ module motor_cover() {{
         // --- Закладные площадки под гайки (внутри кожуха, на верхней стороне плиты) ---
         {{
             for (angle = motor_angles) {{
-                rotate([0, 0, angle]){{
+                rotate([0, 0, angle+45]){{
                     translate([mc_nut_pad_radius/2, 0, mc_base_thickness-2])
                         cylinder(h = mc_nut_pad_h, r = mc_nut_pad_d / 2, center = false);
                      translate([mc_nut_pad_radius/2, 0, 0])
@@ -534,15 +560,45 @@ module motor_cover() {{
     }}
 }}
 
-// === Сборка ===
+module bearing_simple(inner_d, outer_d, height) {{
+    // Проверка параметров
+    assert(inner_d > 0, "Внутренний диаметр должен быть > 0");
+    assert(outer_d > inner_d, "Внешний диаметр должен быть больше внутреннего");
+    assert(height > 0, "Высота должна быть > 0");
+
+    // Радиусы
+    inner_r = inner_d / 2;
+    outer_r = outer_d / 2;
+
+
+        // Цельный подшипник
+    difference() {{
+        cylinder(r=outer_r, h=height, center=true, $fn=32);
+        cylinder(r=inner_r, h=height+1, center=true, $fn=32);
+    }}
+}}
+
+zazor=1;
+difference() {{
+union() {{
 rigid_gear();
-// translate([0, 0, h_reducer]) cap();
-// translate([0, 0, 0]) eccentric_shaft();
-// translate([0, 0, 0]) eccentric();
-// translate([0, 0, ecc_shaft_h1 + ecc_spacer_h + ecc_shaft_h2]) separator();
+//color("gray") translate([0, 0, 3]) bearing_simple(17,26,5);
+translate([0, 0, h_reducer+zazor]) cap();
+translate([0, 0, 0.5]) eccentric_shaft();
+//color("gray") translate([0, 0, 3.5+5+ecc_spacer_h]) bearing_simple(17,26,5);
+translate([0, 0, 14]) rotate([180,0,0]) eccentric();
+//color("gray") translate([0, 0, ecc_shaft_h1 + ecc_spacer_h + ecc_shaft_h2+3.5]) bearing_simple(8,16,5);
+translate([0, 0, ecc_shaft_h1 + ecc_spacer_h-1]) separator();
+//color("gray") translate([0, 0,ecc_shaft_h1 + ecc_spacer_h+separator_h+5]) bearing_simple(40,52,7);
 // translate([0, 0, ecc_shaft_h1 + ecc_spacer_h + ecc_shaft_h2]) rollers();
-// translate([0, 0, -mc_total_height]) motor_cover(); // кожух снизу
+//translate([0, 0, -mc_total_height-1]) motor_cover(); // кожух снизу
+}}
+    // Куб-«нож», отсекающий правую половину (x > 0)
+//    translate([0, -100, -100]) 
+//        cube([100, 200, 200]);
+}}
 """
+
 
 # === Сохранение ===
 os.makedirs("./output", exist_ok=True)
