@@ -1,6 +1,7 @@
 import numpy as np
 import sys
 import os
+import math
 
 def prompt_value(prompt, default, value_type=float):
     user_input = input(f"{prompt} (по умолчанию: {default}): ")
@@ -217,6 +218,10 @@ motor_radius = R_out - 3.0
 motor_x = [motor_radius * np.cos(np.deg2rad(a)) for a in adjusted_motor_angles_deg]
 motor_y = [motor_radius * np.sin(np.deg2rad(a)) for a in adjusted_motor_angles_deg]
 
+# Расчет расстояний между отверстиями в боковом креплении
+side_short = (bearing_inner/2-4) * math.sqrt(2 - math.sqrt(2))
+side_long = (bearing_inner/2-4) * math.sqrt(2 + math.sqrt(2))
+
 # === СПИСОК ДЕТАЛЕЙ, ОТВЕРСТИЙ, БОЛТОВ И ПОДШИПНИКОВ ===
 print("\n=== СПИСОК ДЕТАЛЕЙ ===")
 PARTS = {
@@ -311,6 +316,10 @@ bracing_offset_x = {bracing_offset_x:.1f};  // смещение по X
 motor_angles = [{', '.join([f'{a:.1f}' for a in adjusted_motor_angles_deg])}];
 motor_radius = {motor_radius:.3f};
 
+// Расстояния между отверстиями в боковом креплении
+side_short = {side_short:.3f};
+side_long = {side_long:.3f};
+
 // === Вспомогательные модули для бокового крепления ===
 module oval_cone(height, bottom_width, bottom_depth, top_width, top_depth, center = false) {{
     hull() {{
@@ -395,6 +404,18 @@ module rigid_gear_with_bracing() {{
                 translate([motor_radius+4, 0, 5.0])
                     cube(size = [10.0, 6.0, 3.0], center = true);
         }}
+        // Посадочные места под крепеж нагрузки m3
+        translate([0,D_out/2,(h_reducer+cap_thickness)/2]) rotate([90,45/2,0]) {{
+            for (i = [0, 5]) {{
+                angle=45*i;
+                rotate([0, 0, angle]) {{
+                    translate([bearing_inner/2-4, 0, 0])
+                        cylinder(h = 8, r = 1.6, center = false);
+                }}
+            }}
+        }}
+        translate([side_long/2-3, D_out/2-6, side_short/2-2]) cube([6,3,side_short],center=false);
+        translate([-side_long/2-3, D_out/2-6, side_short/2-2]) cube([6,3,side_short],center=false);
 	}}
 }}
 
@@ -444,7 +465,7 @@ module separator() {{
 module reducer_connector() {{
     difference() {{
         union() {{
-            cylinder(h = 4, r = D_out/2-5, center = false);
+            cylinder(h = 4, r = D_out/2-8, center = false);
             translate([0,0,4]) cylinder(h = 4, r = bearing_inner/2, center = false);
         }}
         // Посадочные места под крепеж нагрузки m3
@@ -457,6 +478,24 @@ module reducer_connector() {{
                     cylinder(h =3, r = 3.0, center = false);
             }}
         }}
+    }}
+}}
+
+// Зажим соединителей 
+module connector_clamp(){{
+    intersection() {{
+        difference() {{
+            cylinder(h = 12, r = D_out/2-2, center = false);
+            translate([0, 0, 2]) cylinder(h = 8.2, r = D_out/2-7.9, center = false);
+            cylinder(h = 12, r = bearing_inner/2, center = false);
+            rotate([0,90,90]) translate([-6, D_out/2-5, 3]) cylinder(h = 20, r =3, center = false);
+            rotate([0,90,90]) translate([-6, D_out/2-5, 0]) cylinder(h = 20, r =1.6, center = false);
+            rotate([0,-90,-90]) translate([6, D_out/2-5, 3]) cylinder(h = 20, r =3, center = false);
+            rotate([0,-90,-90]) translate([6, D_out/2-5, 0]) cylinder(h = 20, r =1.6, center = false);
+        }}
+        // Отсекаем нижнюю часть - оставляем только верх
+        translate([-D_out, 0, -1])
+            cube([D_out*2, D_out, 14]);
     }}
 }}
 
@@ -509,18 +548,31 @@ module cap() {{
 
 // === Крышка с боковым креплением ===
 module cap_with_bracing() {{
-    union() {{
-        cap();
-        difference(){{
-            translate([-D_out/2, 0, 0]) cube([D_out, D_out/2, cap_thickness]);
-            rotate([-90, 90, 0]) 
-                translate([+bracing_offset_x, -bracing_offset_y, bracing_offset_z]) 
-                oval_cone_diff_half(D_out/2, h_reducer+cap_thickness, (h_reducer+cap_thickness)/2, h_reducer+cap_thickness, (h_reducer+cap_thickness)/2, true);
-            rotate([90, 90, 0]) 
-                translate([+bracing_offset_x, -bracing_offset_y, -bracing_offset_z]) 
-                oval_cone_diff_half(D_out/2, h_reducer+cap_thickness, (h_reducer+cap_thickness)/2, h_reducer+cap_thickness, (h_reducer+cap_thickness)/2, true);
-            cylinder(h = h_reducer, r = D_out / 2, center = false);
+    difference(){{
+        union() {{
+            cap();
+            difference(){{
+                translate([-D_out/2, 0, 0]) cube([D_out, D_out/2, cap_thickness]);
+                rotate([-90, 90, 0]) 
+                    translate([+bracing_offset_x, -bracing_offset_y, bracing_offset_z]) 
+                    oval_cone_diff_half(D_out/2, h_reducer+cap_thickness, (h_reducer+cap_thickness)/2, h_reducer+cap_thickness, (h_reducer+cap_thickness)/2, true);
+                rotate([90, 90, 0]) 
+                    translate([+bracing_offset_x, -bracing_offset_y, -bracing_offset_z]) 
+                    oval_cone_diff_half(D_out/2, h_reducer+cap_thickness, (h_reducer+cap_thickness)/2, h_reducer+cap_thickness, (h_reducer+cap_thickness)/2, true);
+                cylinder(h = h_reducer, r = D_out / 2, center = false);
+            }}
         }}
+        translate([0,D_out/2,-2.2]) rotate([90,45/2,0]) {{
+            for (i = [1, 4]) {{
+                angle=45*i;
+                rotate([0, 0, angle]) {{
+                    translate([bearing_inner/2-4, 0, 0])
+                        cylinder(h = 8, r = 1.6, center = false);
+                }}
+            }}
+        }}
+        translate([side_long/2-3, D_out/2-6, 0]) cube([6,3,side_short/2+1],center=false);
+        translate([-side_long/2-3, D_out/2-6, 0]) cube([6,3,side_short/2+1],center=false);
     }}
 }}
 
@@ -677,7 +729,7 @@ difference() {{
 		//color("gray") translate([0, 0,ecc_shaft_h1 + ecc_spacer_h+separator_h+5]) bearing_simple(40,52,7);
 		// translate([0, 0, ecc_shaft_h1 + ecc_spacer_h + ecc_shaft_h2]) rollers();
 		//translate([0, 0, -mc_total_height-1]) motor_cover(); // кожух снизу
-		translate([0,D_out/2+8+zazor,(h_reducer+cap_thickness)/2]) rotate([90,15,0]) reducer_connector();
+		translate([0,D_out/2+8+zazor,(h_reducer+cap_thickness)/2]) rotate([90,45/2,0]) reducer_connector();
         translate([0,0,h_reducer+zazor+cap_thickness+6.5]) rotate([180,0,0])reducer_connector();
     }}
 // Куб-«нож», отсекающий правую половину (x > 0)
