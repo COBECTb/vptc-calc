@@ -462,7 +462,7 @@ module separator() {{
 }}
 
 // Соединитель редукторов
-module reducer_connector() {{
+module reducer_connector(fitting=true) {{
     difference() {{
         union() {{
             cylinder(h = 4, r = D_out/2-8, center = false);
@@ -474,8 +474,10 @@ module reducer_connector() {{
             rotate([0, 0, angle]) {{
                 translate([bearing_inner/2-4, 0, 0])
                     cylinder(h = 8, r = 1.6, center = false);
-                translate([bearing_inner/2-4, 0, 0])
-                    cylinder(h =3, r = 3.0, center = false);
+                if(fitting){{
+                    translate([bearing_inner/2-4, 0, 0])
+                        cylinder(h =3, r = 3.0, center = false);
+                }}
             }}
         }}
     }}
@@ -712,6 +714,101 @@ module bearing_simple(inner_d, outer_d, height) {{
     }}
 }}
 
+module cutting_wedge(angle = 135, height = 20, center = false) {{
+    // Создаем область вырезания на заданный угол
+    rotate([0, 0, -angle/2])
+    for(i = [0:5:angle]) {{ // Шаг 5 градусов для баланса качества и скорости
+        rotate([0, 0, i])
+        union() {{
+            translate([bearing_inner/2-4, -15/2, -height/2]) 
+            cube([15,15,height]);
+            
+            translate([bearing_inner/2+11, 0, -height/2]) 
+            cylinder(h = height, r = 15/2, center = false);
+        }}
+    }}
+}}
+
+shoulder_bearing_od=37;
+shoulder_bearing_id=25;
+shoulder_bearing_h=7;
+shoulder_horn_h1=6;
+shoulder_horn_h2=8;
+shoulder_h=shoulder_horn_h2+shoulder_horn_h1+shoulder_bearing_h+4;
+
+module shoulder_horn() {{
+    difference() {{
+        union() {{
+            color("red") translate([0, 0, -shoulder_bearing_h-shoulder_horn_h2]) cylinder(h = shoulder_bearing_h+shoulder_horn_h2, r = shoulder_bearing_id/2, center = false);
+            color("blue") translate([0, 0, -shoulder_bearing_h-1]) cylinder(h = 2, r = shoulder_bearing_id/2+2, center = false);
+
+            cylinder(h = shoulder_horn_h1+1, r = bearing_inner/2, center = false);
+            translate([bearing_inner/2-4, -15/2, 0]) cube([15,15,shoulder_horn_h1]);
+            translate([bearing_inner/2+11, 0, 0]) cylinder(h = shoulder_horn_h1, r = 15/2, center = false);
+        }}
+        // Посадочные места под крепеж нагрузки m3
+        for (i = [0 : 7]) {{
+            angle=45*i;
+            rotate([0, 0, angle]) {{
+                translate([bearing_inner/2-4, 0, 0])
+                    cylinder(h =shoulder_horn_h2, r = 1.6, center = false);
+                translate([bearing_inner/2-4, 0, 0])
+                    cylinder(h =3, r = 3.0, center = false);
+            }}
+        }}
+        // Посадочные места под крепеж тяги m4
+        translate([bearing_inner/2+11, 0, 0]) {{
+            cylinder(h = shoulder_horn_h1, r = 2, center = false);
+            translate([0, 0, 2.7]) cylinder(h = 3.3, r = 7.66/2, center = false);
+        }}
+    }}
+}}
+
+module shoulder_top(){{
+    union(){{
+        difference() {{
+            union() {{
+                cylinder(h=shoulder_h, r=D_out/2 );
+                translate([-25,0,0]) cube([50,80,shoulder_h]);
+            }}
+            translate([4.7,19,-10.5]) cube([25.01,80.01,shoulder_h]);
+            translate([4.7,19,-10.5]) cube([25.01,80.01,shoulder_h/2]);
+            translate([-25.01,65,14.49]) cube([50.02,15.01,shoulder_h/2]);
+            translate([0, 0, -0.01])cylinder(h=shoulder_horn_h2+shoulder_horn_h1+1, r = bearing_inner/2+2 );
+            rotate([0,0,10]) translate([0, 0, 6.999]) cutting_wedge(height = shoulder_horn_h2+shoulder_horn_h1+1, angle = 120);
+            cylinder(h=shoulder_horn_h2+shoulder_horn_h1+shoulder_bearing_h+1, r=shoulder_bearing_od/2 );
+            cylinder(h=shoulder_horn_h2+shoulder_horn_h1+shoulder_bearing_h+1.5, r=shoulder_bearing_od/2-2 );
+            //отверстия под штифты диаметр 6mm длинна 36mm  
+            translate([-10, 61.01, 7]) rotate([90,0,180]) cylinder(h=19, r=3 );
+            translate([0, 46.01, 20]) rotate([90,0,180]) cylinder(h=19, r=3 );
+            // Отверстия под винты (группа A)
+            rotate([0,0,0])
+            for (i = [0 : 5]) {{
+                x_hole = [{', '.join([f'{x:.5f}' for x in hole_x])}][i];
+                y_hole = [{', '.join([f'{y:.5f}' for y in hole_y])}][i];
+                // Сквозное отверстие
+                translate([x_hole, y_hole, 0]) cylinder(h = shoulder_h, r = 1.6, center = false);
+                // Потай под шляпку M3
+                translate([x_hole, y_hole, shoulder_h - 2.0]) cylinder(h = 2.0, r = 3.0, center = false);
+            }}
+            //Отверстия под крепеж shoulder_bottom
+            translate([0, 40, -0.01])
+                cylinder(h =shoulder_h+0.02, r = 1.6, center = false);
+            translate([0, 40, 22])
+                cylinder(h =3.01, r = 3.0, center = false);
+            //Отверстия под крепеж shoulder_bottom
+            translate([0, 72, -0.01])
+                cylinder(h =shoulder_h+0.02, r = 1.6, center = false);
+            //Отверстия под крепеж shoulder_bottom
+            translate([-20, 72, -0.01])
+                cylinder(h =shoulder_h+0.02, r = 1.6, center = false);
+            
+        }}
+        translate([0,0,shoulder_h+7.1]) rotate([180,0,0]) reducer_connector(fitting=false);
+    }}
+           
+}}
+
 // === Сборка ===
 zazor=1; //отступ для раздельной печати деталей, чтобы при импорте stl можно было разделить на отделтные детали
 difference() {{
@@ -731,6 +828,10 @@ difference() {{
 		//translate([0, 0, -mc_total_height-1]) motor_cover(); // кожух снизу
 		translate([0,D_out/2+8+zazor,(h_reducer+cap_thickness)/2]) rotate([90,45/2,0]) reducer_connector();
         translate([0,0,h_reducer+zazor+cap_thickness+6.5]) rotate([180,0,0])reducer_connector();
+        //rotate([0,0,-135/2+18]) translate([0,0,h_reducer+2*zazor+cap_thickness+7]) rotate([180,0,0]) shoulder_horn();
+        //translate([0,0,h_reducer+cap_thickness+2*zazor]) shoulder_top();
+        //color("gray") translate([0, 0,ecc_shaft_h1 + ecc_spacer_h+separator_h+5 +25.5]) bearing_simple(25,37,7);
+
     }}
 // Куб-«нож», отсекающий правую половину (x > 0)
 //    translate([0, -100, -100]) 
