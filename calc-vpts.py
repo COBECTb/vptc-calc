@@ -723,7 +723,7 @@ module cutting_wedge(angle = 135, height = 20, center = false) {{
             translate([bearing_inner/2-4, -15/2, -height/2]) 
             cube([15,15,height]);
             
-            translate([bearing_inner/2+11, 0, -height/2]) 
+            translate([shoulder_horn_r, 0, -height/2])  
             cylinder(h = height, r = 15/2, center = false);
         }}
     }}
@@ -735,6 +735,7 @@ shoulder_bearing_h=7;
 shoulder_horn_h1=7;
 shoulder_horn_h2=8;
 shoulder_h=shoulder_horn_h2+shoulder_horn_h1+shoulder_bearing_h+4.5;
+shoulder_horn_r = bearing_inner/2+11;
 
 module shoulder_horn() {{
     difference() {{
@@ -743,8 +744,8 @@ module shoulder_horn() {{
             color("blue") translate([0, 0, -shoulder_bearing_h-1]) cylinder(h = 2, r1 = shoulder_bearing_id/2+2,  r2 = shoulder_bearing_id/2, center = false);
 
             cylinder(h = shoulder_horn_h1+1.5, r = bearing_inner/2+2, center = false);
-            translate([bearing_inner/2-4, -15/2, 0]) cube([15,15,shoulder_horn_h1]);
-            translate([bearing_inner/2+11, 0, 0]) cylinder(h = shoulder_horn_h1, r = 15/2, center = false);
+    		color("green") translate([bearing_inner/2-4, -15/2, 0]) cube([15,15,shoulder_horn_h1]);
+            color("green") translate([shoulder_horn_r, 0, -2]) cylinder(h = shoulder_horn_h1+2, r = 15/2, center = false);
         }}
         // Посадочные места под крепеж нагрузки m3
         for (i = [0 : 7]) {{
@@ -757,8 +758,8 @@ module shoulder_horn() {{
             }}
         }}
         // Посадочные места под крепеж тяги m4
-        translate([bearing_inner/2+11, 0, 0]) {{
-            cylinder(h = shoulder_horn_h1, r = 2, center = false);
+        translate([bearing_inner/2+11, 0, -2.01]) {{
+            cylinder(h = shoulder_horn_h1+2.01, r = 2, center = false);
             translate([0, 0, 3.7]) cylinder(h = 3.4, r = 7.66/2, center = false);
         }}
     }}
@@ -775,14 +776,14 @@ module shoulder_top(){{
             translate([4.7,19,-10.5]) cube([25.01,80.01,shoulder_h/2]);
             translate([-25.01,65,14.99]) cube([50.02,15.01,shoulder_h/2]);
             translate([0, 0, -0.01])cylinder(h=shoulder_horn_h2+shoulder_horn_h1+1, r = bearing_inner/2+2 );
-            rotate([0,0,10]) translate([0, 0, 6.999]) cutting_wedge(height = shoulder_horn_h2+shoulder_horn_h1+1, angle = 120);
+            rotate([0,0,6]) translate([0, 0, 6.999]) cutting_wedge(height = shoulder_horn_h2+shoulder_horn_h1+1, angle = 135);
             cylinder(h=shoulder_horn_h2+shoulder_horn_h1+shoulder_bearing_h+1, r=shoulder_bearing_od/2 );
             cylinder(h=shoulder_horn_h2+shoulder_horn_h1+shoulder_bearing_h+1.5, r=shoulder_bearing_od/2-2 );
             //отверстия под штифты диаметр 6mm длинна 36mm  
             translate([-10, 61.01, 7.5]) rotate([90,0,180]) cylinder(h=19, r=3 );
             translate([0, 46.01, 20.5]) rotate([90,0,180]) cylinder(h=19, r=3 );
             // Отверстия под винты (группа A)
-            rotate([0,0,0])
+            rotate([0,0,-2])
             for (i = [0 : 5]) {{
                 x_hole = [{', '.join([f'{x:.5f}' for x in hole_x])}][i];
                 y_hole = [{', '.join([f'{y:.5f}' for y in hole_y])}][i];
@@ -810,13 +811,14 @@ module shoulder_top(){{
 }}
 
 hips_l = 170-75;
+hips_l1 = hips_l-15;
 
 module hip() {{
     union() {{
         difference() {{
-            cube([50,hips_l,shoulder_h]);
+            cube([50,hips_l1,shoulder_h]);
             translate([-0.01,-0.01,-0.01]) cube([50.01,15.01,shoulder_h/2+2]);
-            translate([30,-0.01,-0.01]) cube([20.01,hips_l+0.02,shoulder_h/2+2]);
+            translate([30,-0.01,-0.01]) cube([20.01,hips_l1+0.02,shoulder_h/2+2]);
             //отверстия под штифты диаметр 6mm длинна 36mm  
             translate([15, 14.99, 7.5]) rotate([90,0,180]) cylinder(h=19, r=3 );
             translate([35, -0.01, 20.5]) rotate([90,0,180]) cylinder(h=19, r=3 );
@@ -825,13 +827,171 @@ module hip() {{
             translate([5, 7, 24]) cylinder(h =3.01, r = 3.0, center = false);
             translate([25, 7, -0.01]) cylinder(h =shoulder_h+0.02, r = 1.6, center = false);     
             translate([25, 7, 24]) cylinder(h =3.01, r = 3.0, center = false);
-            translate([5, hips_l-7, -0.01]) cylinder(h =shoulder_h+0.02, r = 1.6, center = false);
-            translate([5, hips_l-7, 24]) cylinder(h =3.01, r = 3.0, center = false);
-            translate([25, hips_l-7, -0.01]) cylinder(h =shoulder_h+0.02, r = 1.6, center = false);     
-            translate([25, hips_l-7, 24]) cylinder(h =3.01, r = 3.0, center = false);
+            translate([5, hips_l1-7, -0.01]) cylinder(h =shoulder_h+0.02, r = 1.6, center = false);
+            translate([5, hips_l1-7, 24]) cylinder(h =3.01, r = 3.0, center = false);
+            translate([25, hips_l1-7, -0.01]) cylinder(h =shoulder_h+0.02, r = 1.6, center = false);     
+            translate([25, hips_l1-7, 24]) cylinder(h =3.01, r = 3.0, center = false);
         }}
     }}
 }}
+
+module simple_control_rod(center_distance, rod_diameter, hole_diameter) {{
+    plate_thickness = 2;       // Толщина пластины
+    plate_diameter = hole_diameter * 3; // Диаметр круглой пластины
+    
+    union() {{
+        // Центральная тяга (вдоль оси Z)
+        cylinder(
+            h = center_distance-plate_diameter+2,
+            d = rod_diameter,
+            center = true
+        );
+        
+        // Верхняя лопатка (параллельно оси тяги)
+        translate([0, 0, center_distance/2])
+            rotate([90, 0, 0]) // Поворот на 90° чтобы пластина легла вдоль оси
+            difference() {{
+                cylinder(
+                    h = plate_thickness,
+                    d = plate_diameter,
+                    center = true
+                );
+                // Отверстие для оси шарнира (перпендикулярно тяге)
+                cylinder(
+                    h = plate_thickness * 2,
+                    d = hole_diameter,
+                    center = true
+                );
+            }};
+        
+        // Нижняя лопатка (такая же, на другом конце)
+        translate([0, 0, -center_distance/2])
+            rotate([90, 0, 0])
+            difference() {{
+                cylinder(
+                    h = plate_thickness,
+                    d = plate_diameter,
+                    center = true
+                );
+                cylinder(
+                    h = plate_thickness * 2,
+                    d = hole_diameter,
+                    center = true
+                );
+            }};
+    }}
+}}
+
+// Модуль для соединения двух точек цилиндром
+module connect_points(p1, p2, diameter = 6) {{
+    hole_diameter= 4;
+    plate_thickness = 2;       // Толщина пластины
+    plate_diameter = hole_diameter * 3; // Диаметр круглой пластины
+
+    vec = p2 - p1;
+    mid = (p1 + p2) / 2;
+    length = norm(vec);
+    
+    // Угол в плоскости XY
+    angle = atan2(vec.y, vec.x);
+    
+    translate(mid)
+    rotate([0, 90, angle])  // Вот это правильный порядок!
+        cylinder(h = length-8, d = diameter, center = true);
+    translate(p1)
+    difference() {{
+                cylinder( h = plate_thickness, d = plate_diameter, center = true );
+                // Отверстие для оси шарнира (перпендикулярно тяге)
+                cylinder( h = plate_thickness * 2, d = hole_diameter, center = true );
+            }};
+    translate(p2)
+    difference() {{
+                cylinder( h = plate_thickness, d = plate_diameter, center = true );
+                // Отверстие для оси шарнира (перпендикулярно тяге)
+                cylinder( h = plate_thickness * 2, d = hole_diameter, center = true );
+            }};
+}}
+
+
+foot_r=shoulder_horn_r+15;
+point_foot_center=[-10,171,0];
+
+module foot(){{
+    difference() {{
+        union() {{
+            cylinder( h = 28, r = 5/2, center = true );
+            translate([foot_r,0,-4]) cylinder( h = 5, r = 15/2, center = false );
+            cube([foot_r*2-4,15,10], center = true );
+        }}
+        translate([foot_r,0,-4.01]) cylinder( h = 5.02, r = 2, center = false );
+    }}
+}}
+
+// ========== Функция расчета кинематики сервопривода ноги ==========
+function calculate_rigid_linkage(
+    angle1, rod_length, radius1, radius2, center1, center2
+) = 
+let(
+    a1 = angle1,
+    P1 = [center1.x + radius1 * cos(a1), center1.y + radius1 * sin(a1), center1.z],
+    dx = center2.x - P1.x,
+    dy = center2.y - P1.y,
+    d = sqrt(dx*dx + dy*dy),
+    min_length = abs(d - radius2),
+    max_length = d + radius2,
+    solution_exists = (rod_length >= min_length) && (rod_length <= max_length),
+    P2 = solution_exists ? 
+        let(
+            cos_phi = (d*d + radius2*radius2 - rod_length*rod_length) / (2 * d * radius2),
+            theta = atan2(P1.y - center2.y, P1.x - center2.x),
+            alpha = acos(cos_phi),
+            angle2 = theta + alpha,
+            point2 = [center2.x + radius2 * cos(angle2), center2.y + radius2 * sin(angle2), center2.z]
+        )
+        point2
+        : [0, 0, 0],
+    angle2_result = solution_exists ? atan2(P2.y - center2.y, P2.x - center2.x) : 0
+)
+[
+    ["point1", P1], ["point2", P2], ["angle1", angle1], ["angle2", angle2_result],
+    ["solution_exists", solution_exists], ["distance", rod_length],
+    ["min_possible", min_length], ["max_possible", max_length]
+];
+
+function get_value(data, key) = 
+    let(idx = search([key], data, num_returns_per_match=1)[0])
+    data[idx][1];
+
+servo_angle=$t*135-135/2+7;
+
+
+module leg(){{
+    result = calculate_rigid_linkage(servo_angle, 170, shoulder_horn_r, foot_r, [0,0,0], point_foot_center);
+
+    point1 = get_value(result, "point1");
+    point2 = get_value(result, "point2");
+    angle2 = get_value(result, "angle2");
+    solution_exists = get_value(result, "solution_exists");
+    min_possible = get_value(result, "min_possible");
+    max_possible = get_value(result, "max_possible");
+
+    echo("Точка 1: ", point1);
+    echo("Точка 2: ", point2);
+    echo("Угол колена: ", angle2, "° (", angle2 * 180 / 3.14159, "°)");
+    echo("Длина тяги (расчетная): ", norm(point2 - point1), "мм");
+    echo("Диапазон возможных длин: от ", min_possible, " до ", max_possible, "мм");
+    echo("Решение существует: ", solution_exists);
+    union() {{
+        rotate([0,0,servo_angle]) translate([0,0,h_reducer+2*zazor+cap_thickness+8]) rotate([180,0,0]) shoulder_horn();
+        translate([0,0,h_reducer+cap_thickness+2*zazor]) shoulder_top();
+        color("gray") translate([0, 0,ecc_shaft_h1 + ecc_spacer_h+separator_h+5 +26.5]) bearing_simple(25,37,7);
+        translate([-25,65,h_reducer+cap_thickness+2*zazor]) hip();
+        translate([0,0,39]) connect_points(p1=point1,p2=point2);
+        translate(point_foot_center) translate([0,0 ,h_reducer+cap_thickness+2*zazor+9]) rotate([0,0,angle2]) foot();
+        //translate([20,61.5,h_reducer+cap_thickness+2*zazor+shoulder_horn_h2+3]) rotate([90,0,0]) simple_control_rod(center_distance=170,rod_diameter = 6,hole_diameter = 4);
+   }} 
+}}
+
 
 
 // === Сборка ===
@@ -853,10 +1013,11 @@ difference() {{
         //translate([0, 0, -mc_total_height-1]) motor_cover(); // кожух снизу
         //translate([0,D_out/2+8+zazor,(h_reducer+cap_thickness)/2]) rotate([90,45/2,0]) reducer_connector();
         //translate([0,0,h_reducer+zazor+cap_thickness+6.5]) rotate([180,0,0])reducer_connector();
-        rotate([0,0,-135/2+18]) translate([0,0,h_reducer+2*zazor+cap_thickness+8]) rotate([180,0,0]) shoulder_horn();
-        translate([0,0,h_reducer+cap_thickness+2*zazor]) shoulder_top();
-        color("gray") translate([0, 0,ecc_shaft_h1 + ecc_spacer_h+separator_h+5 +26.5]) bearing_simple(25,37,7);
-        translate([-25,65,h_reducer+cap_thickness+2*zazor])hip();
+        //rotate([0,0,-135/2+18]) translate([0,0,h_reducer+2*zazor+cap_thickness+8]) rotate([180,0,0]) shoulder_horn();
+        //translate([0,0,h_reducer+cap_thickness+2*zazor]) shoulder_top();
+        //color("gray") translate([0, 0,ecc_shaft_h1 + ecc_spacer_h+separator_h+5 +26.5]) bearing_simple(25,37,7);
+        //translate([-25,65,h_reducer+cap_thickness+2*zazor])hip();
+            leg();
     }}
 // Куб-«нож», отсекающий правую половину (x > 0)
 //    translate([0, -100, -100]) 
