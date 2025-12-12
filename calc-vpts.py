@@ -18,7 +18,7 @@ RESOLUTION = prompt_value("Количество точек построения 
 i = prompt_value("Передаточное число", 19, int)
 d_roller = prompt_value("Диаметр роликов (мм)", 4.0)
 h_roller = prompt_value("Высота роликов (мм)", 5.0)
-Rout = prompt_value("Внешний радиус впадин жесткого колеса (мм)", 29.0)
+Rout = prompt_value("Внешний радиус впадин жесткого колеса (мм)", 28.0)
 D = prompt_value("Внешний диаметр редуктора (мм)", 70.0)
 u = 1
 
@@ -462,11 +462,11 @@ module separator() {{
 }}
 
 // Соединитель редукторов
-module reducer_connector(fitting=true) {{
+module reducer_connector(fitting=true,h1=4) {{
     difference() {{
         union() {{
             cylinder(h = 4, r = D_out/2-9, center = false);
-            translate([0,0,4]) cylinder(h = 4, r = bearing_inner/2, center = false);
+            translate([0,0,4]) cylinder(h = h1, r = bearing_inner/2, center = false);
         }}
         // Посадочные места под крепеж нагрузки m3
         for (i = [0 : 7]) {{
@@ -745,7 +745,7 @@ module shoulder_horn() {{
 
             cylinder(h = shoulder_horn_h1+1.5, r = bearing_inner/2+2, center = false);
     		color("green") translate([bearing_inner/2-4, -15/2, 0]) cube([15,15,shoulder_horn_h1]);
-            color("green") translate([shoulder_horn_r, 0, -2]) cylinder(h = shoulder_horn_h1+2, r = 15/2, center = false);
+            color("lightgreen") translate([shoulder_horn_r, 0, -2]) cylinder(h = shoulder_horn_h1+2, r = 15/2, center = false);
         }}
         // Посадочные места под крепеж нагрузки m3
         for (i = [0 : 7]) {{
@@ -760,7 +760,7 @@ module shoulder_horn() {{
         // Посадочные места под крепеж тяги m4
         translate([bearing_inner/2+11, 0, -2.01]) {{
             cylinder(h = shoulder_horn_h1+2.01, r = 2, center = false);
-            translate([0, 0, 3.7]) cylinder(h = 3.4, r = 7.66/2, center = false);
+            translate([0, 0, shoulder_horn_h1-1.39]) cylinder(h = 3.41, r = 7.66/2, center = false);
         }}
     }}
 }}
@@ -781,7 +781,7 @@ module shoulder_top(){{
             cylinder(h=shoulder_horn_h2+shoulder_horn_h1+shoulder_bearing_h+1.5, r=shoulder_bearing_od/2-2 );
             //отверстия под штифты диаметр 6mm длинна 36mm  
             translate([-10, 61.01, 7.5]) rotate([90,0,180]) cylinder(h=19, r=3 );
-            translate([0, 46.01, 20.5]) rotate([90,0,180]) cylinder(h=19, r=3 );
+            translate([10, 46.01, 20.5]) rotate([90,0,180]) cylinder(h=19, r=3 );
             // Отверстия под винты (группа A)
             rotate([0,0,-2])
             for (i = [0 : 5]) {{
@@ -805,34 +805,10 @@ module shoulder_top(){{
                 cylinder(h =shoulder_h+0.02, r = 1.6, center = false);
             
         }}
-        translate([0,0,shoulder_h+7.1]) rotate([180,0,0]) reducer_connector(fitting=false);
+        translate([0,0,shoulder_h+16.1]) rotate([180,0,0]) reducer_connector(fitting=false,h1=12);
+        translate([0,0,shoulder_h]) cylinder(h = 9, r2 = D_out/2-13, r1 = D_out/2-7, center = false);
     }}
            
-}}
-
-hips_l = 170-75;
-hips_l1 = hips_l-15;
-
-module hip() {{
-    union() {{
-        difference() {{
-            cube([50,hips_l1,shoulder_h]);
-            translate([-0.01,-0.01,-0.01]) cube([50.01,15.01,shoulder_h/2+2]);
-            translate([30,-0.01,-0.01]) cube([20.01,hips_l1+0.02,shoulder_h/2+2]);
-            //отверстия под штифты диаметр 6mm длинна 36mm  
-            translate([15, 14.99, 7.5]) rotate([90,0,180]) cylinder(h=19, r=3 );
-            translate([35, -0.01, 20.5]) rotate([90,0,180]) cylinder(h=19, r=3 );
-            //Отверстия под крепеж shoulder_bottom
-            translate([5, 7, -0.01]) cylinder(h =shoulder_h+0.02, r = 1.6, center = false);
-            translate([5, 7, 24]) cylinder(h =3.01, r = 3.0, center = false);
-            translate([25, 7, -0.01]) cylinder(h =shoulder_h+0.02, r = 1.6, center = false);     
-            translate([25, 7, 24]) cylinder(h =3.01, r = 3.0, center = false);
-            translate([5, hips_l1-7, -0.01]) cylinder(h =shoulder_h+0.02, r = 1.6, center = false);
-            translate([5, hips_l1-7, 24]) cylinder(h =3.01, r = 3.0, center = false);
-            translate([25, hips_l1-7, -0.01]) cylinder(h =shoulder_h+0.02, r = 1.6, center = false);     
-            translate([25, hips_l1-7, 24]) cylinder(h =3.01, r = 3.0, center = false);
-        }}
-    }}
 }}
 
 module simple_control_rod(center_distance, rod_diameter, hole_diameter) {{
@@ -883,7 +859,7 @@ module simple_control_rod(center_distance, rod_diameter, hole_diameter) {{
 }}
 
 // Модуль для соединения двух точек цилиндром
-module connect_points(p1, p2, diameter = 6) {{
+module connect_points_rod(p1, p2, diameter = 6) {{
     hole_diameter= 4;
     plate_thickness = 2;       // Толщина пластины
     plate_diameter = hole_diameter * 3; // Диаметр круглой пластины
@@ -896,7 +872,7 @@ module connect_points(p1, p2, diameter = 6) {{
     angle = atan2(vec.y, vec.x);
     
     translate(mid)
-    rotate([0, 90, angle])  // Вот это правильный порядок!
+    rotate([0, 90, angle])
         cylinder(h = length-8, d = diameter, center = true);
     translate(p1)
     difference() {{
@@ -913,18 +889,151 @@ module connect_points(p1, p2, diameter = 6) {{
 }}
 
 
-foot_r=shoulder_horn_r+15;
-point_foot_center=[-10,171,0];
+// 3D-модель трапециоида
+module trapezoidal_prism(bottom_width = 50,   // ширина нижнего основания
+top_width = 30,      // ширина верхнего основания
+height = 20,         // высота трапеции (в плоскости XY)
+depth = 10,          // глубина призмы (по оси Z)
+left_offset = 8     // смещение для неравнобокости
+) {{
+    // Берём 2D-трапецию и выдавливаем вдоль оси Z
+    linear_extrude(height = depth) {{
+        polygon([
+            [0, 0],                    // A — нижний левый
+            [bottom_width, 0],         // B — нижний правый
+            [bottom_width - left_offset, height],  // C — верхний правый
+            [top_width - left_offset, height]      // D — верхний левый
+        ]);
+    }}
+}}
 
-module foot(){{
+foot_r=shoulder_horn_r+6;
+point_foot_center=[-13,170,0];
+hips_l = 170-75;
+hips_l1 = hips_l-22;
+
+module hip() {{
+    point_foot_center_in_hip =[12, hips_l+10,15.3]; 
+    union() {{
+        difference() {{
+            union() {{
+                cube([50,hips_l1,shoulder_h]);
+                translate([0, hips_l1,15.3]) trapezoidal_prism(depth = 11.2,left_offset = 28,height = 37,bottom_width = 50,top_width=30);   
+                color("blue") translate([0, hips_l1,0]) trapezoidal_prism(depth = 20,left_offset = 15,height = 16,bottom_width = 30,top_width=26);   
+                translate(point_foot_center_in_hip) cylinder(h =11.2, r = 22/2, center = false);
+           }}
+            translate([-0.01,-0.01,-0.01]) cube([50.01,15.01,shoulder_h/2+2]);
+            translate([30,-0.01,-0.01]) cube([20.01,hips_l1+0.02,shoulder_h/2+2]);
+            //отверстия под штифты диаметр 6mm длинна 36mm  
+            translate([15, 14.99, 7.5]) rotate([90,0,180]) cylinder(h=19, r=3 );
+            translate([35, -0.01, 20.5]) rotate([90,0,180]) cylinder(h=19, r=3 );
+            //Отверстия под крепеж hip_top
+            translate([5, 7, -0.01]) cylinder(h =shoulder_h+0.02, r = 1.6, center = false);
+            translate([5, 7, 24]) cylinder(h =3.01, r = 3.0, center = false);
+            translate([25, 7, -0.01]) cylinder(h =shoulder_h+0.02, r = 1.6, center = false);     
+            translate([25, 7, 24]) cylinder(h =3.01, r = 3.0, center = false);
+            translate([5, hips_l1-7, -0.01]) cylinder(h =shoulder_h+0.02, r = 1.6, center = false);
+            translate([5, hips_l1-7, 24]) cylinder(h =3.01, r = 3, center = false);
+            translate([25, hips_l1-7, -0.01]) cylinder(h =shoulder_h+0.02, r = 1.6, center = false);     
+            translate([25, hips_l1-7, 24]) cylinder(h =3.01, r = 3, center = false);
+            
+
+                    // Посадочное место под мини-подшипник 688ZZ (8x16x5)
+        translate(point_foot_center_in_hip) translate([0,0,-0.01])
+            cylinder(h = 5.2, r = 16/2, center = false);
+        translate(point_foot_center_in_hip)
+            cylinder(h = 5.7, r = 14/2, center = false);
+        translate(point_foot_center_in_hip)
+            cylinder(h = 6, r = 9/2, center = false);
+        }}
+
+    }}
+               
+}}
+
+module hip_top(){{
+    point_foot_center_in_hip =[12, hips_l+47+10,0];
     difference() {{
         union() {{
-            cylinder( h = 28, r = 5/2, center = true );
-            translate([foot_r,0,-4]) cylinder( h = 5, r = 15/2, center = false );
-            cube([foot_r*2-4,15,10], center = true );
+            cube([50,hips_l+25,11.2]);
+            translate([0, hips_l+25,0]) trapezoidal_prism(depth = 11.2,left_offset = 28,height = 37,bottom_width = 50,top_width=30);   
+            translate(point_foot_center_in_hip) cylinder(h =11.2, r = 22/2, center = false);
         }}
-        translate([foot_r,0,-4.01]) cylinder( h = 5.02, r = 2, center = false );
+        translate([25,-18.3,-0.01]) cylinder(h=shoulder_h, r=D_out/2+1 );
+        // Посадочное место под мини-подшипник 688ZZ (8x16x5)
+        translate(point_foot_center_in_hip) translate([0,0,6.01])
+            cylinder(h = 5.2, r = 16/2, center = false);
+        translate(point_foot_center_in_hip) translate([0,0,5.3])
+            cylinder(h = 5.7, r = 14/2, center = false);
+        translate(point_foot_center_in_hip) translate([0,0,5])
+            cylinder(h = 6, r = 9/2, center = false);
+            //Отверстия под крепеж hip_top
+            translate([25, 22, -0.01]) cylinder(h =shoulder_h+0.02, r = 1.6, center = false);     
+            translate([25, 22, -0.01]) cylinder(h =3.01, r = 3.0, center = false);        
+            translate([5, 50+4, -0.01]) cylinder(h =shoulder_h+0.02, r = 1.6, center = false);
+            translate([5, 50+4, -0.01]) cylinder(h =3.01, r = 3.0, center = false);
+            translate([25, 50+4, -0.01]) cylinder(h =shoulder_h+0.02, r = 1.6, center = false);     
+            translate([25, 50+4, -0.01]) cylinder(h =3.01, r = 3.0, center = false);
+            translate([5, hips_l+25-7, -0.01]) cylinder(h =shoulder_h+0.02, r = 1.6, center = false);
+            translate([5, hips_l+25-7, -0.01]) cylinder(h =3.01, r = 3, center = false);
+            translate([25, hips_l+25-7, -0.01]) cylinder(h =shoulder_h+0.02, r = 1.6, center = false);     
+            translate([25, hips_l+25-7,-0.01]) cylinder(h =3.01, r = 3, center = false);
     }}
+}}
+
+module cot_surface(prism_depth = 25, curve_length = 30, curve_height = 25) {{
+    // Предопределённые точки для котангенса (ручной расчёт)
+    // Диапазон: 0.3 до 2.84 радиан (избегаем асимптот)
+    samples = 10;      // количество точек
+
+    points = [
+        [0, 10], [-4,-10], 
+        [9.0, -10.153], [10.5, -3.232], [12.0, -1.176],
+        [13.5, -0.364], [15.0, 0.364], [16.5, 1.176],
+        [18.0, 3.232], [19.5, 10.153]
+    ];
+    
+    // Масштабируем и позиционируем точки
+    scaled_points = [
+        for (p = points) [
+            p[0] * (curve_length/20),        // масштаб по X
+            p[1] * (curve_height/10)         // масштаб по Z
+        ]
+    ];
+    
+    // Создаём поверхность
+    linear_extrude(height = prism_depth, center = true) {{
+        polygon(scaled_points);
+    }}
+}}
+
+// шарнир колена
+module shin(){{
+    difference() {{
+        union() {{
+            translate([0,0,-0.5]) cylinder( h = 25, r = 8/2, center = true );
+            translate([0,0,-0.5]) cylinder( h = 15, r = 8/2+1, center = true );
+            translate([foot_r,0,-7.5]) cylinder( h = 9.5, r = 15/2, center = false );
+            difference() {{
+                translate([-14,0,-0.5]) cube([foot_r*2+27,15,shoulder_h/2+1], center = true );
+                rotate([0,4,0]) rotate([0,90,-90]) translate([-14,13,0]) cot_surface(curve_length=15,curve_height=30);
+            }}
+        }}
+        translate([foot_r,0,-8.01]) cylinder( h = 10.02, r = 2.1, center = false );
+        translate([foot_r,0,-8.01]) cylinder( h = 3.4, r = 7.66/2, center = false );
+        translate([-foot_r-10,0,-8.01]) cylinder( h = 15, r = 2.1, center = false );
+    }}
+}}
+
+// соединитель для нижней части ноги
+module foot_connector()
+{{
+    difference() {{
+        translate([5,0,0]) cube([40,24,shoulder_h/2+7], center = true );
+        translate([0,0,0]) cube([36.02,15.4,shoulder_h/2+1.4], center = true );        
+        translate([0,0,0]) cylinder( h = 25, r = 2.1, center = true );
+    }}
+    translate([74.5,1,-0.5])rotate([90,0,0]) import("/Users/sovest/Downloads/foots.stl");
 }}
 
 // ========== Функция расчета кинематики сервопривода ноги ==========
@@ -986,9 +1095,12 @@ module leg(){{
         translate([0,0,h_reducer+cap_thickness+2*zazor]) shoulder_top();
         color("gray") translate([0, 0,ecc_shaft_h1 + ecc_spacer_h+separator_h+5 +26.5]) bearing_simple(25,37,7);
         translate([-25,65,h_reducer+cap_thickness+2*zazor]) hip();
-        translate([0,0,39]) connect_points(p1=point1,p2=point2);
-        translate(point_foot_center) translate([0,0 ,h_reducer+cap_thickness+2*zazor+9]) rotate([0,0,angle2]) foot();
-        //translate([20,61.5,h_reducer+cap_thickness+2*zazor+shoulder_horn_h2+3]) rotate([90,0,0]) simple_control_rod(center_distance=170,rod_diameter = 6,hole_diameter = 4);
+        color("lightgray") translate(point_foot_center) translate([0,0 ,h_reducer+cap_thickness+2*zazor+17.7]) bearing_simple(8,16,5);
+        color("lightgray") translate([0,0,39]) connect_points_rod(p1=point1,p2=point2);
+        translate(point_foot_center) translate([0,0 ,h_reducer+cap_thickness+2*zazor+8]) rotate([0,0,angle2]) shin();
+        color("gray") translate(point_foot_center) translate([0,0 ,h_reducer+cap_thickness+2*zazor-2.51]) bearing_simple(8,16,5);
+        translate([-25,-32+50 ,h_reducer+1.7]) hip_top();
+        translate([-55,166 ,36.5]) rotate([0,0,180]) rotate([0,0,angle2]) foot_connector();
    }} 
 }}
 
