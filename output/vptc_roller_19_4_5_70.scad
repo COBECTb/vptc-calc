@@ -38,6 +38,7 @@ mc_countersink_h = 2.0;
 bracing_offset_y = 29.0;  // смещение по Y
 bracing_offset_z = 17.5;  // смещение по Z
 bracing_offset_x = 2.2;  // смещение по X
+//
 
 // === Группа B: отверстия под кожух мотора нужны в двух функциях===
 motor_angles = [174.0, 264.0, 354.0, 84.0];
@@ -319,10 +320,10 @@ module reducer_connector(fitting=true,h1=4) {
             angle=45*i;
             rotate([0, 0, angle]) {
                 translate([bearing_inner/2-4, 0, 0])
-                    cylinder(h = 8, r = 1.6, center = false);
+                    cylinder(h = h1+4.01, r = 1.6, center = false);
                 if(fitting){
-                    translate([bearing_inner/2-4, 0, 0])
-                        cylinder(h =3, r = 3.0, center = false);
+                    translate([bearing_inner/2-4, 0, -0.01])
+                        cylinder(h =3.01, r = 3.0, center = false);
                 }
             }
         }
@@ -464,7 +465,8 @@ module motor_cover() {
     difference() {
         union() {
             // --- Нижняя плита ---
-            cylinder(h = mc_base_thickness, r = mc_motor_plate_d / 2, center = false);
+            translate([0, 0, -1])
+            cylinder(h = mc_base_thickness+1, r = mc_motor_plate_d / 2, center = false);
             // --- Опоры и кольцо ---
             for (angle = motor_angles) {
                 rotate([0, 0, angle]) {
@@ -487,50 +489,49 @@ module motor_cover() {
             // --- Верхнее кольцо ---
             translate([0, 0, mc_total_height - mc_ring_height])
                 difference() {
-                    cylinder(h = mc_ring_height, r = D_out / 2, center = false);
-                    cylinder(h = mc_ring_height, r = D_out / 2 - mc_ring_width, center = false);
+                    cylinder(h = mc_ring_height-0.01, r = D_out / 2, center = false);
+                    translate([0, 0,-0.01])
+                        cylinder(h = mc_ring_height+0.01, r = D_out / 2 - mc_ring_width, center = false);
                 }
+                        
         }
         // --- Удаление выступающих за D_out деталей ---
+        translate([0, 0, -1])
         difference() {
-            cylinder(h = mc_total_height, r = D_out / 2+10, center = false);
-            cylinder(h = mc_total_height, r = D_out / 2, center = false);
+            cylinder(h = mc_total_height+1.01, r = D_out / 2+10, center = false);
+            cylinder(h = mc_total_height+1, r = D_out / 2, center = false);
         }
         // --- Удаление выступающих за стойки деталей пирамидой ---
-        translate([0, 0, 0])
-         difference() {
-            cylinder(h = mc_total_height, r1 = mc_motor_plate_d / 2+10, r2=D_out / 2+10, center = false);
-            cylinder(h = mc_total_height, r1 = mc_motor_plate_d / 2, r2=D_out / 2+3, center = false);
+        translate([0, 0, -2]) difference() {
+            cylinder(h = mc_total_height+1, r1 = mc_motor_plate_d / 2+10, r2=D_out / 2+10, center = false);
+            cylinder(h = mc_total_height+1, r1 = mc_motor_plate_d / 2-1, r2=D_out / 2+3, center = false);
         }
         // --- Закладные площадки под гайки (внутри кожуха, на верхней стороне плиты) ---
-        {
-            for (angle = motor_angles) {
-                rotate([0, 0, angle+45]){
-                    translate([mc_nut_pad_radius/2, 0, mc_base_thickness-2])
-                        cylinder(h = mc_nut_pad_h, r = mc_nut_pad_d / 2, center = false);
-                     translate([mc_nut_pad_radius/2, 0, 0])
-                        cylinder(h = mc_base_thickness, r = 1.6, center = false);
-                }
-            }   
-        }
+        for (angle = motor_angles) {
+            rotate([0, 0, angle+45]){
+                translate([mc_nut_pad_radius/2, 0, mc_base_thickness-2.49])
+                    cylinder(h = mc_nut_pad_h, r = mc_nut_pad_d / 2, center = false);
+                 translate([mc_nut_pad_radius/2, 0, 0])
+                    cylinder(h = mc_base_thickness+10, r = 1.6, center = true);
+            }
+        }   
         // --- Отверстия в нижней плите ---
         // Центральное отверстие под магнит
-        cylinder(h = mc_base_thickness + 0.1, r = mc_encoder_hole_d / 2, center = false);
+        translate([0, 0, -1.01]) cylinder(h = mc_base_thickness + 1.1, r = mc_encoder_hole_d / 2, center = false);
         // Отверстия под крепление двигателя (по осям)
-        // Пара 1: по X (16 мм)
+        // Пара 1: по X (16 мм) Пара 2: по Y (19 мм)
+        // Потайное отверстие под крепление двигателя под шляпку M3
         translate([ mc_motor_hole_1/2, 0, 0]) cylinder(h = mc_base_thickness + 0.1, r = 1.6, center = false);
-        // Потайное отверстие под крепление двигателя под шляпку M3
-        translate([ mc_motor_hole_1/2, 0, 0]) cylinder(h = mc_countersink_h, r1 = mc_countersink_d / 2, r2 = 1.6, center = false);
-        translate([-mc_motor_hole_1/2, 0, 0]) cylinder(h = mc_base_thickness + 0.1, r = 1.6, center = false);
-        // Потайное отверстие под крепление двигателя под шляпку M3
-        translate([-mc_motor_hole_1/2, 0, 0]) cylinder(h = mc_countersink_h, r1 = mc_countersink_d / 2, r2 = 1.6, center = false);
-        // Пара 2: по Y (19 мм)
         translate([0,  mc_motor_hole_2/2, 0]) cylinder(h = mc_base_thickness + 0.1, r = 1.6, center = false);
-        // Потайное отверстие под крепление двигателя под шляпку M3
-        translate([0,  mc_motor_hole_2/2, 0]) cylinder(h = mc_countersink_h, r1 = mc_countersink_d / 2, r2 = 1.6, center = false);
         translate([0, -mc_motor_hole_2/2, 0]) cylinder(h = mc_base_thickness + 0.1, r = 1.6, center = false);
-        // Потайное отверстие под крепление двигателя под шляпку M3
-        translate([0, -mc_motor_hole_2/2, 0]) cylinder(h = mc_countersink_h, r1 = mc_countersink_d / 2, r2 = 1.6, center = false);       
+        translate([-mc_motor_hole_1/2, 0, 0]) cylinder(h = mc_base_thickness + 0.1, r = 1.6, center = false);
+
+        translate([ mc_motor_hole_1/2, 0, -1.01]) cylinder(h = mc_countersink_h, r1 = mc_countersink_d / 2, r2 = 1.6, center = false);
+        translate([-mc_motor_hole_1/2, 0, -1.01]) cylinder(h = mc_countersink_h, r1 = mc_countersink_d / 2, r2 = 1.6, center = false);
+        translate([0,  mc_motor_hole_2/2, -1.01]) cylinder(h = mc_countersink_h, r1 = mc_countersink_d / 2, r2 = 1.6, center = false);
+        translate([0, -mc_motor_hole_2/2, -1.01]) cylinder(h = mc_countersink_h, r1 = mc_countersink_d / 2, r2 = 1.6, center = false);
+
+       
         // --- Отверстия в кольце и стойках под винты B ---
         for (angle = motor_angles) {
             rotate([0, 0, angle]) {
@@ -657,6 +658,53 @@ module shoulder_top(){
            
 }
 
+module simple_control_rod(center_distance, rod_diameter, hole_diameter) {
+    plate_thickness = 2;       // Толщина пластины
+    plate_diameter = hole_diameter * 3; // Диаметр круглой пластины
+    
+    union() {
+        // Центральная тяга (вдоль оси Z)
+        cylinder(
+            h = center_distance-plate_diameter+2,
+            d = rod_diameter,
+            center = true
+        );
+        
+        // Верхняя лопатка (параллельно оси тяги)
+        translate([0, 0, center_distance/2])
+            rotate([90, 0, 0]) // Поворот на 90° чтобы пластина легла вдоль оси
+            difference() {
+                cylinder(
+                    h = plate_thickness,
+                    d = plate_diameter,
+                    center = true
+                );
+                // Отверстие для оси шарнира (перпендикулярно тяге)
+                cylinder(
+                    h = plate_thickness * 2,
+                    d = hole_diameter,
+                    center = true
+                );
+            };
+        
+        // Нижняя лопатка (такая же, на другом конце)
+        translate([0, 0, -center_distance/2])
+            rotate([90, 0, 0])
+            difference() {
+                cylinder(
+                    h = plate_thickness,
+                    d = plate_diameter,
+                    center = true
+                );
+                cylinder(
+                    h = plate_thickness * 2,
+                    d = hole_diameter,
+                    center = true
+                );
+            };
+    }
+}
+
 // Модуль для соединения двух точек цилиндром
 module connect_points_rod(p1, p2, diameter = 6) {
     hole_diameter= 4;
@@ -778,8 +826,7 @@ module hip_top(){
             translate([25, hips_l+25-7, -0.01]) cylinder(h =shoulder_h+0.02, r = 1.6, center = false);     
             translate([25, hips_l+25-7,-0.01]) cylinder(h =3.01, r = 3, center = false);
     }
-};
-
+}
 
 module cot_surface(prism_depth = 25, curve_length = 30, curve_height = 25) {
     // Предопределённые точки для котангенса (ручной расчёт)
@@ -818,6 +865,7 @@ module shin(){
                 translate([-14,0,-0.5]) cube([foot_r*2+27,15,shoulder_h/2+1], center = true );
                 rotate([0,4,0]) rotate([0,90,-90]) translate([-14,13,0]) cot_surface(curve_length=15,curve_height=30);
             }
+            translate([-47,0,0])rotate([180,180,0])foot_connector();
         }
         translate([foot_r,0,-8.01]) cylinder( h = 10.02, r = 2.1, center = false );
         translate([foot_r,0,-8.01]) cylinder( h = 3.4, r = 7.66/2, center = false );
@@ -832,11 +880,61 @@ module foot_connector()
         translate([5,0,0]) cube([40,24,shoulder_h/2+7], center = true );
         translate([0,0,0]) cube([36.02,15.4,shoulder_h/2+1.4], center = true );        
         translate([0,0,0]) cylinder( h = 25, r = 2.1, center = true );
+        translate([-30,11,0]) rotate([0,0,38])cube([40,24,shoulder_h/2+7.02], center = true );
     }
     translate([74.5,1,-0.5])rotate([90,0,0]) import("/Users/sovest/Downloads/foots.stl");
 }
 
+// Держатель-бочонок для датчика MT6816 / XJX-135
+module rsgl_magnet_spacer(
+    val_dia = 3.97,       // диаметр вала
+    magnet_dia = 4.01,    // диаметр магнита
+    magnet_height = 1.5,  // высота магнита
+    val_height =1,
+    val_clearance = 0.13,    // натяг на вал: -0.03 мм → отверстие 3.94 мм
+    mag_clearance = 0.1,    // натяг под магнит: -0.01 мм → отверстие 4.00 мм
+    bottom_thickness = 1,   // минимальная толщина дна (развязка от вала)
+    d = 9.0          // внешний диаметр бочонка (для жёсткости)
+    )
+{
+    mag_pocket_depth = magnet_height + 0.05;  // глубина гнезда
+    total_height = bottom_thickness + mag_pocket_depth+val_height; // ≈2.45 мм
+  difference() {
+    // Основной цилиндр
+    cylinder(d = d, h = total_height, $fn = 64);
+    
+    // Отверстие под вал (с натягом)
+    translate([0, 0, -0.1])
+      cylinder(d = val_dia + val_clearance, h = 1, $fn = 64);
+    
+    // Гнездо под магнит (с натягом, глубже на 0.05 мм)
+    translate([0, 0, bottom_thickness+1])
+      cylinder(d = magnet_dia + mag_clearance, h = mag_pocket_depth + 0.1, $fn = 64);
+  }
+}
 
+// Адаптер для энкодера MT6816 / XJX-135
+module encoder_adapter(h=1.2){
+    difference() {
+        union() {
+            cylinder(h = h, r = mc_motor_plate_d / 2-5, center = false);
+            for (angle = motor_angles) {
+                rotate([0, 0, angle+45]){
+                    translate([mc_nut_pad_radius/2, 0, h])
+                        cylinder(h = 2, r = 3);
+                }
+            }
+        }
+        for (angle = motor_angles) {
+            rotate([0, 0, angle+45]){
+                translate([mc_nut_pad_radius/2, 0, -0.01])
+                    cylinder(h = h+2.02, r = 1.6);
+            }
+        }
+        // Центральное отверстие под магнит
+        translate([0, 0, -0.01]) cylinder(h = h+0.02, r = mc_encoder_hole_d / 2, center = false);
+    }
+}
 
 // ========== Функция расчета кинематики сервопривода ноги ==========
 function calculate_rigid_linkage(
@@ -875,6 +973,7 @@ function get_value(data, key) =
 
 servo_angle=$t*135-135/2+7;
 
+
 module leg(){
     result = calculate_rigid_linkage(servo_angle, 170, shoulder_horn_r, foot_r, [0,0,0], point_foot_center);
 
@@ -901,12 +1000,9 @@ module leg(){
         translate(point_foot_center) translate([0,0 ,h_reducer+cap_thickness+2*zazor+8]) rotate([0,0,angle2]) shin();
         color("gray") translate(point_foot_center) translate([0,0 ,h_reducer+cap_thickness+2*zazor-2.51]) bearing_simple(8,16,5);
         translate([-25,-32+50 ,h_reducer+1.7]) hip_top();
-        translate([-55,166 ,36.5]) rotate([0,0,180]) rotate([0,0,angle2]) foot_connector();
+        //translate([-55,166 ,36.5]) rotate([0,0,180]) rotate([0,0,angle2]) foot_connector();
    } 
 }
-
-
-
 
 // === Сборка ===
 zazor=1; //отступ для раздельной печати деталей, чтобы при импорте stl можно было разделить на отделтные детали
@@ -924,25 +1020,20 @@ difference() {
         //translate([0, 0, ecc_shaft_h1 + ecc_spacer_h-1]) separator();
         //color("gray") translate([0, 0,ecc_shaft_h1 + ecc_spacer_h+separator_h+5]) bearing_simple(40,52,7);
         // translate([0, 0, ecc_shaft_h1 + ecc_spacer_h + ecc_shaft_h2]) rollers();
-        //translate([0, 0, -mc_total_height-1]) motor_cover(); // кожух снизу
+       // translate([0, 0, -mc_total_height-1]) motor_cover(); // кожух снизу
+        //translate([0, 0, -mc_total_height-5-zazor]) encoder_adapter();
         //translate([0,D_out/2+8+zazor,(h_reducer+cap_thickness)/2]) rotate([90,45/2,0]) reducer_connector();
-        //translate([0,0,h_reducer+zazor+cap_thickness+6.5]) rotate([180,0,0])reducer_connector();
+        //translate([0,0,h_reducer+zazor+cap_thickness+6.5]) rotate([180,0,0])reducer_connector(h1=12);
         //rotate([0,0,-135/2+18]) translate([0,0,h_reducer+2*zazor+cap_thickness+8]) rotate([180,0,0]) shoulder_horn();
         //translate([0,0,h_reducer+cap_thickness+2*zazor]) shoulder_top();
         //color("gray") translate([0, 0,ecc_shaft_h1 + ecc_spacer_h+separator_h+5 +26.5]) bearing_simple(25,37,7);
         //translate([-25,65,h_reducer+cap_thickness+2*zazor])hip();
         leg();
-        //translate([0,-47,-0.5]) rotate([0,0,-90])foot_connector();
-        //rotate([0,0,90]) shin();
         //foot_connector();
-         
-        //shin();
-        //hip();
-        //hip_top();
-        //shoulder_top();
-        //shoulder_horn();
+        //rsgl_magnet_spacer();
+        //encoder_adapter();
     }
 // Куб-«нож», отсекающий правую половину (x > 0)
 //    translate([0, -100, -100]) 
-//        cube([100, 200, 200]);
+//        rotate([0,0,60]) cube([100, 200, 200]);
 }
