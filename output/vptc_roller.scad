@@ -319,7 +319,7 @@ module reducer_connector(fitting=true,h1=4) {
         for (i = [0 : 7]) {
             angle=45*i;
             rotate([0, 0, angle]) {
-                translate([bearing_inner/2-4, 0, 0])
+                translate([bearing_inner/2-4, 0, -0.01])
                     cylinder(h = h1+4.01, r = 1.6, center = false);
                 if(fitting){
                     translate([bearing_inner/2-4, 0, -0.01])
@@ -623,7 +623,7 @@ module shoulder_top(){
             translate([5,19,-0.01]) cube([25.01,80.01,shoulder_horn_h2+shoulder_horn_h1+1]);
  //           translate([4.7,19,-0.01]) cube([25.01,80.01,shoulder_h/2+0.01]);
             translate([-25.01,65,shoulder_h/2+3.38]) cube([50.02,15.01,shoulder_h/2]);
-            translate([0, 0, -0.01]) cylinder(h=shoulder_horn_h2+shoulder_horn_h1+1, r = bearing_inner/2+2 );
+            translate([0, 0, -0.01]) cylinder(h=shoulder_horn_h2+shoulder_horn_h1+1, r = bearing_inner/2+2.5 );
             rotate([0,0,6]) translate([0, 0, 6.999]) cutting_wedge(height = shoulder_horn_h2+shoulder_horn_h1+7, angle = 135);
             cylinder(h=shoulder_horn_h2+shoulder_horn_h1+shoulder_bearing_h+1, r=shoulder_bearing_od/2 );
             cylinder(h=shoulder_horn_h2+shoulder_horn_h1+shoulder_bearing_h+1.5, r=shoulder_bearing_od/2-2 );
@@ -636,14 +636,14 @@ module shoulder_top(){
                 x_hole = [-29.40778, -24.48010, 4.92769, 29.40778, 24.48010, -4.92769][i];
                 y_hole = [11.28859, -19.82359, -31.11218, -11.28859, 19.82359, 31.11218][i];
                 // Сквозное отверстие
-                translate([x_hole, y_hole, 0]) cylinder(h = shoulder_h+0.01, r = 1.6, center = false);
+                translate([x_hole, y_hole, -0.01]) cylinder(h = shoulder_h+0.01, r = 1.6, center = false);
                 // Потай под шляпку M3
                 translate([x_hole, y_hole, shoulder_h - 3.5]) cylinder(h = 3.51, r = 3.0, center = false);
             }
             //Отверстия под крепеж shoulder_bottom
             translate([0, 40, -0.01])
                 cylinder(h =shoulder_h+0.02, r = 1.6, center = false);
-            translate([0, 40, 23.5])
+            translate([0, 40, shoulder_h-3])
                 cylinder(h =3.01, r = 3.0, center = false);
             //Отверстия под крепеж shoulder_bottom
             translate([0, 72, -0.01])
@@ -709,7 +709,7 @@ left_offset = 8     // смещение для неравнобокости
 }
 
 
-connect_rod_l=183;
+connect_rod_l=184;
 foot_r=shoulder_horn_r+6;
 point_foot_center=[-13,connect_rod_l,0];
 hips_l = connect_rod_l-75;
@@ -732,13 +732,13 @@ module hip() {
            translate([35, -0.01, 26.5]) rotate([90,0,180]) cylinder(h=19, r=3 );
            //Отверстия под крепеж hip_top
            translate([5, 7, -0.01]) cylinder(h =shoulder_h+0.02, r = 1.6, center = false);
-           translate([5, 7, 24]) cylinder(h =3.01, r = 3.0, center = false);
+           translate([5, 7, shoulder_h-3]) cylinder(h =3.01, r = 3.0, center = false);
            translate([25, 7, -0.01]) cylinder(h =shoulder_h+0.02, r = 1.6, center = false);     
-           translate([25, 7, 24]) cylinder(h =3.01, r = 3.0, center = false);
+           translate([25, 7, shoulder_h-3]) cylinder(h =3.01, r = 3.0, center = false);
            translate([5, hips_l1-7, -0.01]) cylinder(h =shoulder_h+0.02, r = 1.6, center = false);
-           translate([5, hips_l1-7, 24]) cylinder(h =3.01, r = 3, center = false);
+           translate([5, hips_l1-7, shoulder_h-3]) cylinder(h =3.01, r = 3, center = false);
            translate([25, hips_l1-7, -0.01]) cylinder(h =shoulder_h+0.02, r = 1.6, center = false);     
-           translate([25, hips_l1-7, 24]) cylinder(h =3.01, r = 3, center = false);
+           translate([25, hips_l1-7, shoulder_h-3]) cylinder(h =3.01, r = 3, center = false);
             
 
                     // Посадочное место под мини-подшипник 688ZZ (8x16x5)
@@ -936,31 +936,31 @@ servo_angle=$t*135-135/2+7;
 module leg(){
     result = calculate_rigid_linkage(servo_angle, connect_rod_l, shoulder_horn_r, foot_r, [0,0,0], point_foot_center);
 
+
     point1 = get_value(result, "point1");
     point2 = get_value(result, "point2");
     angle2 = get_value(result, "angle2");
-    solution_exists = get_value(result, "solution_exists");
-    min_possible = get_value(result, "min_possible");
-    max_possible = get_value(result, "max_possible");
+
 
     echo("Точка 1: ", point1);
     echo("Точка 2: ", point2);
-    echo("Угол колена: ", angle2, "° (", angle2 * 180 / 3.14159, "°)");
+    echo("Угол толкателя: ", servo_angle, "°");
+    echo("Угол колена: ", angle2, "°");
     echo("Длина тяги (расчетная): ", norm(point2 - point1), "мм");
-    echo("Диапазон возможных длин: от ", min_possible, " до ", max_possible, "мм");
-    echo("Решение существует: ", solution_exists);
+    echo("Радиус плеча толкателя:", shoulder_horn_r, "мм");
+    echo("Радиус плеча колена:", foot_r, "мм");
     
     echo("Ширина ноги: ",shoulder_h/2+7);
     union() {
-        //rotate([0,0,servo_angle]) translate([0,0,h_reducer+2*zazor+cap_thickness+8]) rotate([180,0,0]) shoulder_horn();
-        //translate([0,0,h_reducer+cap_thickness+2*zazor]) shoulder_top();
-        //color("gray") translate([0, 0,ecc_shaft_h1 + ecc_spacer_h+separator_h+5 +h_reducer+2*zazor+cap_thickness+1.99]) bearing_simple(25,37,7);
-        //translate([-25,65,h_reducer+cap_thickness+2*zazor]) hip();
+        rotate([0,0,servo_angle]) translate([0,0,h_reducer+2*zazor+cap_thickness+8]) rotate([180,0,0]) shoulder_horn();
+        translate([0,0,h_reducer+cap_thickness+2*zazor]) shoulder_top();
+        color("gray") translate([0, 0,ecc_shaft_h1 + ecc_spacer_h+separator_h+5 +h_reducer+2*zazor+cap_thickness+1.99]) bearing_simple(25,37,7);
+        translate([-25,65,h_reducer+cap_thickness+2*zazor]) hip();
         color("gray") translate(point_foot_center) translate([0,0 ,h_reducer+cap_thickness+2*zazor+22.5]) bearing_simple(8,16,5);
-        //color("lightgray") translate([0,0,41]) connect_points_rod(p1=point1,p2=point2);
+        color("lightgray") translate([0,0,41]) connect_points_rod(p1=point1,p2=point2);
         translate(point_foot_center) translate([0,0 ,h_reducer+cap_thickness+2*zazor+9.5]) rotate([0,0,angle2]) shin();
         color("gray") translate(point_foot_center) translate([0,0 ,h_reducer+cap_thickness+2*zazor-2.51]) bearing_simple(8,16,5);
-        //translate([-25,-32+50 ,h_reducer+1.7]) hip_top();
+        translate([-25,-32+50 ,h_reducer]) hip_top();
         //translate([-55,183 ,36.5]) rotate([0,0,180]) rotate([0,0,angle2]) foot_connector();
    } 
 }
@@ -991,7 +991,7 @@ difference() {
         //color("gray") translate([0, 0,ecc_shaft_h1 + ecc_spacer_h+separator_h+5 +26.5]) bearing_simple(25,37,7);
         //translate([-25,65,h_reducer+cap_thickness+2*zazor])hip();
         //hip_top();
-        //    leg();
+            leg();
         //foot_connector();
         //shin(foot=false);
     }
