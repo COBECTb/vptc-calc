@@ -817,7 +817,7 @@ module cot_surface(prism_depth = 25, curve_length = 30, curve_height = 25) {
 module shin(foot=true){
     difference() {
         union() {
-            translate([0,0,0.5]) cylinder( h = 30, r = 8/2, center = true );
+//            translate([0,0,0.5]) cylinder( h = 30, r = 8/2, center = true );
             translate([0,0,0.5]) cylinder( h = shoulder_h/2+3.5, r = 8/2+1, center = true );
             color("lightgreen") translate([foot_r,0,-9]) cylinder( h = shoulder_horn_h1+2, r = 15/2, center = false );
             difference() {
@@ -828,6 +828,8 @@ module shin(foot=true){
                 translate([-47,0,0])rotate([180,180,0])foot_connector();
             }
         }
+        // Вычитаем чтобы вставить штифт
+        translate([0,0,0.5]) cylinder( h = 30, r = 8/2, center = true );
         translate([foot_r,0,-9.01]) cylinder( h = 10.02, r = 2.1, center = false );
         translate([foot_r,0,-9.01]) cylinder( h = 3.4, r = 7.66/2, center = false );
         translate([-foot_r-10,0,-9.01]) cylinder( h = 25, r = 2.1, center = false );
@@ -1041,7 +1043,7 @@ module body_wall_with_holes(h=10,w=100,d=210,center=true){
         cube([w,d,h],center=center);
         translate([0,0,-0.01]) cylinder(h=d+0.02, r=35, center=true);
         x=[w/2-15,-w/2+15,w/2-15,-w/2+15,w/2-10,-w/2+10,w/2-10,-w/2+10];
-        y=[35,35,-35,-35,75,75,-75,-75];
+        y=[25,25,-25,-25,75,75,-75,-75];
         for (i = [0 : 7]) {
             translate([x[i], y[i], -0.01])
             cylinder(h = d+0.02, r = 1.6, center = true);
@@ -1051,15 +1053,18 @@ module body_wall_with_holes(h=10,w=100,d=210,center=true){
     }
 }
 
-module body_wall_for_legs(h=100,w=180,d=210,l=31,h_move=10){
+module body_wall_for_legs(h=100,w=180,d=210,l=31,
+    h_move=10, // Смещение отверситий odrive
+    w_move=0  // смещение стен для задних ног
+){
     holes=[1,0,1,0,1,0,1,0];
     difference(){    
         union() {
-            translate([5,-30 ,24]) body_cut_wall_with_holes(h=h,w=w,l=l,r=15,holes=holes);
-            translate([5,-30 ,133]) mirror([0,0,1]) body_cut_wall_with_holes(h=h,w=w,l=l,r=15,holes=holes);
+            translate([5,-30 ,24+w_move]) body_cut_wall_with_holes(h=h,w=w,l=l,r=15,holes=holes);
+            translate([5,-30 ,133-w_move]) mirror([0,0,1]) body_cut_wall_with_holes(h=h,w=w,l=l,r=15,holes=holes);
             translate([2.5,65 ,78]) rotate([90,0,0]) body_wall_with_holes(h=10,d=d,w=h+5,center=true);
             translate([2.5,-125 ,78])rotate([90,0,180]) body_wall_with_holes(h=10,d=d,w=h+5,center=true);
-            translate([-h/2,-130 ,8.5]) cube([5,w+20,h+l+9]);
+            translate([-h/2,-130 ,8.5+w_move]) cube([5,w+20,h+l+9-2*w_move]);
         } 
         x=[0, 0, 43.5 , 43.5];
         y=[0,135.5,0,135.5];
@@ -1090,7 +1095,7 @@ module body(a1=0,a2=0,parts=false){
     holes=[1,0,1,0,1,0,1,0];
         body_wall_for_legs();
         translate([2.5,200 ,0]) body_centr_for_bat(h=105,w=100,d=210,l=25);
-        translate([0,320 ,0]) body_wall_for_legs(h_move=-10);
+        translate([0,320 ,0]) body_wall_for_legs(h_move=-10,w_move=10);
         reducer_connector(h1=15,skirt=true,holes=holes);
         if(parts)
             translate([0,-63 ,-h_reducer-14.5]) leg_left_front_union(a1=a1,a2=a2);
@@ -1116,6 +1121,7 @@ difference() {
         //translate([0,0,h_reducer+zazor+cap_thickness+6.5]) rotate([180,0,0])reducer_connector();
         //leg();
         body(a1=0,a2=leg_angle1,parts=true);
+        //shin();
         //import("vptc_roller_19_4_5_70_reducer_with_bracing_and_connector.stl");
         //color("lightgray")import("vptc_roller_19_4_5_70_reducer.stl");
     }
