@@ -309,19 +309,22 @@ module separator() {
 }
 
 // Соединитель редукторов
-module reducer_connector(fitting=true,h1=4) {
+module reducer_connector(h1=4,skirt=false, holes=[1,1,1,1,1,1,1,1]) {
     difference() {
         union() {
             cylinder(h = 4, r = D_out/2-9, center = false);
             translate([0,0,4]) cylinder(h = h1, r = bearing_inner/2, center = false);
+            if(skirt) {
+                translate([0,0,4+3]) cylinder(h = h1-3, r1 = D_out/2-13, r2 = D_out/2-7, center = false);
+            }    
         }
         // Посадочные места под крепеж нагрузки m3
         for (i = [0 : 7]) {
             angle=45*i;
             rotate([0, 0, angle]) {
-                translate([bearing_inner/2-4, 0, -0.01])
-                    cylinder(h = h1+4.01, r = 1.6, center = false);
-                if(fitting){
+                translate([bearing_inner/2-4, 0, -1.01])
+                    cylinder(h = h1+5.02, r = 1.6, center = false);
+                if(holes[i]){
                     translate([bearing_inner/2-4, 0, -0.01])
                         cylinder(h =3.01, r = 3.0, center = false);
                 }
@@ -653,8 +656,8 @@ module shoulder_top(){
                 cylinder(h =shoulder_h+0.02, r = 1.6, center = false);
             
         }
-        translate([0,0,shoulder_h+16.1]) rotate([180,0,0]) reducer_connector(fitting=false,h1=12);
-        translate([0,0,shoulder_h]) cylinder(h = 9, r2 = D_out/2-13, r1 = D_out/2-7, center = false);
+        translate([0,0,shoulder_h+16.1]) rotate([180,0,0]) reducer_connector(holes=[0,0,0,0,0,0,0,0],h1=12,skirt=true);
+        //translate([0,0,shoulder_h]) cylinder(h = 9, r2 = D_out/2-13, r1 = D_out/2-7, center = false);
     }
            
 }
@@ -931,7 +934,7 @@ function get_value(data, key) =
     data[idx][1];
 
 servo_angle=$t*135-135/2+7;
-
+leg_angle1=$t*360;
 
 module leg(){
     result = calculate_rigid_linkage(servo_angle, connect_rod_l, shoulder_horn_r, foot_r, [0,0,0], point_foot_center);
@@ -962,11 +965,136 @@ module leg(){
         color("gray") translate(point_foot_center) translate([0,0 ,h_reducer+cap_thickness+2*zazor-2.51]) bearing_simple(8,16,5);
         translate([-25,-32+50 ,h_reducer]) hip_top();
         //translate([-55,183 ,36.5]) rotate([0,0,180]) rotate([0,0,angle2]) foot_connector();
+        color("lightgray") import("vptc_roller_19_4_5_70_reducer.stl");
    } 
 }
 
+// Модуль для поворота вокруг точки
+module rotate_around_point(angle, axis, point) {
+    translate(point) {
+        rotate(angle, axis) {
+            translate(-point) {
+                children();
+            }
+        }
+    }
+}
+
+module leg_left_front1(a=0){
+    color("lightgray") translate([0,0 ,0]) rotate([0,0,a]) import("vptc_roller_19_4_5_70_leg_left_front.stl");
+    color("lightgray") rotate([0,0,a]) import("vptc_roller_19_4_5_70_reducer.stl");
+}
+
+module leg_left_front2(a=0){
+    color("lightgray") rotate([0,180,0]) import("vptc_roller_19_4_5_70_reducer_with_bracing_and_connector.stl",center=true);
+    translate([0,0 ,-109]) leg_left_front1(a=a);
+}
+
+module leg_left_front_union(a1=0,a2=0){
+        color("lightgray") translate([0,76 ,-13]) rotate([90,0,0]) import("vptc_roller_19_4_5_70_reducer_with_bracing_and_connector.stl");
+        rotate_around_point(a1,[0,1,0],[0,0,-13])  leg_left_front2(a=a2);
+        
+}
+
+module angle_cut(h=100,l=20){
+    difference() {
+        cube([l,l,h]);
+        translate([0,0,-0.01])
+            cylinder(h=h+0.02,r=l);
+    }
+}
+
+module body_cut_wall_with_holes(h=100,w=180,l=32,r=15,holes=[0,0,0,0,0,0,0,0],holes2=[1,1,1,1,1,1,1,1],m=[1,1,1]){
+    difference(){
+        cube([h,w,l], true);
+        if(m[0])
+            translate([5,0,l-10]) minkowski(){
+                cube([h-2*r+10,w-2*r+1,1], true);
+                sphere(r, $fn=50);
+            }
+        if(m[1])
+            translate([5,0,-l+10]) minkowski(){
+                cube([h-2*r+10,w-2*r+1,l-2*r+1], true);
+                sphere(r, $fn=50);
+            }
+        // Посадочные места под крепеж нагрузки m3
+        translate([0,+30 ,-24]) {
+            for (i = [0 : 7]) {
+                angle=45*i;
+                rotate([0, 0, angle]) {
+                    if(holes2[i]) translate([bearing_inner/2-4, 0, 18.01])
+                        cylinder(h = 12, r = 1.6, center = false);
+                    if(holes[i]){
+                        translate([bearing_inner/2-4, 0, 26.61])
+                            cylinder(h =3.01, r = 3.0, center = false);
+                    }
+                }
+            }     
+        }
+        if(m[2])
+            translate([0,-35 ,0]) cylinder(h=12, r=35, center=true);
+    }
+}
+
+module body_wall_with_holes(h=10,w=100,d=210,center=true){
+    difference(){
+        cube([w,d,h],center=center);
+        translate([0,0,-0.01]) cylinder(h=d+0.02, r=35, center=true);
+        x=[w/2-15,-w/2+15,w/2-15,-w/2+15,w/2-10,-w/2+10,w/2-10,-w/2+10];
+        y=[35,35,-35,-35,75,75,-75,-75];
+        for (i = [0 : 7]) {
+            translate([x[i], y[i], -0.01])
+            cylinder(h = d+0.02, r = 1.6, center = true);
+            translate([x[i], y[i], h/2-1.49])
+            cylinder(h =3.01, r = 3.0, center = true);
+        }
+    }
+}
+
+module body_wall_for_legs(h=100,w=180,d=210,l=31,h_move=10){
+    holes=[1,0,1,0,1,0,1,0];
+    difference(){    
+        union() {
+            translate([5,-30 ,24]) body_cut_wall_with_holes(h=h,w=w,l=l,r=15,holes=holes);
+            translate([5,-30 ,133]) mirror([0,0,1]) body_cut_wall_with_holes(h=h,w=w,l=l,r=15,holes=holes);
+            translate([2.5,65 ,78]) rotate([90,0,0]) body_wall_with_holes(h=10,d=d,w=h+5,center=true);
+            translate([2.5,-125 ,78])rotate([90,0,180]) body_wall_with_holes(h=10,d=d,w=h+5,center=true);
+            translate([-h/2,-130 ,8.5]) cube([5,w+20,h+l+9]);
+        } 
+        x=[0, 0, 43.5 , 43.5];
+        y=[0,135.5,0,135.5];
+        rotate([0,90,0]) translate([-100,-100-h_move,-48])for (i = [0 : 3]) {
+            translate([x[i], y[i], -0.01])
+                cylinder(h = 7+0.02, r = 1.6, center = true);
+            translate([x[i], y[i], -1])
+                cylinder(h =3.01, r = 3.0, center = true);
+        }
+    }
+}
+
+module body_centr_for_bat(h=100,w=180,d=210,l=31){
+    holes=[0,0,0,0,0,0,0,0];
+    difference(){    
+        union() {
+            translate([2.5,-70 ,-14.5]) body_cut_wall_with_holes(h=h-5,w=w,l=l,r=15,holes=holes,holes2=holes,m=[1,0,0]);
+            translate([2.5,-70 ,d-39.5]) mirror([0,0,1]) body_cut_wall_with_holes(h=h-5,w=w,l=l,r=15,holes=holes,holes2=holes,m=[1,0,0]);
+            translate([0,-15 ,78]) rotate([90,0,0]) body_wall_with_holes(h=10,d=d,w=h,center=true);
+            translate([0,-125 ,78])rotate([90,0,180]) body_wall_with_holes(h=10,d=d,w=h,center=true);
+            translate([-h/2,-130 ,-27]) cube([5,w+20,d]);
+        }
+    }
+}
 
 
+module body(a1=0,a2=0,parts=false){
+    holes=[1,0,1,0,1,0,1,0];
+        body_wall_for_legs();
+        translate([2.5,200 ,0]) body_centr_for_bat(h=105,w=100,d=210,l=25);
+        translate([0,320 ,0]) body_wall_for_legs(h_move=-10);
+        reducer_connector(h1=15,skirt=true,holes=holes);
+        if(parts)
+            translate([0,-63 ,-h_reducer-14.5]) leg_left_front_union(a1=a1,a2=a2);
+}
 // === Сборка ===
 
 difference() {
@@ -983,17 +1111,13 @@ difference() {
         //translate([0, 0, ecc_shaft_h1 + ecc_spacer_h-1]) separator();
         //color("gray") translate([0, 0,ecc_shaft_h1 + ecc_spacer_h+separator_h+5]) bearing_simple(40,52,7);
         // translate([0, 0, ecc_shaft_h1 + ecc_spacer_h + ecc_shaft_h2]) rollers();
-        //translate([0, 0, -mc_total_height-1]) motor_cover(); // кожух снизу
+        //translate([0, 0, -mc_total_height]) motor_cover(); // кожух снизу
         //translate([0,D_out/2+8+zazor,(h_reducer+cap_thickness)/2]) rotate([90,45/2,0]) reducer_connector();
         //translate([0,0,h_reducer+zazor+cap_thickness+6.5]) rotate([180,0,0])reducer_connector();
-        //rotate([0,0,-135/2+18]) translate([0,0,h_reducer+2*zazor+cap_thickness+8]) rotate([180,0,0]) shoulder_horn();
-        //translate([0,0,h_reducer+cap_thickness+2*zazor]) shoulder_top();
-        //color("gray") translate([0, 0,ecc_shaft_h1 + ecc_spacer_h+separator_h+5 +26.5]) bearing_simple(25,37,7);
-        //translate([-25,65,h_reducer+cap_thickness+2*zazor])hip();
-        //hip_top();
-            leg();
-        //foot_connector();
-        //shin(foot=false);
+        //leg();
+        body(a1=0,a2=leg_angle1,parts=true);
+        //import("vptc_roller_19_4_5_70_reducer_with_bracing_and_connector.stl");
+        //color("lightgray")import("vptc_roller_19_4_5_70_reducer.stl");
     }
 // Куб-«нож», отсекающий правую половину (x > 0)
 //    rotate([0,0,90])translate([0, -100, -100]) 
