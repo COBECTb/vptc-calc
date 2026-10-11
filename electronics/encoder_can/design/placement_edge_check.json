@@ -1,0 +1,134 @@
+[
+  {
+    "ref": "U1",
+    "minimum_rectangular_pad_corner_edge_mm": 0.6326
+  },
+  {
+    "ref": "U2",
+    "minimum_rectangular_pad_corner_edge_mm": 0.4702
+  },
+  {
+    "ref": "U3",
+    "minimum_rectangular_pad_corner_edge_mm": 1.8867
+  },
+  {
+    "ref": "U4",
+    "minimum_rectangular_pad_corner_edge_mm": 1.255
+  },
+  {
+    "ref": "U5",
+    "minimum_rectangular_pad_corner_edge_mm": 0.7228
+  },
+  {
+    "ref": "D1",
+    "minimum_rectangular_pad_corner_edge_mm": 0.424
+  },
+  {
+    "ref": "Y1",
+    "minimum_rectangular_pad_corner_edge_mm": 1.9509
+  },
+  {
+    "ref": "R1",
+    "minimum_rectangular_pad_corner_edge_mm": 1.7223
+  },
+  {
+    "ref": "R2",
+    "minimum_rectangular_pad_corner_edge_mm": 0.4224
+  },
+  {
+    "ref": "R3",
+    "minimum_rectangular_pad_corner_edge_mm": 2.6183
+  },
+  {
+    "ref": "R4",
+    "minimum_rectangular_pad_corner_edge_mm": 0.6184
+  },
+  {
+    "ref": "R5",
+    "minimum_rectangular_pad_corner_edge_mm": 0.8183
+  },
+  {
+    "ref": "R6",
+    "minimum_rectangular_pad_corner_edge_mm": 1.58
+  },
+  {
+    "ref": "R7",
+    "minimum_rectangular_pad_corner_edge_mm": 3.3491
+  },
+  {
+    "ref": "R8",
+    "minimum_rectangular_pad_corner_edge_mm": 2.7183
+  },
+  {
+    "ref": "R9",
+    "minimum_rectangular_pad_corner_edge_mm": 4.1711
+  },
+  {
+    "ref": "C1",
+    "minimum_rectangular_pad_corner_edge_mm": 3.5179
+  },
+  {
+    "ref": "C2",
+    "minimum_rectangular_pad_corner_edge_mm": 0.8384
+  },
+  {
+    "ref": "C3",
+    "minimum_rectangular_pad_corner_edge_mm": 0.3715
+  },
+  {
+    "ref": "C4",
+    "minimum_rectangular_pad_corner_edge_mm": 4.6383
+  },
+  {
+    "ref": "C5",
+    "minimum_rectangular_pad_corner_edge_mm": 4.9383
+  },
+  {
+    "ref": "C6",
+    "minimum_rectangular_pad_corner_edge_mm": 3.7419
+  },
+  {
+    "ref": "C7",
+    "minimum_rectangular_pad_corner_edge_mm": 0.8384
+  },
+  {
+    "ref": "C8",
+    "minimum_rectangular_pad_corner_edge_mm": 3.4788
+  },
+  {
+    "ref": "C9",
+    "minimum_rectangular_pad_corner_edge_mm": 0.8384
+  },
+  {
+    "ref": "C10",
+    "minimum_rectangular_pad_corner_edge_mm": 2.1713
+  },
+  {
+    "ref": "C11",
+    "minimum_rectangular_pad_corner_edge_mm": 2.1714
+  },
+  {
+    "ref": "C12",
+    "minimum_rectangular_pad_corner_edge_mm": 2.0391
+  },
+  {
+    "ref": "C13",
+    "minimum_rectangular_pad_corner_edge_mm": 2.4971
+  },
+  {
+    "ref": "C14",
+    "minimum_rectangular_pad_corner_edge_mm": 3.5178
+  },
+  {
+    "ref": "J1",
+    "minimum_rectangular_pad_corner_edge_mm": 0.7254
+  },
+  {
+    "ref": "J2",
+    "minimum_rectangular_pad_corner_edge_mm": 2.7488
+  },
+  {
+    "ref": "TP1",
+    "minimum_rectangular_pad_corner_edge_mm": 1.5572
+  }
+]
