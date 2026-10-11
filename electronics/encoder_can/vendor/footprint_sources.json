@@ -1,0 +1,67 @@
+{
+  "copyright": "KiCad library contributors",
+  "license": "CC-BY-SA-4.0 with KiCad electronic-design exception",
+  "source_type": "Official historical GitHub mirror, master branch; files retained unchanged",
+  "footprints": [
+    {
+      "file": "Capacitor_SMD.pretty/C_0402_1005Metric.kicad_mod",
+      "sha256": "1de43eb742d63fdead5eec5c76fa1c02471a493c0887df6fdc6c96c7005f391b",
+      "source": "https://raw.githubusercontent.com/KiCad/kicad-footprints/master/Capacitor_SMD.pretty/C_0402_1005Metric.kicad_mod",
+      "upstream_content_match_verified": "2026-10-11"
+    },
+    {
+      "file": "Capacitor_SMD.pretty/C_0603_1608Metric.kicad_mod",
+      "sha256": "341de40ed02527c21b097661d4c2411c604c253ca12041f5eb4521bde00a8db4",
+      "source": "https://raw.githubusercontent.com/KiCad/kicad-footprints/master/Capacitor_SMD.pretty/C_0603_1608Metric.kicad_mod",
+      "upstream_content_match_verified": "2026-10-11"
+    },
+    {
+      "file": "Crystal.pretty/Crystal_SMD_2520-4Pin_2.5x2.0mm.kicad_mod",
+      "sha256": "92672c5da78b0107c034e417df6fa98ee8c7b89f64b95fed71230566565e3fe3",
+      "source": "https://raw.githubusercontent.com/KiCad/kicad-footprints/master/Crystal.pretty/Crystal_SMD_2520-4Pin_2.5x2.0mm.kicad_mod",
+      "upstream_content_match_verified": "2026-10-11"
+    },
+    {
+      "file": "MountingHole.pretty/MountingHole_2.2mm_M2.kicad_mod",
+      "sha256": "7510ce46d0e0647b3cf6ce5af608c8cc5bcdcf193956f79433dc166422783889",
+      "source": "https://raw.githubusercontent.com/KiCad/kicad-footprints/master/MountingHole.pretty/MountingHole_2.2mm_M2.kicad_mod",
+      "upstream_content_match_verified": "2026-10-11"
+    },
+    {
+      "file": "Package_TO_SOT_SMD.pretty/SOT-23-5.kicad_mod",
+      "sha256": "559f4c60fd9a2f3b575b5c4efb9bcb51863ea2c8e3837c27504059c8fa704827",
+      "source": "https://raw.githubusercontent.com/KiCad/kicad-footprints/master/Package_TO_SOT_SMD.pretty/SOT-23-5.kicad_mod",
+      "upstream_content_match_verified": "2026-10-11"
+    },
+    {
+      "file": "Package_TO_SOT_SMD.pretty/SOT-23-8.kicad_mod",
+      "sha256": "a1ce84edad67ab534401b8ea307564cc768bfaa58be2e6c36265f637cbbc2554",
+      "source": "https://raw.githubusercontent.com/KiCad/kicad-footprints/master/Package_TO_SOT_SMD.pretty/SOT-23-8.kicad_mod",
+      "upstream_content_match_verified": "2026-10-11"
+    },
+    {
+      "file": "Package_TO_SOT_SMD.pretty/SOT-23.kicad_mod",
+      "sha256": "db5b998f0d36708205a4b8edc0db1501deb0246a81b52e9cb036cfd58b7570d3",
+      "source": "https://raw.githubusercontent.com/KiCad/kicad-footprints/master/Package_TO_SOT_SMD.pretty/SOT-23.kicad_mod",
+      "upstream_content_match_verified": "2026-10-11"
+    },
+    {
+      "file": "Resistor_SMD.pretty/R_0402_1005Metric.kicad_mod",
+      "sha256": "8750a86be4ec93aca9f4e77ccc35329f57aafe0b5531a888cfe807c20e2f27c8",
+      "source": "https://raw.githubusercontent.com/KiCad/kicad-footprints/master/Resistor_SMD.pretty/R_0402_1005Metric.kicad_mod",
+      "upstream_content_match_verified": "2026-10-11"
+    },
+    {
+      "file": "Resistor_SMD.pretty/R_0603_1608Metric.kicad_mod",
+      "sha256": "effcae403a15810b3a1947b8664576270d6781e7cd525e97c47d48be0fdae8ce",
+      "source": "https://raw.githubusercontent.com/KiCad/kicad-footprints/master/Resistor_SMD.pretty/R_0603_1608Metric.kicad_mod",
+      "upstream_content_match_verified": "2026-10-11"
+    },
+    {
+      "file": "TestPoint.pretty/TestPoint_Pad_D1.0mm.kicad_mod",
+      "sha256": "94cfe0c5bc119601c27b70b1027adfd7a136336b6af513b1c35fbe9cd859ab86",
+      "source": "https://raw.githubusercontent.com/KiCad/kicad-footprints/master/TestPoint.pretty/TestPoint_Pad_D1.0mm.kicad_mod",
+      "upstream_content_match_verified": "2026-10-11"
+    }
+  ]
+}

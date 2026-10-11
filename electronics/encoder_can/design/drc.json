@@ -1,0 +1,232 @@
+{
+    "$schema": "https://schemas.kicad.org/drc.v1.json",
+    "coordinate_units": "mm",
+    "date": "2026-10-11T20:38:46",
+    "ignored_checks": [
+        {
+            "description": "Footprint has no courtyard defined",
+            "key": "missing_courtyard"
+        },
+        {
+            "description": "Track endpoint not centered on via",
+            "key": "track_not_centered_on_via"
+        },
+        {
+            "description": "Tuning profile track geometries",
+            "key": "tuning_profile_track_geometries"
+        },
+        {
+            "description": "Footprint doesn't match symbol's footprint filters",
+            "key": "footprint_filters_mismatch"
+        },
+        {
+            "description": "Footprint component type doesn't match footprint pads",
+            "key": "footprint_type_mismatch"
+        }
+    ],
+    "included_severities": [
+        "error",
+        "warning"
+    ],
+    "kicad_version": "10.0.7",
+    "schematic_parity": [],
+    "source": "encoder_can.kicad_pcb",
+    "unconnected_items": [],
+    "violations": [
+        {
+            "description": "Ширина дорожки (заданные ограничения платы мин. ширина 0.1270 mm; текущая 0.1124 mm)",
+            "items": [
+                {
+                    "description": "Дорожка [GND] на B.Cu, длина 0.3924 mm",
+                    "pos": {
+                        "x": 111.989,
+                        "y": 75.1023
+                    },
+                    "uuid": "6d3a026b-7e1c-4823-8149-0996ba7f0602"
+                }
+            ],
+            "severity": "error",
+            "type": "track_width"
+        },
+        {
+            "description": "Ширина дорожки (заданные ограничения платы мин. ширина 0.1270 mm; текущая 0.1124 mm)",
+            "items": [
+                {
+                    "description": "Дорожка [GND] на B.Cu, длина 0.4081 mm",
+                    "pos": {
+                        "x": 125.0588,
+                        "y": 88.1229
+                    },
+                    "uuid": "88ce096c-3221-4484-a28d-95fed3ad1a56"
+                }
+            ],
+            "severity": "error",
+            "type": "track_width"
+        },
+        {
+            "description": "Ширина дорожки (заданные ограничения платы мин. ширина 0.1270 mm; текущая 0.1124 mm)",
+            "items": [
+                {
+                    "description": "Дорожка [GND] на B.Cu, длина 1.2101 mm",
+                    "pos": {
+                        "x": 126.2689,
+                        "y": 88.1229
+                    },
+                    "uuid": "b5c72554-9f3e-4b21-87be-be5db4dd8f8b"
+                }
+            ],
+            "severity": "error",
+            "type": "track_width"
+        },
+        {
+            "description": "Ширина дорожки (заданные ограничения платы мин. ширина 0.1270 mm; текущая 0.1124 mm)",
+            "items": [
+                {
+                    "description": "Дорожка [GND] на B.Cu, длина 0.7313 mm",
+                    "pos": {
+                        "x": 111.5966,
+                        "y": 75.1023
+                    },
+                    "uuid": "bb4418b9-8a16-4209-927f-aca7f3f27208"
+                }
+            ],
+            "severity": "error",
+            "type": "track_width"
+        },
+        {
+            "description": "Ширина дорожки (заданные ограничения платы мин. ширина 0.1270 mm; текущая 0.1124 mm)",
+            "items": [
+                {
+                    "description": "Дорожка [GND] на B.Cu, длина 1.1271 mm",
+                    "pos": {
+                        "x": 110.4787,
+                        "y": 73.6388
+                    },
+                    "uuid": "bc725757-80fa-48a5-97cc-61442e2fc054"
+                }
+            ],
+            "severity": "error",
+            "type": "track_width"
+        },
+        {
+            "description": "Ширина дорожки (заданные ограничения платы мин. ширина 0.1270 mm; текущая 0.1124 mm)",
+            "items": [
+                {
+                    "description": "Дорожка [GND] на B.Cu, длина 0.4084 mm",
+                    "pos": {
+                        "x": 110.0703,
+                        "y": 73.6388
+                    },
+                    "uuid": "f862ef92-c859-4127-a9e6-f211a1695173"
+                }
+            ],
+            "severity": "error",
+            "type": "track_width"
+        },
+        {
+            "description": "Ширина дорожки (заданные ограничения платы мин. ширина 0.1270 mm; текущая 0.1124 mm)",
+            "items": [
+                {
+                    "description": "Дорожка [+3V3] на F.Cu, длина 1.5797 mm",
+                    "pos": {
+                        "x": 115.9255,
+                        "y": 73.5704
+                    },
+                    "uuid": "cd06b611-b822-441f-9404-bdcf72c4cc05"
+                }
+            ],
+            "severity": "error",
+            "type": "track_width"
+        },
+        {
+            "description": "Ширина дорожки (заданные ограничения платы мин. ширина 0.1270 mm; текущая 0.1124 mm)",
+            "items": [
+                {
+                    "description": "Дорожка [+3V3] на F.Cu, длина 0.8846 mm",
+                    "pos": {
+                        "x": 114.3458,
+                        "y": 73.5704
+                    },
+                    "uuid": "e52ee8c8-c035-4e71-9ba0-b91ee22a2c62"
+                }
+            ],
+            "severity": "error",
+            "type": "track_width"
+        },
+        {
+            "description": "Ширина дорожки (заданные ограничения платы мин. ширина 0.1270 mm; текущая 0.1124 mm)",
+            "items": [
+                {
+                    "description": "Дорожка [INT_INNER] на B.Cu, длина 0.2441 mm",
+                    "pos": {
+                        "x": 126.5784,
+                        "y": 102.1311
+                    },
+                    "uuid": "c6c882bd-028e-49a1-84d3-e9ffced1d315"
+                }
+            ],
+            "severity": "error",
+            "type": "track_width"
+        },
+        {
+            "description": "Ширина дорожки (заданные ограничения платы мин. ширина 0.1270 mm; текущая 0.1124 mm)",
+            "items": [
+                {
+                    "description": "Дорожка [INT_INNER] на B.Cu, длина 0.7329 mm",
+                    "pos": {
+                        "x": 125.8455,
+                        "y": 102.1311
+                    },
+                    "uuid": "f319e464-8a7c-429c-9742-d3055d1a5e6c"
+                }
+            ],
+            "severity": "error",
+            "type": "track_width"
+        },
+        {
+            "description": "Ширина дорожки (заданные ограничения платы мин. ширина 0.1270 mm; текущая 0.1124 mm)",
+            "items": [
+                {
+                    "description": "Дорожка [I2C2_SCL] на B.Cu, длина 0.2441 mm",
+                    "pos": {
+                        "x": 131.7986,
+                        "y": 101.6311
+                    },
+                    "uuid": "6265c872-ebb2-441a-b3a4-5fbec828beaa"
+                }
+            ],
+            "severity": "error",
+            "type": "track_width"
+        },
+        {
+            "description": "Ширина дорожки (заданные ограничения платы мин. ширина 0.1270 mm; текущая 0.1124 mm)",
+            "items": [
+                {
+                    "description": "Дорожка [I2C2_SCL] на B.Cu, длина 0.7741 mm",
+                    "pos": {
+                        "x": 132.5727,
+                        "y": 101.6311
+                    },
+                    "uuid": "e759a727-08dc-417c-a4cc-da3b108f1a36"
+                }
+            ],
+            "severity": "error",
+            "type": "track_width"
+        },
+        {
+            "description": "Via is not connected or connected on only one layer",
+            "items": [
+                {
+                    "description": "Перех. отв. [CAN_TX] на F.Cu - B.Cu",
+                    "pos": {
+                        "x": 132.64,
+                        "y": 103.304
+                    },
+                    "uuid": "a1e784c9-31e6-4760-a45a-8dd64e44a22b"
+                }
+            ],
+            "severity": "warning",
+            "type": "via_dangling"
+        }
+    ]
+}

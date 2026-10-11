@@ -1,0 +1,107 @@
+{
+  "schema_version": 1,
+  "available": true,
+  "dimensions": {
+    "diameter": 70.0,
+    "bearing_inner": 40.0,
+    "bearing_outer": 52.0,
+    "bearing_width": 7.0,
+    "separator_height": 9.0,
+    "flange_extra": 9.5,
+    "bearing_step_z": 11.5,
+    "cap_height": 11.0,
+    "holes": [
+      [
+        24.480097785894582,
+        19.823592318069878
+      ],
+      [
+        -4.927685648767276,
+        31.112182728746838
+      ],
+      [
+        -29.407783434661855,
+        11.288590410676951
+      ],
+      [
+        -24.48009778589458,
+        -19.82359231806989
+      ],
+      [
+        4.927685648767283,
+        -31.11218272874684
+      ],
+      [
+        29.40778343466186,
+        -11.288590410676955
+      ]
+    ],
+    "magnet_d": 5.0,
+    "magnet_clearance": 0.2,
+    "rim_wall": 0.6,
+    "rim_height": 0.4,
+    "magnet_height": 1.0,
+    "separator_lift": 0.5
+  },
+  "derived": {
+    "inner_track_r": 23.5,
+    "outer_track_r": 29.5,
+    "inner_magnet_count": 24,
+    "outer_magnet_count": 26,
+    "separator_base_z": -8.5,
+    "bearing_bottom_z": 3.0,
+    "separator_top_z": 10.0,
+    "glue_face_z": 15.25,
+    "connector_stem_h": 7.149999999999999,
+    "sensor_angle": 9.0
+  },
+  "native_pcb_compatible": true,
+  "pcb": {
+    "thickness_mm": 0.8,
+    "inner_r_mm": 21.6,
+    "local_inner_relief_r_mm": 21.3,
+    "local_relief_angles_deg": [
+      -1.0,
+      19.0
+    ],
+    "transition_deg": 2,
+    "outer_r_mm": 33.4,
+    "span_deg": 160,
+    "center_angle_deg": 9.0,
+    "bolt_keepout_r_mm": 4.5,
+    "mount_hole_d_mm": 2.2,
+    "mount_r_mm": 30.5,
+    "mount_angles_deg": [
+      -59.0,
+      77.0
+    ],
+    "front_sensor_hall_radii_mm": [
+      23.5,
+      29.5
+    ],
+    "hall_from_body_radial_tangent_mm": [
+      -0.12,
+      -0.4
+    ],
+    "rear_pocket_inner_r_mm": 27.0,
+    "rear_pocket_outer_r_mm": 33.7,
+    "rear_pocket_depth_mm": 2.3,
+    "mcu_relief": {
+      "center_r_mm": 29.3,
+      "center_angle_deg": -5.0,
+      "rotation_deg": 0.0,
+      "body_size_mm": [
+        5.1,
+        5.1,
+        0.6
+      ],
+      "xy_clearance_mm": 0.2,
+      "axial_clearance_mm": 0.15,
+      "bottom_z_mm": 10.25
+    }
+  },
+  "notes": [
+    "Mechanical PCB layout only; an altered envelope requires a new electrical PCB.",
+    "Separator lift changes roller-window and 688ZZ mating positions; verify the complete gearbox."
+  ]
+}

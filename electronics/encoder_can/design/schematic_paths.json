@@ -1,0 +1,170 @@
+{
+  "root_uuid": "8153e096-2c81-518f-bf41-0e9144a1062a",
+  "components": {
+    "U1": {
+      "uuid": "97dfd0c5-7ece-53c1-88ab-9118600f33be",
+      "path": "/8153e096-2c81-518f-bf41-0e9144a1062a/97dfd0c5-7ece-53c1-88ab-9118600f33be",
+      "lib_id": "MCU_ST_STM32G4:STM32G431KBUx"
+    },
+    "U2": {
+      "uuid": "aee40526-b272-5f7e-985c-dd09773f7228",
+      "path": "/8153e096-2c81-518f-bf41-0e9144a1062a/aee40526-b272-5f7e-985c-dd09773f7228",
+      "lib_id": "Encoder_CAN:TMAG5273A2DBVR"
+    },
+    "U3": {
+      "uuid": "559a71d3-1de5-5186-a612-d036645eb255",
+      "path": "/8153e096-2c81-518f-bf41-0e9144a1062a/559a71d3-1de5-5186-a612-d036645eb255",
+      "lib_id": "Encoder_CAN:TMAG5273A2DBVR"
+    },
+    "U4": {
+      "uuid": "7c9d0536-1558-5bd0-8598-ef93d0d98656",
+      "path": "/8153e096-2c81-518f-bf41-0e9144a1062a/7c9d0536-1558-5bd0-8598-ef93d0d98656",
+      "lib_id": "Interface_CAN_LIN:TCAN332G"
+    },
+    "U5": {
+      "uuid": "5dc31d7b-1af9-59a2-8b69-4a7d0ca84ae2",
+      "path": "/8153e096-2c81-518f-bf41-0e9144a1062a/5dc31d7b-1af9-59a2-8b69-4a7d0ca84ae2",
+      "lib_id": "Encoder_CAN:TPS7A2033PDBVR"
+    },
+    "D1": {
+      "uuid": "a1068cb4-ac40-53e0-bb3b-9434710670d0",
+      "path": "/8153e096-2c81-518f-bf41-0e9144a1062a/a1068cb4-ac40-53e0-bb3b-9434710670d0",
+      "lib_id": "Encoder_CAN:PESD5V0S2BT"
+    },
+    "Y1": {
+      "uuid": "d90fc48a-7158-5a95-9c0c-dbc5beff4f98",
+      "path": "/8153e096-2c81-518f-bf41-0e9144a1062a/d90fc48a-7158-5a95-9c0c-dbc5beff4f98",
+      "lib_id": "Device:Crystal_GND24"
+    },
+    "R1": {
+      "uuid": "887bc9c7-078f-50b0-8e96-47d553c13ad3",
+      "path": "/8153e096-2c81-518f-bf41-0e9144a1062a/887bc9c7-078f-50b0-8e96-47d553c13ad3",
+      "lib_id": "Device:R"
+    },
+    "R2": {
+      "uuid": "2862de9b-1a73-52a1-9948-5826c6549f0c",
+      "path": "/8153e096-2c81-518f-bf41-0e9144a1062a/2862de9b-1a73-52a1-9948-5826c6549f0c",
+      "lib_id": "Device:R"
+    },
+    "R3": {
+      "uuid": "61cd7462-ad01-532e-b6bc-791e367a1613",
+      "path": "/8153e096-2c81-518f-bf41-0e9144a1062a/61cd7462-ad01-532e-b6bc-791e367a1613",
+      "lib_id": "Device:R"
+    },
+    "R4": {
+      "uuid": "f2ef194f-fd20-58b4-8f8d-cfbcf2abd01e",
+      "path": "/8153e096-2c81-518f-bf41-0e9144a1062a/f2ef194f-fd20-58b4-8f8d-cfbcf2abd01e",
+      "lib_id": "Device:R"
+    },
+    "R5": {
+      "uuid": "c8dad2e5-d93d-53f8-a9b6-f4e1ddd1759f",
+      "path": "/8153e096-2c81-518f-bf41-0e9144a1062a/c8dad2e5-d93d-53f8-a9b6-f4e1ddd1759f",
+      "lib_id": "Device:R"
+    },
+    "R6": {
+      "uuid": "6fe541a5-ca4b-5178-b184-b15ea68390e6",
+      "path": "/8153e096-2c81-518f-bf41-0e9144a1062a/6fe541a5-ca4b-5178-b184-b15ea68390e6",
+      "lib_id": "Device:R"
+    },
+    "R7": {
+      "uuid": "acd253d9-cba1-56e6-a0de-86a8e1115e49",
+      "path": "/8153e096-2c81-518f-bf41-0e9144a1062a/acd253d9-cba1-56e6-a0de-86a8e1115e49",
+      "lib_id": "Device:R"
+    },
+    "R8": {
+      "uuid": "a1acb1e3-8e7c-5dbc-916c-4b232598957c",
+      "path": "/8153e096-2c81-518f-bf41-0e9144a1062a/a1acb1e3-8e7c-5dbc-916c-4b232598957c",
+      "lib_id": "Device:R"
+    },
+    "R9": {
+      "uuid": "1610b956-a2f4-5493-972b-a105e58b10c4",
+      "path": "/8153e096-2c81-518f-bf41-0e9144a1062a/1610b956-a2f4-5493-972b-a105e58b10c4",
+      "lib_id": "Device:R"
+    },
+    "C1": {
+      "uuid": "6ba1d057-e86a-5af9-92cd-328bbad90e72",
+      "path": "/8153e096-2c81-518f-bf41-0e9144a1062a/6ba1d057-e86a-5af9-92cd-328bbad90e72",
+      "lib_id": "Device:C"
+    },
+    "C2": {
+      "uuid": "9d4d8bef-2e65-58d8-87b4-0e0e717f4d60",
+      "path": "/8153e096-2c81-518f-bf41-0e9144a1062a/9d4d8bef-2e65-58d8-87b4-0e0e717f4d60",
+      "lib_id": "Device:C"
+    },
+    "C3": {
+      "uuid": "98cc769b-b2b9-59b8-bcdf-f332c40a126f",
+      "path": "/8153e096-2c81-518f-bf41-0e9144a1062a/98cc769b-b2b9-59b8-bcdf-f332c40a126f",
+      "lib_id": "Device:C"
+    },
+    "C4": {
+      "uuid": "37c7c24a-f1b7-5cfb-8e65-a2b7eecf44de",
+      "path": "/8153e096-2c81-518f-bf41-0e9144a1062a/37c7c24a-f1b7-5cfb-8e65-a2b7eecf44de",
+      "lib_id": "Device:C"
+    },
+    "C5": {
+      "uuid": "df400bf5-07e6-5dce-9ce8-74953efc5eab",
+      "path": "/8153e096-2c81-518f-bf41-0e9144a1062a/df400bf5-07e6-5dce-9ce8-74953efc5eab",
+      "lib_id": "Device:C"
+    },
+    "C6": {
+      "uuid": "e37a4ee7-adbd-5185-bb0a-f4662f93991e",
+      "path": "/8153e096-2c81-518f-bf41-0e9144a1062a/e37a4ee7-adbd-5185-bb0a-f4662f93991e",
+      "lib_id": "Device:C"
+    },
+    "C7": {
+      "uuid": "0a04d9c4-d086-5ad2-9df6-c097a5da4e1c",
+      "path": "/8153e096-2c81-518f-bf41-0e9144a1062a/0a04d9c4-d086-5ad2-9df6-c097a5da4e1c",
+      "lib_id": "Device:C"
+    },
+    "C8": {
+      "uuid": "40928301-eb7a-5e8a-a8f8-6bb47acfa677",
+      "path": "/8153e096-2c81-518f-bf41-0e9144a1062a/40928301-eb7a-5e8a-a8f8-6bb47acfa677",
+      "lib_id": "Device:C"
+    },
+    "C9": {
+      "uuid": "3f918294-0b68-5e11-b3f5-93d77480de9b",
+      "path": "/8153e096-2c81-518f-bf41-0e9144a1062a/3f918294-0b68-5e11-b3f5-93d77480de9b",
+      "lib_id": "Device:C"
+    },
+    "C10": {
+      "uuid": "9bf6382b-d6ee-50dc-afa4-0324c8cc0f15",
+      "path": "/8153e096-2c81-518f-bf41-0e9144a1062a/9bf6382b-d6ee-50dc-afa4-0324c8cc0f15",
+      "lib_id": "Device:C"
+    },
+    "C11": {
+      "uuid": "aa7780d2-e451-59b5-ab37-0f26f1d1a874",
+      "path": "/8153e096-2c81-518f-bf41-0e9144a1062a/aa7780d2-e451-59b5-ab37-0f26f1d1a874",
+      "lib_id": "Device:C"
+    },
+    "C12": {
+      "uuid": "8db81349-694b-5692-9072-d08bcc62e707",
+      "path": "/8153e096-2c81-518f-bf41-0e9144a1062a/8db81349-694b-5692-9072-d08bcc62e707",
+      "lib_id": "Device:C"
+    },
+    "C13": {
+      "uuid": "d15e79fe-efa0-5f19-8d30-f43518d87407",
+      "path": "/8153e096-2c81-518f-bf41-0e9144a1062a/d15e79fe-efa0-5f19-8d30-f43518d87407",
+      "lib_id": "Device:C"
+    },
+    "C14": {
+      "uuid": "521c5acc-d390-5bb4-8e92-86ad4b348cd5",
+      "path": "/8153e096-2c81-518f-bf41-0e9144a1062a/521c5acc-d390-5bb4-8e92-86ad4b348cd5",
+      "lib_id": "Device:C"
+    },
+    "J1": {
+      "uuid": "80852162-9eaa-5d1b-b0b1-6f247b28d4b8",
+      "path": "/8153e096-2c81-518f-bf41-0e9144a1062a/80852162-9eaa-5d1b-b0b1-6f247b28d4b8",
+      "lib_id": "Connector_Generic:Conn_01x04"
+    },
+    "J2": {
+      "uuid": "1f4777e3-69b4-5f7d-bc1a-d512ce8b692d",
+      "path": "/8153e096-2c81-518f-bf41-0e9144a1062a/1f4777e3-69b4-5f7d-bc1a-d512ce8b692d",
+      "lib_id": "Connector_Generic:Conn_01x05"
+    },
+    "TP1": {
+      "uuid": "af559a33-1204-5418-b75e-ea540ef8127f",
+      "path": "/8153e096-2c81-518f-bf41-0e9144a1062a/af559a33-1204-5418-b75e-ea540ef8127f",
+      "lib_id": "Connector:TestPoint"
+    }
+  }
+}

@@ -1,0 +1,34 @@
+﻿Reference,Value,Footprint,Manufacturer,MPN,Populate,Supplier_stock_code,Procurement_status,Requirements,Design_side
+U1,STM32G431KBU6,Encoder_CAN:STM32G431KBU6_UFQFPN32,STMicroelectronics,STM32G431KBU6,Yes,,Manufacturer MPN selected; supplier stock not verified,"Pin33 is KiCad EP pad numbering, not an extra perimeter lead.; No separate VBAT, VREF+, VCAP pins in this package.; VREFBUF must remain disabled because VREF+ is bonded to VDDA.; NRST remains reset input; do not configure as GPIO.; Keep SWD enabled; PA15 can become I2C1 SCL while PA13/PA14 retain SWD.; Footprint uses KiCad 10.0.6 UFQFPN32 IPC outer lands: radial center 2.4375 mm, 0.875 x 0.25 mm, pitch 0.5 mm. EP is 3.45 x 3.45 mm per ST Figure 41; adapted IPC pattern, not a literal copy of Figure 41.",Back
+U2,TMAG5273A2DBVR,Encoder_CAN:TMAG5273_DBV_TI,Texas Instruments,TMAG5273A2DBVR,Yes,,Manufacturer MPN selected; supplier stock not verified,A2 variant; check pin-1 orientation; Hall point must align with its magnetic track,Front
+U3,TMAG5273A2DBVR,Encoder_CAN:TMAG5273_DBV_TI,Texas Instruments,TMAG5273A2DBVR,Yes,,Manufacturer MPN selected; supplier stock not verified,A2 variant; check pin-1 orientation; Hall point must align with its magnetic track,Front
+U4,TCAN332GDCNR,Package_TO_SOT_SMD:SOT-23-8,Texas Instruments,TCAN332GDCNR,Yes,,Manufacturer MPN selected; supplier stock not verified,TCAN332 has neither standby nor shutdown pin; pins5/8 must be explicitly NC.; Bus absolute maximum is +/-14 V; do not substitute high-standoff automotive TVS and claim coordinated surge protection.,Back
+U5,TPS7A2033PDBVR,Package_TO_SOT_SMD:SOT-23-5,Texas Instruments,TPS7A2033PDBVR,Yes,,Manufacturer MPN selected; supplier stock not verified,IN and EN maximum operating6 V; supply only regulated5 V.; Minimum effective COUT0.47 uF after voltage/temperature/tolerance derating.; Thermal qualification required in closed housing;300 mA rating is not a board operating-current target.,Back
+D1,PESD5V0S2BT,Package_TO_SOT_SMD:SOT-23,Nexperia,"PESD5V0S2BT,215",Yes,,Manufacturer MPN selected; supplier stock not verified,"Bidirectional +/-5 V standoff;10 V maximum clamp at1 A8/20 us,14 V at12 A.; Limits permissible CAN common-mode to about+/-5 V; shared GND is mandatory.; Transient overshoot depends on layout; this design has no certified ESD/surge immunity.",Back
+Y1,16MHz CL12pF ESR80,Crystal:Crystal_SMD_2520-4Pin_2.5x2.0mm,Abracon,ABM10-16.000MHZ-12-R80-3-D30-T,Yes,,Order-code configuration; manufacturer/supplier confirmation required,16 MHz; CL=12 pF; ESR<=80 ohm; confirm orderable configuration; ESR150 is not an automatic substitute,Front
+R1,2.2k,Resistor_SMD:R_0402_1005Metric,,,Yes,,Exact MPN and supplier stock code required,1%; 0402,Front
+R2,2.2k,Resistor_SMD:R_0402_1005Metric,,,Yes,,Exact MPN and supplier stock code required,1%; 0402,Front
+R3,2.2k,Resistor_SMD:R_0402_1005Metric,,,Yes,,Exact MPN and supplier stock code required,1%; 0402,Front
+R4,2.2k,Resistor_SMD:R_0402_1005Metric,,,Yes,,Exact MPN and supplier stock code required,1%; 0402,Front
+R5,10k,Resistor_SMD:R_0402_1005Metric,,,Yes,,Exact MPN and supplier stock code required,1%; 0402,Front
+R6,10k,Resistor_SMD:R_0402_1005Metric,,,Yes,,Exact MPN and supplier stock code required,1%; 0402,Front
+R7,10k,Resistor_SMD:R_0402_1005Metric,,,Yes,,Exact MPN and supplier stock code required,1%; 0402,Front
+R8,10k,Resistor_SMD:R_0402_1005Metric,,,Yes,,Exact MPN and supplier stock code required,1%; 0402,Front
+R9,120,Resistor_SMD:R_0603_1608Metric,,,No,,DNP; do not fit by default,1%; >=0.1 W,Front
+C1,100nF,Capacitor_SMD:C_0402_1005Metric,,,Yes,,Exact MPN and supplier stock code required,X7R; >=16 V,Front
+C2,100nF,Capacitor_SMD:C_0402_1005Metric,,,Yes,,Exact MPN and supplier stock code required,X7R; >=16 V,Front
+C3,4.7uF,Capacitor_SMD:C_0603_1608Metric,,,Yes,,Exact MPN and supplier stock code required,X7R; >=10 V; X5R allowed after DC-bias/effective-capacitance check; C11 effective capacitance must exceed 0.47 uF,Front
+C4,10nF,Capacitor_SMD:C_0402_1005Metric,,,Yes,,Exact MPN and supplier stock code required,X7R; >=16 V,Front
+C5,1uF,Capacitor_SMD:C_0402_1005Metric,,,Yes,,Exact MPN and supplier stock code required,X7R; >=10 V; X5R allowed after DC-bias/effective-capacitance check,Front
+C6,100nF,Capacitor_SMD:C_0402_1005Metric,,,Yes,,Exact MPN and supplier stock code required,X7R; >=16 V,Front
+C7,100nF,Capacitor_SMD:C_0402_1005Metric,,,Yes,,Exact MPN and supplier stock code required,X7R; >=16 V,Front
+C8,100nF,Capacitor_SMD:C_0402_1005Metric,,,Yes,,Exact MPN and supplier stock code required,X7R; >=16 V,Front
+C9,1uF,Capacitor_SMD:C_0402_1005Metric,,,Yes,,Exact MPN and supplier stock code required,X7R; >=10 V; X5R allowed after DC-bias/effective-capacitance check,Front
+C10,4.7uF,Capacitor_SMD:C_0603_1608Metric,,,Yes,,Exact MPN and supplier stock code required,X7R; >=10 V; X5R allowed after DC-bias/effective-capacitance check; C11 effective capacitance must exceed 0.47 uF,Front
+C11,4.7uF,Capacitor_SMD:C_0603_1608Metric,,,Yes,,Exact MPN and supplier stock code required,X7R; >=10 V; X5R allowed after DC-bias/effective-capacitance check; C11 effective capacitance must exceed 0.47 uF,Front
+C12,100nF,Capacitor_SMD:C_0402_1005Metric,,,Yes,,Exact MPN and supplier stock code required,X7R; >=16 V,Front
+C13,18pF,Capacitor_SMD:C_0402_1005Metric,,,Yes,,Exact MPN and supplier stock code required,C0G; >=25 V; initial value; tune HSE load on prototype,Front
+C14,18pF,Capacitor_SMD:C_0402_1005Metric,,,Yes,,Exact MPN and supplier stock code required,C0G; >=25 V; initial value; tune HSE load on prototype,Front
+J1,5V GND CANH CANL solder pads,Encoder_CAN:WirePads_1x04,,,No,,PCB only; do not order,PCB pads only; no fitted connector or purchasable component,Back
+J2,SWD pogo,Encoder_CAN:SWD_Pogo_1x05,,,No,,PCB only; do not order,PCB pads only; no fitted connector or purchasable component,Back
+TP1,BOOT0,TestPoint:TestPoint_Pad_D1.0mm,,,No,,PCB only; do not order,PCB pads only; no fitted connector or purchasable component,Back

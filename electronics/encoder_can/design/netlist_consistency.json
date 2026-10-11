@@ -1,0 +1,8 @@
+{
+  "source": "KiCad 10.0.6 XML netlist compared with electrical_spec.json",
+  "components": 33,
+  "functional_nets": 19,
+  "all_functional_connections_match": true,
+  "schematic": "encoder_can.kicad_sch",
+  "netlist": "design/netlist.xml"
+}

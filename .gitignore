@@ -1,1 +1,3 @@
-Nothing to output - the changes only include a README.md file which is a source/config file and no build artifacts, dependencies, or temp files are present.
+.DS_Store
+__pycache__/
+electronics/encoder_can/.history/
