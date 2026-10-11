@@ -1,0 +1,181 @@
+"""Generator regression checks: count uniqueness, file safety and real SCAD geometry."""
+import json
+import math
+import os
+from pathlib import Path
+import re
+import shutil
+import subprocess
+import sys
+import tempfile
+import unittest
+
+ROOT=Path(__file__).resolve().parents[1]
+sys.path.insert(0,str(ROOT))
+from encoder_scad import EncoderDimensions, encoder_metrics, max_even_count
+
+OPENSCAD=os.environ.get('OPENSCAD') or shutil.which('openscad')
+if not OPENSCAD:
+    app='/Applications/OpenSCAD-2021.01.app/Contents/MacOS/OpenSCAD'
+    OPENSCAD=app if Path(app).exists() else None
+
+
+class EncoderSizingTests(unittest.TestCase):
+    def dimensions(self,diameter=70):
+        holes=tuple((31.5*math.cos(math.radians(a)),31.5*math.sin(math.radians(a)))
+                    for a in range(39,399,60))
+        return EncoderDimensions(diameter,40,52,7,9,9.5,11.5,11,holes)
+
+    def test_current_assembly_matches_agreed_stack(self):
+        m=encoder_metrics(self.dimensions())
+        self.assertEqual((m['inner_magnet_count'],m['outer_magnet_count']),(24,26))
+        self.assertAlmostEqual(m['inner_track_r'],23.5)
+        self.assertAlmostEqual(m['outer_track_r'],29.5)
+        self.assertAlmostEqual(m['bearing_bottom_z'],3)
+        self.assertAlmostEqual(m['separator_base_z'],-8.5)
+        self.assertAlmostEqual(m['separator_top_z'],10)
+        self.assertAlmostEqual(m['glue_face_z'],15.25)
+        self.assertAlmostEqual(m['connector_stem_h'],7.15)
+        self.assertAlmostEqual(m['sensor_angle'],9)
+
+    def test_largest_feasible_pair_at_multiple_diameters(self):
+        for diameter in [70,75,80,90]:
+            with self.subTest(diameter=diameter):
+                m=encoder_metrics(self.dimensions(diameter))
+                counts=[m['inner_magnet_count'],m['outer_magnet_count']]
+                radii=[m['inner_track_r'],m['outer_track_r']]
+                self.assertEqual(counts[1]-counts[0],2)
+                self.assertEqual(math.gcd(counts[0]//2,counts[1]//2),1)
+                for r,n in zip(radii,counts):
+                    self.assertEqual(n%2,0)
+                    self.assertGreaterEqual(2*r*math.sin(math.pi/n),5.8)
+                # Increasing both rings by one pole pair must violate a pocket web.
+                self.assertTrue(any(2*r*math.sin(math.pi/(n+2))<5.8 for r,n in zip(radii,counts)))
+
+    def test_small_clamp_cannot_silently_accept_magnets(self):
+        with self.assertRaises(ValueError):
+            encoder_metrics(self.dimensions(60))
+        self.assertEqual(max_even_count(1,5.8),0)
+
+
+class GeneratorIntegrationTests(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        cls.tmp=tempfile.TemporaryDirectory(prefix='vptc-encoder-test-')
+        cls.work=Path(cls.tmp.name)
+        cls.models={}
+        for diameter in [70,80]:
+            path=cls.work/f'gear{diameter}.scad'
+            result=cls.generate(path,diameter)
+            if result.returncode:
+                raise RuntimeError(result.stdout+result.stderr)
+            cls.models[diameter]=path
+
+    @classmethod
+    def tearDownClass(cls):
+        cls.tmp.cleanup()
+
+    @classmethod
+    def generate(cls,path,diameter=70,extra=()):
+        return subprocess.run([sys.executable,str(ROOT/'calc-vpts.py'),
+            '--resolution','600','--ratio','19','--roller-d','4','--roller-h','5',
+            '--rout','28','--diameter',str(diameter),'--part','encoder_assembly',
+            '--output',str(path),*extra],capture_output=True,text=True,timeout=30,cwd=ROOT)
+
+    def test_existing_files_are_protected(self):
+        path=self.work/'manual.scad'
+        original='// user saved model\n'
+        path.write_text(original)
+        result=self.generate(path)
+        self.assertNotEqual(result.returncode,0)
+        self.assertEqual(path.read_text(),original)
+        self.assertFalse(path.with_suffix('.encoder.json').exists())
+
+    def test_manifests_match_board_compatibility(self):
+        current=json.loads(self.models[70].with_suffix('.encoder.json').read_text())
+        larger=json.loads(self.models[80].with_suffix('.encoder.json').read_text())
+        self.assertTrue(current['native_pcb_compatible'])
+        self.assertFalse(larger['native_pcb_compatible'])
+        self.assertAlmostEqual(current['pcb']['local_inner_relief_r_mm'],21.3)
+        self.assertEqual(current['pcb']['mcu_relief']['body_size_mm'],[5.1,5.1,.6])
+        self.assertAlmostEqual(current['pcb']['mcu_relief']['bottom_z_mm'],10.25)
+        self.assertAlmostEqual(current['pcb']['mcu_relief']['center_r_mm'],29.3)
+        self.assertEqual((larger['derived']['inner_magnet_count'],larger['derived']['outer_magnet_count']),(30,32))
+
+    def test_explicit_hole_phase_is_honoured(self):
+        path=self.work/'phase.scad'
+        result=self.generate(path,extra=['--hole-angle','9'])
+        self.assertEqual(result.returncode,0,result.stderr)
+        data=json.loads(path.with_suffix('.encoder.json').read_text())
+        self.assertFalse(data['native_pcb_compatible'])
+        angles=[math.degrees(math.atan2(y,x))%60 for x,y in data['dimensions']['holes']]
+        self.assertTrue(all(abs(a-9)<1e-7 for a in angles))
+
+    @unittest.skipUnless(OPENSCAD,'OpenSCAD CLI is not installed')
+    def test_all_new_variants_compile_at_two_diameters(self):
+        parts=['encoder_assembly','encoder_exploded','encoder_section','encoder_cap',
+               'encoder_lid','encoder_print','encoder_clamp','encoder_clamp_half',
+               'encoder_connector','encoder_load_connector','encoder_pcb']
+        for diameter,model in self.models.items():
+            for part in parts:
+                with self.subTest(diameter=diameter,part=part):
+                    result=subprocess.run([OPENSCAD,'-o',str(self.work/f'{diameter}_{part}.csg'),
+                        '-D',f'generated_part="{part}"',str(model)],capture_output=True,text=True,timeout=30)
+                    self.assertEqual(result.returncode,0,result.stderr)
+                    self.assertNotIn('WARNING:',result.stderr)
+                    self.assertNotIn('ERROR:',result.stderr)
+
+    @unittest.skipUnless(OPENSCAD,'OpenSCAD CLI is not installed')
+    def test_base_parts_remain_available(self):
+        parts=['rigid_gear','rigid_gear_with_bracing','separator','reducer_connector',
+               'connector_clamp','eccentric','cap','cap_with_bracing','eccentric_shaft',
+               'motor_cover','shoulder_horn','shoulder_top','hip','hip_top']
+        for part in parts:
+            with self.subTest(part=part):
+                source=self.work/f'base_{part}.scad'
+                source.write_text(f'use <{self.models[70]}>\n{part}();\n')
+                result=subprocess.run([OPENSCAD,'-o',str(source.with_suffix('.csg')),str(source)],
+                    capture_output=True,text=True,timeout=30)
+                self.assertEqual(result.returncode,0,result.stderr)
+                self.assertNotIn('WARNING:',result.stderr)
+                self.assertNotIn('ERROR:',result.stderr)
+
+    @unittest.skipUnless(OPENSCAD,'OpenSCAD CLI is not installed')
+    def test_real_bearing_stop_and_blind_counterbore_depth(self):
+        # Independent thin probes intersect the generated cap. The bearing stop
+        # must start at Z10; the M3 counterbore must end at its unchanged floor Z9.
+        probes=[('bearing_stop',[25,0],10,11),
+                ('counterbore_floor',[(31.5+2.5)*math.cos(math.radians(39)),
+                                     (31.5+2.5)*math.sin(math.radians(39))],0,9)]
+        for name,xy,zmin,zmax in probes:
+            source=self.work/f'{name}.scad'
+            source.write_text(f'use <{self.models[70]}>\nintersection() {{ cap(); '
+                f'translate([{xy[0]},{xy[1]},-0.1]) cylinder(r=.05,h=11.2,$fn=12); }}\n')
+            stl=source.with_suffix('.stl')
+            result=subprocess.run([OPENSCAD,'-o',str(stl),str(source)],capture_output=True,text=True,timeout=60)
+            self.assertEqual(result.returncode,0,result.stderr)
+            values=[float(z) for z in re.findall(r'vertex\s+[-\d.eE+]+\s+[-\d.eE+]+\s+([-\d.eE+]+)',stl.read_text())]
+            self.assertTrue(values,name)
+            self.assertAlmostEqual(min(values),zmin,places=5)
+            self.assertAlmostEqual(max(values),zmax,places=5)
+
+    @unittest.skipUnless(OPENSCAD,'OpenSCAD CLI is not installed')
+    def test_mcu_relief_preserves_its_floor_and_bearing_stop(self):
+        # The new shallow MCU relief cuts only the top of the outer wall.
+        # A probe at R<27 is outside the old rear pocket; another is on the lip.
+        for name,xy,zmin,zmax in [('mcu_relief_floor',[26.6,-1],3,10.25),
+                                  ('encoder_bearing_stop',[25,0],10,11)]:
+            source=self.work/f'{name}.scad'
+            source.write_text(f'use <{self.models[70]}>\nintersection() {{ cap_encoder(with_bracing=false); '
+                f'translate([{xy[0]},{xy[1]},-0.1]) cylinder(r=.02,h=11.2,$fn=12); }}\n')
+            stl=source.with_suffix('.stl')
+            result=subprocess.run([OPENSCAD,'-o',str(stl),str(source)],capture_output=True,text=True,timeout=90)
+            self.assertEqual(result.returncode,0,result.stderr)
+            values=[float(z) for z in re.findall(r'vertex\s+[-\d.eE+]+\s+[-\d.eE+]+\s+([-\d.eE+]+)',stl.read_text())]
+            self.assertTrue(values,name)
+            self.assertAlmostEqual(min(values),zmin,places=5)
+            self.assertAlmostEqual(max(values),zmax,places=5)
+
+
+if __name__=='__main__':
+    unittest.main()
