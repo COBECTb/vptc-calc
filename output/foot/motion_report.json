@@ -1,0 +1,854 @@
+{
+  "scope": "Exact original 4-bar time law, fixed hip; 2D projection of rendered CAD. This is an articulation sweep, not a walking controller or dynamic simulation.",
+  "t_range": [
+    0,
+    1
+  ],
+  "curve_side": 1,
+  "contact_model": "Hemisphere R20, open mounting plane at sphere center; pole check in the lateral camera plane.",
+  "min_pole_margin_deg": 8.125,
+  "min_hard_part_clearance_mm": 2.223,
+  "historical_rod_limit_deg": [
+    -44.646,
+    54.204
+  ],
+  "historical_limit_note": "The original t=0 pose is below the previously checked rod limit; no new rod-stop or complete 3D collision validation is claimed.",
+  "samples": [
+    {
+      "t": 0.0,
+      "servo_deg": -60.5,
+      "shin_deg": -46.875,
+      "spherical_pole_angle_deg": 81.875,
+      "pole_margin_to_opening_deg": 8.125,
+      "hard_part_clearance_above_ball_tangent_mm": 2.223
+    },
+    {
+      "t": 0.01,
+      "servo_deg": -59.15,
+      "shin_deg": -46.059,
+      "spherical_pole_angle_deg": 81.059,
+      "pole_margin_to_opening_deg": 8.941,
+      "hard_part_clearance_above_ball_tangent_mm": 2.266
+    },
+    {
+      "t": 0.02,
+      "servo_deg": -57.8,
+      "shin_deg": -45.223,
+      "spherical_pole_angle_deg": 80.223,
+      "pole_margin_to_opening_deg": 9.777,
+      "hard_part_clearance_above_ball_tangent_mm": 2.313
+    },
+    {
+      "t": 0.03,
+      "servo_deg": -56.45,
+      "shin_deg": -44.367,
+      "spherical_pole_angle_deg": 79.367,
+      "pole_margin_to_opening_deg": 10.633,
+      "hard_part_clearance_above_ball_tangent_mm": 2.365
+    },
+    {
+      "t": 0.04,
+      "servo_deg": -55.1,
+      "shin_deg": -43.493,
+      "spherical_pole_angle_deg": 78.493,
+      "pole_margin_to_opening_deg": 11.507,
+      "hard_part_clearance_above_ball_tangent_mm": 2.422
+    },
+    {
+      "t": 0.05,
+      "servo_deg": -53.75,
+      "shin_deg": -42.602,
+      "spherical_pole_angle_deg": 77.602,
+      "pole_margin_to_opening_deg": 12.398,
+      "hard_part_clearance_above_ball_tangent_mm": 2.484
+    },
+    {
+      "t": 0.06,
+      "servo_deg": -52.4,
+      "shin_deg": -41.695,
+      "spherical_pole_angle_deg": 76.695,
+      "pole_margin_to_opening_deg": 13.305,
+      "hard_part_clearance_above_ball_tangent_mm": 2.553
+    },
+    {
+      "t": 0.07,
+      "servo_deg": -51.05,
+      "shin_deg": -40.772,
+      "spherical_pole_angle_deg": 75.772,
+      "pole_margin_to_opening_deg": 14.228,
+      "hard_part_clearance_above_ball_tangent_mm": 2.626
+    },
+    {
+      "t": 0.08,
+      "servo_deg": -49.7,
+      "shin_deg": -39.835,
+      "spherical_pole_angle_deg": 74.835,
+      "pole_margin_to_opening_deg": 15.165,
+      "hard_part_clearance_above_ball_tangent_mm": 2.706
+    },
+    {
+      "t": 0.09,
+      "servo_deg": -48.35,
+      "shin_deg": -38.884,
+      "spherical_pole_angle_deg": 73.884,
+      "pole_margin_to_opening_deg": 16.116,
+      "hard_part_clearance_above_ball_tangent_mm": 2.791
+    },
+    {
+      "t": 0.1,
+      "servo_deg": -47.0,
+      "shin_deg": -37.92,
+      "spherical_pole_angle_deg": 72.92,
+      "pole_margin_to_opening_deg": 17.08,
+      "hard_part_clearance_above_ball_tangent_mm": 2.882
+    },
+    {
+      "t": 0.11,
+      "servo_deg": -45.65,
+      "shin_deg": -36.944,
+      "spherical_pole_angle_deg": 71.944,
+      "pole_margin_to_opening_deg": 18.056,
+      "hard_part_clearance_above_ball_tangent_mm": 2.98
+    },
+    {
+      "t": 0.12,
+      "servo_deg": -44.3,
+      "shin_deg": -35.957,
+      "spherical_pole_angle_deg": 70.957,
+      "pole_margin_to_opening_deg": 19.043,
+      "hard_part_clearance_above_ball_tangent_mm": 3.083
+    },
+    {
+      "t": 0.13,
+      "servo_deg": -42.95,
+      "shin_deg": -34.959,
+      "spherical_pole_angle_deg": 69.959,
+      "pole_margin_to_opening_deg": 20.041,
+      "hard_part_clearance_above_ball_tangent_mm": 3.193
+    },
+    {
+      "t": 0.14,
+      "servo_deg": -41.6,
+      "shin_deg": -33.95,
+      "spherical_pole_angle_deg": 68.95,
+      "pole_margin_to_opening_deg": 21.05,
+      "hard_part_clearance_above_ball_tangent_mm": 3.309
+    },
+    {
+      "t": 0.15,
+      "servo_deg": -40.25,
+      "shin_deg": -32.933,
+      "spherical_pole_angle_deg": 67.933,
+      "pole_margin_to_opening_deg": 22.067,
+      "hard_part_clearance_above_ball_tangent_mm": 3.432
+    },
+    {
+      "t": 0.16,
+      "servo_deg": -38.9,
+      "shin_deg": -31.906,
+      "spherical_pole_angle_deg": 66.906,
+      "pole_margin_to_opening_deg": 23.094,
+      "hard_part_clearance_above_ball_tangent_mm": 3.56
+    },
+    {
+      "t": 0.17,
+      "servo_deg": -37.55,
+      "shin_deg": -30.871,
+      "spherical_pole_angle_deg": 65.871,
+      "pole_margin_to_opening_deg": 24.129,
+      "hard_part_clearance_above_ball_tangent_mm": 3.696
+    },
+    {
+      "t": 0.18,
+      "servo_deg": -36.2,
+      "shin_deg": -29.828,
+      "spherical_pole_angle_deg": 64.828,
+      "pole_margin_to_opening_deg": 25.172,
+      "hard_part_clearance_above_ball_tangent_mm": 3.837
+    },
+    {
+      "t": 0.19,
+      "servo_deg": -34.85,
+      "shin_deg": -28.778,
+      "spherical_pole_angle_deg": 63.778,
+      "pole_margin_to_opening_deg": 26.222,
+      "hard_part_clearance_above_ball_tangent_mm": 3.985
+    },
+    {
+      "t": 0.2,
+      "servo_deg": -33.5,
+      "shin_deg": -27.721,
+      "spherical_pole_angle_deg": 62.721,
+      "pole_margin_to_opening_deg": 27.279,
+      "hard_part_clearance_above_ball_tangent_mm": 4.14
+    },
+    {
+      "t": 0.21,
+      "servo_deg": -32.15,
+      "shin_deg": -26.657,
+      "spherical_pole_angle_deg": 61.657,
+      "pole_margin_to_opening_deg": 28.343,
+      "hard_part_clearance_above_ball_tangent_mm": 4.301
+    },
+    {
+      "t": 0.22,
+      "servo_deg": -30.8,
+      "shin_deg": -25.587,
+      "spherical_pole_angle_deg": 60.587,
+      "pole_margin_to_opening_deg": 29.413,
+      "hard_part_clearance_above_ball_tangent_mm": 4.468
+    },
+    {
+      "t": 0.23,
+      "servo_deg": -29.45,
+      "shin_deg": -24.512,
+      "spherical_pole_angle_deg": 59.512,
+      "pole_margin_to_opening_deg": 30.488,
+      "hard_part_clearance_above_ball_tangent_mm": 4.641
+    },
+    {
+      "t": 0.24,
+      "servo_deg": -28.1,
+      "shin_deg": -23.431,
+      "spherical_pole_angle_deg": 58.431,
+      "pole_margin_to_opening_deg": 31.569,
+      "hard_part_clearance_above_ball_tangent_mm": 4.821
+    },
+    {
+      "t": 0.25,
+      "servo_deg": -26.75,
+      "shin_deg": -22.345,
+      "spherical_pole_angle_deg": 57.345,
+      "pole_margin_to_opening_deg": 32.655,
+      "hard_part_clearance_above_ball_tangent_mm": 5.007
+    },
+    {
+      "t": 0.26,
+      "servo_deg": -25.4,
+      "shin_deg": -21.254,
+      "spherical_pole_angle_deg": 56.254,
+      "pole_margin_to_opening_deg": 33.746,
+      "hard_part_clearance_above_ball_tangent_mm": 5.2
+    },
+    {
+      "t": 0.27,
+      "servo_deg": -24.05,
+      "shin_deg": -20.159,
+      "spherical_pole_angle_deg": 55.159,
+      "pole_margin_to_opening_deg": 34.841,
+      "hard_part_clearance_above_ball_tangent_mm": 5.398
+    },
+    {
+      "t": 0.28,
+      "servo_deg": -22.7,
+      "shin_deg": -19.06,
+      "spherical_pole_angle_deg": 54.06,
+      "pole_margin_to_opening_deg": 35.94,
+      "hard_part_clearance_above_ball_tangent_mm": 5.603
+    },
+    {
+      "t": 0.29,
+      "servo_deg": -21.35,
+      "shin_deg": -17.957,
+      "spherical_pole_angle_deg": 52.957,
+      "pole_margin_to_opening_deg": 37.043,
+      "hard_part_clearance_above_ball_tangent_mm": 5.814
+    },
+    {
+      "t": 0.3,
+      "servo_deg": -20.0,
+      "shin_deg": -16.85,
+      "spherical_pole_angle_deg": 51.85,
+      "pole_margin_to_opening_deg": 38.15,
+      "hard_part_clearance_above_ball_tangent_mm": 6.03
+    },
+    {
+      "t": 0.31,
+      "servo_deg": -18.65,
+      "shin_deg": -15.741,
+      "spherical_pole_angle_deg": 50.741,
+      "pole_margin_to_opening_deg": 39.259,
+      "hard_part_clearance_above_ball_tangent_mm": 6.253
+    },
+    {
+      "t": 0.32,
+      "servo_deg": -17.3,
+      "shin_deg": -14.628,
+      "spherical_pole_angle_deg": 49.628,
+      "pole_margin_to_opening_deg": 40.372,
+      "hard_part_clearance_above_ball_tangent_mm": 6.481
+    },
+    {
+      "t": 0.33,
+      "servo_deg": -15.95,
+      "shin_deg": -13.513,
+      "spherical_pole_angle_deg": 48.513,
+      "pole_margin_to_opening_deg": 41.487,
+      "hard_part_clearance_above_ball_tangent_mm": 6.715
+    },
+    {
+      "t": 0.34,
+      "servo_deg": -14.6,
+      "shin_deg": -12.395,
+      "spherical_pole_angle_deg": 47.395,
+      "pole_margin_to_opening_deg": 42.605,
+      "hard_part_clearance_above_ball_tangent_mm": 6.955
+    },
+    {
+      "t": 0.35,
+      "servo_deg": -13.25,
+      "shin_deg": -11.275,
+      "spherical_pole_angle_deg": 46.275,
+      "pole_margin_to_opening_deg": 43.725,
+      "hard_part_clearance_above_ball_tangent_mm": 7.2
+    },
+    {
+      "t": 0.36,
+      "servo_deg": -11.9,
+      "shin_deg": -10.153,
+      "spherical_pole_angle_deg": 45.153,
+      "pole_margin_to_opening_deg": 44.847,
+      "hard_part_clearance_above_ball_tangent_mm": 7.45
+    },
+    {
+      "t": 0.37,
+      "servo_deg": -10.55,
+      "shin_deg": -9.029,
+      "spherical_pole_angle_deg": 44.029,
+      "pole_margin_to_opening_deg": 45.971,
+      "hard_part_clearance_above_ball_tangent_mm": 7.706
+    },
+    {
+      "t": 0.38,
+      "servo_deg": -9.2,
+      "shin_deg": -7.904,
+      "spherical_pole_angle_deg": 42.904,
+      "pole_margin_to_opening_deg": 47.096,
+      "hard_part_clearance_above_ball_tangent_mm": 7.966
+    },
+    {
+      "t": 0.39,
+      "servo_deg": -7.85,
+      "shin_deg": -6.777,
+      "spherical_pole_angle_deg": 41.777,
+      "pole_margin_to_opening_deg": 48.223,
+      "hard_part_clearance_above_ball_tangent_mm": 8.154
+    },
+    {
+      "t": 0.4,
+      "servo_deg": -6.5,
+      "shin_deg": -5.649,
+      "spherical_pole_angle_deg": 40.649,
+      "pole_margin_to_opening_deg": 49.351,
+      "hard_part_clearance_above_ball_tangent_mm": 8.249
+    },
+    {
+      "t": 0.41,
+      "servo_deg": -5.15,
+      "shin_deg": -4.519,
+      "spherical_pole_angle_deg": 39.519,
+      "pole_margin_to_opening_deg": 50.481,
+      "hard_part_clearance_above_ball_tangent_mm": 8.348
+    },
+    {
+      "t": 0.42,
+      "servo_deg": -3.8,
+      "shin_deg": -3.389,
+      "spherical_pole_angle_deg": 38.389,
+      "pole_margin_to_opening_deg": 51.611,
+      "hard_part_clearance_above_ball_tangent_mm": 8.453
+    },
+    {
+      "t": 0.43,
+      "servo_deg": -2.45,
+      "shin_deg": -2.259,
+      "spherical_pole_angle_deg": 37.259,
+      "pole_margin_to_opening_deg": 52.741,
+      "hard_part_clearance_above_ball_tangent_mm": 8.561
+    },
+    {
+      "t": 0.44,
+      "servo_deg": -1.1,
+      "shin_deg": -1.128,
+      "spherical_pole_angle_deg": 36.128,
+      "pole_margin_to_opening_deg": 53.872,
+      "hard_part_clearance_above_ball_tangent_mm": 8.674
+    },
+    {
+      "t": 0.45,
+      "servo_deg": 0.25,
+      "shin_deg": 0.003,
+      "spherical_pole_angle_deg": 34.997,
+      "pole_margin_to_opening_deg": 55.003,
+      "hard_part_clearance_above_ball_tangent_mm": 8.792
+    },
+    {
+      "t": 0.46,
+      "servo_deg": 1.6,
+      "shin_deg": 1.134,
+      "spherical_pole_angle_deg": 33.866,
+      "pole_margin_to_opening_deg": 56.134,
+      "hard_part_clearance_above_ball_tangent_mm": 8.914
+    },
+    {
+      "t": 0.47,
+      "servo_deg": 2.95,
+      "shin_deg": 2.266,
+      "spherical_pole_angle_deg": 32.734,
+      "pole_margin_to_opening_deg": 57.266,
+      "hard_part_clearance_above_ball_tangent_mm": 9.04
+    },
+    {
+      "t": 0.48,
+      "servo_deg": 4.3,
+      "shin_deg": 3.396,
+      "spherical_pole_angle_deg": 31.604,
+      "pole_margin_to_opening_deg": 58.396,
+      "hard_part_clearance_above_ball_tangent_mm": 9.171
+    },
+    {
+      "t": 0.49,
+      "servo_deg": 5.65,
+      "shin_deg": 4.527,
+      "spherical_pole_angle_deg": 30.473,
+      "pole_margin_to_opening_deg": 59.527,
+      "hard_part_clearance_above_ball_tangent_mm": 9.306
+    },
+    {
+      "t": 0.5,
+      "servo_deg": 7.0,
+      "shin_deg": 5.656,
+      "spherical_pole_angle_deg": 29.344,
+      "pole_margin_to_opening_deg": 60.656,
+      "hard_part_clearance_above_ball_tangent_mm": 9.444
+    },
+    {
+      "t": 0.51,
+      "servo_deg": 8.35,
+      "shin_deg": 6.785,
+      "spherical_pole_angle_deg": 28.215,
+      "pole_margin_to_opening_deg": 61.785,
+      "hard_part_clearance_above_ball_tangent_mm": 9.587
+    },
+    {
+      "t": 0.52,
+      "servo_deg": 9.7,
+      "shin_deg": 7.912,
+      "spherical_pole_angle_deg": 27.088,
+      "pole_margin_to_opening_deg": 62.912,
+      "hard_part_clearance_above_ball_tangent_mm": 9.734
+    },
+    {
+      "t": 0.53,
+      "servo_deg": 11.05,
+      "shin_deg": 9.039,
+      "spherical_pole_angle_deg": 25.961,
+      "pole_margin_to_opening_deg": 64.039,
+      "hard_part_clearance_above_ball_tangent_mm": 9.884
+    },
+    {
+      "t": 0.54,
+      "servo_deg": 12.4,
+      "shin_deg": 10.164,
+      "spherical_pole_angle_deg": 24.836,
+      "pole_margin_to_opening_deg": 65.164,
+      "hard_part_clearance_above_ball_tangent_mm": 10.039
+    },
+    {
+      "t": 0.55,
+      "servo_deg": 13.75,
+      "shin_deg": 11.287,
+      "spherical_pole_angle_deg": 23.713,
+      "pole_margin_to_opening_deg": 66.287,
+      "hard_part_clearance_above_ball_tangent_mm": 10.196
+    },
+    {
+      "t": 0.56,
+      "servo_deg": 15.1,
+      "shin_deg": 12.408,
+      "spherical_pole_angle_deg": 22.592,
+      "pole_margin_to_opening_deg": 67.408,
+      "hard_part_clearance_above_ball_tangent_mm": 10.358
+    },
+    {
+      "t": 0.57,
+      "servo_deg": 16.45,
+      "shin_deg": 13.527,
+      "spherical_pole_angle_deg": 21.473,
+      "pole_margin_to_opening_deg": 68.527,
+      "hard_part_clearance_above_ball_tangent_mm": 10.522
+    },
+    {
+      "t": 0.58,
+      "servo_deg": 17.8,
+      "shin_deg": 14.644,
+      "spherical_pole_angle_deg": 20.356,
+      "pole_margin_to_opening_deg": 69.644,
+      "hard_part_clearance_above_ball_tangent_mm": 10.69
+    },
+    {
+      "t": 0.59,
+      "servo_deg": 19.15,
+      "shin_deg": 15.758,
+      "spherical_pole_angle_deg": 19.242,
+      "pole_margin_to_opening_deg": 70.758,
+      "hard_part_clearance_above_ball_tangent_mm": 10.861
+    },
+    {
+      "t": 0.6,
+      "servo_deg": 20.5,
+      "shin_deg": 16.869,
+      "spherical_pole_angle_deg": 18.131,
+      "pole_margin_to_opening_deg": 71.869,
+      "hard_part_clearance_above_ball_tangent_mm": 11.035
+    },
+    {
+      "t": 0.61,
+      "servo_deg": 21.85,
+      "shin_deg": 17.978,
+      "spherical_pole_angle_deg": 17.022,
+      "pole_margin_to_opening_deg": 72.978,
+      "hard_part_clearance_above_ball_tangent_mm": 11.212
+    },
+    {
+      "t": 0.62,
+      "servo_deg": 23.2,
+      "shin_deg": 19.083,
+      "spherical_pole_angle_deg": 15.917,
+      "pole_margin_to_opening_deg": 74.083,
+      "hard_part_clearance_above_ball_tangent_mm": 11.392
+    },
+    {
+      "t": 0.63,
+      "servo_deg": 24.55,
+      "shin_deg": 20.184,
+      "spherical_pole_angle_deg": 14.816,
+      "pole_margin_to_opening_deg": 75.184,
+      "hard_part_clearance_above_ball_tangent_mm": 11.574
+    },
+    {
+      "t": 0.64,
+      "servo_deg": 25.9,
+      "shin_deg": 21.282,
+      "spherical_pole_angle_deg": 13.718,
+      "pole_margin_to_opening_deg": 76.282,
+      "hard_part_clearance_above_ball_tangent_mm": 11.759
+    },
+    {
+      "t": 0.65,
+      "servo_deg": 27.25,
+      "shin_deg": 22.375,
+      "spherical_pole_angle_deg": 12.625,
+      "pole_margin_to_opening_deg": 77.375,
+      "hard_part_clearance_above_ball_tangent_mm": 11.946
+    },
+    {
+      "t": 0.66,
+      "servo_deg": 28.6,
+      "shin_deg": 23.464,
+      "spherical_pole_angle_deg": 11.536,
+      "pole_margin_to_opening_deg": 78.464,
+      "hard_part_clearance_above_ball_tangent_mm": 12.135
+    },
+    {
+      "t": 0.67,
+      "servo_deg": 29.95,
+      "shin_deg": 24.548,
+      "spherical_pole_angle_deg": 10.452,
+      "pole_margin_to_opening_deg": 79.548,
+      "hard_part_clearance_above_ball_tangent_mm": 12.326
+    },
+    {
+      "t": 0.68,
+      "servo_deg": 31.3,
+      "shin_deg": 25.627,
+      "spherical_pole_angle_deg": 9.373,
+      "pole_margin_to_opening_deg": 80.627,
+      "hard_part_clearance_above_ball_tangent_mm": 12.519
+    },
+    {
+      "t": 0.69,
+      "servo_deg": 32.65,
+      "shin_deg": 26.701,
+      "spherical_pole_angle_deg": 8.299,
+      "pole_margin_to_opening_deg": 81.701,
+      "hard_part_clearance_above_ball_tangent_mm": 12.714
+    },
+    {
+      "t": 0.7,
+      "servo_deg": 34.0,
+      "shin_deg": 27.769,
+      "spherical_pole_angle_deg": 7.231,
+      "pole_margin_to_opening_deg": 82.769,
+      "hard_part_clearance_above_ball_tangent_mm": 12.91
+    },
+    {
+      "t": 0.71,
+      "servo_deg": 35.35,
+      "shin_deg": 28.83,
+      "spherical_pole_angle_deg": 6.17,
+      "pole_margin_to_opening_deg": 83.83,
+      "hard_part_clearance_above_ball_tangent_mm": 13.108
+    },
+    {
+      "t": 0.72,
+      "servo_deg": 36.7,
+      "shin_deg": 29.885,
+      "spherical_pole_angle_deg": 5.115,
+      "pole_margin_to_opening_deg": 84.885,
+      "hard_part_clearance_above_ball_tangent_mm": 13.306
+    },
+    {
+      "t": 0.73,
+      "servo_deg": 38.05,
+      "shin_deg": 30.933,
+      "spherical_pole_angle_deg": 4.067,
+      "pole_margin_to_opening_deg": 85.933,
+      "hard_part_clearance_above_ball_tangent_mm": 13.506
+    },
+    {
+      "t": 0.74,
+      "servo_deg": 39.4,
+      "shin_deg": 31.973,
+      "spherical_pole_angle_deg": 3.027,
+      "pole_margin_to_opening_deg": 86.973,
+      "hard_part_clearance_above_ball_tangent_mm": 13.706
+    },
+    {
+      "t": 0.75,
+      "servo_deg": 40.75,
+      "shin_deg": 33.006,
+      "spherical_pole_angle_deg": 1.994,
+      "pole_margin_to_opening_deg": 88.006,
+      "hard_part_clearance_above_ball_tangent_mm": 13.906
+    },
+    {
+      "t": 0.76,
+      "servo_deg": 42.1,
+      "shin_deg": 34.029,
+      "spherical_pole_angle_deg": 0.971,
+      "pole_margin_to_opening_deg": 89.029,
+      "hard_part_clearance_above_ball_tangent_mm": 14.107
+    },
+    {
+      "t": 0.77,
+      "servo_deg": 43.45,
+      "shin_deg": 35.044,
+      "spherical_pole_angle_deg": 0.044,
+      "pole_margin_to_opening_deg": 89.956,
+      "hard_part_clearance_above_ball_tangent_mm": 14.291
+    },
+    {
+      "t": 0.78,
+      "servo_deg": 44.8,
+      "shin_deg": 36.049,
+      "spherical_pole_angle_deg": 1.049,
+      "pole_margin_to_opening_deg": 88.951,
+      "hard_part_clearance_above_ball_tangent_mm": 14.092
+    },
+    {
+      "t": 0.79,
+      "servo_deg": 46.15,
+      "shin_deg": 37.043,
+      "spherical_pole_angle_deg": 2.043,
+      "pole_margin_to_opening_deg": 87.957,
+      "hard_part_clearance_above_ball_tangent_mm": 13.897
+    },
+    {
+      "t": 0.8,
+      "servo_deg": 47.5,
+      "shin_deg": 38.027,
+      "spherical_pole_angle_deg": 3.027,
+      "pole_margin_to_opening_deg": 86.973,
+      "hard_part_clearance_above_ball_tangent_mm": 13.706
+    },
+    {
+      "t": 0.81,
+      "servo_deg": 48.85,
+      "shin_deg": 38.998,
+      "spherical_pole_angle_deg": 3.998,
+      "pole_margin_to_opening_deg": 86.002,
+      "hard_part_clearance_above_ball_tangent_mm": 13.519
+    },
+    {
+      "t": 0.82,
+      "servo_deg": 50.2,
+      "shin_deg": 39.958,
+      "spherical_pole_angle_deg": 4.958,
+      "pole_margin_to_opening_deg": 85.042,
+      "hard_part_clearance_above_ball_tangent_mm": 13.336
+    },
+    {
+      "t": 0.83,
+      "servo_deg": 51.55,
+      "shin_deg": 40.904,
+      "spherical_pole_angle_deg": 5.904,
+      "pole_margin_to_opening_deg": 84.096,
+      "hard_part_clearance_above_ball_tangent_mm": 13.158
+    },
+    {
+      "t": 0.84,
+      "servo_deg": 52.9,
+      "shin_deg": 41.835,
+      "spherical_pole_angle_deg": 6.835,
+      "pole_margin_to_opening_deg": 83.165,
+      "hard_part_clearance_above_ball_tangent_mm": 12.984
+    },
+    {
+      "t": 0.85,
+      "servo_deg": 54.25,
+      "shin_deg": 42.752,
+      "spherical_pole_angle_deg": 7.752,
+      "pole_margin_to_opening_deg": 82.248,
+      "hard_part_clearance_above_ball_tangent_mm": 12.815
+    },
+    {
+      "t": 0.86,
+      "servo_deg": 55.6,
+      "shin_deg": 43.652,
+      "spherical_pole_angle_deg": 8.652,
+      "pole_margin_to_opening_deg": 81.348,
+      "hard_part_clearance_above_ball_tangent_mm": 12.65
+    },
+    {
+      "t": 0.87,
+      "servo_deg": 56.95,
+      "shin_deg": 44.536,
+      "spherical_pole_angle_deg": 9.536,
+      "pole_margin_to_opening_deg": 80.464,
+      "hard_part_clearance_above_ball_tangent_mm": 12.49
+    },
+    {
+      "t": 0.88,
+      "servo_deg": 58.3,
+      "shin_deg": 45.401,
+      "spherical_pole_angle_deg": 10.401,
+      "pole_margin_to_opening_deg": 79.599,
+      "hard_part_clearance_above_ball_tangent_mm": 12.336
+    },
+    {
+      "t": 0.89,
+      "servo_deg": 59.65,
+      "shin_deg": 46.246,
+      "spherical_pole_angle_deg": 11.246,
+      "pole_margin_to_opening_deg": 78.754,
+      "hard_part_clearance_above_ball_tangent_mm": 12.186
+    },
+    {
+      "t": 0.9,
+      "servo_deg": 61.0,
+      "shin_deg": 47.071,
+      "spherical_pole_angle_deg": 12.071,
+      "pole_margin_to_opening_deg": 77.929,
+      "hard_part_clearance_above_ball_tangent_mm": 12.042
+    },
+    {
+      "t": 0.91,
+      "servo_deg": 62.35,
+      "shin_deg": 47.874,
+      "spherical_pole_angle_deg": 12.874,
+      "pole_margin_to_opening_deg": 77.126,
+      "hard_part_clearance_above_ball_tangent_mm": 11.903
+    },
+    {
+      "t": 0.92,
+      "servo_deg": 63.7,
+      "shin_deg": 48.653,
+      "spherical_pole_angle_deg": 13.653,
+      "pole_margin_to_opening_deg": 76.347,
+      "hard_part_clearance_above_ball_tangent_mm": 11.77
+    },
+    {
+      "t": 0.93,
+      "servo_deg": 65.05,
+      "shin_deg": 49.407,
+      "spherical_pole_angle_deg": 14.407,
+      "pole_margin_to_opening_deg": 75.593,
+      "hard_part_clearance_above_ball_tangent_mm": 11.643
+    },
+    {
+      "t": 0.94,
+      "servo_deg": 66.4,
+      "shin_deg": 50.135,
+      "spherical_pole_angle_deg": 15.135,
+      "pole_margin_to_opening_deg": 74.865,
+      "hard_part_clearance_above_ball_tangent_mm": 11.521
+    },
+    {
+      "t": 0.95,
+      "servo_deg": 67.75,
+      "shin_deg": 50.834,
+      "spherical_pole_angle_deg": 15.834,
+      "pole_margin_to_opening_deg": 74.166,
+      "hard_part_clearance_above_ball_tangent_mm": 11.406
+    },
+    {
+      "t": 0.96,
+      "servo_deg": 69.1,
+      "shin_deg": 51.502,
+      "spherical_pole_angle_deg": 16.502,
+      "pole_margin_to_opening_deg": 73.498,
+      "hard_part_clearance_above_ball_tangent_mm": 11.297
+    },
+    {
+      "t": 0.97,
+      "servo_deg": 70.45,
+      "shin_deg": 52.139,
+      "spherical_pole_angle_deg": 17.139,
+      "pole_margin_to_opening_deg": 72.861,
+      "hard_part_clearance_above_ball_tangent_mm": 11.194
+    },
+    {
+      "t": 0.98,
+      "servo_deg": 71.8,
+      "shin_deg": 52.742,
+      "spherical_pole_angle_deg": 17.742,
+      "pole_margin_to_opening_deg": 72.258,
+      "hard_part_clearance_above_ball_tangent_mm": 11.097
+    },
+    {
+      "t": 0.99,
+      "servo_deg": 73.15,
+      "shin_deg": 53.309,
+      "spherical_pole_angle_deg": 18.309,
+      "pole_margin_to_opening_deg": 71.691,
+      "hard_part_clearance_above_ball_tangent_mm": 11.007
+    },
+    {
+      "t": 1.0,
+      "servo_deg": 74.5,
+      "shin_deg": 53.837,
+      "spherical_pole_angle_deg": 18.837,
+      "pole_margin_to_opening_deg": 71.163,
+      "hard_part_clearance_above_ball_tangent_mm": 10.925
+    }
+  ],
+  "mount_roll_deg": 180.0,
+  "variant": "constant_H",
+  "connector_to_shin_matrix": [
+    [
+      -1,
+      0,
+      0,
+      -47
+    ],
+    [
+      0,
+      -1,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      1,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ]
+}

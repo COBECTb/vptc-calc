@@ -4,6 +4,7 @@ import math
 import argparse
 import json
 from pathlib import Path
+from os.path import relpath
 from encoder_scad import EncoderDimensions, encoder_metrics, encoder_manifest, generate_encoder_scad
 
 parser = argparse.ArgumentParser(description="Параметрический генератор редуктора и вариантов с абсолютным энкодером")
@@ -50,6 +51,8 @@ if RESOLUTION < 30 or i < 2 or min(d_roller,h_roller,Rout,D) <= 0:
 u = 1
 # Базовое имя напечатанных STL, на которые ссылается визуальная сборка body()
 stl_base = f"vptc_roller_{i}_{d_roller:g}_{h_roller:g}_{D:g}"
+foot_scad_ref = Path(relpath(Path(__file__).resolve().parent / 'output' / 'foots.scad',
+                            Path(args.output).resolve().parent)).as_posix()
 
 # === Расчёты ===
 e = 0.2 * d_roller
@@ -324,6 +327,7 @@ except ValueError as error:
 
 # === Генерация OpenSCAD-кода ===
 openscad_code = f"""// ВПТК редуктор с роликами (для 3D-печати)
+use <{foot_scad_ref}>
 $fn = 60;
 eps = 0.01; // Выход вычитателей за открытые поверхности; глухие глубины сохранены.
 // Параметры
@@ -807,7 +811,7 @@ module shoulder_horn() {{
             color("blue") translate([0, 0, -shoulder_horn_h2]) cylinder(h = 2, r1 = shoulder_bearing_id/2+2,  r2 = shoulder_bearing_id/2, center = false);
 
             cylinder(h = shoulder_horn_h1+1.5, r = bearing_inner/2+2, center = false);
-    		color("green") translate([bearing_inner/2-4, -15/2, -0.01]) cube([15,15,shoulder_horn_h1]);
+            color("green") translate([bearing_inner/2-4, -15/2, -0.01]) cube([15,15,shoulder_horn_h1]);
             color("lightgreen") translate([shoulder_horn_r, 0, -1]) cylinder(h = shoulder_horn_h1+1, r = 15/2, center = false);
         }}
         // Посадочные места под крепеж нагрузки m3
@@ -1080,7 +1084,9 @@ module shin(foot=true){{
             difference() {{
                 translate([-14,0,0]) cube([foot_r*2+27,15,shoulder_horn_h2+shoulder_horn_h1-1], center = true );
                 rotate([0,4,0]) rotate([0,90,-90]) translate([-15,20,0]) cot_surface(curve_length=15,curve_height=30);
+                translate([-47,0,0])rotate([180,180,0])foot_joint_original_end_cut();
             }}
+            translate([-47,0,0])rotate([180,180,0])foot_joint_tongue();
             if(foot==true){{
                 translate([-47,0,0])rotate([180,180,0])foot_connector();
             }}
@@ -1096,13 +1102,8 @@ module shin(foot=true){{
 // соединитель для нижней части ноги
 module foot_connector()
 {{
-    difference() {{
-        translate([5,0,0]) cube([40,24,shoulder_h/2+7], center = true );
-        translate([0,0,0]) cube([36.02,15.4,shoulder_h/2+1.8], center = true );
-        translate([0,0,0]) cylinder( h = 25, r = 2.1, center = true );
-        translate([-30,11,0]) rotate([0,0,38])cube([40,24,shoulder_h/2+7.02], center = true );
-    }}
-    translate([74.5,1,-0.5])rotate([90,0,0]) import("/Users/sovest/Downloads/foots.stl");
+    foot_cuff();
+    robot_foot();
 }}
 
 // Держатель-бочонок для датчика MT6816 / XJX-135
@@ -1195,8 +1196,8 @@ servo_angle=$t*135-135/2+7;
 leg_angle1=$t*360;
 
 
-module leg(){{
-    result = calculate_rigid_linkage(servo_angle, connect_rod_l, shoulder_horn_r, foot_r, [0,0,0], point_foot_center);
+module leg(servo=servo_angle){{
+    result = calculate_rigid_linkage(servo, connect_rod_l, shoulder_horn_r, foot_r, [0,0,0], point_foot_center);
 
     point1 = get_value(result, "point1");
     point2 = get_value(result, "point2");
@@ -1207,7 +1208,7 @@ module leg(){{
 
     echo("Точка 1: ", point1);
     echo("Точка 2: ", point2);
-    echo("Угол толкателя: ", servo_angle, "°");
+    echo("Угол толкателя: ", servo, "°");
     echo("Угол колена: ", angle2, "°");
     echo("Длина тяги (расчетная): ", norm(point2 - point1), "мм");
     echo("Радиус плеча толкателя:", shoulder_horn_r, "мм");
@@ -1217,7 +1218,7 @@ module leg(){{
     echo("Диапазон возможных длин: от ", min_possible, " до ", max_possible, "мм");
     echo("Решение существует: ", solution_exists);
     union() {{
-        rotate([0,0,servo_angle]) translate([0,0,h_reducer+2*zazor+cap_thickness+8]) rotate([180,0,0]) shoulder_horn();
+        rotate([0,0,servo]) translate([0,0,h_reducer+2*zazor+cap_thickness+8]) rotate([180,0,0]) shoulder_horn();
         translate([0,0,h_reducer+cap_thickness+2*zazor]) shoulder_top();
         color("gray") translate([0, 0,ecc_shaft_h1 + ecc_spacer_h+separator_h+5 +h_reducer+2*zazor+cap_thickness+1.99]) bearing_simple(25,37,7);
         translate([-25,65,h_reducer+cap_thickness+2*zazor]) hip();

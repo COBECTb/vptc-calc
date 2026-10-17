@@ -129,7 +129,7 @@ class GeneratorIntegrationTests(unittest.TestCase):
     def test_base_parts_remain_available(self):
         parts=['rigid_gear','rigid_gear_with_bracing','separator','reducer_connector',
                'connector_clamp','eccentric','cap','cap_with_bracing','eccentric_shaft',
-               'motor_cover','shoulder_horn','shoulder_top','hip','hip_top']
+               'motor_cover','shoulder_horn','shoulder_top','hip','hip_top','foot_connector','shin']
         for part in parts:
             with self.subTest(part=part):
                 source=self.work/f'base_{part}.scad'
@@ -139,6 +139,45 @@ class GeneratorIntegrationTests(unittest.TestCase):
                 self.assertEqual(result.returncode,0,result.stderr)
                 self.assertNotIn('WARNING:',result.stderr)
                 self.assertNotIn('ERROR:',result.stderr)
+
+    @unittest.skipUnless(OPENSCAD,'OpenSCAD CLI is not installed')
+    def test_foot_preview_transform_matches_native_shin_mount(self):
+        import importlib.util
+        spec=importlib.util.spec_from_file_location('foot_kinematics',ROOT/'output/foot/foot_kinematics.py')
+        preview=importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(preview)
+        native=(ROOT/'output/vptc_roller.scad').read_text()
+        shin=native.split('module shin(foot=true){',1)[1].split('module foot_connector()',1)[0]
+        mount=re.search(r'(translate\(\[[-\d.,]+\]\)\s*rotate\(\[[-\d.,]+\]\))foot_connector\(\);',shin)
+        self.assertIsNotNone(mount)
+        point=(101,13,7)  # Nonzero Y and Z distinguish the two 180-degree rotations.
+        source=self.work/'native_foot_mount_probe.scad'
+        source.write_text(mount.group(1)+f'translate({list(point)}) cube([.2,.2,.2],center=true);\n')
+        result=subprocess.run([OPENSCAD,'-o',str(source.with_suffix('.stl')),str(source)],
+            capture_output=True,text=True,timeout=30)
+        self.assertEqual(result.returncode,0,result.stderr)
+        vertices=[tuple(map(float,v)) for v in re.findall(
+            r'vertex\s+([-\d.eE+]+)\s+([-\d.eE+]+)\s+([-\d.eE+]+)',source.with_suffix('.stl').read_text())]
+        center=tuple((min(v[i] for v in vertices)+max(v[i] for v in vertices))/2 for i in range(3))
+        for actual,expected in zip(center,preview.connector_point_to_shin(point)):
+            self.assertAlmostEqual(actual,expected,places=5)
+
+    @unittest.skipUnless(OPENSCAD,'OpenSCAD CLI is not installed')
+    def test_native_leg_motion_follows_animation_time(self):
+        angles=[]
+        for t in [0,.5,1]:
+            result=subprocess.run([OPENSCAD,'-o',str(self.work/f'leg_time_{t}.csg'),
+                '-D',f'$t={t}',str(ROOT/'output/foot/leg_motion.scad')],
+                capture_output=True,text=True,timeout=30)
+            self.assertEqual(result.returncode,0,result.stderr)
+            self.assertNotIn('WARNING:',result.stderr)
+            self.assertNotIn('ERROR:',result.stderr)
+            angle=re.search(r'Угол колена: ", ([-\d.]+)',result.stderr)
+            self.assertIsNotNone(angle,result.stderr)
+            angles.append(float(angle.group(1)))
+        self.assertLess(angles[0],angles[1])
+        self.assertLess(angles[1],angles[2])
+        self.assertAlmostEqual(angles[1],5.656194,places=4)
 
     @unittest.skipUnless(OPENSCAD,'OpenSCAD CLI is not installed')
     def test_real_bearing_stop_and_blind_counterbore_depth(self):

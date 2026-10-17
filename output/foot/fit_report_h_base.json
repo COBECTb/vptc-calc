@@ -1,0 +1,783 @@
+{
+  "revision": 6,
+  "variant": "constant_H",
+  "units": "mm",
+  "robot_mass_kg": 6,
+  "nozzle_mm": 0.4,
+  "material": "PLA+ (manufacturer and print strength unspecified)",
+  "parts": {
+    "core": {
+      "triangles": 4100,
+      "volume_mm3": 60377.6886,
+      "watertight": true,
+      "surface_components": 1,
+      "solid_components": 1,
+      "enclosed_void_shells": 0,
+      "bounds_mm": [
+        [
+          24.98,
+          -61.4537,
+          -11.75
+        ],
+        [
+          188.745,
+          12.0,
+          11.75
+        ]
+      ]
+    },
+    "sole": {
+      "triangles": 4552,
+      "volume_mm3": 10894.9389,
+      "watertight": true,
+      "surface_components": 1,
+      "solid_components": 1,
+      "enclosed_void_shells": 0,
+      "bounds_mm": [
+        [
+          157.802,
+          -70.2273,
+          -19.9846
+        ],
+        [
+          194.154,
+          -38.7831,
+          19.9846
+        ]
+      ]
+    },
+    "connector": {
+      "triangles": 684,
+      "volume_mm3": 12879.9087,
+      "watertight": true,
+      "surface_components": 1,
+      "solid_components": 1,
+      "enclosed_void_shells": 0,
+      "bounds_mm": [
+        [
+          -15.0,
+          -12.0,
+          -11.75
+        ],
+        [
+          25.0,
+          12.0,
+          11.75
+        ]
+      ]
+    },
+    "shin": {
+      "triangles": 1748,
+      "volume_mm3": 23828.2382,
+      "watertight": true,
+      "surface_components": 1,
+      "solid_components": 1,
+      "enclosed_void_shells": 0,
+      "bounds_mm": [
+        [
+          -91.5,
+          -7.5,
+          -9.5
+        ],
+        [
+          17.5,
+          7.5,
+          10.5
+        ]
+      ]
+    },
+    "connector_and_core": {
+      "triangles": 4762,
+      "volume_mm3": 73246.3425,
+      "watertight": true,
+      "surface_components": 1,
+      "solid_components": 1,
+      "enclosed_void_shells": 0,
+      "bounds_mm": [
+        [
+          -15.0,
+          -61.4537,
+          -11.75
+        ],
+        [
+          188.745,
+          12.0,
+          11.75
+        ]
+      ]
+    },
+    "abutment_overlap": {
+      "triangles": 12,
+      "volume_mm3": 11.28,
+      "watertight": true,
+      "surface_components": 1,
+      "solid_components": 1,
+      "enclosed_void_shells": 0,
+      "bounds_mm": [
+        [
+          24.98,
+          -12.0,
+          -11.75
+        ],
+        [
+          25.0,
+          12.0,
+          11.75
+        ]
+      ]
+    },
+    "core_shin_overlap": {
+      "triangles": 0,
+      "volume_mm3": 0
+    },
+    "core_sole_overlap": {
+      "triangles": 0,
+      "volume_mm3": 0
+    }
+  },
+  "mass_estimate": {
+    "assumed_density_g_cm3": 1.24,
+    "solid_geometry_rigid_with_connector_g": 90.8,
+    "sole_volume_cm3": 10.89,
+    "note": "CAD solid-volume estimate; excludes hardware, slicer voids, support, brim. Density assumption, not measured filament."
+  },
+  "mounting": {
+    "roll_about_connector_X_deg": 180.0,
+    "cuff_transformed": false,
+    "rigid_print_roll_deg": -180.0
+  },
+  "load_screen": {
+    "method": "Variable tangent-plane sections integrated from the actual CAD mesh; linear axial plus biaxial bending equilibrium only. NOT FEA, fatigue analysis or capacity certification. Long blade t=0.035..0.72; excludes heel frame and connector/pin.",
+    "peak_abs_longitudinal_normal_stress_MPa": {
+      "two_feet_static": 1.608,
+      "one_foot_static": 3.217,
+      "150N_reference_mount_direction": 8.197,
+      "150N_connector_axis": 6.624,
+      "150N_reference_plus_45N_lateral": 18.218
+    },
+    "forces_N": {
+      "two_feet_static": [
+        -16.88,
+        24.108,
+        -0.0
+      ],
+      "one_foot_static": [
+        -33.761,
+        48.215,
+        -0.0
+      ],
+      "150N_reference_mount_direction": [
+        -86.036,
+        122.873,
+        -0.0
+      ],
+      "150N_connector_axis": [
+        -150.0,
+        0.0,
+        0.0
+      ],
+      "150N_reference_plus_45N_lateral": [
+        -86.036,
+        122.873,
+        45.0
+      ]
+    },
+    "reference_contact_point_mm": [
+      185.644,
+      -66.629,
+      0.0
+    ],
+    "contact_model_note": "Reference direction is a load case, not a fixed spherical contact normal. Actual surface contact varies with hip and knee pose.",
+    "nominal_150N_is_6kg_on_one_foot_at_g_factor": 2.548,
+    "connector_knee_axis_moment_Nm_150N_reference": 22.85,
+    "sections": [
+      {
+        "t": 0.035,
+        "width_mm": 24.0,
+        "depth_mm": 23.5,
+        "area_mm2": 273.96,
+        "I_z_mm4": 20575.2,
+        "I_y_mm4": 8173.5,
+        "normal_stress_MPa": {
+          "two_feet_static": 1.608,
+          "one_foot_static": 3.217,
+          "150N_reference_mount_direction": 8.197,
+          "150N_connector_axis": 6.624,
+          "150N_reference_plus_45N_lateral": 18.218
+        }
+      },
+      {
+        "t": 0.0518,
+        "width_mm": 24.0,
+        "depth_mm": 23.5,
+        "area_mm2": 273.96,
+        "I_z_mm4": 20575.3,
+        "I_y_mm4": 8173.5,
+        "normal_stress_MPa": {
+          "two_feet_static": 1.568,
+          "one_foot_static": 3.136,
+          "150N_reference_mount_direction": 7.992,
+          "150N_connector_axis": 6.621,
+          "150N_reference_plus_45N_lateral": 17.823
+        }
+      },
+      {
+        "t": 0.0686,
+        "width_mm": 24.0,
+        "depth_mm": 23.5,
+        "area_mm2": 273.96,
+        "I_z_mm4": 20575.2,
+        "I_y_mm4": 8173.5,
+        "normal_stress_MPa": {
+          "two_feet_static": 1.528,
+          "one_foot_static": 3.056,
+          "150N_reference_mount_direction": 7.788,
+          "150N_connector_axis": 6.616,
+          "150N_reference_plus_45N_lateral": 17.428
+        }
+      },
+      {
+        "t": 0.0854,
+        "width_mm": 24.0,
+        "depth_mm": 23.5,
+        "area_mm2": 273.96,
+        "I_z_mm4": 20575.4,
+        "I_y_mm4": 8173.5,
+        "normal_stress_MPa": {
+          "two_feet_static": 1.488,
+          "one_foot_static": 2.976,
+          "150N_reference_mount_direction": 7.584,
+          "150N_connector_axis": 6.61,
+          "150N_reference_plus_45N_lateral": 17.035
+        }
+      },
+      {
+        "t": 0.1022,
+        "width_mm": 24.0,
+        "depth_mm": 23.5,
+        "area_mm2": 273.96,
+        "I_z_mm4": 20575.3,
+        "I_y_mm4": 8173.5,
+        "normal_stress_MPa": {
+          "two_feet_static": 1.448,
+          "one_foot_static": 2.897,
+          "150N_reference_mount_direction": 7.382,
+          "150N_connector_axis": 6.603,
+          "150N_reference_plus_45N_lateral": 16.642
+        }
+      },
+      {
+        "t": 0.119,
+        "width_mm": 24.0,
+        "depth_mm": 23.5,
+        "area_mm2": 273.96,
+        "I_z_mm4": 20575.4,
+        "I_y_mm4": 8173.5,
+        "normal_stress_MPa": {
+          "two_feet_static": 1.409,
+          "one_foot_static": 2.818,
+          "150N_reference_mount_direction": 7.18,
+          "150N_connector_axis": 6.594,
+          "150N_reference_plus_45N_lateral": 16.252
+        }
+      },
+      {
+        "t": 0.1358,
+        "width_mm": 24.0,
+        "depth_mm": 23.5,
+        "area_mm2": 273.96,
+        "I_z_mm4": 20575.2,
+        "I_y_mm4": 8173.5,
+        "normal_stress_MPa": {
+          "two_feet_static": 1.369,
+          "one_foot_static": 2.739,
+          "150N_reference_mount_direction": 6.98,
+          "150N_connector_axis": 6.583,
+          "150N_reference_plus_45N_lateral": 15.862
+        }
+      },
+      {
+        "t": 0.1526,
+        "width_mm": 24.0,
+        "depth_mm": 23.5,
+        "area_mm2": 273.96,
+        "I_z_mm4": 20575.4,
+        "I_y_mm4": 8173.5,
+        "normal_stress_MPa": {
+          "two_feet_static": 1.33,
+          "one_foot_static": 2.661,
+          "150N_reference_mount_direction": 6.781,
+          "150N_connector_axis": 6.571,
+          "150N_reference_plus_45N_lateral": 15.475
+        }
+      },
+      {
+        "t": 0.1694,
+        "width_mm": 24.0,
+        "depth_mm": 23.5,
+        "area_mm2": 273.96,
+        "I_z_mm4": 20575.4,
+        "I_y_mm4": 8173.5,
+        "normal_stress_MPa": {
+          "two_feet_static": 1.292,
+          "one_foot_static": 2.583,
+          "150N_reference_mount_direction": 6.583,
+          "150N_connector_axis": 6.557,
+          "150N_reference_plus_45N_lateral": 15.089
+        }
+      },
+      {
+        "t": 0.1862,
+        "width_mm": 23.9999,
+        "depth_mm": 23.5,
+        "area_mm2": 273.96,
+        "I_z_mm4": 20575.1,
+        "I_y_mm4": 8173.4,
+        "normal_stress_MPa": {
+          "two_feet_static": 1.253,
+          "one_foot_static": 2.506,
+          "150N_reference_mount_direction": 6.387,
+          "150N_connector_axis": 6.542,
+          "150N_reference_plus_45N_lateral": 14.706
+        }
+      },
+      {
+        "t": 0.2031,
+        "width_mm": 24.0,
+        "depth_mm": 23.5,
+        "area_mm2": 273.96,
+        "I_z_mm4": 20575.2,
+        "I_y_mm4": 8173.5,
+        "normal_stress_MPa": {
+          "two_feet_static": 1.215,
+          "one_foot_static": 2.43,
+          "150N_reference_mount_direction": 6.192,
+          "150N_connector_axis": 6.525,
+          "150N_reference_plus_45N_lateral": 14.325
+        }
+      },
+      {
+        "t": 0.2199,
+        "width_mm": 23.9999,
+        "depth_mm": 23.5,
+        "area_mm2": 273.96,
+        "I_z_mm4": 20575.1,
+        "I_y_mm4": 8173.4,
+        "normal_stress_MPa": {
+          "two_feet_static": 1.177,
+          "one_foot_static": 2.354,
+          "150N_reference_mount_direction": 6.0,
+          "150N_connector_axis": 6.506,
+          "150N_reference_plus_45N_lateral": 13.946
+        }
+      },
+      {
+        "t": 0.2367,
+        "width_mm": 23.9999,
+        "depth_mm": 23.5,
+        "area_mm2": 273.96,
+        "I_z_mm4": 20575.2,
+        "I_y_mm4": 8173.5,
+        "normal_stress_MPa": {
+          "two_feet_static": 1.14,
+          "one_foot_static": 2.279,
+          "150N_reference_mount_direction": 5.809,
+          "150N_connector_axis": 6.485,
+          "150N_reference_plus_45N_lateral": 13.57
+        }
+      },
+      {
+        "t": 0.2535,
+        "width_mm": 24.0,
+        "depth_mm": 23.5,
+        "area_mm2": 273.96,
+        "I_z_mm4": 20575.2,
+        "I_y_mm4": 8173.5,
+        "normal_stress_MPa": {
+          "two_feet_static": 1.102,
+          "one_foot_static": 2.205,
+          "150N_reference_mount_direction": 5.619,
+          "150N_connector_axis": 6.463,
+          "150N_reference_plus_45N_lateral": 13.196
+        }
+      },
+      {
+        "t": 0.2703,
+        "width_mm": 24.0,
+        "depth_mm": 23.5,
+        "area_mm2": 273.96,
+        "I_z_mm4": 20575.4,
+        "I_y_mm4": 8173.5,
+        "normal_stress_MPa": {
+          "two_feet_static": 1.066,
+          "one_foot_static": 2.132,
+          "150N_reference_mount_direction": 5.432,
+          "150N_connector_axis": 6.438,
+          "150N_reference_plus_45N_lateral": 12.826
+        }
+      },
+      {
+        "t": 0.2871,
+        "width_mm": 24.0,
+        "depth_mm": 23.5,
+        "area_mm2": 273.96,
+        "I_z_mm4": 20575.2,
+        "I_y_mm4": 8173.5,
+        "normal_stress_MPa": {
+          "two_feet_static": 1.029,
+          "one_foot_static": 2.059,
+          "150N_reference_mount_direction": 5.247,
+          "150N_connector_axis": 6.412,
+          "150N_reference_plus_45N_lateral": 12.458
+        }
+      },
+      {
+        "t": 0.3039,
+        "width_mm": 24.0,
+        "depth_mm": 23.5,
+        "area_mm2": 273.96,
+        "I_z_mm4": 20575.2,
+        "I_y_mm4": 8173.5,
+        "normal_stress_MPa": {
+          "two_feet_static": 0.994,
+          "one_foot_static": 1.987,
+          "150N_reference_mount_direction": 5.064,
+          "150N_connector_axis": 6.383,
+          "150N_reference_plus_45N_lateral": 12.094
+        }
+      },
+      {
+        "t": 0.3207,
+        "width_mm": 23.9999,
+        "depth_mm": 23.5,
+        "area_mm2": 273.96,
+        "I_z_mm4": 20575.2,
+        "I_y_mm4": 8173.5,
+        "normal_stress_MPa": {
+          "two_feet_static": 0.958,
+          "one_foot_static": 1.916,
+          "150N_reference_mount_direction": 4.883,
+          "150N_connector_axis": 6.353,
+          "150N_reference_plus_45N_lateral": 11.733
+        }
+      },
+      {
+        "t": 0.3375,
+        "width_mm": 24.0,
+        "depth_mm": 23.5,
+        "area_mm2": 273.96,
+        "I_z_mm4": 20575.5,
+        "I_y_mm4": 8173.6,
+        "normal_stress_MPa": {
+          "two_feet_static": 0.923,
+          "one_foot_static": 1.846,
+          "150N_reference_mount_direction": 4.705,
+          "150N_connector_axis": 6.32,
+          "150N_reference_plus_45N_lateral": 11.375
+        }
+      },
+      {
+        "t": 0.3543,
+        "width_mm": 24.0,
+        "depth_mm": 23.5,
+        "area_mm2": 273.96,
+        "I_z_mm4": 20575.3,
+        "I_y_mm4": 8173.5,
+        "normal_stress_MPa": {
+          "two_feet_static": 0.889,
+          "one_foot_static": 1.777,
+          "150N_reference_mount_direction": 4.53,
+          "150N_connector_axis": 6.285,
+          "150N_reference_plus_45N_lateral": 11.021
+        }
+      },
+      {
+        "t": 0.3711,
+        "width_mm": 23.9999,
+        "depth_mm": 23.5,
+        "area_mm2": 273.96,
+        "I_z_mm4": 20575.2,
+        "I_y_mm4": 8173.5,
+        "normal_stress_MPa": {
+          "two_feet_static": 0.855,
+          "one_foot_static": 1.71,
+          "150N_reference_mount_direction": 4.357,
+          "150N_connector_axis": 6.248,
+          "150N_reference_plus_45N_lateral": 10.671
+        }
+      },
+      {
+        "t": 0.3879,
+        "width_mm": 23.9999,
+        "depth_mm": 23.5,
+        "area_mm2": 273.96,
+        "I_z_mm4": 20575.2,
+        "I_y_mm4": 8173.5,
+        "normal_stress_MPa": {
+          "two_feet_static": 0.821,
+          "one_foot_static": 1.643,
+          "150N_reference_mount_direction": 4.186,
+          "150N_connector_axis": 6.208,
+          "150N_reference_plus_45N_lateral": 10.325
+        }
+      },
+      {
+        "t": 0.4047,
+        "width_mm": 24.0,
+        "depth_mm": 23.5,
+        "area_mm2": 273.96,
+        "I_z_mm4": 20575.2,
+        "I_y_mm4": 8173.4,
+        "normal_stress_MPa": {
+          "two_feet_static": 0.789,
+          "one_foot_static": 1.577,
+          "150N_reference_mount_direction": 4.019,
+          "150N_connector_axis": 6.166,
+          "150N_reference_plus_45N_lateral": 9.983
+        }
+      },
+      {
+        "t": 0.4215,
+        "width_mm": 23.9999,
+        "depth_mm": 23.5,
+        "area_mm2": 273.96,
+        "I_z_mm4": 20575.2,
+        "I_y_mm4": 8173.5,
+        "normal_stress_MPa": {
+          "two_feet_static": 0.756,
+          "one_foot_static": 1.513,
+          "150N_reference_mount_direction": 3.855,
+          "150N_connector_axis": 6.122,
+          "150N_reference_plus_45N_lateral": 9.645
+        }
+      },
+      {
+        "t": 0.4383,
+        "width_mm": 23.9999,
+        "depth_mm": 23.5,
+        "area_mm2": 273.96,
+        "I_z_mm4": 20575.1,
+        "I_y_mm4": 8173.5,
+        "normal_stress_MPa": {
+          "two_feet_static": 0.725,
+          "one_foot_static": 1.449,
+          "150N_reference_mount_direction": 3.693,
+          "150N_connector_axis": 6.076,
+          "150N_reference_plus_45N_lateral": 9.311
+        }
+      },
+      {
+        "t": 0.4551,
+        "width_mm": 24.0,
+        "depth_mm": 23.5,
+        "area_mm2": 273.96,
+        "I_z_mm4": 20575.2,
+        "I_y_mm4": 8173.4,
+        "normal_stress_MPa": {
+          "two_feet_static": 0.694,
+          "one_foot_static": 1.387,
+          "150N_reference_mount_direction": 3.535,
+          "150N_connector_axis": 6.026,
+          "150N_reference_plus_45N_lateral": 8.982
+        }
+      },
+      {
+        "t": 0.4719,
+        "width_mm": 23.9999,
+        "depth_mm": 23.5,
+        "area_mm2": 273.96,
+        "I_z_mm4": 20574.8,
+        "I_y_mm4": 8173.3,
+        "normal_stress_MPa": {
+          "two_feet_static": 0.663,
+          "one_foot_static": 1.326,
+          "150N_reference_mount_direction": 3.38,
+          "150N_connector_axis": 5.975,
+          "150N_reference_plus_45N_lateral": 8.657
+        }
+      },
+      {
+        "t": 0.4888,
+        "width_mm": 23.9999,
+        "depth_mm": 23.5,
+        "area_mm2": 273.96,
+        "I_z_mm4": 20575.0,
+        "I_y_mm4": 8173.3,
+        "normal_stress_MPa": {
+          "two_feet_static": 0.633,
+          "one_foot_static": 1.267,
+          "150N_reference_mount_direction": 3.228,
+          "150N_connector_axis": 5.92,
+          "150N_reference_plus_45N_lateral": 8.337
+        }
+      },
+      {
+        "t": 0.5056,
+        "width_mm": 23.9999,
+        "depth_mm": 23.5,
+        "area_mm2": 273.96,
+        "I_z_mm4": 20574.9,
+        "I_y_mm4": 8173.4,
+        "normal_stress_MPa": {
+          "two_feet_static": 0.604,
+          "one_foot_static": 1.209,
+          "150N_reference_mount_direction": 3.08,
+          "150N_connector_axis": 5.863,
+          "150N_reference_plus_45N_lateral": 8.022
+        }
+      },
+      {
+        "t": 0.5224,
+        "width_mm": 23.9999,
+        "depth_mm": 23.5,
+        "area_mm2": 273.96,
+        "I_z_mm4": 20575.1,
+        "I_y_mm4": 8173.5,
+        "normal_stress_MPa": {
+          "two_feet_static": 0.576,
+          "one_foot_static": 1.152,
+          "150N_reference_mount_direction": 2.936,
+          "150N_connector_axis": 5.803,
+          "150N_reference_plus_45N_lateral": 7.712
+        }
+      },
+      {
+        "t": 0.5392,
+        "width_mm": 24.0,
+        "depth_mm": 23.5,
+        "area_mm2": 273.96,
+        "I_z_mm4": 20575.2,
+        "I_y_mm4": 8173.4,
+        "normal_stress_MPa": {
+          "two_feet_static": 0.548,
+          "one_foot_static": 1.097,
+          "150N_reference_mount_direction": 2.795,
+          "150N_connector_axis": 5.741,
+          "150N_reference_plus_45N_lateral": 7.406
+        }
+      },
+      {
+        "t": 0.556,
+        "width_mm": 23.9999,
+        "depth_mm": 23.5,
+        "area_mm2": 273.96,
+        "I_z_mm4": 20575.1,
+        "I_y_mm4": 8173.5,
+        "normal_stress_MPa": {
+          "two_feet_static": 0.521,
+          "one_foot_static": 1.043,
+          "150N_reference_mount_direction": 2.658,
+          "150N_connector_axis": 5.675,
+          "150N_reference_plus_45N_lateral": 7.106
+        }
+      },
+      {
+        "t": 0.5728,
+        "width_mm": 23.9999,
+        "depth_mm": 23.5,
+        "area_mm2": 273.96,
+        "I_z_mm4": 20575.3,
+        "I_y_mm4": 8173.7,
+        "normal_stress_MPa": {
+          "two_feet_static": 0.495,
+          "one_foot_static": 0.99,
+          "150N_reference_mount_direction": 2.524,
+          "150N_connector_axis": 5.606,
+          "150N_reference_plus_45N_lateral": 6.811
+        }
+      },
+      {
+        "t": 0.5896,
+        "width_mm": 23.9999,
+        "depth_mm": 23.5,
+        "area_mm2": 273.96,
+        "I_z_mm4": 20575.2,
+        "I_y_mm4": 8173.6,
+        "normal_stress_MPa": {
+          "two_feet_static": 0.47,
+          "one_foot_static": 0.94,
+          "150N_reference_mount_direction": 2.395,
+          "150N_connector_axis": 5.535,
+          "150N_reference_plus_45N_lateral": 6.532
+        }
+      },
+      {
+        "t": 0.6064,
+        "width_mm": 24.0,
+        "depth_mm": 23.5,
+        "area_mm2": 273.96,
+        "I_z_mm4": 20575.2,
+        "I_y_mm4": 8173.4,
+        "normal_stress_MPa": {
+          "two_feet_static": 0.445,
+          "one_foot_static": 0.891,
+          "150N_reference_mount_direction": 2.269,
+          "150N_connector_axis": 5.46,
+          "150N_reference_plus_45N_lateral": 6.283
+        }
+      },
+      {
+        "t": 0.6232,
+        "width_mm": 24.0001,
+        "depth_mm": 23.5,
+        "area_mm2": 273.96,
+        "I_z_mm4": 20575.8,
+        "I_y_mm4": 8173.7,
+        "normal_stress_MPa": {
+          "two_feet_static": 0.421,
+          "one_foot_static": 0.843,
+          "150N_reference_mount_direction": 2.148,
+          "150N_connector_axis": 5.382,
+          "150N_reference_plus_45N_lateral": 6.038
+        }
+      },
+      {
+        "t": 0.64,
+        "width_mm": 24.0,
+        "depth_mm": 23.5,
+        "area_mm2": 273.96,
+        "I_z_mm4": 20575.5,
+        "I_y_mm4": 8173.7,
+        "normal_stress_MPa": {
+          "two_feet_static": 0.399,
+          "one_foot_static": 0.797,
+          "150N_reference_mount_direction": 2.031,
+          "150N_connector_axis": 5.301,
+          "150N_reference_plus_45N_lateral": 5.799
+        }
+      }
+    ],
+    "missing": [
+      "local stress concentrations and curved-beam correction",
+      "shear and open-channel torsion",
+      "heel frame, retention and M4 bearing stresses",
+      "FDM layer adhesion and specimen strength",
+      "fatigue, impact time history, contact and full gait collisions"
+    ],
+    "material_safety_factor": "NOT assigned; actual PLA+ manufacturer, print quality and joint proof tests are required."
+  },
+  "geometry_checks": {
+    "rigid_print_face_after_placement_z_mm": 0,
+    "connector_and_blade_one_solid": true,
+    "sole_one_solid": true,
+    "unintended_core_shin_overlap": false,
+    "unintended_core_sole_overlap": false,
+    "body_supports": "Open H section with 45 degree haunches below its central web and a 1.2 mm bridge. Two flanges lie on Z=0. No trapped support. Original cuff slot may need accessible local slicer support."
+  },
+  "constant_section": {
+    "normal_width_mm": 24.0,
+    "depth_mm": 23.5,
+    "flange_mm": 3.2,
+    "web_mm": 3.2,
+    "checked_cut_planes": 37,
+    "width_range_mm": [
+      23.9999,
+      24.0001
+    ],
+    "depth_range_mm": [
+      23.5,
+      23.5
+    ],
+    "scope": "Uniform main beam only; the distal fork widens into two constant-section branches and a TPU mounting plate."
+  }
+}

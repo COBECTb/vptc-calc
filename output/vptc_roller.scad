@@ -1,3 +1,4 @@
+use <foots.scad>
 // ВПТК редуктор с роликами (для 3D-печати)
 $fn = 60;
 eps = 0.01; // Выход вычитателей за открытые поверхности; глухие глубины сохранены.
@@ -874,7 +875,9 @@ module shin(foot=true){
             difference() {
                 translate([-14,0,0]) cube([foot_r*2+27,15,shoulder_horn_h2+shoulder_horn_h1-1], center = true );
                 rotate([0,4,0]) rotate([0,90,-90]) translate([-15,20,0]) cot_surface(curve_length=15,curve_height=30);
+                translate([-47,0,0])rotate([180,180,0])foot_joint_original_end_cut();
             }
+            translate([-47,0,0])rotate([180,180,0])foot_joint_tongue();
             if(foot==true){
                 translate([-47,0,0])rotate([180,180,0])foot_connector();
             }
@@ -890,13 +893,8 @@ module shin(foot=true){
 // соединитель для нижней части ноги
 module foot_connector()
 {
-    difference() {
-        translate([5,0,0]) cube([40,24,shoulder_h/2+7], center = true );
-        translate([0,0,0]) cube([36.02,15.4,shoulder_h/2+1.8], center = true );
-        translate([0,0,0]) cylinder( h = 25, r = 2.1, center = true );
-        translate([-30,11,0]) rotate([0,0,38])cube([40,24,shoulder_h/2+7.02], center = true );
-    }
-    translate([74.5,1,-0.5])rotate([90,0,0]) import("/Users/sovest/Downloads/foots.stl");
+    foot_cuff();
+    robot_foot();
 }
 
 // Держатель-бочонок для датчика MT6816 / XJX-135
@@ -989,8 +987,8 @@ servo_angle=$t*135-135/2+7;
 leg_angle1=$t*360;
 
 
-module leg(){
-    result = calculate_rigid_linkage(servo_angle, connect_rod_l, shoulder_horn_r, foot_r, [0,0,0], point_foot_center);
+module leg(servo=servo_angle){
+    result = calculate_rigid_linkage(servo, connect_rod_l, shoulder_horn_r, foot_r, [0,0,0], point_foot_center);
 
     point1 = get_value(result, "point1");
     point2 = get_value(result, "point2");
@@ -1001,7 +999,7 @@ module leg(){
 
     echo("Точка 1: ", point1);
     echo("Точка 2: ", point2);
-    echo("Угол толкателя: ", servo_angle, "°");
+    echo("Угол толкателя: ", servo, "°");
     echo("Угол колена: ", angle2, "°");
     echo("Длина тяги (расчетная): ", norm(point2 - point1), "мм");
     echo("Радиус плеча толкателя:", shoulder_horn_r, "мм");
@@ -1011,7 +1009,7 @@ module leg(){
     echo("Диапазон возможных длин: от ", min_possible, " до ", max_possible, "мм");
     echo("Решение существует: ", solution_exists);
     union() {
-        rotate([0,0,servo_angle]) translate([0,0,h_reducer+2*zazor+cap_thickness+8]) rotate([180,0,0]) shoulder_horn();
+        rotate([0,0,servo]) translate([0,0,h_reducer+2*zazor+cap_thickness+8]) rotate([180,0,0]) shoulder_horn();
         translate([0,0,h_reducer+cap_thickness+2*zazor]) shoulder_top();
         color("gray") translate([0, 0,ecc_shaft_h1 + ecc_spacer_h+separator_h+5 +h_reducer+2*zazor+cap_thickness+1.99]) bearing_simple(25,37,7);
         translate([-25,65,h_reducer+cap_thickness+2*zazor]) hip();
@@ -1465,8 +1463,8 @@ difference() {
         //translate([0, 0, -mc_total_height]) motor_cover(); // кожух снизу
         //translate([0,D_out/2+8+zazor,(h_reducer+cap_thickness)/2]) rotate([90,45/2,0]) reducer_connector();
         //translate([0,0,h_reducer+zazor+cap_thickness+6.5]) rotate([180,0,0])reducer_connector();
-        //leg();
-        body(a1=0,a2=leg_angle1,parts=true);
+        leg();
+        //body(a1=0,a2=leg_angle1,parts=true);
         //shin();
         //import("vptc_roller_19_4_5_70_reducer_with_bracing_and_connector.stl");
         //color("lightgray")import("vptc_roller_19_4_5_70_reducer.stl");
