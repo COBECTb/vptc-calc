@@ -1,6 +1,7 @@
 use <foots.scad>
 // ВПТК редуктор с роликами (для 3D-печати)
 $fn = 60;
+eps = 0.01; // Выход вычитателей за открытые поверхности; глухие глубины сохранены.
 // Параметры
 d_roller = 4.000;
 h_roller = 5.000;
@@ -274,13 +275,13 @@ module separator() {
         // Фланец под основной подшипник (ступенчатая посадка)
         translate([0, 0, 11.0])
             difference() {
-                cylinder(h = 9.5, r = Rsep_out, center = false);
-                cylinder(h = 9.5, r = bearing_inner/2 + 2, center = false);  // +2 мм зазор
+                cylinder(h = 9.5, r = Rsep_out+eps, center = false);
+                translate([0,0,-eps]) cylinder(h = 9.5+2*eps, r = bearing_inner/2 + 2, center = false);  // +2 мм зазор
             }
         translate([0, 0, 11.5])
             difference() {
-                cylinder(h = 9.5, r = Rsep_out, center = false);
-                cylinder(h = 9.5, r = bearing_inner/2, center = false);      // точный диаметр
+                cylinder(h = 9.5, r = Rsep_out+eps, center = false);
+                translate([0,0,-eps]) cylinder(h = 9.5+2*eps, r = bearing_inner/2, center = false);      // точный диаметр
             }
         // Посадочное место под мини-подшипник 688ZZ (8x16x5)
         translate([0, 0, h_roller + 3])
@@ -289,7 +290,7 @@ module separator() {
             cylinder(h = 5, r = 7, center = false);
         translate([0, 0, h_roller + 3 + 1])
             cylinder(h = 5, r = 5, center = false);
-        cylinder(h = separator_h - 1, r = Rsep_in, center = false);
+        translate([0,0,-eps]) cylinder(h = separator_h-1+eps, r = Rsep_in, center = false);
         for (angle = [0 : 360/19 : 359]) {
             rotate([0, 0, angle])
                 translate([Rsep_m, 0, separator_h/2])
@@ -300,34 +301,34 @@ module separator() {
         for (i = [0 : 7]) {
             angle=45*i;
             rotate([0, 0, angle]) {
-                translate([bearing_inner/2-4, 0, 0])
-                    cylinder(h = separator_h  + 9.5, r = 1.6, center = false);
-                translate([bearing_inner/2-4, 0, 0])
-                    cylinder(h =separator_h+2, r = 3.0, center = false);
+                translate([bearing_inner/2-4, 0, -eps])
+                    cylinder(h = separator_h+9.5+2*eps, r = 1.6, center = false);
+                translate([bearing_inner/2-4, 0, -eps])
+                    cylinder(h =separator_h+2+eps, r = 3.0, center = false);
             }
         }
     }
 }
 
 // Соединитель редукторов
-module reducer_connector(h1=4,skirt=false, holes=[1,1,1,1,1,1,1,1]) {
+module reducer_connector(fitting=true,h1=4,skirt=false,holes=undef) {
+    assert(h1>0 && (!skirt || h1>3), "Проверьте высоту соединителя и юбки");
     difference() {
         union() {
             cylinder(h = 4, r = D_out/2-9, center = false);
             translate([0,0,4]) cylinder(h = h1, r = bearing_inner/2, center = false);
-            if(skirt) {
-                translate([0,0,4+3]) cylinder(h = h1-3, r1 = D_out/2-13, r2 = D_out/2-7, center = false);
-            }    
+            if(skirt) translate([0,0,7])
+                cylinder(h=h1-3,r1=D_out/2-13,r2=D_out/2-7,center=false);
         }
         // Посадочные места под крепеж нагрузки m3
         for (i = [0 : 7]) {
             angle=45*i;
             rotate([0, 0, angle]) {
-                translate([bearing_inner/2-4, 0, -1.01])
-                    cylinder(h = h1+5.02, r = 1.6, center = false);
-                if(holes[i]){
-                    translate([bearing_inner/2-4, 0, -0.01])
-                        cylinder(h =3.01, r = 3.0, center = false);
+                translate([bearing_inner/2-4, 0, -eps])
+                    cylinder(h = h1+4+2*eps, r = 1.6, center = false);
+                if(is_undef(holes) ? fitting : holes[i]){
+                    translate([bearing_inner/2-4, 0, -eps])
+                        cylinder(h =3+eps, r = 3.0, center = false);
                 }
             }
         }

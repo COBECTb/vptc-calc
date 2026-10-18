@@ -1,0 +1,87 @@
+{
+  "connector_clamp_magnet_ring_half_0p8": {
+    "watertight": true,
+    "solid_parts": 1,
+    "parts": [
+      {
+        "bounds_mm": [
+          [
+            -33.0,
+            0.0,
+            -1e-06
+          ],
+          [
+            33.0,
+            33.0,
+            0.8
+          ]
+        ],
+        "euler_characteristic": -48,
+        "volume_mm3": 440.76455377892336,
+        "through_holes": 25
+      }
+    ]
+  },
+  "connector_clamp_magnet_ring_0p8": {
+    "watertight": true,
+    "solid_parts": 2,
+    "parts": [
+      {
+        "bounds_mm": [
+          [
+            -71.0,
+            0.0,
+            -1e-06
+          ],
+          [
+            -5.0,
+            33.0,
+            0.8
+          ]
+        ],
+        "euler_characteristic": -48,
+        "volume_mm3": 440.7643815725364,
+        "through_holes": 25
+      },
+      {
+        "bounds_mm": [
+          [
+            5.0,
+            0.0,
+            -1e-06
+          ],
+          [
+            71.0,
+            33.0,
+            0.8
+          ]
+        ],
+        "euler_characteristic": -48,
+        "volume_mm3": 440.7643815725362,
+        "through_holes": 25
+      }
+    ]
+  },
+  "connector_clamp_body_for_print": {
+    "watertight": true,
+    "solid_parts": 1,
+    "parts": [
+      {
+        "bounds_mm": [
+          [
+            -33.0,
+            1e-06,
+            0.0
+          ],
+          [
+            33.0,
+            11.6,
+            33.0
+          ]
+        ],
+        "euler_characteristic": -2,
+        "volume_mm3": 8237.99755105013
+      }
+    ]
+  }
+}

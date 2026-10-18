@@ -20,7 +20,8 @@ parser.add_argument("--diameter", type=float)
 parser.add_argument("--hole-angle", type=float, help="Угол первого основного отверстия;39 воспроизводит текущую плату Ø70")
 parser.add_argument("--part", default="legacy", choices=["legacy", "encoder_assembly", "encoder_section",
     "encoder_exploded", "encoder_cap", "encoder_lid", "encoder_print", "encoder_clamp",
-    "encoder_clamp_half", "encoder_connector", "encoder_load_connector", "encoder_pcb"])
+    "encoder_clamp_half", "encoder_magnet_ring", "encoder_clamp_print",
+    "encoder_connector", "encoder_load_connector", "encoder_pcb"])
 args = parser.parse_args()
 manifest_file = Path(args.manifest) if args.manifest else Path(args.output).with_suffix('.encoder.json')
 if manifest_file.resolve() == Path(args.output).resolve():

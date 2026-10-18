@@ -20,7 +20,7 @@
         31.112182728746838
       ],
       [
-        -29.407783434661855,
+        -29.407783434661862,
         11.288590410676951
       ],
       [
@@ -41,7 +41,8 @@
     "rim_wall": 0.6,
     "rim_height": 0.4,
     "magnet_height": 1.0,
-    "separator_lift": 0.5
+    "separator_lift": 0.5,
+    "magnet_recess_depth": 0.4
   },
   "derived": {
     "inner_track_r": 23.5,
@@ -52,10 +53,35 @@
     "bearing_bottom_z": 3.0,
     "separator_top_z": 10.0,
     "glue_face_z": 15.25,
-    "connector_stem_h": 7.149999999999999,
-    "sensor_angle": 9.0
+    "clamp_face_z": 14.85,
+    "connector_stem_h": 6.75,
+    "sensor_angle": 9.0,
+    "clamp_body_h": 11.6,
+    "magnet_ring_thickness": 0.8
+  },
+  "magnet_carrier": {
+    "separate": true,
+    "body_halves": 2,
+    "rings": 1,
+    "ring_halves": 2,
+    "halves": true,
+    "thickness_mm": 0.8,
+    "inner_diameter_mm": 40.0,
+    "outer_diameter_mm": 66.0,
+    "through_hole_diameter_mm": 5.2,
+    "through_holes": 50,
+    "through_holes_per_half": 25,
+    "body_face_z_local_mm": 11.6,
+    "assembly_top_z_local_mm": 12.4,
+    "magnet_seating_plane_unchanged": true
   },
   "native_pcb_compatible": true,
+  "native_components": {
+    "count": 28,
+    "source_sha256": "47f620a4afcaf855fb9fe4f9b037aa41ffb146d775b7bcd35ffbf51e1659cf29",
+    "revision": "V2",
+    "source_pcb_sha256": "98eaa6d79fdc5223e9ca3ec1e0c02f57a0510de296ce1c1cc5d422511aec6f94"
+  },
   "pcb": {
     "thickness_mm": 0.8,
     "inner_r_mm": 21.6,
@@ -66,14 +92,14 @@
     ],
     "transition_deg": 2,
     "outer_r_mm": 33.4,
-    "span_deg": 160,
+    "span_deg": 80,
     "center_angle_deg": 9.0,
-    "bolt_keepout_r_mm": 4.5,
+    "bolt_keepout_r_mm": 3.4,
     "mount_hole_d_mm": 2.2,
     "mount_r_mm": 30.5,
     "mount_angles_deg": [
-      -59.0,
-      77.0
+      -11.0,
+      29.0
     ],
     "front_sensor_hall_radii_mm": [
       23.5,
@@ -85,11 +111,11 @@
     ],
     "rear_pocket_inner_r_mm": 27.0,
     "rear_pocket_outer_r_mm": 33.7,
-    "rear_pocket_depth_mm": 2.3,
+    "rear_pocket_depth_mm": 0.25,
     "mcu_relief": {
-      "center_r_mm": 29.3,
-      "center_angle_deg": -5.0,
-      "rotation_deg": 0.0,
+      "center_r_mm": 29.499999997036024,
+      "center_angle_deg": 9.000000554097277,
+      "rotation_deg": 99.0,
       "body_size_mm": [
         5.1,
         5.1,

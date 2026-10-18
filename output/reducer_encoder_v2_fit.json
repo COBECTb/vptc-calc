@@ -1,0 +1,195 @@
+{
+  "source_pcb_sha256": "98eaa6d79fdc5223e9ca3ec1e0c02f57a0510de296ce1c1cc5d422511aec6f94",
+  "cap": {
+    "watertight": true,
+    "solid_parts": 1,
+    "bounds_mm": [
+      [
+        -35.0,
+        -35.0,
+        0.0
+      ],
+      [
+        35.0,
+        35.0,
+        12.05
+      ]
+    ],
+    "volume_mm3": 24374.419997034584
+  },
+  "lid": {
+    "watertight": true,
+    "solid_parts": 1,
+    "bounds_mm": [
+      [
+        -35.0,
+        -35.0,
+        0.0
+      ],
+      [
+        35.0,
+        35.0,
+        1.799999237061
+      ]
+    ],
+    "volume_mm3": 3899.8268865371706
+  },
+  "vertical_probes": {
+    "M2_1_pilot_floor": {
+      "xy_mm": [
+        26.675900999999996,
+        14.786693999999997
+      ],
+      "surface_z_mm": [
+        0.0,
+        8.5
+      ],
+      "passed": true
+    },
+    "M2_2_pilot_floor": {
+      "xy_mm": [
+        29.939628999999996,
+        -5.819674000000006
+      ],
+      "surface_z_mm": [
+        0.0,
+        8.5
+      ],
+      "passed": true
+    },
+    "bearing_stop": {
+      "xy_mm": [
+        25,
+        0
+      ],
+      "surface_z_mm": [
+        10.0,
+        10.75
+      ],
+      "passed": true
+    },
+    "MCU_floor": {
+      "xy_mm": [
+        26.865122864187747,
+        4.25501744909428
+      ],
+      "surface_z_mm": [
+        0.0,
+        10.25
+      ],
+      "passed": true
+    },
+    "inner_Hall_window": {
+      "xy_mm": [
+        23.21067600398574,
+        3.6762099284454255
+      ],
+      "surface_z_mm": [
+        1.4,
+        1.8
+      ],
+      "passed": true
+    },
+    "outer_Hall_window": {
+      "xy_mm": [
+        29.136806047556565,
+        4.614816718686811
+      ],
+      "surface_z_mm": [
+        1.4,
+        1.8
+      ],
+      "passed": true
+    },
+    "wire_channel_roof": {
+      "xy_mm": [
+        31.949549106720887,
+        11.628684873072736
+      ],
+      "surface_z_mm": [
+        1.15,
+        1.8
+      ],
+      "passed": true
+    }
+  },
+  "lid_print_orientation": "outer flat face down, pockets open upward; actual rotation 180 degrees about X",
+  "lid_print_mesh": {
+    "watertight": true,
+    "solid_parts": 1,
+    "bounds_mm": [
+      [
+        -35.0,
+        -35.0,
+        7.62939e-07
+      ],
+      [
+        35.0,
+        35.0,
+        1.8
+      ]
+    ],
+    "volume_mm3": 3899.8268865371724
+  },
+  "output_connector": {
+    "watertight": true,
+    "solid_parts": 1,
+    "bounds_mm": [
+      [
+        -26.0,
+        -26.0,
+        0.0
+      ],
+      [
+        26.0,
+        26.0,
+        10.75
+      ]
+    ],
+    "volume_mm3": 15771.089792005203
+  },
+  "load_connector": {
+    "watertight": true,
+    "solid_parts": 1,
+    "bounds_mm": [
+      [
+        -28.0,
+        -28.0,
+        0.0
+      ],
+      [
+        28.0,
+        28.0,
+        19.0
+      ]
+    ],
+    "volume_mm3": 34411.628885940794
+  },
+  "nominal_collision_checks": {
+    "pcb_with_components_and_M2_heads_vs_carrier": "empty",
+    "pcb_with_components_and_M2_heads_vs_lid": "empty",
+    "bearing_vs_carrier": "empty with 0.001 mm contact exclusion and matching 60-segment circles",
+    "full_turn_rotor_envelope_vs_enclosure": "empty; circumscribed 180-segment envelope covers all rotations, including separator",
+    "wire_bundle_vs_enclosure_pcb_and_rotor_envelope": "empty; four straight insulated wires diameter 1.1 mm",
+    "rotating_parts_at_zero_vs_enclosure": "empty"
+  },
+  "limits": [
+    "Component envelopes; real solder fillets, wire bends and printed tolerances need a prototype.",
+    "Bearing check verifies interpenetration; it does not validate interference-fit allowance."
+  ],
+  "rotation_coverage": "Circumscribed axisymmetric envelope; all 360 degrees; separator, output connector, clamp, magnets and load connector.",
+  "diagnostic_logs": [
+    "output/reducer_encoder_v2_check_logs/full_turn_collision.log",
+    "output/reducer_encoder_v2_check_logs/moving_collision.log",
+    "output/reducer_encoder_v2_check_logs/wire_collision.log"
+  ],
+  "checked_files": {
+    "output/reducer_cap_encoder_can.scad": "586792e1bdb67f7797a4d96637f8bf50cd2ca72427000bd24c50848941bd1342",
+    "output/reducer_encoder_v2_checks.scad": "5aa4ed17620b127e63be1402f607f94e9939d99fd0a53f0b137110547e48d02f",
+    "output/knee_encoder/v2/compact_encoder_pcb.scad": "c1b844f1b45d445acd655fa2fa84c1158efdff8266b0fe617b09b8a51338a1c6",
+    "output/reducer_encoder_v2_cap.stl": "b5cf022e3dcb7e41dbeca2d24e5c16ae9b96dae07176fbb872390bc5ae617d0f",
+    "output/reducer_encoder_v2_lid.stl": "c0d5f95e61963a79477d1b0e232e85a28ae0b7c1298c31c8a482355dc84168b3",
+    "output/reducer_encoder_v2_output_connector.stl": "68b44a9c8b7936c9bda8a7c4e29dd0ee2e858ddffb0bd2f6b8b2eb04cac21edd",
+    "output/reducer_encoder_v2_load_connector.stl": "4625a42d9e4caf16716a2d42d5017cce82d286fc74fd48e241cb88f9878403cc"
+  }
+}

@@ -35,8 +35,11 @@ class EncoderSizingTests(unittest.TestCase):
         self.assertAlmostEqual(m['separator_base_z'],-8.5)
         self.assertAlmostEqual(m['separator_top_z'],10)
         self.assertAlmostEqual(m['glue_face_z'],15.25)
-        self.assertAlmostEqual(m['connector_stem_h'],7.15)
+        self.assertAlmostEqual(m['clamp_face_z'],14.85)
+        self.assertAlmostEqual(m['connector_stem_h'],6.75)
         self.assertAlmostEqual(m['sensor_angle'],9)
+        self.assertAlmostEqual(m['clamp_body_h'],11.6)
+        self.assertAlmostEqual(m['magnet_ring_thickness'],.8)
 
     def test_largest_feasible_pair_at_multiple_diameters(self):
         for diameter in [70,75,80,90]:
@@ -96,10 +99,17 @@ class GeneratorIntegrationTests(unittest.TestCase):
         larger=json.loads(self.models[80].with_suffix('.encoder.json').read_text())
         self.assertTrue(current['native_pcb_compatible'])
         self.assertFalse(larger['native_pcb_compatible'])
+        carrier=current['magnet_carrier']
+        self.assertEqual((carrier['rings'],carrier['ring_halves']),(1,2))
+        self.assertEqual(carrier['through_holes_per_half'],25)
+        self.assertEqual(carrier['through_holes'],50)
         self.assertAlmostEqual(current['pcb']['local_inner_relief_r_mm'],21.3)
         self.assertEqual(current['pcb']['mcu_relief']['body_size_mm'],[5.1,5.1,.6])
         self.assertAlmostEqual(current['pcb']['mcu_relief']['bottom_z_mm'],10.25)
-        self.assertAlmostEqual(current['pcb']['mcu_relief']['center_r_mm'],29.3)
+        self.assertAlmostEqual(current['pcb']['mcu_relief']['center_r_mm'],29.5)
+        self.assertEqual(current['native_components']['revision'],'V2')
+        self.assertEqual(current['pcb']['span_deg'],80)
+        self.assertEqual(current['pcb']['mount_angles_deg'],[-11,29])
         self.assertEqual((larger['derived']['inner_magnet_count'],larger['derived']['outer_magnet_count']),(30,32))
 
     def test_explicit_hole_phase_is_honoured(self):
@@ -115,6 +125,7 @@ class GeneratorIntegrationTests(unittest.TestCase):
     def test_all_new_variants_compile_at_two_diameters(self):
         parts=['encoder_assembly','encoder_exploded','encoder_section','encoder_cap',
                'encoder_lid','encoder_print','encoder_clamp','encoder_clamp_half',
+               'encoder_magnet_ring','encoder_clamp_print',
                'encoder_connector','encoder_load_connector','encoder_pcb']
         for diameter,model in self.models.items():
             for part in parts:
@@ -199,11 +210,30 @@ class GeneratorIntegrationTests(unittest.TestCase):
             self.assertAlmostEqual(max(values),zmax,places=5)
 
     @unittest.skipUnless(OPENSCAD,'OpenSCAD CLI is not installed')
+    def test_lid_prints_hall_windows_directly_from_bed(self):
+        # Sample the two real windows after turning the lid over for printing.
+        # They must be the first 0.4 mm on the bed, with cavities open upward.
+        source=self.work/'lid_bed_windows.scad'
+        source.write_text(f'use <{self.models[70]}>\n'
+            'intersection() { encoder_lid_for_print(); union() {'
+            'for(r=[23.5,29.5]) translate([r*cos(9),-r*sin(9),-.1]) '
+            'cylinder(r=.02,h=2.1,$fn=8); } }\n')
+        result=subprocess.run([OPENSCAD,'-o',str(source.with_suffix('.stl')),str(source)],
+            capture_output=True,text=True,timeout=90)
+        self.assertEqual(result.returncode,0,result.stderr)
+        values=[float(z) for z in re.findall(r'vertex\s+[-\d.eE+]+\s+[-\d.eE+]+\s+([-\d.eE+]+)',
+            source.with_suffix('.stl').read_text())]
+        self.assertTrue(values)
+        self.assertAlmostEqual(min(values),0,places=5)
+        self.assertAlmostEqual(max(values),.4,places=5)
+
+    @unittest.skipUnless(OPENSCAD,'OpenSCAD CLI is not installed')
     def test_mcu_relief_preserves_its_floor_and_bearing_stop(self):
         # The new shallow MCU relief cuts only the top of the outer wall.
-        # A probe at R<27 is outside the old rear pocket; another is on the lip.
-        for name,xy,zmin,zmax in [('mcu_relief_floor',[26.6,-1],3,10.25),
-                                  ('encoder_bearing_stop',[25,0],10,11)]:
+        # One probe crosses the actual V2 MCU pocket; another crosses the bearing lip.
+        mcu_probe=[27.2*math.cos(math.radians(9)),27.2*math.sin(math.radians(9))]
+        for name,xy,zmin,zmax in [('mcu_relief_floor',mcu_probe,0,10.25),
+                                  ('encoder_bearing_stop',[25,0],10,10.75)]:
             source=self.work/f'{name}.scad'
             source.write_text(f'use <{self.models[70]}>\nintersection() {{ cap_encoder(with_bracing=false); '
                 f'translate([{xy[0]},{xy[1]},-0.1]) cylinder(r=.02,h=11.2,$fn=12); }}\n')
