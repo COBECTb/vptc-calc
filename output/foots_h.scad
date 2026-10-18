@@ -80,6 +80,9 @@ function h_tangent(t)=let(a=h_curve_points(t),s=h_curve_time(t),
 function h_normal(t)=let(v=h_tangent(t))[-v[1],v[0]];
 function h_pad_xy(s,v)=[h_pad_x+s*cos(h_pad_angle)-v*sin(h_pad_angle),
  h_pad_sweep+s*sin(h_pad_angle)+v*cos(h_pad_angle)];
+// Actual TPU sphere center/radius, in connector coordinates after mounting.
+function h_contact_geometry()=let(p=h_pad_xy(h_sole_lift,0))
+ [[p[0],p[1]*cos(h_mount_roll),p[1]*sin(h_mount_roll)],h_pad_radius];
 
 // Y/Z section. Full width and depth are CONSTANT, measured normal to the path.
 // Two flanges and a central web form H. Lower internal corners have 45-degree

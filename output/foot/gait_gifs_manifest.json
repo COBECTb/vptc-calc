@@ -1,0 +1,62 @@
+[
+  {
+    "file": "walking_step.gif",
+    "frames": 80,
+    "duration_ms": 12000,
+    "size": [
+      960,
+      720
+    ],
+    "loops": 0,
+    "gait_cycles": 1,
+    "source": "native OpenSCAD angle probes and STL geometry"
+  },
+  {
+    "file": "left_pair_walk.gif",
+    "frames": 80,
+    "duration_ms": 12000,
+    "size": [
+      960,
+      720
+    ],
+    "loops": 0,
+    "gait_cycles": 1,
+    "source": "native OpenSCAD angle probes and STL geometry"
+  },
+  {
+    "file": "quadruped_walk.gif",
+    "frames": 80,
+    "duration_ms": 12000,
+    "size": [
+      960,
+      720
+    ],
+    "loops": 0,
+    "gait_cycles": 1,
+    "source": "native OpenSCAD angle probes and STL geometry"
+  },
+  {
+    "file": "quadruped_run.gif",
+    "frames": 80,
+    "duration_ms": 12000,
+    "size": [
+      960,
+      720
+    ],
+    "loops": 0,
+    "gait_cycles": 1,
+    "source": "native OpenSCAD angle probes and STL geometry"
+  },
+  {
+    "file": "quadruped_run_orbit.gif",
+    "frames": 320,
+    "duration_ms": 48000,
+    "size": [
+      960,
+      720
+    ],
+    "loops": 0,
+    "gait_cycles": 4,
+    "source": "native OpenSCAD angle probes and STL geometry"
+  }
+]

@@ -1,0 +1,1545 @@
+{
+  "scope": "One-leg kinematic step using native dimensions and forward-checked four-bar angles; no balance, dynamics, torque or full 3D collision certification.",
+  "step_length_mm": 200,
+  "clearance_mm": 30,
+  "hip_height_mm": 300,
+  "stance_fraction": 0.6,
+  "native_ball_target_error_mm": 0.00010000000000331966,
+  "direction": "left (-X)",
+  "body_displacement_X_mm": -200,
+  "stance_world_contact_X_mm": -60.0,
+  "loop_pose_continuous": true,
+  "rigid_ground_clearance_mm": 10.006480259196906,
+  "hemisphere_pole_margin_deg": 62.67490000000001,
+  "angle_ranges_deg": {
+    "hip_deg": [
+      19.1689,
+      48.1261
+    ],
+    "servo_deg": [
+      15.6619,
+      32.8424
+    ],
+    "knee_deg": [
+      12.874,
+      26.8534
+    ]
+  },
+  "samples": [
+    {
+      "t": 0,
+      "body_X_mm": 0,
+      "hip_deg": 46.8321,
+      "servo_deg": 15.9567,
+      "knee_deg": 13.1183,
+      "target_center_XZ_mm": [
+        -60,
+        20
+      ],
+      "actual_center_XZ_mm": [
+        -60,
+        20
+      ]
+    },
+    {
+      "t": 0.01,
+      "body_X_mm": -2,
+      "hip_deg": 46.3423,
+      "servo_deg": 16.1549,
+      "knee_deg": 13.2825,
+      "target_center_XZ_mm": [
+        -58,
+        20
+      ],
+      "actual_center_XZ_mm": [
+        -58,
+        20
+      ]
+    },
+    {
+      "t": 0.02,
+      "body_X_mm": -4,
+      "hip_deg": 45.8546,
+      "servo_deg": 16.3464,
+      "knee_deg": 13.4411,
+      "target_center_XZ_mm": [
+        -56,
+        20
+      ],
+      "actual_center_XZ_mm": [
+        -56,
+        20
+      ]
+    },
+    {
+      "t": 0.03,
+      "body_X_mm": -6,
+      "hip_deg": 45.3691,
+      "servo_deg": 16.5312,
+      "knee_deg": 13.5942,
+      "target_center_XZ_mm": [
+        -54,
+        20
+      ],
+      "actual_center_XZ_mm": [
+        -54,
+        20
+      ]
+    },
+    {
+      "t": 0.04,
+      "body_X_mm": -8,
+      "hip_deg": 44.8859,
+      "servo_deg": 16.7094,
+      "knee_deg": 13.7417,
+      "target_center_XZ_mm": [
+        -52,
+        20
+      ],
+      "actual_center_XZ_mm": [
+        -52,
+        20
+      ]
+    },
+    {
+      "t": 0.05,
+      "body_X_mm": -10,
+      "hip_deg": 44.4049,
+      "servo_deg": 16.881,
+      "knee_deg": 13.8837,
+      "target_center_XZ_mm": [
+        -50,
+        20
+      ],
+      "actual_center_XZ_mm": [
+        -50,
+        20
+      ]
+    },
+    {
+      "t": 0.06,
+      "body_X_mm": -12,
+      "hip_deg": 43.9262,
+      "servo_deg": 17.0458,
+      "knee_deg": 14.0201,
+      "target_center_XZ_mm": [
+        -48,
+        20
+      ],
+      "actual_center_XZ_mm": [
+        -48,
+        20
+      ]
+    },
+    {
+      "t": 0.07,
+      "body_X_mm": -14,
+      "hip_deg": 43.4499,
+      "servo_deg": 17.204,
+      "knee_deg": 14.151,
+      "target_center_XZ_mm": [
+        -46,
+        20
+      ],
+      "actual_center_XZ_mm": [
+        -46,
+        20
+      ]
+    },
+    {
+      "t": 0.08,
+      "body_X_mm": -16,
+      "hip_deg": 42.976,
+      "servo_deg": 17.3555,
+      "knee_deg": 14.2763,
+      "target_center_XZ_mm": [
+        -44,
+        20
+      ],
+      "actual_center_XZ_mm": [
+        -44,
+        20
+      ]
+    },
+    {
+      "t": 0.09,
+      "body_X_mm": -18,
+      "hip_deg": 42.5044,
+      "servo_deg": 17.5004,
+      "knee_deg": 14.3961,
+      "target_center_XZ_mm": [
+        -42,
+        20
+      ],
+      "actual_center_XZ_mm": [
+        -42,
+        20
+      ]
+    },
+    {
+      "t": 0.1,
+      "body_X_mm": -20,
+      "hip_deg": 42.0354,
+      "servo_deg": 17.6385,
+      "knee_deg": 14.5103,
+      "target_center_XZ_mm": [
+        -40,
+        20
+      ],
+      "actual_center_XZ_mm": [
+        -40,
+        20
+      ]
+    },
+    {
+      "t": 0.11,
+      "body_X_mm": -22,
+      "hip_deg": 41.5689,
+      "servo_deg": 17.77,
+      "knee_deg": 14.6189,
+      "target_center_XZ_mm": [
+        -38,
+        20
+      ],
+      "actual_center_XZ_mm": [
+        -38,
+        20
+      ]
+    },
+    {
+      "t": 0.12,
+      "body_X_mm": -24,
+      "hip_deg": 41.1049,
+      "servo_deg": 17.8947,
+      "knee_deg": 14.7219,
+      "target_center_XZ_mm": [
+        -36,
+        20
+      ],
+      "actual_center_XZ_mm": [
+        -36,
+        20
+      ]
+    },
+    {
+      "t": 0.13,
+      "body_X_mm": -26,
+      "hip_deg": 40.6435,
+      "servo_deg": 18.0127,
+      "knee_deg": 14.8195,
+      "target_center_XZ_mm": [
+        -34,
+        20
+      ],
+      "actual_center_XZ_mm": [
+        -34,
+        20
+      ]
+    },
+    {
+      "t": 0.14,
+      "body_X_mm": -28,
+      "hip_deg": 40.1847,
+      "servo_deg": 18.124,
+      "knee_deg": 14.9114,
+      "target_center_XZ_mm": [
+        -32,
+        20
+      ],
+      "actual_center_XZ_mm": [
+        -32,
+        20
+      ]
+    },
+    {
+      "t": 0.15,
+      "body_X_mm": -30,
+      "hip_deg": 39.7286,
+      "servo_deg": 18.2286,
+      "knee_deg": 14.9978,
+      "target_center_XZ_mm": [
+        -30,
+        20
+      ],
+      "actual_center_XZ_mm": [
+        -30,
+        20
+      ]
+    },
+    {
+      "t": 0.16,
+      "body_X_mm": -32,
+      "hip_deg": 39.2752,
+      "servo_deg": 18.3265,
+      "knee_deg": 15.0786,
+      "target_center_XZ_mm": [
+        -28,
+        20
+      ],
+      "actual_center_XZ_mm": [
+        -28,
+        20
+      ]
+    },
+    {
+      "t": 0.17,
+      "body_X_mm": -34,
+      "hip_deg": 38.8246,
+      "servo_deg": 18.4177,
+      "knee_deg": 15.1538,
+      "target_center_XZ_mm": [
+        -26,
+        20
+      ],
+      "actual_center_XZ_mm": [
+        -26,
+        20
+      ]
+    },
+    {
+      "t": 0.18,
+      "body_X_mm": -36,
+      "hip_deg": 38.3767,
+      "servo_deg": 18.5021,
+      "knee_deg": 15.2235,
+      "target_center_XZ_mm": [
+        -24,
+        20
+      ],
+      "actual_center_XZ_mm": [
+        -24,
+        20
+      ]
+    },
+    {
+      "t": 0.19,
+      "body_X_mm": -38,
+      "hip_deg": 37.9317,
+      "servo_deg": 18.5798,
+      "knee_deg": 15.2876,
+      "target_center_XZ_mm": [
+        -22,
+        20
+      ],
+      "actual_center_XZ_mm": [
+        -22,
+        20
+      ]
+    },
+    {
+      "t": 0.2,
+      "body_X_mm": -40,
+      "hip_deg": 37.4896,
+      "servo_deg": 18.6507,
+      "knee_deg": 15.3461,
+      "target_center_XZ_mm": [
+        -20,
+        20
+      ],
+      "actual_center_XZ_mm": [
+        -20,
+        20
+      ]
+    },
+    {
+      "t": 0.21,
+      "body_X_mm": -42,
+      "hip_deg": 37.0504,
+      "servo_deg": 18.7149,
+      "knee_deg": 15.3991,
+      "target_center_XZ_mm": [
+        -18,
+        20
+      ],
+      "actual_center_XZ_mm": [
+        -18,
+        20
+      ]
+    },
+    {
+      "t": 0.22,
+      "body_X_mm": -44,
+      "hip_deg": 36.6142,
+      "servo_deg": 18.7724,
+      "knee_deg": 15.4465,
+      "target_center_XZ_mm": [
+        -16,
+        20
+      ],
+      "actual_center_XZ_mm": [
+        -16,
+        20
+      ]
+    },
+    {
+      "t": 0.23,
+      "body_X_mm": -46,
+      "hip_deg": 36.181,
+      "servo_deg": 18.8231,
+      "knee_deg": 15.4883,
+      "target_center_XZ_mm": [
+        -14,
+        20
+      ],
+      "actual_center_XZ_mm": [
+        -14,
+        20
+      ]
+    },
+    {
+      "t": 0.24,
+      "body_X_mm": -48,
+      "hip_deg": 35.7509,
+      "servo_deg": 18.867,
+      "knee_deg": 15.5245,
+      "target_center_XZ_mm": [
+        -12,
+        20
+      ],
+      "actual_center_XZ_mm": [
+        -12,
+        20
+      ]
+    },
+    {
+      "t": 0.25,
+      "body_X_mm": -50,
+      "hip_deg": 35.3238,
+      "servo_deg": 18.9042,
+      "knee_deg": 15.5552,
+      "target_center_XZ_mm": [
+        -10,
+        20
+      ],
+      "actual_center_XZ_mm": [
+        -10,
+        20
+      ]
+    },
+    {
+      "t": 0.26,
+      "body_X_mm": -52,
+      "hip_deg": 34.8999,
+      "servo_deg": 18.9346,
+      "knee_deg": 15.5803,
+      "target_center_XZ_mm": [
+        -8,
+        20
+      ],
+      "actual_center_XZ_mm": [
+        -8,
+        20
+      ]
+    },
+    {
+      "t": 0.27,
+      "body_X_mm": -54,
+      "hip_deg": 34.4792,
+      "servo_deg": 18.9583,
+      "knee_deg": 15.5998,
+      "target_center_XZ_mm": [
+        -6,
+        20
+      ],
+      "actual_center_XZ_mm": [
+        -6,
+        20
+      ]
+    },
+    {
+      "t": 0.28,
+      "body_X_mm": -56,
+      "hip_deg": 34.0617,
+      "servo_deg": 18.9752,
+      "knee_deg": 15.6138,
+      "target_center_XZ_mm": [
+        -4,
+        20
+      ],
+      "actual_center_XZ_mm": [
+        -4,
+        20
+      ]
+    },
+    {
+      "t": 0.29,
+      "body_X_mm": -58,
+      "hip_deg": 33.6474,
+      "servo_deg": 18.9853,
+      "knee_deg": 15.6221,
+      "target_center_XZ_mm": [
+        -2,
+        20
+      ],
+      "actual_center_XZ_mm": [
+        -2,
+        20
+      ]
+    },
+    {
+      "t": 0.3,
+      "body_X_mm": -60,
+      "hip_deg": 33.2365,
+      "servo_deg": 18.9887,
+      "knee_deg": 15.6249,
+      "target_center_XZ_mm": [
+        0,
+        20
+      ],
+      "actual_center_XZ_mm": [
+        -1.13687e-13,
+        20
+      ]
+    },
+    {
+      "t": 0.31,
+      "body_X_mm": -62,
+      "hip_deg": 32.829,
+      "servo_deg": 18.9853,
+      "knee_deg": 15.6221,
+      "target_center_XZ_mm": [
+        2,
+        20
+      ],
+      "actual_center_XZ_mm": [
+        2,
+        20
+      ]
+    },
+    {
+      "t": 0.32,
+      "body_X_mm": -64,
+      "hip_deg": 32.4248,
+      "servo_deg": 18.9752,
+      "knee_deg": 15.6138,
+      "target_center_XZ_mm": [
+        4,
+        20
+      ],
+      "actual_center_XZ_mm": [
+        4,
+        20
+      ]
+    },
+    {
+      "t": 0.33,
+      "body_X_mm": -66,
+      "hip_deg": 32.024,
+      "servo_deg": 18.9583,
+      "knee_deg": 15.5998,
+      "target_center_XZ_mm": [
+        6,
+        20
+      ],
+      "actual_center_XZ_mm": [
+        6,
+        20
+      ]
+    },
+    {
+      "t": 0.34,
+      "body_X_mm": -68,
+      "hip_deg": 31.6268,
+      "servo_deg": 18.9346,
+      "knee_deg": 15.5803,
+      "target_center_XZ_mm": [
+        8,
+        20
+      ],
+      "actual_center_XZ_mm": [
+        8,
+        20
+      ]
+    },
+    {
+      "t": 0.35,
+      "body_X_mm": -70,
+      "hip_deg": 31.233,
+      "servo_deg": 18.9042,
+      "knee_deg": 15.5552,
+      "target_center_XZ_mm": [
+        10,
+        20
+      ],
+      "actual_center_XZ_mm": [
+        10,
+        20
+      ]
+    },
+    {
+      "t": 0.36,
+      "body_X_mm": -72,
+      "hip_deg": 30.8428,
+      "servo_deg": 18.867,
+      "knee_deg": 15.5245,
+      "target_center_XZ_mm": [
+        12,
+        20
+      ],
+      "actual_center_XZ_mm": [
+        12,
+        20
+      ]
+    },
+    {
+      "t": 0.37,
+      "body_X_mm": -74,
+      "hip_deg": 30.4562,
+      "servo_deg": 18.8231,
+      "knee_deg": 15.4883,
+      "target_center_XZ_mm": [
+        14,
+        20
+      ],
+      "actual_center_XZ_mm": [
+        14,
+        20
+      ]
+    },
+    {
+      "t": 0.38,
+      "body_X_mm": -76,
+      "hip_deg": 30.0732,
+      "servo_deg": 18.7724,
+      "knee_deg": 15.4465,
+      "target_center_XZ_mm": [
+        16,
+        20
+      ],
+      "actual_center_XZ_mm": [
+        16,
+        20
+      ]
+    },
+    {
+      "t": 0.39,
+      "body_X_mm": -78,
+      "hip_deg": 29.694,
+      "servo_deg": 18.7149,
+      "knee_deg": 15.3991,
+      "target_center_XZ_mm": [
+        18,
+        20
+      ],
+      "actual_center_XZ_mm": [
+        18,
+        20
+      ]
+    },
+    {
+      "t": 0.4,
+      "body_X_mm": -80,
+      "hip_deg": 29.3184,
+      "servo_deg": 18.6507,
+      "knee_deg": 15.3461,
+      "target_center_XZ_mm": [
+        20,
+        20
+      ],
+      "actual_center_XZ_mm": [
+        20,
+        20
+      ]
+    },
+    {
+      "t": 0.41,
+      "body_X_mm": -82,
+      "hip_deg": 28.9466,
+      "servo_deg": 18.5798,
+      "knee_deg": 15.2876,
+      "target_center_XZ_mm": [
+        22,
+        20
+      ],
+      "actual_center_XZ_mm": [
+        22,
+        20
+      ]
+    },
+    {
+      "t": 0.42,
+      "body_X_mm": -84,
+      "hip_deg": 28.5785,
+      "servo_deg": 18.5021,
+      "knee_deg": 15.2235,
+      "target_center_XZ_mm": [
+        24,
+        20
+      ],
+      "actual_center_XZ_mm": [
+        24,
+        20
+      ]
+    },
+    {
+      "t": 0.43,
+      "body_X_mm": -86,
+      "hip_deg": 28.2143,
+      "servo_deg": 18.4177,
+      "knee_deg": 15.1538,
+      "target_center_XZ_mm": [
+        26,
+        20
+      ],
+      "actual_center_XZ_mm": [
+        26,
+        20
+      ]
+    },
+    {
+      "t": 0.44,
+      "body_X_mm": -88,
+      "hip_deg": 27.854,
+      "servo_deg": 18.3265,
+      "knee_deg": 15.0786,
+      "target_center_XZ_mm": [
+        28,
+        20
+      ],
+      "actual_center_XZ_mm": [
+        28,
+        20
+      ]
+    },
+    {
+      "t": 0.45,
+      "body_X_mm": -90,
+      "hip_deg": 27.4976,
+      "servo_deg": 18.2286,
+      "knee_deg": 14.9978,
+      "target_center_XZ_mm": [
+        30,
+        20
+      ],
+      "actual_center_XZ_mm": [
+        30,
+        20
+      ]
+    },
+    {
+      "t": 0.46,
+      "body_X_mm": -92,
+      "hip_deg": 27.1451,
+      "servo_deg": 18.124,
+      "knee_deg": 14.9114,
+      "target_center_XZ_mm": [
+        32,
+        20
+      ],
+      "actual_center_XZ_mm": [
+        32,
+        20
+      ]
+    },
+    {
+      "t": 0.47,
+      "body_X_mm": -94,
+      "hip_deg": 26.7966,
+      "servo_deg": 18.0127,
+      "knee_deg": 14.8195,
+      "target_center_XZ_mm": [
+        34,
+        20
+      ],
+      "actual_center_XZ_mm": [
+        34,
+        20
+      ]
+    },
+    {
+      "t": 0.48,
+      "body_X_mm": -96,
+      "hip_deg": 26.4521,
+      "servo_deg": 17.8947,
+      "knee_deg": 14.7219,
+      "target_center_XZ_mm": [
+        36,
+        20
+      ],
+      "actual_center_XZ_mm": [
+        36,
+        20
+      ]
+    },
+    {
+      "t": 0.49,
+      "body_X_mm": -98,
+      "hip_deg": 26.1116,
+      "servo_deg": 17.77,
+      "knee_deg": 14.6189,
+      "target_center_XZ_mm": [
+        38,
+        20
+      ],
+      "actual_center_XZ_mm": [
+        38,
+        20
+      ]
+    },
+    {
+      "t": 0.5,
+      "body_X_mm": -100,
+      "hip_deg": 25.7752,
+      "servo_deg": 17.6385,
+      "knee_deg": 14.5103,
+      "target_center_XZ_mm": [
+        40,
+        20
+      ],
+      "actual_center_XZ_mm": [
+        40,
+        20
+      ]
+    },
+    {
+      "t": 0.51,
+      "body_X_mm": -102,
+      "hip_deg": 25.4429,
+      "servo_deg": 17.5004,
+      "knee_deg": 14.3961,
+      "target_center_XZ_mm": [
+        42,
+        20
+      ],
+      "actual_center_XZ_mm": [
+        42,
+        20
+      ]
+    },
+    {
+      "t": 0.52,
+      "body_X_mm": -104,
+      "hip_deg": 25.1148,
+      "servo_deg": 17.3555,
+      "knee_deg": 14.2763,
+      "target_center_XZ_mm": [
+        44,
+        20
+      ],
+      "actual_center_XZ_mm": [
+        44,
+        20
+      ]
+    },
+    {
+      "t": 0.53,
+      "body_X_mm": -106,
+      "hip_deg": 24.7908,
+      "servo_deg": 17.204,
+      "knee_deg": 14.151,
+      "target_center_XZ_mm": [
+        46,
+        20
+      ],
+      "actual_center_XZ_mm": [
+        46,
+        20
+      ]
+    },
+    {
+      "t": 0.54,
+      "body_X_mm": -108,
+      "hip_deg": 24.4711,
+      "servo_deg": 17.0458,
+      "knee_deg": 14.0201,
+      "target_center_XZ_mm": [
+        48,
+        20
+      ],
+      "actual_center_XZ_mm": [
+        48,
+        20
+      ]
+    },
+    {
+      "t": 0.55,
+      "body_X_mm": -110,
+      "hip_deg": 24.1555,
+      "servo_deg": 16.881,
+      "knee_deg": 13.8837,
+      "target_center_XZ_mm": [
+        50,
+        20
+      ],
+      "actual_center_XZ_mm": [
+        50,
+        20
+      ]
+    },
+    {
+      "t": 0.56,
+      "body_X_mm": -112,
+      "hip_deg": 23.8443,
+      "servo_deg": 16.7094,
+      "knee_deg": 13.7417,
+      "target_center_XZ_mm": [
+        52,
+        20
+      ],
+      "actual_center_XZ_mm": [
+        52,
+        20
+      ]
+    },
+    {
+      "t": 0.57,
+      "body_X_mm": -114,
+      "hip_deg": 23.5374,
+      "servo_deg": 16.5312,
+      "knee_deg": 13.5942,
+      "target_center_XZ_mm": [
+        54,
+        20
+      ],
+      "actual_center_XZ_mm": [
+        54,
+        20
+      ]
+    },
+    {
+      "t": 0.58,
+      "body_X_mm": -116,
+      "hip_deg": 23.2347,
+      "servo_deg": 16.3464,
+      "knee_deg": 13.4411,
+      "target_center_XZ_mm": [
+        56,
+        20
+      ],
+      "actual_center_XZ_mm": [
+        56,
+        20
+      ]
+    },
+    {
+      "t": 0.59,
+      "body_X_mm": -118,
+      "hip_deg": 22.9365,
+      "servo_deg": 16.1549,
+      "knee_deg": 13.2825,
+      "target_center_XZ_mm": [
+        58,
+        20
+      ],
+      "actual_center_XZ_mm": [
+        58,
+        20
+      ]
+    },
+    {
+      "t": 0.6,
+      "body_X_mm": -120,
+      "hip_deg": 22.6426,
+      "servo_deg": 15.9567,
+      "knee_deg": 13.1183,
+      "target_center_XZ_mm": [
+        60,
+        20
+      ],
+      "actual_center_XZ_mm": [
+        60,
+        20
+      ]
+    },
+    {
+      "t": 0.61,
+      "body_X_mm": -122,
+      "hip_deg": 22.3498,
+      "servo_deg": 15.7681,
+      "knee_deg": 12.962,
+      "target_center_XZ_mm": [
+        61.9699,
+        20.0278
+      ],
+      "actual_center_XZ_mm": [
+        61.9699,
+        20.0278
+      ]
+    },
+    {
+      "t": 0.62,
+      "body_X_mm": -124,
+      "hip_deg": 22.044,
+      "servo_deg": 15.6619,
+      "knee_deg": 12.874,
+      "target_center_XZ_mm": [
+        63.7684,
+        20.2058
+      ],
+      "actual_center_XZ_mm": [
+        63.7684,
+        20.2058
+      ]
+    },
+    {
+      "t": 0.63,
+      "body_X_mm": -126,
+      "hip_deg": 21.7147,
+      "servo_deg": 15.706,
+      "knee_deg": 12.9105,
+      "target_center_XZ_mm": [
+        65.2483,
+        20.6411
+      ],
+      "actual_center_XZ_mm": [
+        65.2483,
+        20.6411
+      ]
+    },
+    {
+      "t": 0.64,
+      "body_X_mm": -128,
+      "hip_deg": 21.3588,
+      "servo_deg": 15.9464,
+      "knee_deg": 13.1098,
+      "target_center_XZ_mm": [
+        66.288,
+        21.3997
+      ],
+      "actual_center_XZ_mm": [
+        66.288,
+        21.3997
+      ]
+    },
+    {
+      "t": 0.65,
+      "body_X_mm": -130,
+      "hip_deg": 20.9799,
+      "servo_deg": 16.4099,
+      "knee_deg": 13.4938,
+      "target_center_XZ_mm": [
+        66.7896,
+        22.5122
+      ],
+      "actual_center_XZ_mm": [
+        66.7896,
+        22.5122
+      ]
+    },
+    {
+      "t": 0.66,
+      "body_X_mm": -132,
+      "hip_deg": 20.5885,
+      "servo_deg": 17.1054,
+      "knee_deg": 14.0694,
+      "target_center_XZ_mm": [
+        66.6776,
+        23.9795
+      ],
+      "actual_center_XZ_mm": [
+        66.6776,
+        23.9795
+      ]
+    },
+    {
+      "t": 0.67,
+      "body_X_mm": -134,
+      "hip_deg": 20.201,
+      "servo_deg": 18.026,
+      "knee_deg": 14.8304,
+      "target_center_XZ_mm": [
+        65.898,
+        25.778
+      ],
+      "actual_center_XZ_mm": [
+        65.898,
+        25.778
+      ]
+    },
+    {
+      "t": 0.68,
+      "body_X_mm": -136,
+      "hip_deg": 19.8386,
+      "servo_deg": 19.1517,
+      "knee_deg": 15.7593,
+      "target_center_XZ_mm": [
+        64.416,
+        27.8643
+      ],
+      "actual_center_XZ_mm": [
+        64.416,
+        27.8643
+      ]
+    },
+    {
+      "t": 0.69,
+      "body_X_mm": -138,
+      "hip_deg": 19.5269,
+      "servo_deg": 20.4515,
+      "knee_deg": 16.8294,
+      "target_center_XZ_mm": [
+        62.2154,
+        30.1801
+      ],
+      "actual_center_XZ_mm": [
+        62.2154,
+        30.1801
+      ]
+    },
+    {
+      "t": 0.7,
+      "body_X_mm": -140,
+      "hip_deg": 19.2939,
+      "servo_deg": 21.8857,
+      "knee_deg": 18.0068,
+      "target_center_XZ_mm": [
+        59.2969,
+        32.6562
+      ],
+      "actual_center_XZ_mm": [
+        59.2969,
+        32.6562
+      ]
+    },
+    {
+      "t": 0.71,
+      "body_X_mm": -142,
+      "hip_deg": 19.1689,
+      "servo_deg": 23.4083,
+      "knee_deg": 19.2527,
+      "target_center_XZ_mm": [
+        55.6764,
+        35.2164
+      ],
+      "actual_center_XZ_mm": [
+        55.6764,
+        35.2164
+      ]
+    },
+    {
+      "t": 0.72,
+      "body_X_mm": -144,
+      "hip_deg": 19.1809,
+      "servo_deg": 24.969,
+      "knee_deg": 20.5251,
+      "target_center_XZ_mm": [
+        51.384,
+        37.7811
+      ],
+      "actual_center_XZ_mm": [
+        51.384,
+        37.7811
+      ]
+    },
+    {
+      "t": 0.73,
+      "body_X_mm": -146,
+      "hip_deg": 19.3572,
+      "servo_deg": 26.5153,
+      "knee_deg": 21.7804,
+      "target_center_XZ_mm": [
+        46.4626,
+        40.2704
+      ],
+      "actual_center_XZ_mm": [
+        46.4626,
+        40.2704
+      ]
+    },
+    {
+      "t": 0.74,
+      "body_X_mm": -148,
+      "hip_deg": 19.7211,
+      "servo_deg": 27.9936,
+      "knee_deg": 22.9754,
+      "target_center_XZ_mm": [
+        40.9661,
+        42.6071
+      ],
+      "actual_center_XZ_mm": [
+        40.9661,
+        42.6071
+      ]
+    },
+    {
+      "t": 0.75,
+      "body_X_mm": -150,
+      "hip_deg": 20.2912,
+      "servo_deg": 29.3521,
+      "knee_deg": 24.0686,
+      "target_center_XZ_mm": [
+        34.9585,
+        44.7192
+      ],
+      "actual_center_XZ_mm": [
+        34.9585,
+        44.7192
+      ]
+    },
+    {
+      "t": 0.76,
+      "body_X_mm": -152,
+      "hip_deg": 21.0792,
+      "servo_deg": 30.5416,
+      "knee_deg": 25.0216,
+      "target_center_XZ_mm": [
+        28.512,
+        46.5421
+      ],
+      "actual_center_XZ_mm": [
+        28.512,
+        46.5421
+      ]
+    },
+    {
+      "t": 0.77,
+      "body_X_mm": -154,
+      "hip_deg": 22.0889,
+      "servo_deg": 31.5179,
+      "knee_deg": 25.8008,
+      "target_center_XZ_mm": [
+        21.706,
+        48.0202
+      ],
+      "actual_center_XZ_mm": [
+        21.706,
+        48.0202
+      ]
+    },
+    {
+      "t": 0.78,
+      "body_X_mm": -156,
+      "hip_deg": 23.3153,
+      "servo_deg": 32.2438,
+      "knee_deg": 26.3784,
+      "target_center_XZ_mm": [
+        14.6254,
+        49.109
+      ],
+      "actual_center_XZ_mm": [
+        14.6254,
+        49.109
+      ]
+    },
+    {
+      "t": 0.79,
+      "body_X_mm": -158,
+      "hip_deg": 24.7446,
+      "servo_deg": 32.6913,
+      "knee_deg": 26.7336,
+      "target_center_XZ_mm": [
+        7.35939,
+        49.7756
+      ],
+      "actual_center_XZ_mm": [
+        7.35939,
+        49.7756
+      ]
+    },
+    {
+      "t": 0.8,
+      "body_X_mm": -160,
+      "hip_deg": 26.3542,
+      "servo_deg": 32.8424,
+      "knee_deg": 26.8534,
+      "target_center_XZ_mm": [
+        -4.26326e-14,
+        50
+      ],
+      "actual_center_XZ_mm": [
+        1.42109e-13,
+        50
+      ]
+    },
+    {
+      "t": 0.81,
+      "body_X_mm": -162,
+      "hip_deg": 28.1139,
+      "servo_deg": 32.6913,
+      "knee_deg": 26.7336,
+      "target_center_XZ_mm": [
+        -7.35939,
+        49.7756
+      ],
+      "actual_center_XZ_mm": [
+        -7.35939,
+        49.7756
+      ]
+    },
+    {
+      "t": 0.82,
+      "body_X_mm": -164,
+      "hip_deg": 29.9877,
+      "servo_deg": 32.2438,
+      "knee_deg": 26.3784,
+      "target_center_XZ_mm": [
+        -14.6254,
+        49.109
+      ],
+      "actual_center_XZ_mm": [
+        -14.6254,
+        49.109
+      ]
+    },
+    {
+      "t": 0.83,
+      "body_X_mm": -166,
+      "hip_deg": 31.9357,
+      "servo_deg": 31.5179,
+      "knee_deg": 25.8008,
+      "target_center_XZ_mm": [
+        -21.706,
+        48.0202
+      ],
+      "actual_center_XZ_mm": [
+        -21.706,
+        48.0202
+      ]
+    },
+    {
+      "t": 0.84,
+      "body_X_mm": -168,
+      "hip_deg": 33.9159,
+      "servo_deg": 30.5416,
+      "knee_deg": 25.0216,
+      "target_center_XZ_mm": [
+        -28.512,
+        46.5421
+      ],
+      "actual_center_XZ_mm": [
+        -28.512,
+        46.5421
+      ]
+    },
+    {
+      "t": 0.85,
+      "body_X_mm": -170,
+      "hip_deg": 35.8865,
+      "servo_deg": 29.3521,
+      "knee_deg": 24.0686,
+      "target_center_XZ_mm": [
+        -34.9585,
+        44.7192
+      ],
+      "actual_center_XZ_mm": [
+        -34.9585,
+        44.7192
+      ]
+    },
+    {
+      "t": 0.86,
+      "body_X_mm": -172,
+      "hip_deg": 37.8076,
+      "servo_deg": 27.9936,
+      "knee_deg": 22.9754,
+      "target_center_XZ_mm": [
+        -40.9661,
+        42.6071
+      ],
+      "actual_center_XZ_mm": [
+        -40.9661,
+        42.6071
+      ]
+    },
+    {
+      "t": 0.87,
+      "body_X_mm": -174,
+      "hip_deg": 39.6417,
+      "servo_deg": 26.5153,
+      "knee_deg": 21.7804,
+      "target_center_XZ_mm": [
+        -46.4626,
+        40.2704
+      ],
+      "actual_center_XZ_mm": [
+        -46.4626,
+        40.2704
+      ]
+    },
+    {
+      "t": 0.88,
+      "body_X_mm": -176,
+      "hip_deg": 41.3551,
+      "servo_deg": 24.969,
+      "knee_deg": 20.5251,
+      "target_center_XZ_mm": [
+        -51.384,
+        37.7811
+      ],
+      "actual_center_XZ_mm": [
+        -51.384,
+        37.7811
+      ]
+    },
+    {
+      "t": 0.89,
+      "body_X_mm": -178,
+      "hip_deg": 42.9182,
+      "servo_deg": 23.4083,
+      "knee_deg": 19.2527,
+      "target_center_XZ_mm": [
+        -55.6764,
+        35.2164
+      ],
+      "actual_center_XZ_mm": [
+        -55.6764,
+        35.2164
+      ]
+    },
+    {
+      "t": 0.9,
+      "body_X_mm": -180,
+      "hip_deg": 44.3054,
+      "servo_deg": 21.8857,
+      "knee_deg": 18.0068,
+      "target_center_XZ_mm": [
+        -59.2969,
+        32.6562
+      ],
+      "actual_center_XZ_mm": [
+        -59.2969,
+        32.6563
+      ]
+    },
+    {
+      "t": 0.91,
+      "body_X_mm": -182,
+      "hip_deg": 45.4957,
+      "servo_deg": 20.4515,
+      "knee_deg": 16.8294,
+      "target_center_XZ_mm": [
+        -62.2154,
+        30.1801
+      ],
+      "actual_center_XZ_mm": [
+        -62.2154,
+        30.1801
+      ]
+    },
+    {
+      "t": 0.92,
+      "body_X_mm": -184,
+      "hip_deg": 46.4729,
+      "servo_deg": 19.1517,
+      "knee_deg": 15.7593,
+      "target_center_XZ_mm": [
+        -64.416,
+        27.8643
+      ],
+      "actual_center_XZ_mm": [
+        -64.416,
+        27.8643
+      ]
+    },
+    {
+      "t": 0.93,
+      "body_X_mm": -186,
+      "hip_deg": 47.2259,
+      "servo_deg": 18.026,
+      "knee_deg": 14.8304,
+      "target_center_XZ_mm": [
+        -65.898,
+        25.778
+      ],
+      "actual_center_XZ_mm": [
+        -65.898,
+        25.778
+      ]
+    },
+    {
+      "t": 0.94,
+      "body_X_mm": -188,
+      "hip_deg": 47.7498,
+      "servo_deg": 17.1054,
+      "knee_deg": 14.0694,
+      "target_center_XZ_mm": [
+        -66.6776,
+        23.9795
+      ],
+      "actual_center_XZ_mm": [
+        -66.6776,
+        23.9795
+      ]
+    },
+    {
+      "t": 0.95,
+      "body_X_mm": -190,
+      "hip_deg": 48.0465,
+      "servo_deg": 16.4099,
+      "knee_deg": 13.4938,
+      "target_center_XZ_mm": [
+        -66.7896,
+        22.5122
+      ],
+      "actual_center_XZ_mm": [
+        -66.7896,
+        22.5122
+      ]
+    },
+    {
+      "t": 0.96,
+      "body_X_mm": -192,
+      "hip_deg": 48.1261,
+      "servo_deg": 15.9464,
+      "knee_deg": 13.1098,
+      "target_center_XZ_mm": [
+        -66.288,
+        21.3997
+      ],
+      "actual_center_XZ_mm": [
+        -66.288,
+        21.3997
+      ]
+    },
+    {
+      "t": 0.97,
+      "body_X_mm": -194,
+      "hip_deg": 48.0079,
+      "servo_deg": 15.706,
+      "knee_deg": 12.9105,
+      "target_center_XZ_mm": [
+        -65.2483,
+        20.6411
+      ],
+      "actual_center_XZ_mm": [
+        -65.2483,
+        20.6411
+      ]
+    },
+    {
+      "t": 0.98,
+      "body_X_mm": -196,
+      "hip_deg": 47.7221,
+      "servo_deg": 15.6619,
+      "knee_deg": 12.874,
+      "target_center_XZ_mm": [
+        -63.7684,
+        20.2058
+      ],
+      "actual_center_XZ_mm": [
+        -63.7684,
+        20.2058
+      ]
+    },
+    {
+      "t": 0.99,
+      "body_X_mm": -198,
+      "hip_deg": 47.3114,
+      "servo_deg": 15.7681,
+      "knee_deg": 12.962,
+      "target_center_XZ_mm": [
+        -61.9699,
+        20.0278
+      ],
+      "actual_center_XZ_mm": [
+        -61.9699,
+        20.0278
+      ]
+    },
+    {
+      "t": 1,
+      "body_X_mm": -200,
+      "hip_deg": 46.8321,
+      "servo_deg": 15.9567,
+      "knee_deg": 13.1183,
+      "target_center_XZ_mm": [
+        -60,
+        20
+      ],
+      "actual_center_XZ_mm": [
+        -60,
+        20
+      ]
+    }
+  ]
+}

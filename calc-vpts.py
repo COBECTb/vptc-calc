@@ -1192,6 +1192,11 @@ function get_value(data, key) =
     let(idx = search([key], data, num_returns_per_match=1)[0])
     data[idx][1];
 
+// Public dimensions for previews; use the actual model variables.
+function leg_kinematic_parameters()=[point_foot_center,connect_rod_l,shoulder_horn_r,foot_r,h_reducer+cap_thickness+2*zazor+9.5];
+// Native body placement: fore/aft spacing, left mount frame, pitch-axis offset, symmetry plane.
+function body_gait_parameters()=[320,[0,-63,-h_reducer-14.5],-109,(24+133)/2];
+
 servo_angle=$t*135-135/2+7;
 leg_angle1=$t*360;
 
@@ -1248,14 +1253,14 @@ module leg_left_front1(a=0){{
     color("lightgray") rotate([0,0,a]) import("{stl_base}_reducer.stl");
 }}
 
-module leg_left_front2(a=0){{
+module leg_left_front2(a=0,with_leg=true){{
     color("lightgray") rotate([0,180,0]) import("{stl_base}_reducer_with_bracing_and_connector.stl",center=true);
-    translate([0,0 ,-109]) leg_left_front1(a=a);
+    if(with_leg) translate([0,0 ,-109]) leg_left_front1(a=a);
 }}
 
-module leg_left_front_union(a1=0,a2=0){{
+module leg_left_front_union(a1=0,a2=0,with_leg=true){{
         color("lightgray") translate([0,76 ,-13]) rotate([90,0,0]) import("{stl_base}_reducer_with_bracing_and_connector.stl");
-        rotate_around_point(a1,[0,1,0],[0,0,-13])  leg_left_front2(a=a2);
+        rotate_around_point(a1,[0,1,0],[0,0,-13])  leg_left_front2(a=a2,with_leg=with_leg);
 
 }}
 
