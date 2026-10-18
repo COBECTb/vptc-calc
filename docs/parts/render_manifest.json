@@ -1,0 +1,594 @@
+{
+  "source_sha256": "d8175c84cbc1d6a0e9438eb9227b802e3b4cecdd7c5dbe4a5e7b38147bf42e62",
+  "reference_inputs": {
+    "resolution": 600,
+    "ratio": 19,
+    "roller_d": 4,
+    "roller_h": 5,
+    "rout": 28,
+    "diameter": 70,
+    "hole_angle": 39
+  },
+  "parts": [
+    {
+      "id": "rigid_gear",
+      "triangles": 8056,
+      "bounds_xyz_mm": [
+        [
+          -35.0,
+          -35.0,
+          0.0
+        ],
+        [
+          35.0,
+          35.0,
+          15.5
+        ]
+      ],
+      "export_signature": "5f9afbc0341b23932cbab2a8bc09403aafc54f3122416d63f1694b56092ab902",
+      "warnings": [],
+      "image": "images/parts/rigid_gear.png",
+      "wrapper": "docs/parts/rigid_gear.scad"
+    },
+    {
+      "id": "rigid_gear_with_bracing",
+      "triangles": 9124,
+      "bounds_xyz_mm": [
+        [
+          -35.0,
+          -35.0,
+          0.0
+        ],
+        [
+          35.0,
+          35.0,
+          15.5
+        ]
+      ],
+      "export_signature": "ff2cd21e2f43a341ec2fa3a5003849bc74198834e2049288a245d10d9302cc0a",
+      "warnings": [],
+      "image": "images/parts/rigid_gear_with_bracing.png",
+      "wrapper": "docs/parts/rigid_gear_with_bracing.scad"
+    },
+    {
+      "id": "separator",
+      "triangles": 6184,
+      "bounds_xyz_mm": [
+        [
+          -26.079999923706055,
+          -26.079999923706055,
+          0.0
+        ],
+        [
+          26.079999923706055,
+          26.079999923706055,
+          18.5
+        ]
+      ],
+      "export_signature": "d2c65c2f66e3ab684212fa5969694ac4abdbfcd091b923376356091338f207b7",
+      "warnings": [],
+      "image": "images/parts/separator.png",
+      "wrapper": "docs/parts/separator.scad"
+    },
+    {
+      "id": "rollers",
+      "triangles": 4484,
+      "bounds_xyz_mm": [
+        [
+          -26.854400634765625,
+          -27.113399505615234,
+          -2.5
+        ],
+        [
+          27.200000762939453,
+          27.113399505615234,
+          2.5
+        ]
+      ],
+      "export_signature": "c05a26272814349e98da8a3456566176a21bd793da9c409cace5106ff7fbb062",
+      "warnings": [],
+      "image": "images/parts/rollers.png",
+      "wrapper": "docs/parts/rollers.scad"
+    },
+    {
+      "id": "eccentric",
+      "triangles": 720,
+      "bounds_xyz_mm": [
+        [
+          -23.200000762939453,
+          -23.200000762939453,
+          0.0
+        ],
+        [
+          23.200000762939453,
+          23.200000762939453,
+          7.0
+        ]
+      ],
+      "export_signature": "44efb48cc3cb18ce61a4c892d870878805ff601d382019241b7d4470baa9a2c5",
+      "warnings": [],
+      "image": "images/parts/eccentric.png",
+      "wrapper": "docs/parts/eccentric.scad"
+    },
+    {
+      "id": "eccentric_shaft",
+      "triangles": 1940,
+      "bounds_xyz_mm": [
+        [
+          -10.5,
+          -10.5,
+          0.0
+        ],
+        [
+          10.5,
+          10.5,
+          19.5
+        ]
+      ],
+      "export_signature": "bd9192de90e0d3a68f9160ee68993b4aee04364b9c6619c95057c14d3cd166eb",
+      "warnings": [],
+      "image": "images/parts/eccentric_shaft.png",
+      "wrapper": "docs/parts/eccentric_shaft.scad"
+    },
+    {
+      "id": "cap",
+      "triangles": 3864,
+      "bounds_xyz_mm": [
+        [
+          -35.0,
+          -35.0,
+          0.0
+        ],
+        [
+          35.0,
+          35.0,
+          11.0
+        ]
+      ],
+      "export_signature": "802bacbec59dac44612f465cbcc67ad8aef0d9e71ec84d46977d100952e3597a",
+      "warnings": [],
+      "image": "images/parts/cap.png",
+      "wrapper": "docs/parts/cap.scad"
+    },
+    {
+      "id": "cap_with_bracing",
+      "triangles": 4896,
+      "bounds_xyz_mm": [
+        [
+          -35.0,
+          -35.0,
+          0.0
+        ],
+        [
+          35.0,
+          35.0,
+          11.0
+        ]
+      ],
+      "export_signature": "15ad4d3313d7c6f104ada3ad89d67804a8d11694abfef4e96844fe04803d11b2",
+      "warnings": [],
+      "image": "images/parts/cap_with_bracing.png",
+      "wrapper": "docs/parts/cap_with_bracing.scad"
+    },
+    {
+      "id": "motor_cover",
+      "triangles": 9268,
+      "bounds_xyz_mm": [
+        [
+          -35.0,
+          -35.0,
+          -1.0
+        ],
+        [
+          35.0,
+          35.0,
+          27.5
+        ]
+      ],
+      "export_signature": "17cf58b8973748665ed75e575baba113290be847b7857cc269e1fcf8d697ba88",
+      "warnings": [],
+      "image": "images/parts/motor_cover.png",
+      "wrapper": "docs/parts/motor_cover.scad"
+    },
+    {
+      "id": "reducer_connector",
+      "triangles": 4348,
+      "bounds_xyz_mm": [
+        [
+          -26.0,
+          -26.0,
+          0.0
+        ],
+        [
+          26.0,
+          26.0,
+          8.0
+        ]
+      ],
+      "export_signature": "3e4f3d4732e0ecb94225aa54ccb91e6742d4608d8809092da2b227e6a22af638",
+      "warnings": [],
+      "image": "images/parts/reducer_connector.png",
+      "wrapper": "docs/parts/reducer_connector.scad"
+    },
+    {
+      "id": "connector_clamp",
+      "triangles": 1452,
+      "bounds_xyz_mm": [
+        [
+          -33.0,
+          0.0,
+          0.0
+        ],
+        [
+          33.0,
+          33.0,
+          12.0
+        ]
+      ],
+      "export_signature": "779c8b84c5c3fdbbdac306052ea1c047173f4fcdffebee791488e438dfc50e45",
+      "warnings": [],
+      "image": "images/parts/connector_clamp.png",
+      "wrapper": "docs/parts/connector_clamp.scad"
+    },
+    {
+      "id": "encoder_cap",
+      "triangles": 9624,
+      "bounds_xyz_mm": [
+        [
+          -35.0,
+          -35.0,
+          0.0
+        ],
+        [
+          35.0,
+          35.0,
+          12.050000190734863
+        ]
+      ],
+      "export_signature": "cdae29f9722dbe5d3f9d12dda9ac8b27ee0df9eaa1dce1afa418583af876b2c4",
+      "warnings": [],
+      "image": "images/parts/encoder_cap.png",
+      "wrapper": "docs/parts/encoder_cap.scad"
+    },
+    {
+      "id": "encoder_lid",
+      "triangles": 7072,
+      "bounds_xyz_mm": [
+        [
+          -35.0,
+          -35.0,
+          0.0
+        ],
+        [
+          35.0,
+          35.0,
+          1.7999999523162842
+        ]
+      ],
+      "export_signature": "c96456ba00005ee24a9476774103e58281deb6bad18017e03a67d05bed4518d2",
+      "warnings": [],
+      "image": "images/parts/encoder_lid.png",
+      "wrapper": "docs/parts/encoder_lid.scad"
+    },
+    {
+      "id": "encoder_clamp_half",
+      "triangles": 1452,
+      "bounds_xyz_mm": [
+        [
+          -33.0,
+          5.722050104850496e-07,
+          0.0
+        ],
+        [
+          33.0,
+          11.600000381469727,
+          33.0
+        ]
+      ],
+      "export_signature": "6490cd077bb472db8b9de7ff487709c3fc678794277d8e8da34cde2db77386f6",
+      "warnings": [],
+      "image": "images/parts/encoder_clamp_half.png",
+      "wrapper": "docs/parts/encoder_clamp_half.scad"
+    },
+    {
+      "id": "encoder_magnet_ring",
+      "triangles": 6344,
+      "bounds_xyz_mm": [
+        [
+          -33.0,
+          0.0,
+          -5.722050104850496e-07
+        ],
+        [
+          33.0,
+          33.0,
+          0.800000011920929
+        ]
+      ],
+      "export_signature": "156e308e53f3bbce6ea8ca9545c6100c03ea4d0ee5d5cffe6c7ccefd17f380ee",
+      "warnings": [],
+      "image": "images/parts/encoder_magnet_ring.png",
+      "wrapper": "docs/parts/encoder_magnet_ring.scad"
+    },
+    {
+      "id": "encoder_connector",
+      "triangles": 4348,
+      "bounds_xyz_mm": [
+        [
+          -26.0,
+          -26.0,
+          0.0
+        ],
+        [
+          26.0,
+          26.0,
+          10.75
+        ]
+      ],
+      "export_signature": "9c03cef27271e88e7a16e357e95628351b25d22b0213c8d324c1a07e58cb970d",
+      "warnings": [],
+      "image": "images/parts/encoder_connector.png",
+      "wrapper": "docs/parts/encoder_connector.scad"
+    },
+    {
+      "id": "encoder_load_connector",
+      "triangles": 3628,
+      "bounds_xyz_mm": [
+        [
+          -28.0,
+          -28.0,
+          0.0
+        ],
+        [
+          28.0,
+          28.0,
+          19.0
+        ]
+      ],
+      "export_signature": "8c618c06ec32abf7a3988477b2c23be76dde564b91b93e0e2f16d7f1a67982dc",
+      "warnings": [],
+      "image": "images/parts/encoder_load_connector.png",
+      "wrapper": "docs/parts/encoder_load_connector.scad"
+    },
+    {
+      "id": "encoder_pcb",
+      "triangles": 3788,
+      "bounds_xyz_mm": [
+        [
+          14.170900344848633,
+          -17.202299118041992,
+          0.0
+        ],
+        [
+          33.400001525878906,
+          25.207300186157227,
+          0.7999989986419678
+        ]
+      ],
+      "export_signature": "048fbb1d62e4c8daeb4ebfe1afb52ce517764145e7e59e652bb4a206e514c854",
+      "warnings": [],
+      "image": "images/parts/encoder_pcb.png",
+      "wrapper": "docs/parts/encoder_pcb.scad"
+    },
+    {
+      "id": "shoulder_horn",
+      "triangles": 6256,
+      "bounds_xyz_mm": [
+        [
+          -22.0,
+          -22.0,
+          -19.0
+        ],
+        [
+          38.5,
+          22.0,
+          8.5
+        ]
+      ],
+      "export_signature": "7c9c5b58413fc796e61bcddd3e0f515e3a39be030cac6d1cf16dcd0fc7de50dc",
+      "warnings": [],
+      "image": "images/parts/shoulder_horn.png",
+      "wrapper": "docs/parts/shoulder_horn.scad"
+    },
+    {
+      "id": "shoulder_top",
+      "triangles": 8060,
+      "bounds_xyz_mm": [
+        [
+          -35.0,
+          -35.0,
+          0.0
+        ],
+        [
+          35.0,
+          80.0,
+          49.099998474121094
+        ]
+      ],
+      "export_signature": "0a5b0aa065b948565b54c097b54527d4ebe037a27607c4dd3d123191711e7dee",
+      "warnings": [],
+      "image": "images/parts/shoulder_top.png",
+      "wrapper": "docs/parts/shoulder_top.scad"
+    },
+    {
+      "id": "hip",
+      "triangles": 3314,
+      "bounds_xyz_mm": [
+        [
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          50.0,
+          130.0,
+          33.0
+        ]
+      ],
+      "export_signature": "778b65f50f9724c7d2a915b1a8845682df2cadc25022c599ff615447e5f6c880",
+      "warnings": [],
+      "image": "images/parts/hip.png",
+      "wrapper": "docs/parts/hip.scad"
+    },
+    {
+      "id": "hip_top",
+      "triangles": 3352,
+      "bounds_xyz_mm": [
+        [
+          0.0,
+          7.541910171508789,
+          0.0
+        ],
+        [
+          50.0,
+          177.0,
+          11.199999809265137
+        ]
+      ],
+      "export_signature": "21281cb44739b6ebbdd8ea952bbb981a50c90abd60189d8a9dfecdb7621cc942",
+      "warnings": [],
+      "image": "images/parts/hip_top.png",
+      "wrapper": "docs/parts/hip_top.scad"
+    },
+    {
+      "id": "shin",
+      "triangles": 2376,
+      "bounds_xyz_mm": [
+        [
+          -69.0,
+          -7.5,
+          -9.5
+        ],
+        [
+          44.5,
+          7.5,
+          10.5
+        ]
+      ],
+      "export_signature": "7c30f7935365c584baa7af3342a45963e9d739866b5b36975513c35541418006",
+      "warnings": [],
+      "image": "images/parts/shin.png",
+      "wrapper": "docs/parts/shin.scad"
+    },
+    {
+      "id": "control_rod",
+      "triangles": 1268,
+      "bounds_xyz_mm": [
+        [
+          -6.0,
+          -6.0,
+          -5.5
+        ],
+        [
+          6.0,
+          190.0,
+          5.5
+        ]
+      ],
+      "export_signature": "97ac2eb612e1ba773c642d684157e3b28db0385f6515fb59f721d7c636bd538e",
+      "warnings": [],
+      "image": "images/parts/control_rod.png",
+      "wrapper": "docs/parts/control_rod.scad"
+    },
+    {
+      "id": "robot_foot",
+      "triangles": 5118,
+      "bounds_xyz_mm": [
+        [
+          0.0,
+          12.01729965209961,
+          0.0
+        ],
+        [
+          200.45399475097656,
+          76.74469757080078,
+          23.5
+        ]
+      ],
+      "export_signature": "4cc0b964ea4e265a9b525649b0f40c9e57994101e0400e806428c1c2998ced40",
+      "warnings": [],
+      "image": "images/parts/robot_foot.png",
+      "wrapper": "docs/parts/robot_foot.scad"
+    },
+    {
+      "id": "foot_sole",
+      "triangles": 4552,
+      "bounds_xyz_mm": [
+        [
+          -19.984600067138672,
+          -19.984600067138672,
+          -7.629390097463329e-07
+        ],
+        [
+          19.984600067138672,
+          19.984600067138672,
+          19.984600067138672
+        ]
+      ],
+      "export_signature": "89af1e664ca6446669a48e3885f8fae2a8494c012b2f321f14403a2e9fa9301f",
+      "warnings": [],
+      "image": "images/parts/foot_sole.png",
+      "wrapper": "docs/parts/foot_sole.scad"
+    },
+    {
+      "id": "body",
+      "triangles": 51132,
+      "bounds_xyz_mm": [
+        [
+          -50.0,
+          -130.0,
+          -27.0
+        ],
+        [
+          55.0,
+          390.0,
+          183.0
+        ]
+      ],
+      "export_signature": "d380c5f6c63ca6cd59afce01a2b9b0346b4fdea0413495400f1b4600ed3eea8a",
+      "warnings": [],
+      "image": "images/parts/body.png",
+      "wrapper": "docs/parts/body.scad"
+    },
+    {
+      "id": "encoder_adapter",
+      "triangles": 2416,
+      "bounds_xyz_mm": [
+        [
+          -20.0,
+          -20.0,
+          0.0
+        ],
+        [
+          20.0,
+          20.0,
+          3.200000047683716
+        ]
+      ],
+      "export_signature": "3f49cf7629a58f25e06d55fe9a03aeda74611a3603549c620912e3f339630553",
+      "warnings": [],
+      "image": "images/parts/encoder_adapter.png",
+      "wrapper": "docs/parts/encoder_adapter.scad"
+    },
+    {
+      "id": "magnet_spacer",
+      "triangles": 764,
+      "bounds_xyz_mm": [
+        [
+          -4.5,
+          -4.5,
+          0.0
+        ],
+        [
+          4.5,
+          4.5,
+          3.549999952316284
+        ]
+      ],
+      "export_signature": "e081a557f60498441460f8966cfd3a57d4a9698d801b8fe6a70a98149f261518",
+      "warnings": [],
+      "image": "images/parts/magnet_spacer.png",
+      "wrapper": "docs/parts/magnet_spacer.scad"
+    }
+  ]
+}

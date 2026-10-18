@@ -1,0 +1,912 @@
+[
+  {
+    "id": "rigid_gear",
+    "title": "Жёсткое колесо / корпус",
+    "group": "Редуктор",
+    "call": "rigid_gear();",
+    "source": "reference_model.scad",
+    "construction": "Создать цилиндр корпуса. Выдавить рассчитанный Python профиль впадин и вычесть его сверху. Вырезать отверстия A/B и ступенчатую посадку 6803ZZ.",
+    "parameters": [
+      {
+        "name": "D_out",
+        "value": "70",
+        "meaning": "Наружный диаметр, из --diameter"
+      },
+      {
+        "name": "h_reducer",
+        "value": "15.5",
+        "meaning": "Высота корпуса: h_roller + 10.5"
+      },
+      {
+        "name": "h_cut",
+        "value": "10",
+        "meaning": "Глубина профильной полости: h_roller + 5"
+      },
+      {
+        "name": "--ratio / --resolution",
+        "value": "19 / 600",
+        "meaning": "20 впадин и число точек рассчитанного профиля"
+      },
+      {
+        "name": "motor_radius / motor_angles",
+        "value": "32 / [54,144,234,324]°",
+        "meaning": "Расположение отверстий B"
+      }
+    ]
+  },
+  {
+    "id": "rigid_gear_with_bracing",
+    "title": "Корпус с боковым креплением",
+    "group": "Редуктор",
+    "call": "rigid_gear_with_bracing();",
+    "source": "reference_model.scad",
+    "construction": "Взять rigid_gear(). Добавить боковой объём, двумя овальными конусами сформировать выемки, повторно прорезать отверстия B и отверстия бокового крепления.",
+    "parameters": [
+      {
+        "name": "bracing_offset_y",
+        "value": "29",
+        "meaning": "Смещение крепления: D_out/2 − 6"
+      },
+      {
+        "name": "bracing_offset_z",
+        "value": "17.5",
+        "meaning": "Высота оси крепления: D_out/4"
+      },
+      {
+        "name": "bracing_offset_x",
+        "value": "2.2",
+        "meaning": "Значение в сгенерированном SCAD; 2.25 в Python округляется до одного знака"
+      },
+      {
+        "name": "side_long / side_short",
+        "value": "29.564 / 12.246",
+        "meaning": "Расстояния между боковыми отверстиями"
+      }
+    ]
+  },
+  {
+    "id": "separator",
+    "title": "Сепаратор",
+    "group": "Редуктор",
+    "call": "separator();",
+    "source": "reference_model.scad",
+    "construction": "Создать цилиндр Rsep_out, вычесть внутреннюю полость Rsep_in. Сделать ступени фланца, посадку 688ZZ, радиальные окна под ролики и восемь крепёжных отверстий.",
+    "parameters": [
+      {
+        "name": "Rsep_m",
+        "value": "25.2",
+        "meaning": "Радиус центров роликов"
+      },
+      {
+        "name": "Rsep_out / Rsep_in",
+        "value": "26.08 / 24.32",
+        "meaning": "Наружный и внутренний радиусы сепаратора"
+      },
+      {
+        "name": "separator_h",
+        "value": "9",
+        "meaning": "Основная высота: h_roller + 4"
+      },
+      {
+        "name": "bearing_inner / bearing_outer",
+        "value": "40 / 52",
+        "meaning": "Посадка выбранного 6808-2RS"
+      },
+      {
+        "name": "--ratio / h_roller",
+        "value": "19 / 5",
+        "meaning": "Число окон / высота роликов"
+      }
+    ]
+  },
+  {
+    "id": "rollers",
+    "title": "Ролики",
+    "group": "Редуктор",
+    "call": "rollers();",
+    "source": "reference_model.scad",
+    "construction": "Построить цилиндр ролика с центром по Z. Разместить 19 копий на окружности Rsep_m поворотами с шагом 360/19.",
+    "parameters": [
+      {
+        "name": "d_roller / h_roller",
+        "value": "4 / 5",
+        "meaning": "Диаметр / высота, из --roller-d и --roller-h"
+      },
+      {
+        "name": "Rsep_m",
+        "value": "25.2",
+        "meaning": "Радиус расположения"
+      },
+      {
+        "name": "--ratio",
+        "value": "19",
+        "meaning": "Количество роликов; пересчитывается в Python"
+      }
+    ]
+  },
+  {
+    "id": "eccentric",
+    "title": "Эксцентрик",
+    "group": "Редуктор",
+    "call": "eccentric();",
+    "source": "reference_model.scad",
+    "construction": "Создать диск радиуса rd. Вырезать проход Ø24 и посадку под 6803ZZ Ø26, оставив нижний упор. Смещение оси задаётся при установке детали в сборку.",
+    "parameters": [
+      {
+        "name": "rd",
+        "value": "23.2",
+        "meaning": "Радиус диска; вычисляется и записывается в геометрию"
+      },
+      {
+        "name": "eccentric_h",
+        "value": "7",
+        "meaning": "Толщина: h_roller + 2"
+      },
+      {
+        "name": "eccentricity",
+        "value": "0.8",
+        "meaning": "Смещение в сборке: 0.2 × d_roller"
+      },
+      {
+        "name": "посадка 6803ZZ",
+        "value": "Ø26 × 5",
+        "meaning": "Геометрия подшипника; Ø24 у нижнего упора"
+      }
+    ]
+  },
+  {
+    "id": "eccentric_shaft",
+    "title": "Вал эксцентрика",
+    "group": "Редуктор",
+    "call": "eccentric_shaft();",
+    "source": "reference_model.scad",
+    "construction": "Объединить цилиндры основания, проставки, смещённой ступени и верхнего шипа. Вырезать осевое отверстие и два нижних паза.",
+    "parameters": [
+      {
+        "name": "ecc_shaft_h1",
+        "value": "5",
+        "meaning": "Высота нижней ступени"
+      },
+      {
+        "name": "ecc_spacer_h",
+        "value": "2.5",
+        "meaning": "Высота проставки"
+      },
+      {
+        "name": "ecc_shaft_h2",
+        "value": "6",
+        "meaning": "Высота смещённой ступени"
+      },
+      {
+        "name": "ecc_pin_h",
+        "value": "6",
+        "meaning": "Высота шипа Ø8"
+      },
+      {
+        "name": "eccentricity",
+        "value": "0.8",
+        "meaning": "Смещение средней ступени по X"
+      }
+    ]
+  },
+  {
+    "id": "cap",
+    "title": "Крышка редуктора",
+    "group": "Редуктор",
+    "call": "cap();",
+    "source": "reference_model.scad",
+    "construction": "Создать диск D_out. Вырезать посадку наружного кольца подшипника, сквозное отверстие меньшего диаметра, нижнюю полость под сепаратор и отверстия A с потаями.",
+    "parameters": [
+      {
+        "name": "cap_thickness",
+        "value": "11",
+        "meaning": "Общая толщина"
+      },
+      {
+        "name": "bearing_outer",
+        "value": "52",
+        "meaning": "Диаметр посадки 6808-2RS"
+      },
+      {
+        "name": "bearing_width",
+        "value": "7",
+        "meaning": "Ширина выбранного подшипника"
+      },
+      {
+        "name": "Rsep_out",
+        "value": "26.08",
+        "meaning": "Радиус нижней полости = Rsep_out + 1"
+      },
+      {
+        "name": "--hole-angle",
+        "value": "авто / 39° для энкодера Ø70",
+        "meaning": "Фаза группы A задаётся при генерации"
+      }
+    ]
+  },
+  {
+    "id": "cap_with_bracing",
+    "title": "Крышка с боковым креплением",
+    "group": "Редуктор",
+    "call": "cap_with_bracing();",
+    "source": "reference_model.scad",
+    "construction": "Добавить к cap() боковой объём, вычесть овальные конусы и внутренний цилиндр. Просверлить отверстия крепления и прорезать два паза у боковых опор.",
+    "parameters": [
+      {
+        "name": "D_out / cap_thickness",
+        "value": "70 / 11",
+        "meaning": "Диаметр / толщина базовой крышки"
+      },
+      {
+        "name": "bracing_offset_x/y/z",
+        "value": "2.2 / 29 / 17.5",
+        "meaning": "Положение боковой геометрии"
+      },
+      {
+        "name": "side_long / side_short",
+        "value": "29.564 / 12.246",
+        "meaning": "Положение вырезов у боковых отверстий"
+      }
+    ]
+  },
+  {
+    "id": "motor_cover",
+    "title": "Кожух мотора",
+    "group": "Редуктор",
+    "call": "motor_cover();",
+    "source": "reference_model.scad",
+    "construction": "Объединить нижнюю площадку, наклонные стойки через hull(), вертикальные опоры и верхнее кольцо. Обрезать наружный габарит и вычесть отверстия двигателя, магнита, гаек и крепления B.",
+    "parameters": [
+      {
+        "name": "mc_motor_plate_d / mc_base_thickness",
+        "value": "50 / 4",
+        "meaning": "Диаметр площадки / толщина плиты"
+      },
+      {
+        "name": "mc_total_height",
+        "value": "27.5",
+        "meaning": "Высота, рассчитанная по осевой сборке"
+      },
+      {
+        "name": "mc_motor_hole_1 / mc_motor_hole_2",
+        "value": "16 / 19",
+        "meaning": "Межосевые расстояния пар крепления мотора"
+      },
+      {
+        "name": "mc_encoder_hole_d",
+        "value": "10",
+        "meaning": "Центральное отверстие"
+      },
+      {
+        "name": "mc_ring_width / mc_ring_height",
+        "value": "4 / 5",
+        "meaning": "Ширина / высота верхнего кольца"
+      }
+    ]
+  },
+  {
+    "id": "reducer_connector",
+    "title": "Соединитель редукторов",
+    "group": "Редуктор",
+    "call": "reducer_connector(h1=4,skirt=false);",
+    "source": "reference_model.scad",
+    "construction": "Объединить нижний диск и цилиндрическую шейку. При skirt=true добавить коническую юбку. Вырезать восемь отверстий M3 и выбранные потаи.",
+    "parameters": [
+      {
+        "name": "h1",
+        "value": "4",
+        "meaning": "Высота шейки, аргумент модуля"
+      },
+      {
+        "name": "skirt",
+        "value": "false",
+        "meaning": "Включение юбки; для неё h1 > 3"
+      },
+      {
+        "name": "fitting",
+        "value": "true",
+        "meaning": "Потаи по умолчанию при holes=undef"
+      },
+      {
+        "name": "holes",
+        "value": "undef / массив из 8 значений",
+        "meaning": "Индивидуальное включение потаев"
+      },
+      {
+        "name": "bearing_inner",
+        "value": "40",
+        "meaning": "Диаметр шейки"
+      }
+    ]
+  },
+  {
+    "id": "connector_clamp",
+    "title": "Полузажим соединителей",
+    "group": "Редуктор",
+    "call": "connector_clamp();",
+    "source": "reference_model.scad",
+    "construction": "Вычесть из цилиндра центральный проход, внутреннюю кольцевую канавку и поперечные стяжные отверстия с местами под головки. Пересечь результат с полупространством Y≥0.",
+    "parameters": [
+      {
+        "name": "D_out",
+        "value": "70",
+        "meaning": "Наружный диаметр полузажима = D_out − 4"
+      },
+      {
+        "name": "bearing_inner",
+        "value": "40",
+        "meaning": "Центральный проход"
+      },
+      {
+        "name": "высота / канавка",
+        "value": "12 / 8.2",
+        "meaning": "Заданы внутри модуля; начало канавки Z=2"
+      },
+      {
+        "name": "отверстия стяжки",
+        "value": "Ø3.2 / Ø6",
+        "meaning": "Сквозное / под головку"
+      }
+    ]
+  },
+  {
+    "id": "encoder_cap",
+    "title": "Основание крышки энкодера",
+    "group": "Абсолютный энкодер",
+    "call": "cap_encoder();",
+    "source": "reference_model.scad",
+    "construction": "Взять крышку редуктора с боковым креплением, добавить опоры платы и вычесть карманы по контуру платы и габаритам компонентов. Положение креплений читается из механики V2 для совместимого Ø70.",
+    "parameters": [
+      {
+        "name": "with_bracing",
+        "value": "true",
+        "meaning": "Аргумент: боковое крепление включено"
+      },
+      {
+        "name": "encoder_pcb_clearance",
+        "value": "0.25",
+        "meaning": "Зазор контура платы"
+      },
+      {
+        "name": "encoder_mcu_xy_clearance / encoder_mcu_axial_clearance",
+        "value": "0.2 / 0.15",
+        "meaning": "Боковой / осевой зазор под компоненты"
+      },
+      {
+        "name": "encoder_separator_lift",
+        "value": "0.5",
+        "meaning": "Подъём сепаратора в сборке"
+      },
+      {
+        "name": "encoder_native_boundary / encoder_native_mounts",
+        "value": "из mechanics_v2.json",
+        "meaning": "Контур и крепления совместимой платы"
+      }
+    ]
+  },
+  {
+    "id": "encoder_lid",
+    "title": "Лицевая крышка энкодера",
+    "group": "Абсолютный энкодер",
+    "call": "encoder_selected_part(\"encoder_lid\");",
+    "source": "reference_model.scad",
+    "construction": "Выдавить защитный контур над платой. Вырезать карманы под компоненты, крепёж и канал провода. Над датчиками оставить заданную толщину окна. Перенести деталь к Z=0 для просмотра и экспорта.",
+    "parameters": [
+      {
+        "name": "encoder_window_h",
+        "value": "0.4",
+        "meaning": "Толщина окон над Hall-датчиками"
+      },
+      {
+        "name": "encoder_sensor_gap",
+        "value": "0.2",
+        "meaning": "Осевой запас над габаритом датчика"
+      },
+      {
+        "name": "encoder_roof_extra_h",
+        "value": "0.4",
+        "meaning": "Дополнительная высота основной крыши"
+      },
+      {
+        "name": "encoder_lid_base_z / encoder_lid_top_z",
+        "value": "из осевой сборки",
+        "meaning": "Низ / верх крышки до переноса"
+      }
+    ]
+  },
+  {
+    "id": "encoder_clamp_half",
+    "title": "Корпус полузажима энкодера",
+    "group": "Абсолютный энкодер",
+    "call": "encoder_clamp_body_for_print();",
+    "source": "reference_model.scad",
+    "construction": "Взять полузажим и срезать верх на глубину encoder_magnet_recess_depth. Повернуть корпус в штатное печатное положение. Магнитный носитель изготовить отдельно.",
+    "parameters": [
+      {
+        "name": "encoder_clamp_h",
+        "value": "12",
+        "meaning": "Полная исходная высота"
+      },
+      {
+        "name": "encoder_magnet_recess_depth",
+        "value": "0.4",
+        "meaning": "Снижение торца корпуса"
+      },
+      {
+        "name": "encoder_clamp_body_h",
+        "value": "11.6",
+        "meaning": "Остаточная высота корпуса"
+      },
+      {
+        "name": "D_out / bearing_inner",
+        "value": "70 / 40",
+        "meaning": "Наружная геометрия / центральный проход"
+      }
+    ]
+  },
+  {
+    "id": "encoder_magnet_ring",
+    "title": "Половинка магнитного кольца",
+    "group": "Абсолютный энкодер",
+    "call": "encoder_magnet_ring_half_for_print();",
+    "source": "reference_model.scad",
+    "construction": "Создать плоское полукольцо и вырезать сквозные цилиндрические посадки двух дорожек. Центры равномерно распределить с половиной шага от стыка. Для сборки нужны две одинаковые половинки.",
+    "parameters": [
+      {
+        "name": "encoder_magnet_d / encoder_magnet_clearance",
+        "value": "5 / 0.2",
+        "meaning": "Диаметр магнита / прибавка к диаметру отверстия"
+      },
+      {
+        "name": "encoder_rim_wall",
+        "value": "0.6",
+        "meaning": "Минимальная перемычка при расчёте количества"
+      },
+      {
+        "name": "encoder_magnet_ring_h",
+        "value": "0.8",
+        "meaning": "Толщина = recess_depth + rim_h"
+      },
+      {
+        "name": "encoder_track_radii",
+        "value": "23.5 / 29.5",
+        "meaning": "Радиусы двух дорожек для Ø70"
+      },
+      {
+        "name": "encoder_track_counts",
+        "value": "24 / 26",
+        "meaning": "Полные количества; в половинке 12 / 13"
+      }
+    ]
+  },
+  {
+    "id": "encoder_connector",
+    "title": "Соединитель выхода энкодера",
+    "group": "Абсолютный энкодер",
+    "call": "reducer_connector_encoder();",
+    "source": "reference_model.scad",
+    "construction": "Построить reducer_connector() без юбки; длину шейки взять из рассчитанной осевой сборки энкодера, чтобы торцы совпадали с зажимом.",
+    "parameters": [
+      {
+        "name": "encoder_connector_stem_h",
+        "value": "6.75",
+        "meaning": "Расчётная высота шейки для текущего Ø70"
+      },
+      {
+        "name": "encoder_connector_contact_z",
+        "value": "из сборки",
+        "meaning": "Положение контактного торца"
+      },
+      {
+        "name": "encoder_separator_top_z",
+        "value": "10",
+        "meaning": "Верх сепаратора в энкодерной сборке"
+      },
+      {
+        "name": "bearing_inner",
+        "value": "40",
+        "meaning": "Диаметр шейки"
+      }
+    ]
+  },
+  {
+    "id": "encoder_load_connector",
+    "title": "Соединитель нагрузки энкодера",
+    "group": "Абсолютный энкодер",
+    "call": "load_connector_encoder();",
+    "source": "reference_model.scad",
+    "construction": "Построить reducer_connector() с высокой шейкой и юбкой. Оставить потаи через один по маске из восьми значений.",
+    "parameters": [
+      {
+        "name": "encoder_load_connector_h",
+        "value": "15",
+        "meaning": "Высота шейки"
+      },
+      {
+        "name": "skirt",
+        "value": "true",
+        "meaning": "Коническая юбка"
+      },
+      {
+        "name": "holes",
+        "value": "[1,0,1,0,1,0,1,0]",
+        "meaning": "Маска потаев"
+      },
+      {
+        "name": "bearing_inner / D_out",
+        "value": "40 / 70",
+        "meaning": "Диаметр шейки / габарит основания"
+      }
+    ]
+  },
+  {
+    "id": "encoder_pcb",
+    "title": "Механический контур платы",
+    "group": "Абсолютный энкодер",
+    "call": "encoder_pcb_bare();",
+    "source": "reference_model.scad",
+    "construction": "Выдавить контур платы на её толщину и вычесть крепления. Для штатного Ø70 использовать сохранённый контур V2; для иных размеров строится параметрический макет.",
+    "parameters": [
+      {
+        "name": "encoder_pcb_h",
+        "value": "0.8",
+        "meaning": "Толщина платы"
+      },
+      {
+        "name": "encoder_native_boundary",
+        "value": "из mechanics_v2.json",
+        "meaning": "Штатный контур V2"
+      },
+      {
+        "name": "encoder_native_mounts",
+        "value": "из mechanics_v2.json",
+        "meaning": "Положение двух креплений"
+      },
+      {
+        "name": "encoder_pcb_span",
+        "value": "80° / 160°",
+        "meaning": "Штатный Ø70 / параметрический вариант"
+      }
+    ]
+  },
+  {
+    "id": "shoulder_horn",
+    "title": "Качалка плеча",
+    "group": "Детали ноги и корпуса",
+    "call": "shoulder_horn();",
+    "source": "reference_model.scad",
+    "construction": "Объединить ступенчатую осевую втулку с площадкой рычага. Вырезать центральный проход, отверстия крепления и отверстие тяги на радиусе shoulder_horn_r.",
+    "parameters": [
+      {
+        "name": "shoulder_horn_r",
+        "value": "31",
+        "meaning": "Радиус оси тяги"
+      },
+      {
+        "name": "shoulder_horn_h1 / shoulder_horn_h2",
+        "value": "7 / 12",
+        "meaning": "Высоты основания / шарнирной части"
+      },
+      {
+        "name": "shoulder_bearing_id",
+        "value": "25.05",
+        "meaning": "Наружная посадка осевой части"
+      },
+      {
+        "name": "shoulder_bearing_h",
+        "value": "7",
+        "meaning": "Ширина опорного подшипника"
+      }
+    ]
+  },
+  {
+    "id": "shoulder_top",
+    "title": "Корпус плеча",
+    "group": "Детали ноги и корпуса",
+    "call": "shoulder_top();",
+    "source": "reference_model.scad",
+    "construction": "Объединить круглый корпус и прямоугольное продолжение. Вырезать сектор хода качалки, подшипниковую посадку, карманы стыка, отверстия штифтов и крепления. Добавить соединитель сверху.",
+    "parameters": [
+      {
+        "name": "shoulder_h",
+        "value": "33",
+        "meaning": "Высота корпуса из высот качалки и подшипника"
+      },
+      {
+        "name": "D_out",
+        "value": "70",
+        "meaning": "Диаметр круглой части"
+      },
+      {
+        "name": "shoulder_bearing_od",
+        "value": "37",
+        "meaning": "Посадка подшипника"
+      },
+      {
+        "name": "cutting_wedge(angle=135)",
+        "value": "135°",
+        "meaning": "Сектор выреза; фиксирован в теле модуля"
+      }
+    ]
+  },
+  {
+    "id": "hip",
+    "title": "Основание бедра",
+    "group": "Детали ноги и корпуса",
+    "call": "hip();",
+    "source": "reference_model.scad",
+    "construction": "Сформировать продольную основу из блока и двух трапециевидных переходов. Добавить круглый конец колена, затем вырезать карманы, отверстия штифтов, винтов и ступенчатую посадку 688ZZ.",
+    "parameters": [
+      {
+        "name": "connect_rod_l",
+        "value": "184",
+        "meaning": "Базовая длина тяги, влияет на бедро"
+      },
+      {
+        "name": "hips_l / hips_l1",
+        "value": "109 / 87",
+        "meaning": "Производные длины"
+      },
+      {
+        "name": "shoulder_h",
+        "value": "33",
+        "meaning": "Высота исходного блока"
+      },
+      {
+        "name": "point_foot_center_in_hip",
+        "value": "[12,119,20]",
+        "meaning": "Локальный центр оси колена"
+      }
+    ]
+  },
+  {
+    "id": "hip_top",
+    "title": "Накладка бедра",
+    "group": "Детали ноги и корпуса",
+    "call": "hip_top();",
+    "source": "reference_model.scad",
+    "construction": "Объединить плоскую пластину, трапециевидный конец и бобышку колена. Вырезать сопряжение с плечом, ступенчатую посадку 688ZZ и отверстия крепления.",
+    "parameters": [
+      {
+        "name": "hips_l",
+        "value": "109",
+        "meaning": "Основа длины пластины"
+      },
+      {
+        "name": "толщина",
+        "value": "11.2",
+        "meaning": "Задана внутри модуля"
+      },
+      {
+        "name": "point_foot_center_in_hip",
+        "value": "[12,166,0]",
+        "meaning": "Локальная ось колена этой детали"
+      },
+      {
+        "name": "D_out",
+        "value": "70",
+        "meaning": "Размер выреза сопряжения с плечом"
+      }
+    ]
+  },
+  {
+    "id": "shin",
+    "title": "Шарнир колена без стопы",
+    "group": "Детали ноги и корпуса",
+    "call": "shin(foot=false);",
+    "source": "reference_model.scad",
+    "construction": "Объединить втулки оси колена и тяги с перемычкой. Вырезать скосы исходной перемычки, продолжить её прямым языком под коннектор и срезать конец по форме посадочного паза. Просверлить оси и поперечный крепёж.",
+    "parameters": [
+      {
+        "name": "foot",
+        "value": "false",
+        "meaning": "Аргумент: показать отдельно шарнир"
+      },
+      {
+        "name": "foot_r",
+        "value": "37",
+        "meaning": "Плечо тяги"
+      },
+      {
+        "name": "shoulder_horn_h1 / shoulder_horn_h2",
+        "value": "7 / 12",
+        "meaning": "Высота перемычки и бобышек"
+      },
+      {
+        "name": "h_joint_width / h_joint_depth",
+        "value": "15 / 18",
+        "meaning": "Сечение вставляемого языка; в output/foots_h.scad"
+      },
+      {
+        "name": "h_joint_end",
+        "value": "22",
+        "meaning": "Конец языка в системе коннектора"
+      }
+    ]
+  },
+  {
+    "id": "control_rod",
+    "title": "Тяга колена",
+    "group": "Детали ноги и корпуса",
+    "call": "connect_points_rod([0,0,0],[0,184,0],diameter=6,plate_thickness=11);",
+    "source": "reference_model.scad",
+    "construction": "Соединить две точки цилиндрической тягой. На концах добавить дисковые проушины Ø12 и вычесть сквозные отверстия Ø4 перпендикулярно плоскости механизма.",
+    "parameters": [
+      {
+        "name": "p1 / p2",
+        "value": "[0,0,0] / [0,184,0]",
+        "meaning": "Аргументы: центры проушин"
+      },
+      {
+        "name": "diameter",
+        "value": "6",
+        "meaning": "Аргумент: диаметр стержня"
+      },
+      {
+        "name": "plate_thickness",
+        "value": "11",
+        "meaning": "Аргумент: толщина проушин"
+      },
+      {
+        "name": "hole_diameter",
+        "value": "4",
+        "meaning": "Внутренняя константа отверстий"
+      }
+    ]
+  },
+  {
+    "id": "robot_foot",
+    "title": "Голень H-профиля с коннектором",
+    "group": "Детали ноги и корпуса",
+    "call": "rigid_print();",
+    "source": "../../output/foots.scad",
+    "construction": "Протянуть постоянный H-профиль вдоль двух сопряжённых кривых Безье. Объединить с изогнутым наружным корпусом коннектора; вычесть прямой посадочный паз и отверстие крепежа. Внизу сформировать развилку с треугольным окном и опору под TPU.",
+    "parameters": [
+      {
+        "name": "h_length",
+        "value": "145",
+        "meaning": "Продольная проекция основной стойки"
+      },
+      {
+        "name": "h_width / h_depth",
+        "value": "24 / 23.5",
+        "meaning": "Постоянное сечение"
+      },
+      {
+        "name": "h_flange / h_web",
+        "value": "3.2 / 3.2",
+        "meaning": "Толщина полок / перемычки"
+      },
+      {
+        "name": "h_root_angle / h_reverse_drop / h_toe_rise",
+        "value": "−8° / 6 / 26",
+        "meaning": "Параметры изгиба"
+      },
+      {
+        "name": "h_joint_clearance",
+        "value": "0.15",
+        "meaning": "Зазор паза на сторону"
+      }
+    ]
+  },
+  {
+    "id": "foot_sole",
+    "title": "TPU-основание стопы",
+    "group": "Детали ноги и корпуса",
+    "call": "sole_print();",
+    "source": "../../output/foots.scad",
+    "construction": "Отсечь полусферическую рабочую поверхность и вычесть посадочную полость под жёсткую опору. Внутренние скосы закрывают полость под 45°. Открытым монтажным срезом поставить деталь на Z=0.",
+    "parameters": [
+      {
+        "name": "h_pad_radius",
+        "value": "20",
+        "meaning": "Радиус полусферы"
+      },
+      {
+        "name": "h_gap",
+        "value": "0.30",
+        "meaning": "Посадочный зазор на сторону"
+      },
+      {
+        "name": "h_sole_lift",
+        "value": "0.30",
+        "meaning": "Торцевой зазор до жёсткой опоры"
+      },
+      {
+        "name": "h_pad_angle",
+        "value": "35°",
+        "meaning": "Ориентация посадки в собранной стопе"
+      }
+    ]
+  },
+  {
+    "id": "body",
+    "title": "Корпус робота",
+    "group": "Детали ноги и корпуса",
+    "call": "body(parts=false);",
+    "source": "reference_model.scad",
+    "construction": "Собрать передний и задний несущие узлы из стенок с отверстиями, соединить центральной секцией аккумулятора и добавить соединитель. Флаг parts=false скрывает импортированные приводы и ногу.",
+    "parameters": [
+      {
+        "name": "parts",
+        "value": "false",
+        "meaning": "Аргумент: показать только корпус"
+      },
+      {
+        "name": "расстояние узлов",
+        "value": "320",
+        "meaning": "Задано translate() внутри body()"
+      },
+      {
+        "name": "a1 / a2",
+        "value": "0 / 0",
+        "meaning": "Аргументы позы добавляемой ноги при parts=true"
+      },
+      {
+        "name": "h / w / d / l",
+        "value": "в модулях стенок",
+        "meaning": "Габариты локальных секций; проверить сопряжения при изменении"
+      }
+    ]
+  },
+  {
+    "id": "encoder_adapter",
+    "title": "Площадка осевого энкодера",
+    "group": "Детали ноги и корпуса",
+    "call": "encoder_adapter(h=1.2);",
+    "source": "reference_model.scad",
+    "construction": "Создать диск и четыре стойки вокруг оси. Просверлить центральное отверстие и четыре отверстия крепления. Это отдельный вариант для осевого датчика MT6816/XJX-135.",
+    "parameters": [
+      {
+        "name": "h",
+        "value": "1.2",
+        "meaning": "Аргумент: толщина площадки"
+      },
+      {
+        "name": "mc_motor_plate_d",
+        "value": "50",
+        "meaning": "Радиус диска = plate_d/2 − 5"
+      },
+      {
+        "name": "mc_nut_pad_radius",
+        "value": "24",
+        "meaning": "Диаметр окружности центров стоек в данном модуле"
+      },
+      {
+        "name": "mc_encoder_hole_d",
+        "value": "10",
+        "meaning": "Центральное отверстие"
+      }
+    ]
+  },
+  {
+    "id": "magnet_spacer",
+    "title": "Держатель магнита осевого энкодера",
+    "group": "Детали ноги и корпуса",
+    "call": "rsgl_magnet_spacer();",
+    "source": "reference_model.scad",
+    "construction": "Создать цилиндр-бочонок. Снизу вычесть отверстие под вал, сверху — гнездо магнита; сохранить перемычку между полостями.",
+    "parameters": [
+      {
+        "name": "d",
+        "value": "9",
+        "meaning": "Аргумент: наружный диаметр"
+      },
+      {
+        "name": "val_dia / val_clearance",
+        "value": "3.97 / 0.13",
+        "meaning": "Аргументы: диаметр вала / прибавка к диаметру"
+      },
+      {
+        "name": "magnet_dia / mag_clearance",
+        "value": "4.01 / 0.1",
+        "meaning": "Аргументы: магнит / прибавка к диаметру гнезда"
+      },
+      {
+        "name": "magnet_height / bottom_thickness / val_height",
+        "value": "1.5 / 1 / 1",
+        "meaning": "Аргументы: магнит / толщина основания / осевая прибавка"
+      }
+    ]
+  }
+]

@@ -1,0 +1,37 @@
+{
+  "D_out": 70,
+  "h_reducer": 15.5,
+  "Rsep_m": 25.2,
+  "Rsep_out": 26.08,
+  "Rsep_in": 24.32,
+  "separator_h": 9,
+  "cap_thickness": 11,
+  "eccentricity": 0.8,
+  "mc_total_height": 27.5,
+  "bracing_offset_x": 2.2,
+  "bracing_offset_y": 29,
+  "bracing_offset_z": 17.5,
+  "side_long": 29.564,
+  "side_short": 12.246,
+  "motor_radius": 32,
+  "shoulder_h": 33,
+  "shoulder_horn_r": 31,
+  "foot_r": 37,
+  "connect_rod_l": 184,
+  "hips_l": 109,
+  "hips_l1": 87,
+  "encoder_clamp_body_h": 11.6,
+  "encoder_magnet_ring_h": 0.8,
+  "encoder_connector_stem_h": 6.75,
+  "encoder_pcb_h": 0.8,
+  "encoder_lid_base_z": 12.05,
+  "encoder_lid_top_z": 13.85,
+  "encoder_track_radii": [
+    23.5,
+    29.5
+  ],
+  "encoder_track_counts": [
+    24,
+    26
+  ]
+}
