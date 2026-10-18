@@ -40,7 +40,8 @@ def export(item):
  id=item['id'];wrapper=D/(id+'.scad')
  text=f'// {item["title"]}. Open this file, F5 preview, F6 render, export STL.\nuse <{item["source"]}>\n$fn=60;\n'+item['call']+'\n'
  wrapper.write_text(text)
- signature=hashlib.sha256((source_hash+text).encode()).hexdigest()
+ geometry_text=f'use <{item["source"]}>\n$fn=60;\n'+item['call']+'\n'
+ signature=hashlib.sha256((source_hash+geometry_text).encode()).hexdigest()
  cache=a.cache/signature;cache.mkdir(exist_ok=True);stl=cache/(id+'.stl');log=cache/(id+'.log')
  if not stl.exists():
   result=subprocess.run([a.openscad,'-o',str(stl),str(wrapper)],text=True,capture_output=True,timeout=600)
@@ -75,7 +76,7 @@ with concurrent.futures.ThreadPoolExecutor(max_workers=a.jobs) as pool:
  futures=[pool.submit(export,item) for item in selected]
  for future in concurrent.futures.as_completed(futures):
   item,tri,signature,log=future.result();id=item['id']
-  color=(195,158,66) if item['group']=='Детали ноги и корпуса' else ((95,145,171) if item['group']=='Абсолютный энкодер' else (148,171,184))
+  color=(195,158,66) if item['group']=='Детали ноги и корпуса' else ((95,145,171) if item['group']=='Редуктор с установленным энкодером' else (148,171,184))
   if id=='foot_sole':color=(62,78,87)
   if id=='encoder_pcb':color=(58,143,106)
   image=Image.new('RGB',(1200,640),'#f6f8f5');draw=ImageDraw.Draw(image)

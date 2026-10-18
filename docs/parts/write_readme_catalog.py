@@ -5,7 +5,7 @@ D=Path(__file__).resolve().parent;ROOT=D.parents[1]
 items=json.loads((D/'catalog.json').read_text())
 intro='''## Генерируемые детали
 
-Каталог ниже показывает **29 деталей**: редуктор, энкодер, ногу и корпус робота.
+Каталог ниже показывает **29 деталей**: редуктор, варианты его деталей под энкодер, ногу и корпус робота.
 На каждой картинке — геометрия соответствующего модуля OpenSCAD, а не эскиз.
 Слева объёмный вид, справа вид вдоль локальной оси Z. Масштаб видов подбирается
 отдельно; габарит XYZ указан под изображением. Размеры — в миллиметрах, углы — в градусах.
@@ -55,13 +55,15 @@ Python как готовые числа.** Одной замены `D_out` ил�
 файла: менять их нужно в исходном SCAD, а через вызов передавать только его аргументы.
 Значения в таблицах ниже относятся к указанному эталону Ø70; это не универсальные
 размеры для всех диаметров. Исходный генератор и его формулы — [calc-vpts.py](calc-vpts.py),
-параметры вариантов энкодера — [encoder_scad.py](encoder_scad.py).
+параметры доработок редуктора под энкодер — [encoder_scad.py](encoder_scad.py).
 
 '''
 sections=[intro];group=None
 for i,item in enumerate(items,1):
  if item['group']!=group:
   group=item['group'];sections.append(f'### {group}\n\n')
+  if group=='Редуктор с установленным энкодером':
+   sections.append('Здесь показаны варианты крышки редуктора, полузажима и соединителей, доработанные для установки энкодера. Носитель магнитов и плата указаны отдельно как компоненты самого энкодера.\n\n')
  sections.append(f'#### {i}. {item["title"]}\n\n')
  sections.append(f'![{item["title"]}](images/parts/{item["id"]}.png)\n\n')
  sections.append(f'[Открыть деталь](docs/parts/{item["id"]}.scad) · ')
@@ -72,7 +74,7 @@ for i,item in enumerate(items,1):
  for par in item['parameters']:
   sections.append(f'| `{par["name"]}` | {par["value"]} | {par["meaning"]} |\n')
  sections.append('\n')
-sections.append('''### Сборочные режимы энкодера
+sections.append('''### Сборочные режимы редуктора с энкодером
 
 После генерации можно менять `generated_part` в самой модели либо передавать
 `-D 'generated_part="encoder_section"'` через CLI OpenSCAD. В файле с `use` удобнее
@@ -81,18 +83,18 @@ sections.append('''### Сборочные режимы энкодера
 | Режим `--part` / `generated_part` | Что показать | Какие параметры использовать |
 | --- | --- | --- |
 | `legacy` | Исходная сборка и модули робота | Комментировать вызовы в секции «Сборка», либо открыть одну из карточек |
-| `encoder_assembly` | Полная сборка энкодера | `encoder_assembly(with_bracing=true,show_electronics=true,show_magnets=true)` |
+| `encoder_assembly` | Сборка доработанных деталей редуктора с энкодером | `encoder_assembly(with_bracing=true,show_electronics=true,show_magnets=true)` |
 | `encoder_section` | Разрез сборки | `encoder_assembly(section=true)` |
 | `encoder_exploded` | Разнесённая сборка | `encoder_assembly(exploded=true)` |
-| `encoder_cap` | Основание крышки | `cap_encoder(with_bracing=true)` |
-| `encoder_lid` | Лицевая крышка с переносом к Z=0 | `encoder_selected_part("encoder_lid")` |
-| `encoder_print` | Основание и лицевая крышка рядом | `encoder_selected_part("encoder_print")` |
-| `encoder_clamp` | Две половины зажима с носителями | `connector_clamp_encoder(show_magnets=true)`; магниты — фоновые объекты просмотра |
-| `encoder_clamp_half` | Один корпус полузажима | `connector_clamp_encoder_body_half()`; для печатной ориентации — `encoder_clamp_body_for_print()` |
+| `encoder_cap` | Крышка редуктора под установку энкодера | `cap_encoder(with_bracing=true)` |
+| `encoder_lid` | Защитная накладка крышки редуктора с переносом к Z=0 | `encoder_selected_part("encoder_lid")` |
+| `encoder_print` | Крышка редуктора и её защитная накладка рядом | `encoder_selected_part("encoder_print")` |
+| `encoder_clamp` | Доработанный зажим соединителей с носителями магнитов | `connector_clamp_encoder(show_magnets=true)`; магниты — фоновые объекты просмотра |
+| `encoder_clamp_half` | Корпус полузажима соединителей под энкодер | `connector_clamp_encoder_body_half()`; для печатной ориентации — `encoder_clamp_body_for_print()` |
 | `encoder_magnet_ring` | Две половинки носителя магнитов плашмя | `encoder_magnet_ring_for_print()`; одна — `encoder_magnet_ring_half_for_print()` |
 | `encoder_clamp_print` | Корпуса полузажимов и носители в печатном положении | `encoder_selected_part("encoder_clamp_print")` |
-| `encoder_connector` | Соединитель выхода | `reducer_connector_encoder()` |
-| `encoder_load_connector` | Соединитель нагрузки | `load_connector_encoder()` |
+| `encoder_connector` | Выходной соединитель редуктора под энкодер | `reducer_connector_encoder()` |
+| `encoder_load_connector` | Соединитель нагрузки редуктора под энкодер | `load_connector_encoder()` |
 | `encoder_pcb` | Механический контур платы | `encoder_pcb_bare()`; это не электрическая разводка |
 
 Изображения обновляются скриптом [render_catalog.py](docs/parts/render_catalog.py).

@@ -22,11 +22,13 @@ docker run --rm -it \
 Существующие файлы защищены от перезаписи. Для нового результата укажите `--output`,
 а для намеренной перезаписи выбранного файла — `--overwrite`.
 
-### Варианты с абсолютным энкодером
+### Варианты деталей редуктора для установки энкодера
 
-Генератор теперь содержит новые зажим, оба соединителя, основание крышки, лицевую
-крышку и сборку с подшипником/сепаратором. Исходные модули деталей и режим `legacy`
-сохранены. Пример без интерактивного ввода:
+Для установки абсолютного энкодера предусмотрены доработанные варианты
+крышки редуктора, зажима соединителей и обоих соединителей, а также защитная
+накладка крышки. Плата и носитель магнитов входят в эту сборку как компоненты
+энкодера. Исходные модули деталей и режим `legacy` сохранены. Пример без
+интерактивного ввода:
 
 ```sh
 python calc-vpts.py --resolution 600 --ratio 19 --roller-d 4 --roller-h 5 \
@@ -44,13 +46,13 @@ python calc-vpts.py --resolution 600 --ratio 19 --roller-d 4 --roller-h 5 \
 | --- | --- |
 | `legacy` | Исходная сборка и модули робота |
 | `encoder_assembly`, `encoder_section`, `encoder_exploded` | Сборка, разрез, разнесённая сборка |
-| `encoder_cap`, `encoder_lid`, `encoder_print` | Основание, лицевая крышка, обе детали для печати |
-| `encoder_clamp`, `encoder_clamp_half` | Собранный зажим, одна печатная половина |
+| `encoder_cap`, `encoder_lid`, `encoder_print` | Крышка редуктора под энкодер, её защитная накладка, обе детали для печати |
+| `encoder_clamp`, `encoder_clamp_half` | Доработанный зажим соединителей под энкодер, одна печатная половина |
 | `encoder_magnet_ring`, `encoder_clamp_print` | Отдельные половинки кольца со сквозными отверстиями, две половины стоя и обе половинки кольца плашмя |
-| `encoder_connector`, `encoder_load_connector` | Соединитель редуктора, соединитель другой детали |
+| `encoder_connector`, `encoder_load_connector` | Выходной соединитель и соединитель нагрузки редуктора, доработанные под энкодер |
 | `encoder_pcb` | Механический контур платы |
 
-В OpenSCAD выбор можно менять переменной `generated_part`. Варианты энкодера Ø70
+В OpenSCAD выбор можно менять переменной `generated_part`. Варианты редуктора Ø70 с энкодером
 по умолчанию используют угол основных отверстий **39°**, чтобы совпасть с текущей
 KiCad-платой. Режим `legacy` сохраняет прежний поиск угла. Явный `--hole-angle` задаёт
 свой угол; генератор предупреждает, если готовая плата Ø70 ему не соответствует.
@@ -101,7 +103,7 @@ OpenSCAD, они также проверяют компиляцию всех н�
 
 ## Генерируемые детали
 
-Каталог ниже показывает **29 деталей**: редуктор, энкодер, ногу и корпус робота.
+Каталог ниже показывает **29 деталей**: редуктор, варианты его деталей под энкодер, ногу и корпус робота.
 На каждой картинке — геометрия соответствующего модуля OpenSCAD, а не эскиз.
 Слева объёмный вид, справа вид вдоль локальной оси Z. Масштаб видов подбирается
 отдельно; габарит XYZ указан под изображением. Размеры — в миллиметрах, углы — в градусах.
@@ -151,7 +153,7 @@ Python как готовые числа.** Одной замены `D_out` ил�
 файла: менять их нужно в исходном SCAD, а через вызов передавать только его аргументы.
 Значения в таблицах ниже относятся к указанному эталону Ø70; это не универсальные
 размеры для всех диаметров. Исходный генератор и его формулы — [calc-vpts.py](calc-vpts.py),
-параметры вариантов энкодера — [encoder_scad.py](encoder_scad.py).
+параметры доработок редуктора под энкодер — [encoder_scad.py](encoder_scad.py).
 
 ### Редуктор
 
@@ -390,11 +392,13 @@ connector_clamp();
 | `высота / канавка` | 12 / 8.2 | Заданы внутри модуля; начало канавки Z=2 |
 | `отверстия стяжки` | Ø3.2 / Ø6 | Сквозное / под головку |
 
-### Абсолютный энкодер
+### Редуктор с установленным энкодером
 
-#### 12. Основание крышки энкодера
+Здесь показаны варианты крышки редуктора, полузажима и соединителей, доработанные для установки энкодера. Носитель магнитов и плата указаны отдельно как компоненты самого энкодера.
 
-![Основание крышки энкодера](images/parts/encoder_cap.png)
+#### 12. Крышка редуктора под установку энкодера
+
+![Крышка редуктора под установку энкодера](images/parts/encoder_cap.png)
 
 [Открыть деталь](docs/parts/encoder_cap.scad) · Источник: [reference_model.scad](docs/parts/reference_model.scad).
 
@@ -414,9 +418,9 @@ cap_encoder();
 | `encoder_separator_lift` | 0.5 | Подъём сепаратора в сборке |
 | `encoder_native_boundary / encoder_native_mounts` | из mechanics_v2.json | Контур и крепления совместимой платы |
 
-#### 13. Лицевая крышка энкодера
+#### 13. Защитная накладка крышки редуктора с энкодером
 
-![Лицевая крышка энкодера](images/parts/encoder_lid.png)
+![Защитная накладка крышки редуктора с энкодером](images/parts/encoder_lid.png)
 
 [Открыть деталь](docs/parts/encoder_lid.scad) · Источник: [reference_model.scad](docs/parts/reference_model.scad).
 
@@ -435,9 +439,9 @@ encoder_selected_part("encoder_lid");
 | `encoder_roof_extra_h` | 0.4 | Дополнительная высота основной крыши |
 | `encoder_lid_base_z / encoder_lid_top_z` | из осевой сборки | Низ / верх крышки до переноса |
 
-#### 14. Корпус полузажима энкодера
+#### 14. Корпус полузажима соединителей под энкодер
 
-![Корпус полузажима энкодера](images/parts/encoder_clamp_half.png)
+![Корпус полузажима соединителей под энкодер](images/parts/encoder_clamp_half.png)
 
 [Открыть деталь](docs/parts/encoder_clamp_half.scad) · Источник: [reference_model.scad](docs/parts/reference_model.scad).
 
@@ -447,7 +451,7 @@ encoder_selected_part("encoder_lid");
 encoder_clamp_body_for_print();
 ```
 
-Как построить: Взять полузажим и срезать верх на глубину encoder_magnet_recess_depth. Повернуть корпус в штатное печатное положение. Магнитный носитель изготовить отдельно.
+Как построить: Взять обычный полузажим соединителей и срезать верх на глубину encoder_magnet_recess_depth для установки отдельного носителя магнитов. Повернуть корпус в штатное печатное положение.
 
 | Параметр | Значение в эталоне | Что задаёт |
 | --- | --- | --- |
@@ -456,9 +460,9 @@ encoder_clamp_body_for_print();
 | `encoder_clamp_body_h` | 11.6 | Остаточная высота корпуса |
 | `D_out / bearing_inner` | 70 / 40 | Наружная геометрия / центральный проход |
 
-#### 15. Половинка магнитного кольца
+#### 15. Носитель магнитов энкодера — половинка
 
-![Половинка магнитного кольца](images/parts/encoder_magnet_ring.png)
+![Носитель магнитов энкодера — половинка](images/parts/encoder_magnet_ring.png)
 
 [Открыть деталь](docs/parts/encoder_magnet_ring.scad) · Источник: [reference_model.scad](docs/parts/reference_model.scad).
 
@@ -478,9 +482,9 @@ encoder_magnet_ring_half_for_print();
 | `encoder_track_radii` | 23.5 / 29.5 | Радиусы двух дорожек для Ø70 |
 | `encoder_track_counts` | 24 / 26 | Полные количества; в половинке 12 / 13 |
 
-#### 16. Соединитель выхода энкодера
+#### 16. Выходной соединитель редуктора под энкодер
 
-![Соединитель выхода энкодера](images/parts/encoder_connector.png)
+![Выходной соединитель редуктора под энкодер](images/parts/encoder_connector.png)
 
 [Открыть деталь](docs/parts/encoder_connector.scad) · Источник: [reference_model.scad](docs/parts/reference_model.scad).
 
@@ -490,18 +494,18 @@ encoder_magnet_ring_half_for_print();
 reducer_connector_encoder();
 ```
 
-Как построить: Построить reducer_connector() без юбки; длину шейки взять из рассчитанной осевой сборки энкодера, чтобы торцы совпадали с зажимом.
+Как построить: Построить reducer_connector() без юбки; длину шейки взять из рассчитанной осевой сборки редуктора с энкодером, чтобы торцы совпадали с зажимом.
 
 | Параметр | Значение в эталоне | Что задаёт |
 | --- | --- | --- |
 | `encoder_connector_stem_h` | 6.75 | Расчётная высота шейки для текущего Ø70 |
 | `encoder_connector_contact_z` | из сборки | Положение контактного торца |
-| `encoder_separator_top_z` | 10 | Верх сепаратора в энкодерной сборке |
+| `encoder_separator_top_z` | 10 | Верх сепаратора в редукторе с энкодером |
 | `bearing_inner` | 40 | Диаметр шейки |
 
-#### 17. Соединитель нагрузки энкодера
+#### 17. Соединитель нагрузки редуктора под энкодер
 
-![Соединитель нагрузки энкодера](images/parts/encoder_load_connector.png)
+![Соединитель нагрузки редуктора под энкодер](images/parts/encoder_load_connector.png)
 
 [Открыть деталь](docs/parts/encoder_load_connector.scad) · Источник: [reference_model.scad](docs/parts/reference_model.scad).
 
@@ -520,9 +524,9 @@ load_connector_encoder();
 | `holes` | [1,0,1,0,1,0,1,0] | Маска потаев |
 | `bearing_inner / D_out` | 40 / 70 | Диаметр шейки / габарит основания |
 
-#### 18. Механический контур платы
+#### 18. Плата энкодера — механический контур
 
-![Механический контур платы](images/parts/encoder_pcb.png)
+![Плата энкодера — механический контур](images/parts/encoder_pcb.png)
 
 [Открыть деталь](docs/parts/encoder_pcb.scad) · Источник: [reference_model.scad](docs/parts/reference_model.scad).
 
@@ -776,7 +780,7 @@ rsgl_magnet_spacer();
 | `magnet_dia / mag_clearance` | 4.01 / 0.1 | Аргументы: магнит / прибавка к диаметру гнезда |
 | `magnet_height / bottom_thickness / val_height` | 1.5 / 1 / 1 | Аргументы: магнит / толщина основания / осевая прибавка |
 
-### Сборочные режимы энкодера
+### Сборочные режимы редуктора с энкодером
 
 После генерации можно менять `generated_part` в самой модели либо передавать
 `-D 'generated_part="encoder_section"'` через CLI OpenSCAD. В файле с `use` удобнее
@@ -785,18 +789,18 @@ rsgl_magnet_spacer();
 | Режим `--part` / `generated_part` | Что показать | Какие параметры использовать |
 | --- | --- | --- |
 | `legacy` | Исходная сборка и модули робота | Комментировать вызовы в секции «Сборка», либо открыть одну из карточек |
-| `encoder_assembly` | Полная сборка энкодера | `encoder_assembly(with_bracing=true,show_electronics=true,show_magnets=true)` |
+| `encoder_assembly` | Сборка доработанных деталей редуктора с энкодером | `encoder_assembly(with_bracing=true,show_electronics=true,show_magnets=true)` |
 | `encoder_section` | Разрез сборки | `encoder_assembly(section=true)` |
 | `encoder_exploded` | Разнесённая сборка | `encoder_assembly(exploded=true)` |
-| `encoder_cap` | Основание крышки | `cap_encoder(with_bracing=true)` |
-| `encoder_lid` | Лицевая крышка с переносом к Z=0 | `encoder_selected_part("encoder_lid")` |
-| `encoder_print` | Основание и лицевая крышка рядом | `encoder_selected_part("encoder_print")` |
-| `encoder_clamp` | Две половины зажима с носителями | `connector_clamp_encoder(show_magnets=true)`; магниты — фоновые объекты просмотра |
-| `encoder_clamp_half` | Один корпус полузажима | `connector_clamp_encoder_body_half()`; для печатной ориентации — `encoder_clamp_body_for_print()` |
+| `encoder_cap` | Крышка редуктора под установку энкодера | `cap_encoder(with_bracing=true)` |
+| `encoder_lid` | Защитная накладка крышки редуктора с переносом к Z=0 | `encoder_selected_part("encoder_lid")` |
+| `encoder_print` | Крышка редуктора и её защитная накладка рядом | `encoder_selected_part("encoder_print")` |
+| `encoder_clamp` | Доработанный зажим соединителей с носителями магнитов | `connector_clamp_encoder(show_magnets=true)`; магниты — фоновые объекты просмотра |
+| `encoder_clamp_half` | Корпус полузажима соединителей под энкодер | `connector_clamp_encoder_body_half()`; для печатной ориентации — `encoder_clamp_body_for_print()` |
 | `encoder_magnet_ring` | Две половинки носителя магнитов плашмя | `encoder_magnet_ring_for_print()`; одна — `encoder_magnet_ring_half_for_print()` |
 | `encoder_clamp_print` | Корпуса полузажимов и носители в печатном положении | `encoder_selected_part("encoder_clamp_print")` |
-| `encoder_connector` | Соединитель выхода | `reducer_connector_encoder()` |
-| `encoder_load_connector` | Соединитель нагрузки | `load_connector_encoder()` |
+| `encoder_connector` | Выходной соединитель редуктора под энкодер | `reducer_connector_encoder()` |
+| `encoder_load_connector` | Соединитель нагрузки редуктора под энкодер | `load_connector_encoder()` |
 | `encoder_pcb` | Механический контур платы | `encoder_pcb_bare()`; это не электрическая разводка |
 
 Изображения обновляются скриптом [render_catalog.py](docs/parts/render_catalog.py).

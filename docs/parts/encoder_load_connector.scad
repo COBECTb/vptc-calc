@@ -1,4 +1,4 @@
-// Соединитель нагрузки энкодера. Open this file, F5 preview, F6 render, export STL.
+// Соединитель нагрузки редуктора под энкодер. Open this file, F5 preview, F6 render, export STL.
 use <reference_model.scad>
 $fn=60;
 load_connector_encoder();

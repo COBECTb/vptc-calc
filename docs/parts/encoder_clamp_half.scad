@@ -1,4 +1,4 @@
-// Корпус полузажима энкодера. Open this file, F5 preview, F6 render, export STL.
+// Корпус полузажима соединителей под энкодер. Open this file, F5 preview, F6 render, export STL.
 use <reference_model.scad>
 $fn=60;
 encoder_clamp_body_for_print();
