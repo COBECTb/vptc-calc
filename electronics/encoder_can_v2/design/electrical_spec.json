@@ -1,0 +1,1331 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-18",
+  "status": "Compact universal V2, routed; ERC/DRC/parity passed. Prototype qualification pending.",
+  "power": {
+    "input_net": "+5V",
+    "input_nominal_v": 5,
+    "input_design_range_v": [
+      4.5,
+      5.5
+    ],
+    "logic_net": "+3V3",
+    "logic_v": 3.3,
+    "ldo_rated_ma": 300,
+    "estimated_board_average_ma": 60,
+    "qualification_peak_budget_ma": 150,
+    "ldo_heat_at_budget_w": 0.255,
+    "battery_connection_allowed": false
+  },
+  "pcb": {
+    "layers": 4,
+    "thickness_mm": 0.8,
+    "passives": "0402 except 0603 bulk capacitors",
+    "sensor_side": "F.Cu",
+    "other_components_side": "mixed; see placement.json and native PCB",
+    "rear_clearance_strategy": "Dedicated V2 OpenSCAD pockets follow actual rear bodies; M2 mounts R30.5 at -11/29 deg.",
+    "layer_roles": {
+      "F.Cu": "Hall sensors, CAN transceiver, LDO, TVS, selected passives and signals; GND pour",
+      "In1.Cu": "Continuous GND reference; no routed signal tracks",
+      "In2.Cu": "+3V3 pour plus selected routed signals and power bridges",
+      "B.Cu": "MCU, crystal, selected passives, SWD pads, signals; GND pour"
+    },
+    "signal_vias_mm": [
+      0.4,
+      0.2
+    ],
+    "power_ground_vias_mm": [
+      0.45,
+      0.2
+    ],
+    "minimum_track_clearance_mm": 0.127,
+    "minimum_edge_copper_clearance_mm": 0.25,
+    "mechanical_envelope_mm": [
+      16.85344021678225,
+      42.93821161096835
+    ],
+    "fiducials": "3 global optical fiducials per face; 1 mm copper, 2 mm mask aperture; no paste",
+    "tvs_layout": "CAN_H/L are front-only, connector -> D1 pad -> transceiver; two ground vias, no pre-TVS branch to transceiver."
+  },
+  "interfaces": {
+    "I2C1": {
+      "SCL": "PA15",
+      "SDA": "PB7",
+      "af": 4,
+      "sensor": "U2",
+      "address_7bit": "0x35",
+      "target_hz": 400000
+    },
+    "I2C2": {
+      "SCL": "PA9",
+      "SDA": "PA8",
+      "af": 4,
+      "sensor": "U3",
+      "address_7bit": "0x35",
+      "target_hz": 400000
+    },
+    "FDCAN1": {
+      "RX": "PA11",
+      "TX": "PA12",
+      "af": 9,
+      "initial_mode": "Classical CAN 500 kbit/s; timing derived from HSE/PLL",
+      "termination": "120 ohm only at two physical bus ends; default DNP on this node"
+    },
+    "SWD": {
+      "SWDIO": "PA13",
+      "SWCLK": "PA14",
+      "NRST": "PG10",
+      "header": "5 flat pogo pads at 2.54 mm pitch: +5V POWER INPUT,GND,SWDIO,SWCLK,NRST. Pin 1 is NOT VTREF. Power one source only: J1 or J2. SWD logic remains 3.3 V. Probes requiring target VTREF need a separate 3.3 V sense connection."
+    },
+    "HSE": {
+      "frequency_hz": 16000000,
+      "mode": "crystal",
+      "crystal": "ABM10-16.000MHZ-12-R80-3-D30-T",
+      "load_pf": 12,
+      "esr_max_ohm": 80,
+      "load_caps_initial_pf": 18,
+      "load_caps_must_be_verified": true,
+      "note": "Exact full MPN catalogued and in stock at DigiKey on 2026-10-12; supplier code recorded. Max body height 0.70 mm. C13/C14 remain 18 pF initial values. Standard ESR150 version is NOT an automatic substitute."
+    }
+  },
+  "components": [
+    {
+      "ref": "U1",
+      "value": "STM32G431KBU6",
+      "manufacturer": "STMicroelectronics",
+      "mpn": "STM32G431KBU6",
+      "footprint": "Encoder_CAN:STM32G431KBU6_UFQFPN32",
+      "package": "UFQFPN32",
+      "side": "B",
+      "max_height_mm": 0.6,
+      "pins": {
+        "1": "+3V3",
+        "2": "HSE_IN",
+        "3": "HSE_OUT",
+        "4": "NRST",
+        "5": "INT_INNER",
+        "6": "INT_OUTER",
+        "7": null,
+        "8": null,
+        "9": null,
+        "10": null,
+        "11": null,
+        "12": null,
+        "13": null,
+        "14": "GND",
+        "15": "+3V3",
+        "16": "GND",
+        "17": "+3V3",
+        "18": "I2C2_SDA",
+        "19": "I2C2_SCL",
+        "20": null,
+        "21": "CAN_RX",
+        "22": "CAN_TX",
+        "23": "SWDIO",
+        "24": "SWCLK",
+        "25": "I2C1_SCL",
+        "26": null,
+        "27": null,
+        "28": null,
+        "29": null,
+        "30": "I2C1_SDA",
+        "31": "BOOT0",
+        "32": "GND",
+        "33": "GND"
+      },
+      "notes": [
+        "Pin33 is KiCad EP pad numbering, not an extra perimeter lead.",
+        "No separate VBAT, VREF+, VCAP pins in this package.",
+        "VREFBUF must remain disabled because VREF+ is bonded to VDDA.",
+        "NRST remains reset input; do not configure as GPIO.",
+        "Keep SWD enabled; PA15 can become I2C1 SCL while PA13/PA14 retain SWD.",
+        "Footprint uses KiCad 10.0.6 UFQFPN32 IPC outer lands: radial center 2.4375 mm, 0.875 x 0.25 mm, pitch 0.5 mm. EP is 3.45 x 3.45 mm per ST Figure 41; adapted IPC pattern, not a literal copy of Figure 41."
+      ],
+      "pin_names": {
+        "1": "VDD",
+        "2": "PF0-OSC_IN",
+        "3": "PF1-OSC_OUT",
+        "4": "PG10-NRST",
+        "5": "PA0",
+        "6": "PA1",
+        "7": "PA2",
+        "8": "PA3",
+        "9": "PA4",
+        "10": "PA5",
+        "11": "PA6",
+        "12": "PA7",
+        "13": "PB0",
+        "14": "VSSA",
+        "15": "VDDA/VREF+",
+        "16": "VSS",
+        "17": "VDD",
+        "18": "PA8",
+        "19": "PA9",
+        "20": "PA10",
+        "21": "PA11",
+        "22": "PA12",
+        "23": "PA13",
+        "24": "PA14",
+        "25": "PA15",
+        "26": "PB3",
+        "27": "PB4",
+        "28": "PB5",
+        "29": "PB6",
+        "30": "PB7",
+        "31": "PB8-BOOT0",
+        "32": "VSS",
+        "33": "EP"
+      },
+      "nc_pins": [
+        "7",
+        "8",
+        "9",
+        "10",
+        "11",
+        "12",
+        "13",
+        "20",
+        "26",
+        "27",
+        "28",
+        "29"
+      ],
+      "supplier": "LCSC",
+      "supplier_stock_code": "C529358",
+      "lcsc_part_number": "C529358",
+      "supplier_url": "https://www.lcsc.com/product-detail/C529358.html",
+      "stock_verified_date": "2026-10-12",
+      "stock_observed_qty": 2396,
+      "procurement_status": "exact MPN selected; retail distributor stock observed; assembler inventory/reservation not implied"
+    },
+    {
+      "ref": "U2",
+      "value": "TMAG5273A2QDBVR",
+      "manufacturer": "Texas Instruments",
+      "mpn": "TMAG5273A2QDBVR",
+      "footprint": "Encoder_CAN:TMAG5273_DBV_TI",
+      "package": "DBV/SOT23-6",
+      "side": "F",
+      "max_height_mm": 1.4,
+      "track_radius_mm": 23.5,
+      "pins": {
+        "1": "I2C1_SCL",
+        "2": "GND",
+        "3": "GND",
+        "4": "+3V3",
+        "5": "INT_INNER",
+        "6": "I2C1_SDA"
+      },
+      "pin_names": {
+        "1": "SCL",
+        "2": "GND",
+        "3": "GND(TEST)",
+        "4": "VCC",
+        "5": "INT",
+        "6": "SDA"
+      },
+      "nc_pins": [],
+      "notes": [
+        "Official TI DBV0006A-C02 land pattern; Hall local footprint offset (-0.12,+0.40) mm. Height from seating plane 0.9 to 1.4 mm."
+      ],
+      "supplier": "LCSC",
+      "supplier_stock_code": "C3715882",
+      "lcsc_part_number": "C3715882",
+      "supplier_url": "https://www.lcsc.com/product-detail/C3715882.html",
+      "stock_verified_date": "2026-10-12",
+      "stock_observed_qty": 16942,
+      "procurement_status": "exact MPN selected; retail distributor stock observed; assembler inventory/reservation not implied"
+    },
+    {
+      "ref": "U3",
+      "value": "TMAG5273A2QDBVR",
+      "manufacturer": "Texas Instruments",
+      "mpn": "TMAG5273A2QDBVR",
+      "footprint": "Encoder_CAN:TMAG5273_DBV_TI",
+      "package": "DBV/SOT23-6",
+      "side": "F",
+      "max_height_mm": 1.4,
+      "track_radius_mm": 29.5,
+      "pins": {
+        "1": "I2C2_SCL",
+        "2": "GND",
+        "3": "GND",
+        "4": "+3V3",
+        "5": "INT_OUTER",
+        "6": "I2C2_SDA"
+      },
+      "pin_names": {
+        "1": "SCL",
+        "2": "GND",
+        "3": "GND(TEST)",
+        "4": "VCC",
+        "5": "INT",
+        "6": "SDA"
+      },
+      "nc_pins": [],
+      "notes": [
+        "Official TI DBV0006A-C02 land pattern; Hall local footprint offset (-0.12,+0.40) mm. Height from seating plane 0.9 to 1.4 mm."
+      ],
+      "supplier": "LCSC",
+      "supplier_stock_code": "C3715882",
+      "lcsc_part_number": "C3715882",
+      "supplier_url": "https://www.lcsc.com/product-detail/C3715882.html",
+      "stock_verified_date": "2026-10-12",
+      "stock_observed_qty": 16942,
+      "procurement_status": "exact MPN selected; retail distributor stock observed; assembler inventory/reservation not implied"
+    },
+    {
+      "ref": "U4",
+      "value": "TCAN332GDCNR",
+      "manufacturer": "Texas Instruments",
+      "mpn": "TCAN332GDCNR",
+      "footprint": "Package_TO_SOT_SMD:SOT-23-8",
+      "package": "DCN/SOT23-8",
+      "side": "F",
+      "max_height_mm": 1.45,
+      "pins": {
+        "1": "CAN_TX",
+        "2": "GND",
+        "3": "+3V3",
+        "4": "CAN_RX",
+        "5": null,
+        "6": "CAN_L",
+        "7": "CAN_H",
+        "8": null
+      },
+      "notes": [
+        "TCAN332 has neither standby nor shutdown pin; pins5/8 must be explicitly NC.",
+        "Bus absolute maximum is +/-14 V; do not substitute high-standoff automotive TVS and claim coordinated surge protection."
+      ],
+      "pin_names": {
+        "1": "TXD",
+        "2": "GND",
+        "3": "VCC",
+        "4": "RXD",
+        "5": "NC",
+        "6": "CANL",
+        "7": "CANH",
+        "8": "NC"
+      },
+      "nc_pins": [
+        "5",
+        "8"
+      ],
+      "supplier": "LCSC",
+      "supplier_stock_code": "C191007",
+      "lcsc_part_number": "C191007",
+      "supplier_url": "https://www.lcsc.com/product-detail/C191007.html",
+      "stock_verified_date": "2026-10-12",
+      "stock_observed_qty": 1536,
+      "procurement_status": "exact MPN selected; retail distributor stock observed; assembler inventory/reservation not implied"
+    },
+    {
+      "ref": "U5",
+      "value": "TPS7A2033PDBVR",
+      "manufacturer": "Texas Instruments",
+      "mpn": "TPS7A2033PDBVR",
+      "footprint": "Package_TO_SOT_SMD:SOT-23-5",
+      "package": "DBV/SOT23-5",
+      "side": "F",
+      "max_height_mm": 1.45,
+      "pins": {
+        "1": "+5V",
+        "2": "GND",
+        "3": "+5V",
+        "4": null,
+        "5": "+3V3"
+      },
+      "notes": [
+        "IN and EN maximum operating6 V; supply only regulated5 V.",
+        "Minimum effective COUT0.47 uF after voltage/temperature/tolerance derating.",
+        "Thermal qualification required in closed housing;300 mA rating is not a board operating-current target."
+      ],
+      "pin_names": {
+        "1": "IN",
+        "2": "GND",
+        "3": "EN",
+        "4": "NC",
+        "5": "OUT"
+      },
+      "nc_pins": [
+        "4"
+      ],
+      "supplier": "LCSC",
+      "supplier_stock_code": "C2862740",
+      "lcsc_part_number": "C2862740",
+      "supplier_url": "https://www.lcsc.com/product-detail/C2862740.html",
+      "stock_verified_date": "2026-10-12",
+      "stock_observed_qty": 187095,
+      "procurement_status": "exact MPN selected; retail distributor stock observed; assembler inventory/reservation not implied"
+    },
+    {
+      "ref": "D1",
+      "value": "PESD5V0S2BT",
+      "manufacturer": "Nexperia",
+      "mpn": "PESD5V0S2BT,215",
+      "footprint": "Encoder_CAN:SOT-23_TVS_CompactCourtyard",
+      "side": "F",
+      "pins": {
+        "1": "CAN_H",
+        "2": "CAN_L",
+        "3": "GND"
+      },
+      "notes": [
+        "Bidirectional +/-5 V standoff;10 V maximum clamp at1 A8/20 us,14 V at12 A.",
+        "Limits permissible CAN common-mode to about+/-5 V; shared GND is mandatory.",
+        "Transient overshoot depends on layout; this design has no certified ESD/surge immunity."
+      ],
+      "pin_names": {
+        "1": "K1",
+        "2": "K2",
+        "3": "K"
+      },
+      "nc_pins": [],
+      "supplier": "LCSC",
+      "supplier_stock_code": "C49338",
+      "lcsc_part_number": "C49338",
+      "supplier_url": "https://www.lcsc.com/product-detail/C49338.html",
+      "max_height_mm": 1.1,
+      "stock_verified_date": "2026-10-12",
+      "stock_observed_qty": 28270,
+      "procurement_status": "exact MPN selected; retail distributor stock observed; assembler inventory/reservation not implied"
+    },
+    {
+      "ref": "Y1",
+      "value": "16MHz CL12pF ESR80",
+      "manufacturer": "Abracon",
+      "mpn": "ABM10-16.000MHZ-12-R80-3-D30-T",
+      "footprint": "Crystal:Crystal_SMD_2520-4Pin_2.5x2.0mm",
+      "side": "B",
+      "max_height_mm": 0.7,
+      "pins": {
+        "1": "HSE_IN",
+        "2": "GND",
+        "3": "HSE_OUT",
+        "4": "GND"
+      },
+      "notes": [
+        "Pin1 determined by package marking/top view, not chamfer; validate supplier drawing and oscillator gain/drive before assembly release.",
+        "Load capacitors18 pF are starting values for CL12 pF and estimated3 pF stray capacitance; tune/verify startup across temperature and rails.",
+        "Exact complete MPN verified in DigiKey catalog; custom R80 option already stocked.",
+        "Body height max 0.70 mm (0.5 +0.2/-0.1), not 0.50 mm.",
+        "1/3 crystal; 2/4 grounded case; no automatic ESR150 substitute."
+      ],
+      "pin_names": {
+        "1": "XTAL1",
+        "2": "CASE",
+        "3": "XTAL2",
+        "4": "CASE"
+      },
+      "nc_pins": [],
+      "supplier": "DigiKey",
+      "supplier_stock_code": "535-ABM10-16.000MHZ-12-R80-3-D30-TCT-ND",
+      "supplier_url": "https://www.digikey.com/en/products/detail/abracon-llc/ABM10-16-000MHZ-12-R80-3-D30-T/15908860",
+      "stock_verified_date": "2026-10-12",
+      "stock_observed_qty": 984,
+      "procurement_status": "catalogued exact MPN in stock; external sourcing or consigned assembly",
+      "datasheet": "https://abracon.com/datasheets/ABM10.pdf"
+    },
+    {
+      "ref": "R1",
+      "value": "2.2k",
+      "footprint": "Resistor_SMD:R_0402_1005Metric",
+      "pins": {
+        "1": "+3V3",
+        "2": "I2C1_SCL"
+      },
+      "pin_names": {
+        "1": "1",
+        "2": "2"
+      },
+      "nc_pins": [],
+      "side": "B",
+      "manufacturer": "YAGEO",
+      "mpn": "RC0402FR-072K2L",
+      "supplier": "LCSC",
+      "supplier_stock_code": "C114762",
+      "lcsc_part_number": "C114762",
+      "supplier_url": "https://www.lcsc.com/product-detail/C114762.html",
+      "max_height_mm": 0.4,
+      "stock_verified_date": "2026-10-12",
+      "stock_observed_qty": 1096900,
+      "procurement_status": "exact MPN selected; retail distributor stock observed; assembler inventory/reservation not implied",
+      "tolerance_percent": 1,
+      "power_w": 0.0625,
+      "voltage_v": 50,
+      "datasheet": "https://www.yageogroup.com/component-documentation/download/specsheet/RC0402FR-072K2L"
+    },
+    {
+      "ref": "R2",
+      "value": "2.2k",
+      "footprint": "Resistor_SMD:R_0402_1005Metric",
+      "pins": {
+        "1": "+3V3",
+        "2": "I2C1_SDA"
+      },
+      "pin_names": {
+        "1": "1",
+        "2": "2"
+      },
+      "nc_pins": [],
+      "side": "B",
+      "manufacturer": "YAGEO",
+      "mpn": "RC0402FR-072K2L",
+      "supplier": "LCSC",
+      "supplier_stock_code": "C114762",
+      "lcsc_part_number": "C114762",
+      "supplier_url": "https://www.lcsc.com/product-detail/C114762.html",
+      "max_height_mm": 0.4,
+      "stock_verified_date": "2026-10-12",
+      "stock_observed_qty": 1096900,
+      "procurement_status": "exact MPN selected; retail distributor stock observed; assembler inventory/reservation not implied",
+      "tolerance_percent": 1,
+      "power_w": 0.0625,
+      "voltage_v": 50,
+      "datasheet": "https://www.yageogroup.com/component-documentation/download/specsheet/RC0402FR-072K2L"
+    },
+    {
+      "ref": "R3",
+      "value": "2.2k",
+      "footprint": "Resistor_SMD:R_0402_1005Metric",
+      "pins": {
+        "1": "+3V3",
+        "2": "I2C2_SCL"
+      },
+      "pin_names": {
+        "1": "1",
+        "2": "2"
+      },
+      "nc_pins": [],
+      "side": "B",
+      "manufacturer": "YAGEO",
+      "mpn": "RC0402FR-072K2L",
+      "supplier": "LCSC",
+      "supplier_stock_code": "C114762",
+      "lcsc_part_number": "C114762",
+      "supplier_url": "https://www.lcsc.com/product-detail/C114762.html",
+      "max_height_mm": 0.4,
+      "stock_verified_date": "2026-10-12",
+      "stock_observed_qty": 1096900,
+      "procurement_status": "exact MPN selected; retail distributor stock observed; assembler inventory/reservation not implied",
+      "tolerance_percent": 1,
+      "power_w": 0.0625,
+      "voltage_v": 50,
+      "datasheet": "https://www.yageogroup.com/component-documentation/download/specsheet/RC0402FR-072K2L"
+    },
+    {
+      "ref": "R4",
+      "value": "2.2k",
+      "footprint": "Resistor_SMD:R_0402_1005Metric",
+      "pins": {
+        "1": "+3V3",
+        "2": "I2C2_SDA"
+      },
+      "pin_names": {
+        "1": "1",
+        "2": "2"
+      },
+      "nc_pins": [],
+      "side": "B",
+      "manufacturer": "YAGEO",
+      "mpn": "RC0402FR-072K2L",
+      "supplier": "LCSC",
+      "supplier_stock_code": "C114762",
+      "lcsc_part_number": "C114762",
+      "supplier_url": "https://www.lcsc.com/product-detail/C114762.html",
+      "max_height_mm": 0.4,
+      "stock_verified_date": "2026-10-12",
+      "stock_observed_qty": 1096900,
+      "procurement_status": "exact MPN selected; retail distributor stock observed; assembler inventory/reservation not implied",
+      "tolerance_percent": 1,
+      "power_w": 0.0625,
+      "voltage_v": 50,
+      "datasheet": "https://www.yageogroup.com/component-documentation/download/specsheet/RC0402FR-072K2L"
+    },
+    {
+      "ref": "R5",
+      "value": "10k",
+      "footprint": "Resistor_SMD:R_0402_1005Metric",
+      "pins": {
+        "1": "BOOT0",
+        "2": "GND"
+      },
+      "pin_names": {
+        "1": "1",
+        "2": "2"
+      },
+      "nc_pins": [],
+      "side": "F",
+      "manufacturer": "YAGEO",
+      "mpn": "RC0402FR-0710KL",
+      "supplier": "LCSC",
+      "supplier_stock_code": "C60490",
+      "lcsc_part_number": "C60490",
+      "supplier_url": "https://www.lcsc.com/product-detail/C60490.html",
+      "max_height_mm": 0.4,
+      "stock_verified_date": "2026-10-12",
+      "stock_observed_qty": 3998300,
+      "procurement_status": "exact MPN selected; retail distributor stock observed; assembler inventory/reservation not implied",
+      "tolerance_percent": 1,
+      "power_w": 0.0625,
+      "voltage_v": 50,
+      "datasheet": "https://www.yageogroup.com/component-documentation/download/specsheet/RC0402FR-0710KL"
+    },
+    {
+      "ref": "R6",
+      "value": "10k",
+      "footprint": "Resistor_SMD:R_0402_1005Metric",
+      "pins": {
+        "1": "+3V3",
+        "2": "NRST"
+      },
+      "pin_names": {
+        "1": "1",
+        "2": "2"
+      },
+      "nc_pins": [],
+      "side": "F",
+      "manufacturer": "YAGEO",
+      "mpn": "RC0402FR-0710KL",
+      "supplier": "LCSC",
+      "supplier_stock_code": "C60490",
+      "lcsc_part_number": "C60490",
+      "supplier_url": "https://www.lcsc.com/product-detail/C60490.html",
+      "max_height_mm": 0.4,
+      "stock_verified_date": "2026-10-12",
+      "stock_observed_qty": 3998300,
+      "procurement_status": "exact MPN selected; retail distributor stock observed; assembler inventory/reservation not implied",
+      "tolerance_percent": 1,
+      "power_w": 0.0625,
+      "voltage_v": 50,
+      "datasheet": "https://www.yageogroup.com/component-documentation/download/specsheet/RC0402FR-0710KL"
+    },
+    {
+      "ref": "R7",
+      "value": "10k",
+      "footprint": "Resistor_SMD:R_0402_1005Metric",
+      "pins": {
+        "1": "+3V3",
+        "2": "INT_INNER"
+      },
+      "pin_names": {
+        "1": "1",
+        "2": "2"
+      },
+      "nc_pins": [],
+      "side": "B",
+      "manufacturer": "YAGEO",
+      "mpn": "RC0402FR-0710KL",
+      "supplier": "LCSC",
+      "supplier_stock_code": "C60490",
+      "lcsc_part_number": "C60490",
+      "supplier_url": "https://www.lcsc.com/product-detail/C60490.html",
+      "max_height_mm": 0.4,
+      "stock_verified_date": "2026-10-12",
+      "stock_observed_qty": 3998300,
+      "procurement_status": "exact MPN selected; retail distributor stock observed; assembler inventory/reservation not implied",
+      "tolerance_percent": 1,
+      "power_w": 0.0625,
+      "voltage_v": 50,
+      "datasheet": "https://www.yageogroup.com/component-documentation/download/specsheet/RC0402FR-0710KL"
+    },
+    {
+      "ref": "R8",
+      "value": "10k",
+      "footprint": "Resistor_SMD:R_0402_1005Metric",
+      "pins": {
+        "1": "+3V3",
+        "2": "INT_OUTER"
+      },
+      "pin_names": {
+        "1": "1",
+        "2": "2"
+      },
+      "nc_pins": [],
+      "side": "B",
+      "manufacturer": "YAGEO",
+      "mpn": "RC0402FR-0710KL",
+      "supplier": "LCSC",
+      "supplier_stock_code": "C60490",
+      "lcsc_part_number": "C60490",
+      "supplier_url": "https://www.lcsc.com/product-detail/C60490.html",
+      "max_height_mm": 0.4,
+      "stock_verified_date": "2026-10-12",
+      "stock_observed_qty": 3998300,
+      "procurement_status": "exact MPN selected; retail distributor stock observed; assembler inventory/reservation not implied",
+      "tolerance_percent": 1,
+      "power_w": 0.0625,
+      "voltage_v": 50,
+      "datasheet": "https://www.yageogroup.com/component-documentation/download/specsheet/RC0402FR-0710KL"
+    },
+    {
+      "ref": "R9",
+      "value": "120",
+      "dnp": true,
+      "footprint": "Resistor_SMD:R_0603_1608Metric",
+      "pins": {
+        "1": "CAN_H",
+        "2": "CAN_L"
+      },
+      "notes": [
+        "Default DNP. Fit only if this board is a physical bus end. Use0.1 W minimum and qualify bus fault power."
+      ],
+      "pin_names": {
+        "1": "1",
+        "2": "2"
+      },
+      "nc_pins": [],
+      "side": "F",
+      "manufacturer": "YAGEO",
+      "mpn": "RC0603FR-07120RL",
+      "supplier": "LCSC",
+      "supplier_stock_code": "C114640",
+      "lcsc_part_number": "C114640",
+      "supplier_url": "https://www.lcsc.com/product-detail/C114640.html",
+      "max_height_mm": 0.55,
+      "stock_verified_date": "2026-10-12",
+      "stock_observed_qty": 267200,
+      "procurement_status": "exact MPN selected; retail distributor stock observed; assembler inventory/reservation not implied",
+      "tolerance_percent": 1,
+      "power_w": 0.1,
+      "voltage_v": 75,
+      "datasheet": "https://www.yageogroup.com/component-documentation/download/specsheet/RC0603FR-07120RL"
+    },
+    {
+      "ref": "C1",
+      "value": "100nF",
+      "dielectric": "X7R",
+      "voltage_v": 16,
+      "footprint": "Capacitor_SMD:C_0402_1005Metric",
+      "pins": {
+        "1": "+3V3",
+        "2": "GND"
+      },
+      "placement": "U1 VDD pin1",
+      "pin_names": {
+        "1": "1",
+        "2": "2"
+      },
+      "nc_pins": [],
+      "side": "B",
+      "manufacturer": "Murata",
+      "mpn": "GRM155R71C104KA88D",
+      "supplier": "LCSC",
+      "supplier_stock_code": "C71629",
+      "lcsc_part_number": "C71629",
+      "supplier_url": "https://www.lcsc.com/product-detail/C71629.html",
+      "max_height_mm": 0.55,
+      "stock_verified_date": "2026-10-12",
+      "stock_observed_qty": 968000,
+      "procurement_status": "exact MPN selected; retail distributor stock observed; assembler inventory/reservation not implied",
+      "tolerance_percent": 10,
+      "datasheet": "https://www.murata.com/en-global/api/pdfdownloadapi?cate=luCeramicCapacitorsSMD&partno=GRM155R71C104KA88%23"
+    },
+    {
+      "ref": "C2",
+      "value": "100nF",
+      "dielectric": "X7R",
+      "voltage_v": 16,
+      "footprint": "Capacitor_SMD:C_0402_1005Metric",
+      "pins": {
+        "1": "+3V3",
+        "2": "GND"
+      },
+      "placement": "U1 VDD pin17",
+      "pin_names": {
+        "1": "1",
+        "2": "2"
+      },
+      "nc_pins": [],
+      "side": "B",
+      "manufacturer": "Murata",
+      "mpn": "GRM155R71C104KA88D",
+      "supplier": "LCSC",
+      "supplier_stock_code": "C71629",
+      "lcsc_part_number": "C71629",
+      "supplier_url": "https://www.lcsc.com/product-detail/C71629.html",
+      "max_height_mm": 0.55,
+      "stock_verified_date": "2026-10-12",
+      "stock_observed_qty": 968000,
+      "procurement_status": "exact MPN selected; retail distributor stock observed; assembler inventory/reservation not implied",
+      "tolerance_percent": 10,
+      "datasheet": "https://www.murata.com/en-global/api/pdfdownloadapi?cate=luCeramicCapacitorsSMD&partno=GRM155R71C104KA88%23"
+    },
+    {
+      "ref": "C3",
+      "value": "4.7uF",
+      "dielectric": "X5R",
+      "voltage_v": 16,
+      "footprint": "Capacitor_SMD:C_0603_1608Metric",
+      "pins": {
+        "1": "+3V3",
+        "2": "GND"
+      },
+      "placement": "MCU VDD local bulk",
+      "pin_names": {
+        "1": "1",
+        "2": "2"
+      },
+      "nc_pins": [],
+      "side": "F",
+      "manufacturer": "Murata",
+      "mpn": "GRM188R61C475KE11D",
+      "supplier": "LCSC",
+      "supplier_stock_code": "C77045",
+      "lcsc_part_number": "C77045",
+      "supplier_url": "https://www.lcsc.com/product-detail/C77045.html",
+      "max_height_mm": 0.95,
+      "stock_verified_date": "2026-10-12",
+      "stock_observed_qty": 14850,
+      "procurement_status": "exact MPN selected; retail distributor stock observed; assembler inventory/reservation not implied",
+      "tolerance_percent": 10,
+      "datasheet": "https://www.murata.com/en-global/api/pdfdownloadapi?cate=luCeramicCapacitorsSMD&partno=GRM188R61C475KE11%23",
+      "manufacturer_lifecycle": "In Production (Murata SimSurfing code B; 2026-10-12)"
+    },
+    {
+      "ref": "C4",
+      "value": "10nF",
+      "dielectric": "X7R",
+      "voltage_v": 50,
+      "footprint": "Capacitor_SMD:C_0402_1005Metric",
+      "pins": {
+        "1": "+3V3",
+        "2": "GND"
+      },
+      "placement": "U1 VDDA pin15",
+      "pin_names": {
+        "1": "1",
+        "2": "2"
+      },
+      "nc_pins": [],
+      "side": "F",
+      "manufacturer": "Murata",
+      "mpn": "GRM155R71H103KA88D",
+      "supplier": "LCSC",
+      "supplier_stock_code": "C77019",
+      "lcsc_part_number": "C77019",
+      "supplier_url": "https://www.lcsc.com/product-detail/C77019.html",
+      "max_height_mm": 0.55,
+      "stock_verified_date": "2026-10-12",
+      "stock_observed_qty": 262850,
+      "procurement_status": "exact MPN selected; retail distributor stock observed; assembler inventory/reservation not implied",
+      "tolerance_percent": 10,
+      "datasheet": "https://www.murata.com/en-global/api/pdfdownloadapi?cate=luCeramicCapacitorsSMD&partno=GRM155R71H103KA88%23"
+    },
+    {
+      "ref": "C5",
+      "value": "1uF",
+      "dielectric": "X5R",
+      "voltage_v": 25,
+      "footprint": "Capacitor_SMD:C_0402_1005Metric",
+      "pins": {
+        "1": "+3V3",
+        "2": "GND"
+      },
+      "placement": "U1 VDDA pin15",
+      "pin_names": {
+        "1": "1",
+        "2": "2"
+      },
+      "nc_pins": [],
+      "side": "F",
+      "manufacturer": "Murata",
+      "mpn": "GRM155R61E105KA12D",
+      "supplier": "LCSC",
+      "supplier_stock_code": "C77009",
+      "lcsc_part_number": "C77009",
+      "supplier_url": "https://www.lcsc.com/product-detail/C77009.html",
+      "max_height_mm": 0.55,
+      "stock_verified_date": "2026-10-12",
+      "stock_observed_qty": 102600,
+      "procurement_status": "exact MPN selected; retail distributor stock observed; assembler inventory/reservation not implied",
+      "tolerance_percent": 10,
+      "datasheet": "https://www.murata.com/en-global/api/pdfdownloadapi?cate=luCeramicCapacitorsSMD&partno=GRM155R61E105KA12%23",
+      "manufacturer_lifecycle": "In Production (Murata SimSurfing code B; 2026-10-12)"
+    },
+    {
+      "ref": "C6",
+      "value": "100nF",
+      "dielectric": "X7R",
+      "voltage_v": 16,
+      "footprint": "Capacitor_SMD:C_0402_1005Metric",
+      "pins": {
+        "1": "+3V3",
+        "2": "GND"
+      },
+      "placement": "U2 VCC pin4, front",
+      "pin_names": {
+        "1": "1",
+        "2": "2"
+      },
+      "nc_pins": [],
+      "side": "F",
+      "manufacturer": "Murata",
+      "mpn": "GRM155R71C104KA88D",
+      "supplier": "LCSC",
+      "supplier_stock_code": "C71629",
+      "lcsc_part_number": "C71629",
+      "supplier_url": "https://www.lcsc.com/product-detail/C71629.html",
+      "max_height_mm": 0.55,
+      "stock_verified_date": "2026-10-12",
+      "stock_observed_qty": 968000,
+      "procurement_status": "exact MPN selected; retail distributor stock observed; assembler inventory/reservation not implied",
+      "tolerance_percent": 10,
+      "datasheet": "https://www.murata.com/en-global/api/pdfdownloadapi?cate=luCeramicCapacitorsSMD&partno=GRM155R71C104KA88%23"
+    },
+    {
+      "ref": "C7",
+      "value": "100nF",
+      "dielectric": "X7R",
+      "voltage_v": 16,
+      "footprint": "Capacitor_SMD:C_0402_1005Metric",
+      "pins": {
+        "1": "+3V3",
+        "2": "GND"
+      },
+      "placement": "U3 VCC pin4, front",
+      "pin_names": {
+        "1": "1",
+        "2": "2"
+      },
+      "nc_pins": [],
+      "side": "F",
+      "manufacturer": "Murata",
+      "mpn": "GRM155R71C104KA88D",
+      "supplier": "LCSC",
+      "supplier_stock_code": "C71629",
+      "lcsc_part_number": "C71629",
+      "supplier_url": "https://www.lcsc.com/product-detail/C71629.html",
+      "max_height_mm": 0.55,
+      "stock_verified_date": "2026-10-12",
+      "stock_observed_qty": 968000,
+      "procurement_status": "exact MPN selected; retail distributor stock observed; assembler inventory/reservation not implied",
+      "tolerance_percent": 10,
+      "datasheet": "https://www.murata.com/en-global/api/pdfdownloadapi?cate=luCeramicCapacitorsSMD&partno=GRM155R71C104KA88%23"
+    },
+    {
+      "ref": "C8",
+      "value": "100nF",
+      "dielectric": "X7R",
+      "voltage_v": 16,
+      "footprint": "Capacitor_SMD:C_0402_1005Metric",
+      "pins": {
+        "1": "+3V3",
+        "2": "GND"
+      },
+      "placement": "U4 VCC pin3",
+      "pin_names": {
+        "1": "1",
+        "2": "2"
+      },
+      "nc_pins": [],
+      "side": "F",
+      "manufacturer": "Murata",
+      "mpn": "GRM155R71C104KA88D",
+      "supplier": "LCSC",
+      "supplier_stock_code": "C71629",
+      "lcsc_part_number": "C71629",
+      "supplier_url": "https://www.lcsc.com/product-detail/C71629.html",
+      "max_height_mm": 0.55,
+      "stock_verified_date": "2026-10-12",
+      "stock_observed_qty": 968000,
+      "procurement_status": "exact MPN selected; retail distributor stock observed; assembler inventory/reservation not implied",
+      "tolerance_percent": 10,
+      "datasheet": "https://www.murata.com/en-global/api/pdfdownloadapi?cate=luCeramicCapacitorsSMD&partno=GRM155R71C104KA88%23"
+    },
+    {
+      "ref": "C9",
+      "value": "1uF",
+      "dielectric": "X5R",
+      "voltage_v": 25,
+      "footprint": "Capacitor_SMD:C_0402_1005Metric",
+      "pins": {
+        "1": "+3V3",
+        "2": "GND"
+      },
+      "placement": "U4 local bulk",
+      "pin_names": {
+        "1": "1",
+        "2": "2"
+      },
+      "nc_pins": [],
+      "side": "F",
+      "manufacturer": "Murata",
+      "mpn": "GRM155R61E105KA12D",
+      "supplier": "LCSC",
+      "supplier_stock_code": "C77009",
+      "lcsc_part_number": "C77009",
+      "supplier_url": "https://www.lcsc.com/product-detail/C77009.html",
+      "max_height_mm": 0.55,
+      "stock_verified_date": "2026-10-12",
+      "stock_observed_qty": 102600,
+      "procurement_status": "exact MPN selected; retail distributor stock observed; assembler inventory/reservation not implied",
+      "tolerance_percent": 10,
+      "datasheet": "https://www.murata.com/en-global/api/pdfdownloadapi?cate=luCeramicCapacitorsSMD&partno=GRM155R61E105KA12%23",
+      "manufacturer_lifecycle": "In Production (Murata SimSurfing code B; 2026-10-12)"
+    },
+    {
+      "ref": "C10",
+      "value": "4.7uF",
+      "dielectric": "X5R",
+      "voltage_v": 16,
+      "footprint": "Capacitor_SMD:C_0603_1608Metric",
+      "pins": {
+        "1": "+5V",
+        "2": "GND"
+      },
+      "placement": "U5 input",
+      "pin_names": {
+        "1": "1",
+        "2": "2"
+      },
+      "nc_pins": [],
+      "side": "F",
+      "manufacturer": "Murata",
+      "mpn": "GRM188R61C475KE11D",
+      "supplier": "LCSC",
+      "supplier_stock_code": "C77045",
+      "lcsc_part_number": "C77045",
+      "supplier_url": "https://www.lcsc.com/product-detail/C77045.html",
+      "max_height_mm": 0.95,
+      "stock_verified_date": "2026-10-12",
+      "stock_observed_qty": 14850,
+      "procurement_status": "exact MPN selected; retail distributor stock observed; assembler inventory/reservation not implied",
+      "tolerance_percent": 10,
+      "datasheet": "https://www.murata.com/en-global/api/pdfdownloadapi?cate=luCeramicCapacitorsSMD&partno=GRM188R61C475KE11%23",
+      "manufacturer_lifecycle": "In Production (Murata SimSurfing code B; 2026-10-12)"
+    },
+    {
+      "ref": "C11",
+      "value": "4.7uF",
+      "dielectric": "X5R",
+      "voltage_v": 16,
+      "footprint": "Capacitor_SMD:C_0603_1608Metric",
+      "pins": {
+        "1": "+3V3",
+        "2": "GND"
+      },
+      "placement": "U5 output, effective>=0.47uF",
+      "pin_names": {
+        "1": "1",
+        "2": "2"
+      },
+      "nc_pins": [],
+      "side": "F",
+      "manufacturer": "Murata",
+      "mpn": "GRM188R61C475KE11D",
+      "supplier": "LCSC",
+      "supplier_stock_code": "C77045",
+      "lcsc_part_number": "C77045",
+      "supplier_url": "https://www.lcsc.com/product-detail/C77045.html",
+      "max_height_mm": 0.95,
+      "stock_verified_date": "2026-10-12",
+      "stock_observed_qty": 14850,
+      "procurement_status": "exact MPN selected; retail distributor stock observed; assembler inventory/reservation not implied",
+      "tolerance_percent": 10,
+      "datasheet": "https://www.murata.com/en-global/api/pdfdownloadapi?cate=luCeramicCapacitorsSMD&partno=GRM188R61C475KE11%23",
+      "manufacturer_lifecycle": "In Production (Murata SimSurfing code B; 2026-10-12)",
+      "effective_capacitance_check": {
+        "source": "Murata SimSurfing official characteristics service",
+        "bias_v": 3.3,
+        "ac_rms_v": 0.01,
+        "typical_at_25c_uf": 2.914645,
+        "minimum_typical_minus40_to_85c_uf": 2.2915608666,
+        "minimum_required_uf": 0.47,
+        "note": "Typical manufacturer curves, not production guarantee; tolerance/aging margin and prototype stability still to be qualified."
+      }
+    },
+    {
+      "ref": "C12",
+      "value": "100nF",
+      "dielectric": "X7R",
+      "voltage_v": 16,
+      "footprint": "Capacitor_SMD:C_0402_1005Metric",
+      "pins": {
+        "1": "NRST",
+        "2": "GND"
+      },
+      "placement": "U1 NRST pin4",
+      "pin_names": {
+        "1": "1",
+        "2": "2"
+      },
+      "nc_pins": [],
+      "side": "B",
+      "manufacturer": "Murata",
+      "mpn": "GRM155R71C104KA88D",
+      "supplier": "LCSC",
+      "supplier_stock_code": "C71629",
+      "lcsc_part_number": "C71629",
+      "supplier_url": "https://www.lcsc.com/product-detail/C71629.html",
+      "max_height_mm": 0.55,
+      "stock_verified_date": "2026-10-12",
+      "stock_observed_qty": 968000,
+      "procurement_status": "exact MPN selected; retail distributor stock observed; assembler inventory/reservation not implied",
+      "tolerance_percent": 10,
+      "datasheet": "https://www.murata.com/en-global/api/pdfdownloadapi?cate=luCeramicCapacitorsSMD&partno=GRM155R71C104KA88%23"
+    },
+    {
+      "ref": "C13",
+      "value": "18pF",
+      "dielectric": "C0G",
+      "voltage_v": 50,
+      "footprint": "Capacitor_SMD:C_0402_1005Metric",
+      "pins": {
+        "1": "HSE_IN",
+        "2": "GND"
+      },
+      "placement": "Y1/U1 oscillator loop",
+      "pin_names": {
+        "1": "1",
+        "2": "2"
+      },
+      "nc_pins": [],
+      "side": "B",
+      "manufacturer": "Murata",
+      "mpn": "GRM1555C1H180JA01D",
+      "supplier": "LCSC",
+      "supplier_stock_code": "C33149",
+      "lcsc_part_number": "C33149",
+      "supplier_url": "https://www.lcsc.com/product-detail/C33149.html",
+      "max_height_mm": 0.55,
+      "stock_verified_date": "2026-10-12",
+      "stock_observed_qty": 390450,
+      "procurement_status": "exact MPN selected; retail distributor stock observed; assembler inventory/reservation not implied",
+      "tolerance_percent": 5,
+      "datasheet": "https://www.murata.com/en-global/api/pdfdownloadapi?cate=luCeramicCapacitorsSMD&partno=GRM1555C1H180JA01%23"
+    },
+    {
+      "ref": "C14",
+      "value": "18pF",
+      "dielectric": "C0G",
+      "voltage_v": 50,
+      "footprint": "Capacitor_SMD:C_0402_1005Metric",
+      "pins": {
+        "1": "HSE_OUT",
+        "2": "GND"
+      },
+      "placement": "Y1/U1 oscillator loop",
+      "pin_names": {
+        "1": "1",
+        "2": "2"
+      },
+      "nc_pins": [],
+      "side": "B",
+      "manufacturer": "Murata",
+      "mpn": "GRM1555C1H180JA01D",
+      "supplier": "LCSC",
+      "supplier_stock_code": "C33149",
+      "lcsc_part_number": "C33149",
+      "supplier_url": "https://www.lcsc.com/product-detail/C33149.html",
+      "max_height_mm": 0.55,
+      "stock_verified_date": "2026-10-12",
+      "stock_observed_qty": 390450,
+      "procurement_status": "exact MPN selected; retail distributor stock observed; assembler inventory/reservation not implied",
+      "tolerance_percent": 5,
+      "datasheet": "https://www.murata.com/en-global/api/pdfdownloadapi?cate=luCeramicCapacitorsSMD&partno=GRM1555C1H180JA01%23"
+    },
+    {
+      "ref": "J1",
+      "value": "5V GND CANH CANL solder pads",
+      "footprint": "Encoder_CAN:WirePads_1x04",
+      "side": "F",
+      "pins": {
+        "1": "+5V",
+        "2": "GND",
+        "3": "CAN_H",
+        "4": "CAN_L"
+      },
+      "pin_names": {
+        "1": "+5V",
+        "2": "GND",
+        "3": "CANH",
+        "4": "CANL"
+      },
+      "nc_pins": []
+    },
+    {
+      "ref": "J2",
+      "value": "SWD pogo P2.54",
+      "footprint": "Encoder_CAN:SWD_Pogo_1x05_P2.54mm",
+      "side": "B",
+      "pins": {
+        "1": "+5V",
+        "2": "GND",
+        "3": "SWDIO",
+        "4": "SWCLK",
+        "5": "NRST"
+      },
+      "pin_names": {
+        "1": "+5V INPUT",
+        "2": "GND",
+        "3": "SWDIO",
+        "4": "SWCLK",
+        "5": "NRST"
+      },
+      "nc_pins": []
+    },
+    {
+      "ref": "TP1",
+      "value": "BOOT0",
+      "footprint": "TestPoint:TestPoint_Pad_D1.0mm",
+      "pins": {
+        "1": "BOOT0"
+      },
+      "pin_names": {
+        "1": "1"
+      },
+      "nc_pins": [],
+      "side": "B"
+    }
+  ],
+  "firmware_requirements": [
+    "Keep VREFBUF disabled; use HSE crystal16 MHz and configure PLL/FDCAN timing explicitly.",
+    "Use separate I2C1/I2C2; both sensors have default7bit address0x35.",
+    "Disable JTAG use on PA15 while keeping SWD PA13/PA14.",
+    "Set INT direction/mode before driving; MCU inputs by default. INT can support conversion synchronization later.",
+    "Configure nSWBOOT0/nBOOT0 deliberately;10k physical BOOT0 pulldown remains present.",
+    "Sample both rings at a common time or compensate acquisition skew; TMAG angle register is track phase, not full mechanical angle.",
+    "Calibrate each assembled joint with both rings; check absolute sector uniqueness under eccentricity and cross-track fields.",
+    "CAN node IDs1..12 stored in flash; identical PCB hardware, termination DNP by default."
+  ],
+  "sources": [
+    {
+      "id": "STM32_DS",
+      "url": "https://www.st.com/resource/en/datasheet/stm32g431kb.pdf",
+      "revision": "DS12589 Rev6",
+      "sections": "Figure5; Table12/13; Fig16; Table40; Section6.1"
+    },
+    {
+      "id": "STM32_HW",
+      "url": "https://www.st.com/resource/en/application_note/an5093-getting-started-with-stm32g4-series--hardware-development-boards-stmicroelectronics.pdf",
+      "revision": "AN5093 Rev2",
+      "sections": "2.1;2.3;reference schematic/Table11"
+    },
+    {
+      "id": "TMAG_DS",
+      "url": "https://www.ti.com/lit/ds/symlink/tmag5273.pdf",
+      "revision": "SLYS045C Apr2026",
+      "sections": "Table4-1; Table6-2;7.3;7.4;packageDBV"
+    },
+    {
+      "id": "CAN_DS",
+      "url": "https://www.ti.com/lit/ds/symlink/tcan332g.pdf",
+      "revision": "SLLSEQ7F May2025",
+      "sections": "Table4-1;5.1;7.4;DCN package"
+    },
+    {
+      "id": "LDO_DS",
+      "url": "https://www.ti.com/lit/ds/symlink/tps7a20.pdf",
+      "revision": "SBVS338H Jul2024",
+      "sections": "Figure4-4;pinfunctions;5.3;DBV package"
+    },
+    {
+      "id": "TVS_DS",
+      "url": "https://assets.nexperia.com/documents/data-sheet/PESD5V0S2BT.pdf",
+      "revision": "23Aug2018",
+      "sections": "Table2;Table6;Fig8"
+    },
+    {
+      "id": "XTAL_DS",
+      "url": "https://abracon.com/Resonators/ABM10.pdf",
+      "revision": "21Apr2015",
+      "sections": "specifications;partidentification;outline"
+    }
+  ],
+  "nets": [
+    "+3V3",
+    "+5V",
+    "BOOT0",
+    "CAN_H",
+    "CAN_L",
+    "CAN_RX",
+    "CAN_TX",
+    "GND",
+    "HSE_IN",
+    "HSE_OUT",
+    "I2C1_SCL",
+    "I2C1_SDA",
+    "I2C2_SCL",
+    "I2C2_SDA",
+    "INT_INNER",
+    "INT_OUTER",
+    "NRST",
+    "SWCLK",
+    "SWDIO"
+  ],
+  "nc_pins": [
+    {
+      "ref": "U1",
+      "pin": "7"
+    },
+    {
+      "ref": "U1",
+      "pin": "8"
+    },
+    {
+      "ref": "U1",
+      "pin": "9"
+    },
+    {
+      "ref": "U1",
+      "pin": "10"
+    },
+    {
+      "ref": "U1",
+      "pin": "11"
+    },
+    {
+      "ref": "U1",
+      "pin": "12"
+    },
+    {
+      "ref": "U1",
+      "pin": "13"
+    },
+    {
+      "ref": "U1",
+      "pin": "20"
+    },
+    {
+      "ref": "U1",
+      "pin": "26"
+    },
+    {
+      "ref": "U1",
+      "pin": "27"
+    },
+    {
+      "ref": "U1",
+      "pin": "28"
+    },
+    {
+      "ref": "U1",
+      "pin": "29"
+    },
+    {
+      "ref": "U4",
+      "pin": "5"
+    },
+    {
+      "ref": "U4",
+      "pin": "8"
+    },
+    {
+      "ref": "U5",
+      "pin": "4"
+    }
+  ],
+  "procurement": {
+    "verified_date": "2026-10-12",
+    "all_fitted_mpn_selected": true,
+    "all_fitted_supplier_codes_recorded": true,
+    "stock_snapshot": "Retail distributor stock observed, not reserved; JLCPCB assembly inventory is separate and must be checked during quote.",
+    "assembly_sourcing": "LCSC MPN/code for all fitted parts except Y1; Y1 DigiKey exact code via external sourcing or consignment.",
+    "default_fitted_per_board": 29,
+    "board_quantity_reference": 12,
+    "minimum_fitted_total_for_12_boards": 348,
+    "purchase_authorized": false,
+    "prototype_qualification_required": true
+  }
+}

@@ -1,0 +1,14 @@
+Model sanity 3.3V/60mA equivalent resistive load
+.param V_out=3.3
+.include "/Users/sovest/Project/vptc-calc/electronics/encoder_can_v2/simulation/power/vendor/tps7a20-adj_trans_ngspice.lib"
+.options method=gear reltol=.0001
+Vsource vsrc 0 PWL(0 0 1m 0 1.01m 5 12m 5)
+Rwire vsrc vin .000001
+XU5 vin 0 vin nc vout TPS7A20_ADJ_TRANS
+C10 vin 0 4.7u
+C11 vout 0 8u
+Rload vout 0 55
+Vcommand loadcmd 0 .06
+.save v(vsrc) v(vin) v(vout) v(loadcmd) i(vsource)
+.tran 1u 12m
+.end

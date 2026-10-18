@@ -1,0 +1,98 @@
+{
+  "date_utc": "2026-10-18T14:44:29.168974+00:00",
+  "source_sha256": "8609979c5573e02b512603f73ae9d8110b7f0629134f0aea8e1cb1a4cbeef666",
+  "copper_layers": 4,
+  "thickness_mm": 0.8,
+  "segments": 368,
+  "vias": 72,
+  "layer_segments": {
+    "F.Cu": 153,
+    "B.Cu": 144,
+    "In2.Cu": 71
+  },
+  "widths_mm": [
+    0.127,
+    0.15,
+    0.2,
+    0.25
+  ],
+  "via_dimensions_mm": [
+    [
+      0.4,
+      0.2
+    ],
+    [
+      0.45,
+      0.2
+    ]
+  ],
+  "ground_plane_signal_tracks": 0,
+  "zones": [
+    {
+      "layer": "F.Cu",
+      "net": "GND",
+      "filled": true,
+      "filled_polygons": 3,
+      "area_mm2": 199.9024011578865
+    },
+    {
+      "layer": "B.Cu",
+      "net": "GND",
+      "filled": true,
+      "filled_polygons": 8,
+      "area_mm2": 220.463791983105
+    },
+    {
+      "layer": "In1.Cu",
+      "net": "GND",
+      "filled": true,
+      "filled_polygons": 1,
+      "area_mm2": 332.8497745011895
+    },
+    {
+      "layer": "In2.Cu",
+      "net": "+3V3",
+      "filled": true,
+      "filled_polygons": 7,
+      "area_mm2": 269.4134769353825
+    }
+  ],
+  "all_vias_tented_both_sides": true,
+  "ignored_drc_checks": [],
+  "via_drills_in_smd_pads": [],
+  "minimum_drill_edge_to_pad_enclosing_rectangle_mm": 0.1360095731091695,
+  "minimum_drill_location": [
+    "C12",
+    "1",
+    [
+      129.043248,
+      100.867313
+    ]
+  ],
+  "unrelated_back_routes_under_crystal": [],
+  "clock_vias": 0,
+  "hall_positions": [
+    {
+      "ref": "U2",
+      "position_mm": [
+        123.2666,
+        95.9099
+      ],
+      "angle": 9.0,
+      "unchanged_from_v1": true
+    },
+    {
+      "ref": "U3",
+      "position_mm": [
+        129.1928,
+        94.9713
+      ],
+      "angle": 9.0,
+      "unchanged_from_v1": true
+    }
+  ],
+  "placement_errors": [],
+  "drc_violations": 0,
+  "unconnected": 0,
+  "schematic_parity_issues": 0
+}

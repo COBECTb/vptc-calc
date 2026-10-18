@@ -1,0 +1,19 @@
+{
+  "date": "2026-10-18",
+  "source_pcb_sha256": "8609979c5573e02b512603f73ae9d8110b7f0629134f0aea8e1cb1a4cbeef666",
+  "baseline_source_pcb_sha256": "98eaa6d79fdc5223e9ca3ec1e0c02f57a0510de296ce1c1cc5d422511aec6f94",
+  "moved_footprints": [
+    "FIDB1",
+    "FIDF1",
+    "J2"
+  ],
+  "all_component_bodies_and_mount_positions_unchanged": true,
+  "outline_identical": true,
+  "clock_tracks_identical": true,
+  "fitted_components": 29,
+  "swd_pin1": "+5V power input; NOT VTREF",
+  "swd_logic_v": 3.3,
+  "swd_pitch_mm": 2.54,
+  "hardware_debug_supported_by_interface": true,
+  "physical_stlink_clone_and_clip_not_tested": true
+}

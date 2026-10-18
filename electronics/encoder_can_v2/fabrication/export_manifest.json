@@ -1,0 +1,32 @@
+{
+  "date": "2026-10-18",
+  "source_pcb_sha256": "8609979c5573e02b512603f73ae9d8110b7f0629134f0aea8e1cb1a4cbeef666",
+  "fitted_reference_count": 29,
+  "bom_cpl_references_match": true,
+  "pth_holes": 72,
+  "npth_holes": 2,
+  "c5_rotation_deg": -81.0,
+  "files_sha256": {
+    "fabrication/README.txt": "2fed71a6a54f1feea64740e58cc2ad9062265cce592764cbdb584d611e54cad4",
+    "fabrication/drill_report.txt": "14fa0f619f98d8d94a839234450a8085dadef3511d260636dff96656ac30c00d",
+    "fabrication/drills/encoder_can_v2-NPTH.drl": "675ce1e13dde0d75815e4c0997d2f4de76683513129dec53905607130480515f",
+    "fabrication/drills/encoder_can_v2-PTH.drl": "fd22321aae46be16e12f7ac587ac36784725d27cf2ee9fdcd41fc66c4b0ccd5e",
+    "fabrication/gerbers/encoder_can_v2-B_Cu.gbr": "003019a8893c07b48c1f23277db1ac0c6a476f9ccf7221a288b4a6afa2ca7f8b",
+    "fabrication/gerbers/encoder_can_v2-B_Mask.gbr": "279e25c290910be9538f6bd6e6ed0d97043fb2d035688d78740ae12abbcca4c2",
+    "fabrication/gerbers/encoder_can_v2-B_Paste.gbr": "38b055432c0b901a8c4375e5f4619d48637be4728258d6fcaa840761fde5c70c",
+    "fabrication/gerbers/encoder_can_v2-B_Silkscreen.gbr": "04b147805f99023a1004907adb8ae2325eea690ea5d8877b3c9b85fca4f1078b",
+    "fabrication/gerbers/encoder_can_v2-Edge_Cuts.gbr": "32a19acb5a4c3226a3fa9e67df15d2cae70e0957d152b138b22ccecb572e88dc",
+    "fabrication/gerbers/encoder_can_v2-F_Cu.gbr": "fc4cf0c157ffe25bb0d71b60964cf20c139944e1b9c2770b92ecbf8fec863d68",
+    "fabrication/gerbers/encoder_can_v2-F_Mask.gbr": "814f623facd9bb2887160d500f7dbf4b436b086453188f57d4240e1bcddfd004",
+    "fabrication/gerbers/encoder_can_v2-F_Paste.gbr": "5610b3e07d503817610e117b43967a37a1857b8cbea85745da1d09c9fd45fc37",
+    "fabrication/gerbers/encoder_can_v2-F_Silkscreen.gbr": "e93d3b24fa5c9c0ebb407672d0bf76ec63ef67fb9c975474b4340a176166757b",
+    "fabrication/gerbers/encoder_can_v2-In1_Cu.gbr": "88ca66d241e18f53869ca5c7b237b5853b536afc087fdf88bf220e3f562a185e",
+    "fabrication/gerbers/encoder_can_v2-In2_Cu.gbr": "6cc0460549701f9dd8ee7bf7082c0dc796cbb0f3a6bb2a8d4b833f20750ea07b",
+    "fabrication/gerbers/encoder_can_v2-job.gbrjob": "6fb9b89dca3b7d8def28209717deca37127f256f498b9dfc772883541df1e41a",
+    "assembly/BOM.csv": "dfe2bf8ce2c075fd99dd3281fed9d5073685a969e2a915b1607c041c3c3a2064",
+    "assembly/assembly_instructions.md": "cd730b4ef51da543844c476be589ccc41316e44e1ffdd72ef12dca3d3c25ecd7",
+    "assembly/fiducials.csv": "d0668c4ee166395e3d889f99e2518ef43c07d770d7568e3afd71fc65b920809e",
+    "assembly/positions_kicad.csv": "dbc343aa0578adc5adc2c13eb3470060c659d78d048501dedbe9fe29e24f71b8"
+  },
+  "swd_clip": "1x5 P2.54; pin1 +5V input; no paste or fitted part"
+}

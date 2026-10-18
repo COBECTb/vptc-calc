@@ -1,0 +1,61 @@
+{
+  "status": "nominal component envelopes fit both V2 enclosures",
+  "component_placement_source": "design/placement.json",
+  "outline_local_bounds_mm": [
+    16.5465593501615,
+    -21.469105338232602,
+    33.39999956694375,
+    21.46910627273575
+  ],
+  "reducer_pcb_carrier_intersection": "empty",
+  "reducer_pcb_lid_intersection": "empty",
+  "knee_pcb_enclosure_intersection": "empty after excluding intentional planar clamp contact",
+  "knee_contact_exclusion_mm": 0.001,
+  "probes": "output/knee_encoder/v2/check_fit.scad",
+  "logs": [
+    "reducer-fit-final.log",
+    "lid-fit-final.log",
+    "knee-fit-final.log"
+  ],
+  "m2_mounts": {
+    "radius_mm": 30.5,
+    "angles_deg": [
+      -11,
+      29
+    ],
+    "hole_diameter_mm": 2.2,
+    "support_diameter_mm": 3.8,
+    "reducer_max_head_diameter_mm": 3.5,
+    "washer": false
+  },
+  "m3_notch_clearance": {
+    "notch_radius_mm": 3.4,
+    "max_screw_head_radius_mm": 3,
+    "nominal_radial_gap_mm": 0.4
+  },
+  "limits": [
+    "Body envelopes, not detailed solder fillets and leads.",
+    "Nominal CAD check; printing/PCB/solder thickness tolerances require a physical prototype.",
+    "Knee intended support and cover contacts were excluded only within 0.001 mm of board faces."
+  ],
+  "date": "2026-10-18",
+  "source_pcb_sha256": "8609979c5573e02b512603f73ae9d8110b7f0629134f0aea8e1cb1a4cbeef666",
+  "review_change": "C5 rotated 180 degrees; body envelope unchanged. All three CAD intersection probes rerun from updated native placements.",
+  "revision_2026_10_18": {
+    "change": "SWD pads and two flat fiducials changed; component bodies, outline and mounts remain exactly identical. Three enclosure intersection probes rerun and empty; historical full-turn mechanical results retained because rotor and housing geometry are unchanged.",
+    "baseline_source_pcb_sha256": "98eaa6d79fdc5223e9ca3ec1e0c02f57a0510de296ce1c1cc5d422511aec6f94",
+    "body_geometry_identical": true,
+    "outline_and_mounts_identical": true,
+    "clip_contact_strip_report": "electronics/encoder_can_v2/design/swd_clip_audit.json",
+    "enclosure_intersections_rerun": [
+      "reducer_pcb: empty",
+      "reducer_lid: empty",
+      "knee_volume: empty after 0.001 mm intended contact exclusion"
+    ],
+    "fresh_logs": [
+      "electronics/encoder_can_v2/design/reducer-fit-final.log",
+      "electronics/encoder_can_v2/design/lid-fit-final.log",
+      "electronics/encoder_can_v2/design/knee-fit-final.log"
+    ]
+  }
+}

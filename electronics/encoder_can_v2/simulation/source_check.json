@@ -1,0 +1,11 @@
+{
+  "date": "2026-10-16",
+  "component_values_and_connected_pin_nets_match_spec": true,
+  "nominal_3v3_capacitance_f": 1.191e-05,
+  "source_sha256": {
+    "encoder_can_v2.kicad_sch": "b3dcc7e3356c03072062ac365dfca1308d649cdb5bf09717610b3ed24b1101b1",
+    "encoder_can_v2.kicad_pcb": "98eaa6d79fdc5223e9ca3ec1e0c02f57a0510de296ce1c1cc5d422511aec6f94",
+    "design/electrical_spec.json": "b4407cdff9b2e180d00f2700e19c7d49a1f539f785f32378ee3ac07d2fa5bfa9"
+  },
+  "xml_sha256": "9ba9be97446f9e007283c8b4b62320de1bba9f583345b0bffcd5cc95f8e03860"
+}

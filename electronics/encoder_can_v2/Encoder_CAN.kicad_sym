@@ -1,0 +1,232 @@
+(kicad_symbol_lib
+  (version 20241209)
+  (generator "vptc_encoder_extract")
+  (symbol "TMAG5273A2QDBVR"
+    (pin_names
+      (offset 0.5))
+    (in_bom yes)
+    (on_board yes)
+    (property "Reference" "U"
+      (at 0 12.7 0)
+      (effects
+        (font
+          (size 1.05 1.05))))
+    (property "Value" "TMAG5273A2QDBVR"
+      (at 0 10.16 0)
+      (effects
+        (font
+          (size 1.05 1.05))))
+    (symbol "TMAG5273A2QDBVR_0_1"
+      (rectangle
+        (start -7.62 7.62)
+        (end 7.62 -7.62)
+        (stroke
+          (width 0.254)
+          (type default))
+        (fill
+          (type background))))
+    (symbol "TMAG5273A2QDBVR_1_1"
+      (pin input line
+        (at -10.16 2.54 0)
+        (length 2.54)
+        (name "SCL"
+          (effects
+            (font
+              (size 1.05 1.05))))
+        (number "1"
+          (effects
+            (font
+              (size 1.05 1.05)))))
+      (pin bidirectional line
+        (at -10.16 -2.54 0)
+        (length 2.54)
+        (name "SDA"
+          (effects
+            (font
+              (size 1.05 1.05))))
+        (number "6"
+          (effects
+            (font
+              (size 1.05 1.05)))))
+      (pin bidirectional line
+        (at 10.16 0 180)
+        (length 2.54)
+        (name "INT"
+          (effects
+            (font
+              (size 1.05 1.05))))
+        (number "5"
+          (effects
+            (font
+              (size 1.05 1.05)))))
+      (pin power_in line
+        (at 0 10.16 270)
+        (length 2.54)
+        (name "VCC"
+          (effects
+            (font
+              (size 1.05 1.05))))
+        (number "4"
+          (effects
+            (font
+              (size 1.05 1.05)))))
+      (pin power_in line
+        (at -2.54 -10.16 90)
+        (length 2.54)
+        (name "GND"
+          (effects
+            (font
+              (size 1.05 1.05))))
+        (number "2"
+          (effects
+            (font
+              (size 1.05 1.05)))))
+      (pin power_in line
+        (at 2.54 -10.16 90)
+        (length 2.54)
+        (name "TEST/GND"
+          (effects
+            (font
+              (size 1.05 1.05))))
+        (number "3"
+          (effects
+            (font
+              (size 1.05 1.05)))))))
+  (symbol "TPS7A2033PDBVR"
+    (pin_names
+      (offset 0.5))
+    (in_bom yes)
+    (on_board yes)
+    (property "Reference" "U"
+      (at 0 12.7 0)
+      (effects
+        (font
+          (size 1.05 1.05))))
+    (property "Value" "TPS7A2033PDBVR"
+      (at 0 10.16 0)
+      (effects
+        (font
+          (size 1.05 1.05))))
+    (symbol "TPS7A2033PDBVR_0_1"
+      (rectangle
+        (start -7.62 7.62)
+        (end 7.62 -7.62)
+        (stroke
+          (width 0.254)
+          (type default))
+        (fill
+          (type background))))
+    (symbol "TPS7A2033PDBVR_1_1"
+      (pin power_in line
+        (at -10.16 2.54 0)
+        (length 2.54)
+        (name "IN"
+          (effects
+            (font
+              (size 1.05 1.05))))
+        (number "1"
+          (effects
+            (font
+              (size 1.05 1.05)))))
+      (pin input line
+        (at -10.16 -2.54 0)
+        (length 2.54)
+        (name "EN"
+          (effects
+            (font
+              (size 1.05 1.05))))
+        (number "3"
+          (effects
+            (font
+              (size 1.05 1.05)))))
+      (pin power_out line
+        (at 10.16 2.54 180)
+        (length 2.54)
+        (name "OUT"
+          (effects
+            (font
+              (size 1.05 1.05))))
+        (number "5"
+          (effects
+            (font
+              (size 1.05 1.05)))))
+      (pin no_connect line
+        (at 10.16 -2.54 180)
+        (length 2.54)
+        (name "NC"
+          (effects
+            (font
+              (size 1.05 1.05))))
+        (number "4"
+          (effects
+            (font
+              (size 1.05 1.05)))))
+      (pin power_in line
+        (at 0 -10.16 90)
+        (length 2.54)
+        (name "GND"
+          (effects
+            (font
+              (size 1.05 1.05))))
+        (number "2"
+          (effects
+            (font
+              (size 1.05 1.05)))))))
+  (symbol "PESD5V0S2BT"
+    (pin_names
+      (offset 0.5))
+    (in_bom yes)
+    (on_board yes)
+    (property "Reference" "D"
+      (at 0 12.7 0)
+      (effects
+        (font
+          (size 1.05 1.05))))
+    (property "Value" "PESD5V0S2BT"
+      (at 0 10.16 0)
+      (effects
+        (font
+          (size 1.05 1.05))))
+    (symbol "PESD5V0S2BT_0_1"
+      (rectangle
+        (start -7.62 7.62)
+        (end 7.62 -7.62)
+        (stroke
+          (width 0.254)
+          (type default))
+        (fill
+          (type background))))
+    (symbol "PESD5V0S2BT_1_1"
+      (pin passive line
+        (at -10.16 2.54 0)
+        (length 2.54)
+        (name "K1"
+          (effects
+            (font
+              (size 1.05 1.05))))
+        (number "1"
+          (effects
+            (font
+              (size 1.05 1.05)))))
+      (pin passive line
+        (at -10.16 -2.54 0)
+        (length 2.54)
+        (name "K2"
+          (effects
+            (font
+              (size 1.05 1.05))))
+        (number "2"
+          (effects
+            (font
+              (size 1.05 1.05)))))
+      (pin passive line
+        (at 10.16 0 180)
+        (length 2.54)
+        (name "COMMON/GND"
+          (effects
+            (font
+              (size 1.05 1.05))))
+        (number "3"
+          (effects
+            (font
+              (size 1.05 1.05))))))))

@@ -1,0 +1,547 @@
+{
+  "simulator": "ngspice 45.2 shared library from KiCad native app",
+  "lib": "/Applications/KiCad/KiCad.app/Contents/Frameworks/libngspice.0.dylib",
+  "compatibility": "PSpice ps; bundled KiCad XSPICE codemodels loaded",
+  "model_url": "https://www.ti.com/lit/zip/sbvm961",
+  "ported_model_sha256": "499350e27bc6014b634c23fb5b486f8f66632958097d6403aa5d5b2a04eea525",
+  "original_model_sha256": "154acfdd2199ac44259908b90b07d15bc7e535a45c8c51d1413894c900718b69",
+  "zip_sha256": "4db279371817cb0873e103b03ddf26c6a5a1ff2c4672093c0037c940dc8c8fd2",
+  "spec_sha256": "b4407cdff9b2e180d00f2700e19c7d49a1f539f785f32378ee3ac07d2fa5bfa9",
+  "model_modified": true,
+  "family_configuration": "2020 generic family typical model V_out=3.3; not a PDBV corner model",
+  "port_modification": "S2 Ron/Roff and Von/Voff swapped; simulator Ron lower clamp adds at most0.15mV to output drop at150mA in steady on state",
+  "rail_cap_refs": [
+    "C1",
+    "C2",
+    "C3",
+    "C4",
+    "C5",
+    "C6",
+    "C7",
+    "C8",
+    "C9",
+    "C11"
+  ],
+  "cap_corners": {
+    "nominal": {
+      "cin": 4.7e-06,
+      "local": 4.7e-06,
+      "remote": 7.21e-06
+    },
+    "bias_25c": {
+      "cin": 2.2e-06,
+      "local": 2.914645e-06,
+      "remote": 4.864645e-06
+    },
+    "stress_derated": {
+      "cin": 1.3e-06,
+      "local": 1.65e-06,
+      "remote": 2.765e-06
+    }
+  },
+  "scenarios": [
+    {
+      "name": "startup_fast_nominal",
+      "caps": "nominal",
+      "supply": [
+        [
+          0,
+          0
+        ],
+        [
+          0.001,
+          0
+        ],
+        [
+          0.00101,
+          5
+        ],
+        [
+          0.012,
+          5
+        ]
+      ],
+      "load": [
+        [
+          0,
+          0.06
+        ],
+        [
+          0.012,
+          0.06
+        ]
+      ],
+      "kind": "startup"
+    },
+    {
+      "name": "startup_fast_derated",
+      "caps": "stress_derated",
+      "supply": [
+        [
+          0,
+          0
+        ],
+        [
+          0.001,
+          0
+        ],
+        [
+          0.00101,
+          5
+        ],
+        [
+          0.012,
+          5
+        ]
+      ],
+      "load": [
+        [
+          0,
+          0.15
+        ],
+        [
+          0.012,
+          0.15
+        ]
+      ],
+      "kind": "startup"
+    },
+    {
+      "name": "startup_slow_5ms",
+      "caps": "bias_25c",
+      "supply": [
+        [
+          0,
+          0
+        ],
+        [
+          0.001,
+          0
+        ],
+        [
+          0.006,
+          5
+        ],
+        [
+          0.012,
+          5
+        ]
+      ],
+      "load": [
+        [
+          0,
+          0.06
+        ],
+        [
+          0.012,
+          0.06
+        ]
+      ],
+      "kind": "startup"
+    },
+    {
+      "name": "load_60_to_150mA",
+      "caps": "bias_25c",
+      "supply": [
+        [
+          0,
+          0
+        ],
+        [
+          0.001,
+          0
+        ],
+        [
+          0.00101,
+          5
+        ],
+        [
+          0.012,
+          5
+        ]
+      ],
+      "load": [
+        [
+          0,
+          0.06
+        ],
+        [
+          0.005,
+          0.06
+        ],
+        [
+          0.00501,
+          0.15
+        ],
+        [
+          0.008,
+          0.15
+        ],
+        [
+          0.00801,
+          0.06
+        ],
+        [
+          0.012,
+          0.06
+        ]
+      ],
+      "kind": "load"
+    },
+    {
+      "name": "load_30_to_150mA_derated",
+      "caps": "stress_derated",
+      "supply": [
+        [
+          0,
+          0
+        ],
+        [
+          0.001,
+          0
+        ],
+        [
+          0.00101,
+          4.5
+        ],
+        [
+          0.012,
+          4.5
+        ]
+      ],
+      "load": [
+        [
+          0,
+          0.03
+        ],
+        [
+          0.005,
+          0.03
+        ],
+        [
+          0.005001,
+          0.15
+        ],
+        [
+          0.008,
+          0.15
+        ],
+        [
+          0.008001,
+          0.03
+        ],
+        [
+          0.012,
+          0.03
+        ]
+      ],
+      "kind": "load"
+    },
+    {
+      "name": "input_sag_5_to_4p5V",
+      "caps": "stress_derated",
+      "supply": [
+        [
+          0,
+          0
+        ],
+        [
+          0.001,
+          0
+        ],
+        [
+          0.00101,
+          5
+        ],
+        [
+          0.005,
+          5
+        ],
+        [
+          0.00501,
+          4.5
+        ],
+        [
+          0.008,
+          4.5
+        ],
+        [
+          0.00801,
+          5
+        ],
+        [
+          0.012,
+          5
+        ]
+      ],
+      "load": [
+        [
+          0,
+          0.15
+        ],
+        [
+          0.012,
+          0.15
+        ]
+      ],
+      "kind": "line"
+    },
+    {
+      "name": "input_sag_outside_range_3V",
+      "caps": "stress_derated",
+      "supply": [
+        [
+          0,
+          0
+        ],
+        [
+          0.001,
+          0
+        ],
+        [
+          0.00101,
+          5
+        ],
+        [
+          0.005,
+          5
+        ],
+        [
+          0.00501,
+          3.0
+        ],
+        [
+          0.008,
+          3.0
+        ],
+        [
+          0.00801,
+          5
+        ],
+        [
+          0.012,
+          5
+        ]
+      ],
+      "load": [
+        [
+          0,
+          0.15
+        ],
+        [
+          0.012,
+          0.15
+        ]
+      ],
+      "kind": "fault"
+    },
+    {
+      "name": "power_interruption_50us",
+      "caps": "stress_derated",
+      "supply": [
+        [
+          0,
+          0
+        ],
+        [
+          0.001,
+          0
+        ],
+        [
+          0.00101,
+          5
+        ],
+        [
+          0.005,
+          5
+        ],
+        [
+          0.00505,
+          0
+        ],
+        [
+          0.0051,
+          0
+        ],
+        [
+          0.00515,
+          5
+        ],
+        [
+          0.012,
+          5
+        ]
+      ],
+      "load": [
+        [
+          0,
+          0.15
+        ],
+        [
+          0.012,
+          0.15
+        ]
+      ],
+      "kind": "fault"
+    },
+    {
+      "name": "source_2ohm_2uH_loadstep",
+      "caps": "stress_derated",
+      "supply": [
+        [
+          0,
+          0
+        ],
+        [
+          0.001,
+          0
+        ],
+        [
+          0.00101,
+          4.5
+        ],
+        [
+          0.012,
+          4.5
+        ]
+      ],
+      "load": [
+        [
+          0,
+          0.03
+        ],
+        [
+          0.005,
+          0.03
+        ],
+        [
+          0.005001,
+          0.15
+        ],
+        [
+          0.008,
+          0.15
+        ],
+        [
+          0.008001,
+          0.03
+        ],
+        [
+          0.012,
+          0.03
+        ]
+      ],
+      "kind": "load",
+      "rsource": 2.0,
+      "lsource": 2e-06
+    },
+    {
+      "name": "overload_350mA_model_only",
+      "caps": "stress_derated",
+      "supply": [
+        [
+          0,
+          0
+        ],
+        [
+          0.001,
+          0
+        ],
+        [
+          0.00101,
+          5
+        ],
+        [
+          0.012,
+          5
+        ]
+      ],
+      "load": [
+        [
+          0,
+          0.06
+        ],
+        [
+          0.005,
+          0.06
+        ],
+        [
+          0.005001,
+          0.35
+        ],
+        [
+          0.008,
+          0.35
+        ],
+        [
+          0.008001,
+          0.06
+        ],
+        [
+          0.012,
+          0.06
+        ]
+      ],
+      "kind": "overload"
+    },
+    {
+      "name": "distribution_0p2ohm_50nH_loadstep",
+      "caps": "stress_derated",
+      "supply": [
+        [
+          0,
+          0
+        ],
+        [
+          0.001,
+          0
+        ],
+        [
+          0.00101,
+          4.5
+        ],
+        [
+          0.012,
+          4.5
+        ]
+      ],
+      "load": [
+        [
+          0,
+          0.03
+        ],
+        [
+          0.005,
+          0.03
+        ],
+        [
+          0.005001,
+          0.15
+        ],
+        [
+          0.008,
+          0.15
+        ],
+        [
+          0.008001,
+          0.03
+        ],
+        [
+          0.012,
+          0.03
+        ]
+      ],
+      "kind": "load",
+      "rplane": 0.2,
+      "lplane": 5e-08
+    }
+  ],
+  "load_location": "Entire equivalent load placed on remote rail after lumped distribution R/L; V2 rerun, not reuse of V1 results.",
+  "source_pcb_sha256": "98eaa6d79fdc5223e9ca3ec1e0c02f57a0510de296ce1c1cc5d422511aec6f94",
+  "source_schematic_sha256": "b3dcc7e3356c03072062ac365dfca1308d649cdb5bf09717610b3ed24b1101b1",
+  "limits": [
+    "Temperature and quiescent current explicitly not modeled by TI.",
+    "No thermal/package/layout extraction, no actual MCU/CAN/sensor load model.",
+    "Capacitance corners and lumped parasitics are explicit sensitivity assumptions, not guaranteed manufacturing corners."
+  ]
+}

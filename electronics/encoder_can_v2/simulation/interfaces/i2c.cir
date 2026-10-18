@@ -1,0 +1,67 @@
+V2 I2C RC sensitivity; driver switch is an assumption, not an IC model
+Vdd vdd 0 3.3
+Vgate gate 0 PULSE(1 0 1.5u 1n 1n 1u 2.5u)
+.model OC SW(Ron=33 Roff=1e12 Vt=.5 Vh=0)
+Rbus0_30 vdd bus0_30 2222.0
+Cbus0_30 bus0_30 0 30p
+Sbus0_30 bus0_30 0 gate 0 OC
+Rbus0_50 vdd bus0_50 2222.0
+Cbus0_50 bus0_50 0 50p
+Sbus0_50 bus0_50 0 gate 0 OC
+Rbus0_100 vdd bus0_100 2222.0
+Cbus0_100 bus0_100 0 100p
+Sbus0_100 bus0_100 0 gate 0 OC
+Rbus0_150 vdd bus0_150 2222.0
+Cbus0_150 bus0_150 0 150p
+Sbus0_150 bus0_150 0 gate 0 OC
+Rbus0_160 vdd bus0_160 2222.0
+Cbus0_160 bus0_160 0 160p
+Sbus0_160 bus0_160 0 gate 0 OC
+Rbus1_30 vdd bus1_30 2222.0
+Cbus1_30 bus1_30 0 30p
+Sbus1_30 bus1_30 0 gate 0 OC
+Rbus1_50 vdd bus1_50 2222.0
+Cbus1_50 bus1_50 0 50p
+Sbus1_50 bus1_50 0 gate 0 OC
+Rbus1_100 vdd bus1_100 2222.0
+Cbus1_100 bus1_100 0 100p
+Sbus1_100 bus1_100 0 gate 0 OC
+Rbus1_150 vdd bus1_150 2222.0
+Cbus1_150 bus1_150 0 150p
+Sbus1_150 bus1_150 0 gate 0 OC
+Rbus1_160 vdd bus1_160 2222.0
+Cbus1_160 bus1_160 0 160p
+Sbus1_160 bus1_160 0 gate 0 OC
+Rbus2_30 vdd bus2_30 2222.0
+Cbus2_30 bus2_30 0 30p
+Sbus2_30 bus2_30 0 gate 0 OC
+Rbus2_50 vdd bus2_50 2222.0
+Cbus2_50 bus2_50 0 50p
+Sbus2_50 bus2_50 0 gate 0 OC
+Rbus2_100 vdd bus2_100 2222.0
+Cbus2_100 bus2_100 0 100p
+Sbus2_100 bus2_100 0 gate 0 OC
+Rbus2_150 vdd bus2_150 2222.0
+Cbus2_150 bus2_150 0 150p
+Sbus2_150 bus2_150 0 gate 0 OC
+Rbus2_160 vdd bus2_160 2222.0
+Cbus2_160 bus2_160 0 160p
+Sbus2_160 bus2_160 0 gate 0 OC
+Rbus3_30 vdd bus3_30 2222.0
+Cbus3_30 bus3_30 0 30p
+Sbus3_30 bus3_30 0 gate 0 OC
+Rbus3_50 vdd bus3_50 2222.0
+Cbus3_50 bus3_50 0 50p
+Sbus3_50 bus3_50 0 gate 0 OC
+Rbus3_100 vdd bus3_100 2222.0
+Cbus3_100 bus3_100 0 100p
+Sbus3_100 bus3_100 0 gate 0 OC
+Rbus3_150 vdd bus3_150 2222.0
+Cbus3_150 bus3_150 0 150p
+Sbus3_150 bus3_150 0 gate 0 OC
+Rbus3_160 vdd bus3_160 2222.0
+Cbus3_160 bus3_160 0 160p
+Sbus3_160 bus3_160 0 gate 0 OC
+.save v(gate) v(bus0_30) v(bus0_50) v(bus0_100) v(bus0_150) v(bus0_160) v(bus1_30) v(bus1_50) v(bus1_100) v(bus1_150) v(bus1_160) v(bus2_30) v(bus2_50) v(bus2_100) v(bus2_150) v(bus2_160) v(bus3_30) v(bus3_50) v(bus3_100) v(bus3_150) v(bus3_160)
+.tran .5n 10u 0 .5n
+.end

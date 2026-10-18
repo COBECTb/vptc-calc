@@ -1,0 +1,13 @@
+{
+  "date": "2026-10-16",
+  "method": "KiCad native GUI Simulator TRAN, PSpice, 0.2 us maximum step, 12 ms stop; CSV exported from GUI",
+  "case": "load_30_to_150mA_derated",
+  "solver_complete": true,
+  "rows": 60160,
+  "end_time_s": 0.012,
+  "remote_min_v": 3.27491,
+  "remote_max_v": 3.30342,
+  "csv_sha256": "0f2fcf1c08cad6470d752e3ba40cc1c68f1099ac6cd6d7134af5eeeef370c2c3",
+  "difference_from_batch_min_v": 2.3192849179398678e-05,
+  "difference_from_batch_max_v": 4.663704164986626e-05
+}

@@ -1,0 +1,14 @@
+{
+  "date": "2026-10-16",
+  "source_before_sha256": "39ad7f555d8f2a3e6a63096cffad9c9f85d25aae6ba36b6b5eb215dc0c7b01d0",
+  "graph_suggested_objects": 70,
+  "flipped_nonpolar_capacitor": "C5, same body envelope, pads swapped physically",
+  "source_after_sha256": "98eaa6d79fdc5223e9ca3ec1e0c02f57a0510de296ce1c1cc5d422511aec6f94",
+  "initial_rewrite_removed_objects": 122,
+  "initial_rewrite_new_segments": 29,
+  "segments_before": 441,
+  "segments_after": 348,
+  "vias_before": 71,
+  "vias_after": 71,
+  "additional_final_cleanup": "Track ends centered in vias, SWCLK aligned, C1/C7 and VDDA supply vias aligned."
+}

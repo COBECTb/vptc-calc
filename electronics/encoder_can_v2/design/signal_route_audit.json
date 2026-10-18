@@ -1,0 +1,125 @@
+{
+  "source_sha256": "8609979c5573e02b512603f73ae9d8110b7f0629134f0aea8e1cb1a4cbeef666",
+  "nets": [
+    {
+      "net": "NRST",
+      "pads": 4,
+      "items": 30,
+      "suggested_remove": [],
+      "retained_inside_round_pad": []
+    },
+    {
+      "net": "CAN_H",
+      "pads": 4,
+      "items": 17,
+      "suggested_remove": [],
+      "retained_inside_round_pad": []
+    },
+    {
+      "net": "CAN_L",
+      "pads": 4,
+      "items": 18,
+      "suggested_remove": [],
+      "retained_inside_round_pad": []
+    },
+    {
+      "net": "I2C2_SCL",
+      "pads": 3,
+      "items": 14,
+      "suggested_remove": [],
+      "retained_inside_round_pad": []
+    },
+    {
+      "net": "INT_OUTER",
+      "pads": 3,
+      "items": 30,
+      "suggested_remove": [],
+      "retained_inside_round_pad": []
+    },
+    {
+      "net": "I2C2_SDA",
+      "pads": 3,
+      "items": 13,
+      "suggested_remove": [],
+      "retained_inside_round_pad": []
+    },
+    {
+      "net": "CAN_TX",
+      "pads": 2,
+      "items": 13,
+      "suggested_remove": [],
+      "retained_inside_round_pad": []
+    },
+    {
+      "net": "CAN_RX",
+      "pads": 2,
+      "items": 13,
+      "suggested_remove": [],
+      "retained_inside_round_pad": []
+    },
+    {
+      "net": "I2C1_SCL",
+      "pads": 3,
+      "items": 27,
+      "suggested_remove": [],
+      "retained_inside_round_pad": []
+    },
+    {
+      "net": "INT_INNER",
+      "pads": 3,
+      "items": 18,
+      "suggested_remove": [],
+      "retained_inside_round_pad": []
+    },
+    {
+      "net": "I2C1_SDA",
+      "pads": 3,
+      "items": 26,
+      "suggested_remove": [],
+      "retained_inside_round_pad": []
+    },
+    {
+      "net": "BOOT0",
+      "pads": 3,
+      "items": 21,
+      "suggested_remove": [],
+      "retained_inside_round_pad": [
+        {
+          "uuid": "e12a693a-5639-4994-8204-29f4fa4ca3f2",
+          "net": "BOOT0",
+          "kind": "track",
+          "layer": "B.Cu",
+          "length_mm": 0.275
+        }
+      ]
+    },
+    {
+      "net": "HSE_OUT",
+      "pads": 3,
+      "items": 10,
+      "suggested_remove": [],
+      "retained_inside_round_pad": []
+    },
+    {
+      "net": "HSE_IN",
+      "pads": 3,
+      "items": 8,
+      "suggested_remove": [],
+      "retained_inside_round_pad": []
+    },
+    {
+      "net": "SWDIO",
+      "pads": 2,
+      "items": 13,
+      "suggested_remove": [],
+      "retained_inside_round_pad": []
+    },
+    {
+      "net": "SWCLK",
+      "pads": 2,
+      "items": 12,
+      "suggested_remove": [],
+      "retained_inside_round_pad": []
+    }
+  ]
+}

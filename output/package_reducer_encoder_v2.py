@@ -41,6 +41,7 @@ def build():
     for name in ['reducer_encoder_v2_README.md', 'reducer_encoder_v2_fit.json',
                  'reducer_encoder_v2_preview.png']:
         include(OUT / name)
+    include(ROOT / 'electronics/encoder_can_v2/PROGRAMMING.md')
     for log in sorted((OUT / 'reducer_encoder_v2_check_logs').glob('*.log')):
         include(log)
     listing = io.StringIO(newline='')

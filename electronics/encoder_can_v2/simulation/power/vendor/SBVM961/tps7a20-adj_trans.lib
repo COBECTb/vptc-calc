@@ -1,0 +1,170 @@
+* PSpice Model Editor - Version 17.2-2016
+*$
+* TPS7A20_ADJ
+*****************************************************************************
+* (C) Copyright 2020 Texas Instruments Incorporated. All rights reserved.
+*****************************************************************************
+** This model is designed as an aid for customers of Texas Instruments.
+** TI and its licensors and suppliers make no warranties, either expressed
+** or implied, with respect to this model, including the warranties of
+** merchantability or fitness for a particular purpose. The model is
+** provided solely on an "as is" basis. The entire risk as to its quality
+** and performance is with the customer.
+*****************************************************************************
+*
+* This model is subject to change without notice. Texas Instruments
+* Incorporated is not responsible for updating this model.
+*
+*****************************************************************************
+*
+** Released by: WEBENCH Design Center, Texas Instruments Inc.
+* Part: TPS7A20_ADJ
+* Date: 21JAN2020
+* Model Type: Transient
+* Simulator: PSPICE
+* Simulator Version: 17.2-2016 S050
+* EVM Order Number: 
+* EVM Users Guide: 
+* Datasheet: SBVS338 –AUGUST 2019
+*
+*            
+* Model Version: Final 1.00
+*
+*****************************************************************************
+*
+* Updates:
+* 
+* Final 1.00
+* Release to Web
+*
+*****************************************************************************
+*
+* Model Usage Notes:
+*
+* 1. The following features have been modeled
+*      a. Start-up time
+*      b. PSSR
+*      c. Enable/VIN shutdown
+*      d. Load and line transients
+*      e. Internal current limit
+*      f. Model supports inverting topology.
+*      
+*      
+* 2. Temperature effects & Ground/quiescent current have not been modeled.
+* 
+*****************************************************************************
+*$
+.SUBCKT TPS7A20_ADJ_TRANS VIN GND EN N_C VOUT
+V_V2         N15528889 VOUT 0Vdc
+C_C6         GND N15505691  20n  
+X_F1    VZZ N15505639 N15505691 VYY TPS7A20_ADJ_F1 
+V_V5         VIN N15505717 0Vdc
+E_E14         N15738584 GND VALUE { V(N15738829, 0) }
+C_U1_C3         GND N15505751  1n  
+X_U1_U2         VIN_PRE U1_N15850660 U1_N158505703 U1_VIN_OK COMPHYS_BASIC_GEN
++  PARAMS: VDD=1 VSS=0 VTHRESH=0.5
+V_U1_V6         U1_N15496735 0 0.92V
+V_U1_V3         U1_N158505703 0 0.025
+E_U1_E2         U1_DROP 0 TABLE { V(ISENSE, 0) } 
++ ( (0,62.7m)(1m,71.2m)(6m,74.1m)(25m,75.046m)(250m,88m)(300m,101.41m) )
+E_U1_ABM8         EN_OK 0 VALUE { IF(V(U1_N15545135) >=0.5,1,0)    }
+X_U1_U4         U1_N15545135 U1_EN_PRE d_d PARAMS:
+V_U1_V4         U1_N15850660 0 1.325
+R_U1_R3         U1_N15850670 U1_N15488381  {3.333e5*SQRT(TTRN)} TC=0,0 
+C_U1_C1         0 U1_N15488381  {1e-6*SQRT(TTRN)}  
+X_U1_U1         EN_INT U1_N15496735 U1_N154966513 U1_EN_PRE COMPHYS_BASIC_GEN
++  PARAMS: VDD=1 VSS=0 VTHRESH=0.5
+R_U1_R4         U1_N15488775 U1_N15488397  10 TC=0,0 
+E_U1_E4         U1_N154887931 GND VALUE { V(U1_N15846152, 0) }
+V_U1_V5         U1_N154966513 0 0.025
+R_U1_R2         GND U1_N15488397  1G  
+C_U1_C2         0 U1_N15488397  1n  
+E_U1_ABM6         U1_N15850670 0 VALUE { IF(V(U1_VIN_OK)> 0.6 & V(EN_OK) > 0.6,
++  {VREF}, 0)    }
+E_U1_ABM5         U1_N15846152 0 VALUE { MIN(V(U1_N15488397),  
++ MAX(V(VIN_PRE) - V(U1_DROP), 0))   }
+R_U1_R5         U1_N154887931 N15505751  10 TC=0,0 
+R_U1_R9         U1_EN_PRE U1_N15545135  {30u/(0.7*1n)} TC=0,0 
+E_U1_ABM4         U1_N15488775 0 VALUE { V(U1_N15488381)  
++ * (ABS(V(N15506031)) + 1e-6)  
++ / (ABS(V(V_FBK)) + 1e-6)  }
+C_U1_C5         0 U1_N15545135  1n  TC=0,0 
+R_U1_R1         GND U1_N15488381  1G  
+E_E6         VIN_PRE 0 VALUE { V(VIN, GND) }
+R_R15         GND EN  1e6 TC=0,0 
+X_S1    LOAD_DIS GND N15518026 GND TPS7A20_ADJ_S1 
+V_V4         N15505647 VOUT_INT 0Vdc
+E_E16         N15506031 0 VALUE { V(VOUT_INT, GND) }
+V_V3         N15528889 N15518026 0Vdc
+R_R14         0 N_C  100MEG TC=0,0 
+R_R1         VXX N15505691  {RINP}  
+X_H1    N15505639 N15505647 ISENSE 0 TPS7A20_ADJ_H1 
+R_R13         LOAD_DIS N157842371  1 TC=0,0 
+X_S4    EN_OK 0 N15505717 N15505691 TPS7A20_ADJ_S4 
+E_ABM1         N15738829 0 VALUE { MIN(V(N15735226), (V(Vzz_INT)+(ILIM*ROUT))) 
++    }
+R_R2         N15505751 VXX  {PSRR*RINP}  
+C_C8         0 LOAD_DIS  1n  TC=0,0 
+E_E5         EN_INT 0 VALUE { V(EN, GND) }
+R_R3         GND FB  {Rbottom}  
+C_C1         VXX N15505691  {1/(6.28*RINP*POLE)}  
+E_ABM3         N157842371 0 VALUE { IF(V(EN_OK)<0.5,1,0)    }
+E_E13         N15735226 0 VALUE { V(VXX, GND) }
+R_R6         N15738584 VYY  1 TC=0,0 
+R_R4         FB VOUT_INT  {RTOP}  
+X_S2    LOAD_DIS 0 N15528889 VOUT_INT TPS7A20_ADJ_S2 
+C_C2         VXX N15505751  {1/(6.28*PSRR*RINP*ZERO*1)}  
+R_R10         0 N_C  100MEG TC=0,0 
+R_R5         VZZ VYY  {ROUT}  
+E_E11         V_FBK 0 VALUE { V(FB, GND) }
+C_C3         GND VYY  1n  
+E_E15         VZZ_INT 0 VALUE { V(VZZ, GND) }
+.PARAM  rtop=3e6 psrr=178u rbottom={(3e6)/((V_out/0.8)-1)} ilim=520m ven=0.92 pole=10k
++  zero=1Meg rinp=1e12 ttrn=750u rout=57.7m vref=0.8
+.ENDS
+*$
+.subckt TPS7A20_ADJ_F1 1 2 3 4  
+F_F1         3 4 VF_F1 1
+VF_F1         1 2 0V
+.ends TPS7A20_ADJ_F1
+*$
+.subckt TPS7A20_ADJ_S1 1 2 3 4  
+S_S1         3 4 1 2 _S1
+RS_S1         1 2 1G
+.MODEL         _S1 VSWITCH Roff=1e6 Ron=230 Voff=0.0V Von=1m
+.ends TPS7A20_ADJ_S1
+*$
+.subckt TPS7A20_ADJ_H1 1 2 3 4  
+H_H1         3 4 VH_H1 1
+VH_H1         1 2 0V
+.ends TPS7A20_ADJ_H1
+*$
+.subckt TPS7A20_ADJ_S4 1 2 3 4  
+S_S4         3 4 1 2 _S4
+RS_S4         1 2 1G
+.MODEL         _S4 VSWITCH Roff=100 Ron=80 Voff=0.4 Von=0.5
+.ends TPS7A20_ADJ_S4
+*$
+.subckt TPS7A20_ADJ_S2 1 2 3 4  
+S_S2         3 4 1 2 _S2
+RS_S2         1 2 1G
+.MODEL         _S2 VSWITCH Roff=1e-6 Ron=1E6 Voff=0 Von=1m
+.ends TPS7A20_ADJ_S2
+*$
+.SUBCKT COMPHYS_BASIC_GEN INP INM HYS OUT PARAMS: VDD=1 VSS=0 VTHRESH=0.5	
+EIN INP1 INM1 INP INM 1 
+EHYS INP1 INP2 VALUE { IF( V(1) > {VTHRESH},-V(HYS),0) }
+EOUT OUT 0 VALUE { IF( V(INP2)>V(INM1), {VDD} ,{VSS}) }
+R1 OUT 1 1
+C1 1 0 5n
+RINP1 INP1 0 1K
+.ENDS COMPHYS_BASIC_GEN
+*$
+.subckt d_d 1 2
+d1 1 2 dd
+.model dd d
++ is=1e-015
++ n=0.01
++ tt=1e-011
+.ends d_d
+*$

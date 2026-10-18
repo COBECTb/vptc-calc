@@ -1,0 +1,8 @@
+TI S2 port actual resistance curve diagnostic
+.param V_out=3.3
+.include "/Users/sovest/Project/vptc-calc/electronics/encoder_can_v2/simulation/power/vendor/tps7a20-adj_trans_ngspice.lib"
+Vtest test 0 .001
+Vcontrol control 0 0
+XSW control 0 test 0 TPS7A20_ADJ_S2
+.dc Vcontrol -10u 1.01m 10u
+.end

@@ -1,0 +1,9 @@
+{
+  "unpacked_native_simulation_pass": true,
+  "all_11_native_model_paths_relative_and_resolve": true,
+  "compatibility": "psa / KiCad PSpice mode 2",
+  "case": "load_30_to_150mA_derated",
+  "remote_min_v": 3.274886807150821,
+  "remote_max_v": 3.30346663704165,
+  "source_pcb_sha256": "98eaa6d79fdc5223e9ca3ec1e0c02f57a0510de296ce1c1cc5d422511aec6f94"
+}

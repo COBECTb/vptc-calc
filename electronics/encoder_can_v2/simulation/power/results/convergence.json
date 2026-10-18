@@ -1,0 +1,43 @@
+{
+  "baseline_step_ns": 200,
+  "refined_step_ns": 50,
+  "case": "load_30_to_150mA_derated",
+  "absolute_change_v": {
+    "transient_min_v": 4.752709149924428e-05,
+    "transient_max_v": 3.9697961262685766e-05,
+    "remote_transient_min_v": 5.541363697991741e-05,
+    "remote_transient_max_v": 3.936887333422234e-05
+  },
+  "refined_metrics": {
+    "case": "load_30_to_150mA_derated",
+    "category": "load",
+    "cap_corner": "stress_derated",
+    "last_output_v": 3.297993119191489,
+    "settled_min_v": 3.2823864723814227,
+    "settled_max_v": 3.3049257344724787,
+    "transient_min_v": 3.2823864723814227,
+    "transient_max_v": 3.3049257344724787,
+    "input_min_in_event_v": 4.42301141116633,
+    "first_3V_time_ms": 1.6338707759548128,
+    "rise_10_90_ms": 0.5505999999991179,
+    "rise_10_90_average_V_per_ms": 4.7947693425430975,
+    "tmag_ramp_below_3V_per_ms": false,
+    "time_below_CAN_3V_during_event_us": 0.0,
+    "rail_floor_pass_in_event": true,
+    "remote_transient_min_v": 3.2749422207878007,
+    "remote_transient_max_v": 3.3034272681683157,
+    "remote_last_v": 3.296494712503979,
+    "peak_source_current_A": 0.9833594669014678,
+    "rail_ceiling_pass_all_time": true,
+    "output_max_all_time_v": 3.3049257344724787,
+    "input_min_all_time_v": 0.0,
+    "input_max_all_time_v": 5.007703310100358,
+    "input_within_abs_limits": true,
+    "input_within_recommended_ceiling": true,
+    "maximum_load_A": 0.15,
+    "output_minus_input_max_v": 0.0,
+    "solver_complete": true,
+    "simulation_end_ms": 12.0
+  },
+  "pass_under_1mv": true
+}

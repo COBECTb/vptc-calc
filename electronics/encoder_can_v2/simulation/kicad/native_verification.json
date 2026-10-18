@@ -1,0 +1,135 @@
+{
+  "method": "KiCad 10.0.7 native .kicad_sch -> KiCad SPICE exporter -> bundled ngspice 45.2, ngbehavior=psa, matching native PSpice compatibility mode 2; GUI not operated because Mac was locked.",
+  "results": [
+    {
+      "case": "distribution_0p2ohm_50nH_loadstep",
+      "kicad_export_sha256": "3926941ce237db0d7a7a33c5374709f7f539094ae174d00c6b2d200a3e56dc67",
+      "solver_complete": true,
+      "simulation_end_ms": 12.0,
+      "schematic_sha256": "be68e710933e184fe65fc023627be6101dd14f0c0089134793d103f79d7b5a13",
+      "project_sha256": "e5cfd7518669bb2b3224ff27f2c135800049c76d2d654745cedbb654dc457423",
+      "remote_transient_min_v": 3.253876669356347,
+      "remote_transient_min_v_difference_from_direct_v": 0.0,
+      "remote_transient_max_v": 3.2979145618668255,
+      "remote_transient_max_v_difference_from_direct_v": 0.0
+    },
+    {
+      "case": "input_sag_5_to_4p5V",
+      "kicad_export_sha256": "0c6c1a988fad032e94bd04091de56292b93e01ed8bf852f6340a0b71666aaa4c",
+      "solver_complete": true,
+      "simulation_end_ms": 12.0,
+      "schematic_sha256": "d10ff94cd774603e1d289a754391ca6b0b08cd951ccac8484834df6d1b2c06f7",
+      "project_sha256": "45b2ed19ba6146a547b19459077daed3b843e43be8b839a2ba0fab3f30cb58fd",
+      "remote_transient_min_v": 3.2817025357661613,
+      "remote_transient_min_v_difference_from_direct_v": 0.0,
+      "remote_transient_max_v": 3.28205664925562,
+      "remote_transient_max_v_difference_from_direct_v": 0.0
+    },
+    {
+      "case": "input_sag_outside_range_3V",
+      "kicad_export_sha256": "362a154f33e143809bb4b01f3b889c1235e3c5a61c98080438ebf587ec7545cf",
+      "solver_complete": true,
+      "simulation_end_ms": 12.0,
+      "schematic_sha256": "6c9f20cd90d6e463e2bb16eb0ef326a96f56f7242867ee53cf1a008728e2f1df",
+      "project_sha256": "830014e8b9ba3e837b491936acf655b7dbdb5587b990dcc69cdd2f34ad50edb1",
+      "remote_transient_min_v": 2.827060368031263,
+      "remote_transient_min_v_difference_from_direct_v": 0.0,
+      "remote_transient_max_v": 3.3027232710195027,
+      "remote_transient_max_v_difference_from_direct_v": 0.0
+    },
+    {
+      "case": "load_30_to_150mA_derated",
+      "kicad_export_sha256": "32e5534a17427885a200f9e7af6f493d5aed4069e8d5959d6bed8ebff06edcd1",
+      "solver_complete": true,
+      "simulation_end_ms": 12.0,
+      "schematic_sha256": "057e4d1731049063d16d245bb93204c3d7dc8b6fe155ac308a8132f37048e0fa",
+      "project_sha256": "0ebbba8ed8a2cb86d79c1f86694812b0e907ba643ad544b6d0db7dd4af65ff96",
+      "remote_transient_min_v": 3.274886807150821,
+      "remote_transient_min_v_difference_from_direct_v": 0.0,
+      "remote_transient_max_v": 3.30346663704165,
+      "remote_transient_max_v_difference_from_direct_v": 0.0
+    },
+    {
+      "case": "load_60_to_150mA",
+      "kicad_export_sha256": "f4c4f41934110ac443c84451e487593b3ceff23057eb95f2486efe1d1b06558a",
+      "solver_complete": true,
+      "simulation_end_ms": 12.0,
+      "schematic_sha256": "f4373da8ef8293b6260ea8bad87766780f837859efcb5470d6623a297f073a40",
+      "project_sha256": "d72a60ca0e415ca3262c6d26fba5f869451b27fb4d87bcbd45e659ef0340df9c",
+      "remote_transient_min_v": 3.2803329218896633,
+      "remote_transient_min_v_difference_from_direct_v": 0.0,
+      "remote_transient_max_v": 3.294507723981166,
+      "remote_transient_max_v_difference_from_direct_v": 0.0
+    },
+    {
+      "case": "overload_350mA_model_only",
+      "kicad_export_sha256": "b4c1bc8323838298874568201569b9e99626e030ed60d2e7906e7b8098e411e1",
+      "solver_complete": true,
+      "simulation_end_ms": 12.0,
+      "schematic_sha256": "be52911d3f11284fb96cb807849315089c4e13dbe01f69a243eaf41f4e4acd03",
+      "project_sha256": "150de3446827ac244d7b2fe19cca27cd507d8a2206b1b13ba6ef87b77fbf2d78",
+      "remote_transient_min_v": 3.2412684458386694,
+      "remote_transient_min_v_difference_from_direct_v": 0.0,
+      "remote_transient_max_v": 3.3095933923702505,
+      "remote_transient_max_v_difference_from_direct_v": 0.0
+    },
+    {
+      "case": "power_interruption_50us",
+      "kicad_export_sha256": "fbd30981af50187031fdcc0fc0ad4674923c48e327eee5bda913bdd52921e93b",
+      "solver_complete": false,
+      "simulation_end_ms": 5.042139557301599,
+      "schematic_sha256": "14f8a41e7ba18f316a2d0cc3c4a9db87d5e64c6aa606482aa718fced63a71a3f",
+      "project_sha256": "6e6b58660f0f5c607b85e25eea748bdcd3513fc8cd7f2468c71f916bd17614db",
+      "assessment": "Unresolved model convergence during interruption; no pass claimed."
+    },
+    {
+      "case": "source_2ohm_2uH_loadstep",
+      "kicad_export_sha256": "1ec7f0e532871b65c6b45939ad8d8420b2b5d9ccab012f575326bb7ddaca8548",
+      "solver_complete": true,
+      "simulation_end_ms": 12.0,
+      "schematic_sha256": "105e4767b70f1665dba2a494cc52763e7d8848a247317f00f0218eaa33f918b1",
+      "project_sha256": "b93c4fc9dc0f5440b97178cbe137d669121d86a7ce7bea937efc904f5417205f",
+      "remote_transient_min_v": 3.2748738757294915,
+      "remote_transient_min_v_difference_from_direct_v": 0.0,
+      "remote_transient_max_v": 3.303421440794546,
+      "remote_transient_max_v_difference_from_direct_v": 0.0
+    },
+    {
+      "case": "startup_fast_derated",
+      "kicad_export_sha256": "b3d1310ddf1ade0a7d7ec440dcdcede8d74003da44dfa970f495f729018ea04e",
+      "solver_complete": true,
+      "simulation_end_ms": 12.0,
+      "schematic_sha256": "bea16a7bef17c717a5b8e72ab418e447f22af8f1d315cbe791feee6cd1a4a6e6",
+      "project_sha256": "2c69253143fd5dc6ef261fed8ca032f62ed0ca350310ae45f5a3c1e6d6bcfb73",
+      "remote_transient_min_v": 3.2819209358298256,
+      "remote_transient_min_v_difference_from_direct_v": 0.0,
+      "remote_transient_max_v": 3.2819240423542744,
+      "remote_transient_max_v_difference_from_direct_v": 0.0
+    },
+    {
+      "case": "startup_fast_nominal",
+      "kicad_export_sha256": "20d5366e691bc2256f74ffafda3c46269e6da44a970cf0f614004e42c04a50f6",
+      "solver_complete": true,
+      "simulation_end_ms": 12.0,
+      "schematic_sha256": "904453dace8954a207c71b96c8f68a11c14d8387312ba096ca80cf552c3d8aab",
+      "project_sha256": "477e52a2a469499a54ce9222986106a3c3134a4cba18cf64c048a04287bfa0b0",
+      "remote_transient_min_v": 3.292903300817495,
+      "remote_transient_min_v_difference_from_direct_v": 0.0,
+      "remote_transient_max_v": 3.2929064446843817,
+      "remote_transient_max_v_difference_from_direct_v": 0.0
+    },
+    {
+      "case": "startup_slow_5ms",
+      "kicad_export_sha256": "e767829d450d1e703dc99a72463f1fc58e97075ac185b445d5f5b0ac6c0742bc",
+      "solver_complete": true,
+      "simulation_end_ms": 12.0,
+      "schematic_sha256": "1d8d567acb1c266ac97cf975ece17d3af860218e9f49eb8519582fb38f5bdc15",
+      "project_sha256": "8d1223cfa57b76624a3e60656e80f61ba192d32bef24be316f33f1be823d3272",
+      "remote_transient_min_v": 3.29206507843181,
+      "remote_transient_min_v_difference_from_direct_v": 0.0,
+      "remote_transient_max_v": 3.292907522672929,
+      "remote_transient_max_v_difference_from_direct_v": 0.0
+    }
+  ],
+  "gui_followup": "gui_verification.json: selected load step additionally completed and exported in native KiCad GUI after Mac unlock"
+}

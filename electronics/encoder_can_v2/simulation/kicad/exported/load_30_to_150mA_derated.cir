@@ -1,0 +1,8 @@
+.title KiCad schematic
+.include "/Users/sovest/Project/vptc-calc/electronics/encoder_can_v2/simulation/kicad/bench_models/load_30_to_150mA_derated.lib"
+.param V_out=3.3
+.options reltol=0.001 abstol=1e-9 vntol=1e-6 itl4=200 method=gear
+.tran 0.2u .012 0 0.2u
+.save v(VSRC) v(VIN) v(VOUT) v(REMOTE) v(LOADCMD)
+X1 VSRC VIN VOUT REMOTE LOADCMD 0 ENCODER_V2_POWER_BENCH
+.end

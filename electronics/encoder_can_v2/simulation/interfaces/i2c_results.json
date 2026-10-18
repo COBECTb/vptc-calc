@@ -1,0 +1,162 @@
+[
+  {
+    "pullup": "R1",
+    "assumed_line_cap_pf": 30,
+    "r_worst_high_ohm": 2222.0,
+    "rise_30_70_ns": 56.48066634038926,
+    "independent_rc_ns": 56.480875373411,
+    "fast_mode_300ns_pass": true
+  },
+  {
+    "pullup": "R1",
+    "assumed_line_cap_pf": 50,
+    "r_worst_high_ohm": 2222.0,
+    "rise_30_70_ns": 94.13467739000508,
+    "independent_rc_ns": 94.13479228901834,
+    "fast_mode_300ns_pass": true
+  },
+  {
+    "pullup": "R1",
+    "assumed_line_cap_pf": 100,
+    "r_worst_high_ohm": 2222.0,
+    "rise_30_70_ns": 188.26948136412898,
+    "independent_rc_ns": 188.26958457803667,
+    "fast_mode_300ns_pass": true
+  },
+  {
+    "pullup": "R1",
+    "assumed_line_cap_pf": 150,
+    "r_worst_high_ohm": 2222.0,
+    "rise_30_70_ns": 282.4042747734693,
+    "independent_rc_ns": 282.404376867055,
+    "fast_mode_300ns_pass": true
+  },
+  {
+    "pullup": "R1",
+    "assumed_line_cap_pf": 160,
+    "r_worst_high_ohm": 2222.0,
+    "rise_30_70_ns": 301.2312296731001,
+    "independent_rc_ns": 301.23133532485866,
+    "fast_mode_300ns_pass": false
+  },
+  {
+    "pullup": "R2",
+    "assumed_line_cap_pf": 30,
+    "r_worst_high_ohm": 2222.0,
+    "rise_30_70_ns": 56.48066634038926,
+    "independent_rc_ns": 56.480875373411,
+    "fast_mode_300ns_pass": true
+  },
+  {
+    "pullup": "R2",
+    "assumed_line_cap_pf": 50,
+    "r_worst_high_ohm": 2222.0,
+    "rise_30_70_ns": 94.13467739000508,
+    "independent_rc_ns": 94.13479228901834,
+    "fast_mode_300ns_pass": true
+  },
+  {
+    "pullup": "R2",
+    "assumed_line_cap_pf": 100,
+    "r_worst_high_ohm": 2222.0,
+    "rise_30_70_ns": 188.26948136412898,
+    "independent_rc_ns": 188.26958457803667,
+    "fast_mode_300ns_pass": true
+  },
+  {
+    "pullup": "R2",
+    "assumed_line_cap_pf": 150,
+    "r_worst_high_ohm": 2222.0,
+    "rise_30_70_ns": 282.4042747734693,
+    "independent_rc_ns": 282.404376867055,
+    "fast_mode_300ns_pass": true
+  },
+  {
+    "pullup": "R2",
+    "assumed_line_cap_pf": 160,
+    "r_worst_high_ohm": 2222.0,
+    "rise_30_70_ns": 301.2312296731001,
+    "independent_rc_ns": 301.23133532485866,
+    "fast_mode_300ns_pass": false
+  },
+  {
+    "pullup": "R3",
+    "assumed_line_cap_pf": 30,
+    "r_worst_high_ohm": 2222.0,
+    "rise_30_70_ns": 56.48066634038926,
+    "independent_rc_ns": 56.480875373411,
+    "fast_mode_300ns_pass": true
+  },
+  {
+    "pullup": "R3",
+    "assumed_line_cap_pf": 50,
+    "r_worst_high_ohm": 2222.0,
+    "rise_30_70_ns": 94.13467739000508,
+    "independent_rc_ns": 94.13479228901834,
+    "fast_mode_300ns_pass": true
+  },
+  {
+    "pullup": "R3",
+    "assumed_line_cap_pf": 100,
+    "r_worst_high_ohm": 2222.0,
+    "rise_30_70_ns": 188.26948136412898,
+    "independent_rc_ns": 188.26958457803667,
+    "fast_mode_300ns_pass": true
+  },
+  {
+    "pullup": "R3",
+    "assumed_line_cap_pf": 150,
+    "r_worst_high_ohm": 2222.0,
+    "rise_30_70_ns": 282.4042747734693,
+    "independent_rc_ns": 282.404376867055,
+    "fast_mode_300ns_pass": true
+  },
+  {
+    "pullup": "R3",
+    "assumed_line_cap_pf": 160,
+    "r_worst_high_ohm": 2222.0,
+    "rise_30_70_ns": 301.2312296731001,
+    "independent_rc_ns": 301.23133532485866,
+    "fast_mode_300ns_pass": false
+  },
+  {
+    "pullup": "R4",
+    "assumed_line_cap_pf": 30,
+    "r_worst_high_ohm": 2222.0,
+    "rise_30_70_ns": 56.48066634038926,
+    "independent_rc_ns": 56.480875373411,
+    "fast_mode_300ns_pass": true
+  },
+  {
+    "pullup": "R4",
+    "assumed_line_cap_pf": 50,
+    "r_worst_high_ohm": 2222.0,
+    "rise_30_70_ns": 94.13467739000508,
+    "independent_rc_ns": 94.13479228901834,
+    "fast_mode_300ns_pass": true
+  },
+  {
+    "pullup": "R4",
+    "assumed_line_cap_pf": 100,
+    "r_worst_high_ohm": 2222.0,
+    "rise_30_70_ns": 188.26948136412898,
+    "independent_rc_ns": 188.26958457803667,
+    "fast_mode_300ns_pass": true
+  },
+  {
+    "pullup": "R4",
+    "assumed_line_cap_pf": 150,
+    "r_worst_high_ohm": 2222.0,
+    "rise_30_70_ns": 282.4042747734693,
+    "independent_rc_ns": 282.404376867055,
+    "fast_mode_300ns_pass": true
+  },
+  {
+    "pullup": "R4",
+    "assumed_line_cap_pf": 160,
+    "r_worst_high_ohm": 2222.0,
+    "rise_30_70_ns": 301.2312296731001,
+    "independent_rc_ns": 301.23133532485866,
+    "fast_mode_300ns_pass": false
+  }
+]

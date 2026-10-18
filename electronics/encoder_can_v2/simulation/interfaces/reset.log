@@ -1,0 +1,7 @@
+stdout Note: Compatibility modes selected: ps
+stdout Circuit: v2 reset rc corners; por/bor and mcu are not modeled
+stdout Doing analysis at TEMP = 27.000000 and TNOM = 27.000000
+stdout Using SPARSE 1.3 as Direct Linear Solver
+stdout Operating point simulation skipped by 'uic',
+stdout now using transient initial conditions.
+stdout No. of Data Rows : 10011

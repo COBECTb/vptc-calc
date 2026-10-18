@@ -1,0 +1,77 @@
+[
+  {
+    "track": "d4d0f926-934f-4c85-bccf-054656d3758b",
+    "via": "833352fd-a0a3-4042-a065-2986b1c9f69e",
+    "delta_mm": 0.175001
+  },
+  {
+    "track": "616449ce-ea20-4c3e-88bc-501b605f071b",
+    "via": "c1c57745-51bd-487c-90a9-cf75fcd986fe",
+    "delta_mm": 0.025
+  },
+  {
+    "track": "1d489617-981e-4c7d-8993-14a54643bcfb",
+    "via": "d39ba317-6a6b-4e33-b914-834530c4287c",
+    "delta_mm": 1e-06
+  },
+  {
+    "track": "514d8f5d-987a-4882-9117-1f7216ac516c",
+    "via": "2bd4c059-ec2c-4180-bdba-e6136fb65c5e",
+    "delta_mm": 0.120078
+  },
+  {
+    "track": "ccf85c28-487e-40ad-a93d-fd1fef6b0340",
+    "via": "549fe808-7aef-40c2-b70a-187e5179670c",
+    "delta_mm": 1e-06
+  },
+  {
+    "track": "280d038c-6292-4a90-b67e-57b2d6e24909",
+    "via": "b73952d1-cc2b-45f9-83bb-6bbf7a233211",
+    "delta_mm": 0.181246
+  },
+  {
+    "track": "a531f0de-c393-44f8-873a-5905052ba110",
+    "via": "4e1c32b9-574f-420b-bbc0-72c49e6526a7",
+    "delta_mm": 0.150001
+  },
+  {
+    "track": "64cefbac-7ca2-4632-b3b1-89022b6611f0",
+    "via": "42c1a031-e740-4dba-9c33-6c36129fa6ed",
+    "delta_mm": 0.175
+  },
+  {
+    "track": "6f6c037c-c9c9-4de6-aa62-b8d00af17ca4",
+    "via": "87fbcf3f-feb4-49e2-96cf-18f544a5215b",
+    "delta_mm": 0.141421
+  },
+  {
+    "track": "3e285718-22ec-4813-a89d-d7f1d879dcbc",
+    "via": "33c2c06f-bf7c-46d0-a8c7-5fb0ad3e2a55",
+    "delta_mm": 0.199999
+  },
+  {
+    "track": "d6ecc517-2f97-43e8-a5de-99664ab665e8",
+    "via": "fe25d091-0136-41cb-a738-03b5b42e2986",
+    "delta_mm": 0.175001
+  },
+  {
+    "track": "e82570dc-8ad4-4c00-b032-c6fac21a78fb",
+    "via": "cd1dd971-c234-4e65-ac9c-289def00a834",
+    "delta_mm": 0.130064
+  },
+  {
+    "track": "c89f2367-f59f-4029-b874-fb2d9d5f2d83",
+    "via": "6e6353b7-48c9-49d1-828a-c887e569a9ad",
+    "delta_mm": 0.106067
+  },
+  {
+    "track": "ffc2dc30-32bb-45e9-987d-43add6d29095",
+    "via": "35770ff6-5651-4c0e-9c93-c5845ab3a538",
+    "delta_mm": 1e-06
+  },
+  {
+    "track": "a79650cf-10a1-4d93-8cd1-3b753169d2ab",
+    "via": "35770ff6-5651-4c0e-9c93-c5845ab3a538",
+    "delta_mm": 0.035356
+  }
+]

@@ -1,0 +1,100 @@
+{
+  "changes": [
+    {
+      "track": "88302dd8-c92d-4eab-a7fa-9d00bca3ef8c",
+      "via": "ff8cef64-d6ea-46cd-9b96-c8a05fc1b2af",
+      "delta_mm": 0.005
+    },
+    {
+      "track": "3c8baa7d-ab26-4bf3-ab2c-f2421c544a45",
+      "via": "b6cd05ac-bf89-432e-b545-953f8a80ec40",
+      "delta_mm": 0.131974
+    },
+    {
+      "track": "197a29dc-a646-4113-8675-5bc7d1b2af62",
+      "via": "d601a222-70d5-4676-b013-257488f4c32b",
+      "delta_mm": 0.01
+    },
+    {
+      "track": "613653ec-b7e7-40c4-885e-8051bf9c98a4",
+      "via": "ff8cef64-d6ea-46cd-9b96-c8a05fc1b2af",
+      "delta_mm": 0.005
+    },
+    {
+      "track": "852dbe51-9d7c-498f-814f-a334e47287df",
+      "via": "b6cd05ac-bf89-432e-b545-953f8a80ec40",
+      "delta_mm": 0.007411
+    },
+    {
+      "track": "ba278e58-8c0c-4a56-b9a5-18f5ceb46b5a",
+      "via": "03d8a1cb-b575-48c4-9539-4d6e34bc77c4",
+      "delta_mm": 0.005
+    },
+    {
+      "track": "6589972a-f822-4474-9318-7df7ac443da0",
+      "via": "961a045d-a481-41fc-883b-a150a29e26bc",
+      "delta_mm": 2e-06
+    },
+    {
+      "track": "ae94ac61-f1d4-4c70-9a21-e41874dc0aab",
+      "via": "833352fd-a0a3-4042-a065-2986b1c9f69e",
+      "delta_mm": 0.025
+    },
+    {
+      "track": "fa3d0733-c481-454e-84b0-90d7db69aa4f",
+      "via": "833352fd-a0a3-4042-a065-2986b1c9f69e",
+      "delta_mm": 0.025
+    },
+    {
+      "track": "1f8b1c71-0d0c-4464-88b2-9d5744983629",
+      "via": "aa97cdcd-18b4-4913-bdec-0eca5172c9a0",
+      "delta_mm": 0.005001
+    },
+    {
+      "track": "0f95cdde-db38-4382-a5f3-c93da216369c",
+      "via": "c0a6fe9a-44c3-4480-a23c-5bdbc23b1684",
+      "delta_mm": 0.055901
+    },
+    {
+      "track": "0be35daa-f21a-40c1-944c-387c653dfef9",
+      "via": "c0a6fe9a-44c3-4480-a23c-5bdbc23b1684",
+      "delta_mm": 0.158113
+    },
+    {
+      "track": "20979530-6879-4860-ba35-3eaff11835b1",
+      "via": "c0a6fe9a-44c3-4480-a23c-5bdbc23b1684",
+      "delta_mm": 0.055901
+    },
+    {
+      "track": "9d9a417e-1ed3-41f7-af90-bbee43cf623d",
+      "via": "7bdf1b41-5c2d-40ec-aa88-501756ef89c8",
+      "delta_mm": 1e-06
+    },
+    {
+      "track": "44cc8933-22ac-40f8-a908-3a570f93c7e3",
+      "via": "f9b2d80c-d1bd-416f-b1fe-cae44701c429",
+      "delta_mm": 0.175
+    },
+    {
+      "track": "bd8e8b0e-6a69-4bde-b588-20dcb8c7559d",
+      "via": "f9b2d80c-d1bd-416f-b1fe-cae44701c429",
+      "delta_mm": 0.175
+    },
+    {
+      "track": "951de284-d07e-4e84-9341-33fb391b2013",
+      "via": "f5ef03f5-fa30-456d-8cc0-2dae816eb0f8",
+      "delta_mm": 0.0125
+    },
+    {
+      "track": "ddd9a6ef-e5f6-4243-a593-46297eb0b737",
+      "via": "cd1dd971-c234-4e65-ac9c-289def00a834",
+      "delta_mm": 0.035356
+    },
+    {
+      "track": "43975734-d23a-44a9-80a4-26736d42cf9f",
+      "via": "48cac635-5774-4a28-8c5b-5b90ff0e82aa",
+      "delta_mm": 0.0125
+    }
+  ],
+  "removed_zero_segments": []
+}

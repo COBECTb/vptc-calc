@@ -1,0 +1,17 @@
+{
+  "meta": {
+    "filename": "startup_fast_nominal.kicad_pro",
+    "version": 1
+  },
+  "schematic": {
+    "ngspice": {
+      "meta": {
+        "version": 0
+      },
+      "fix_include_paths": true,
+      "fix_passive_vals": true,
+      "model_mode": 2,
+      "workbook_filename": ""
+    }
+  }
+}

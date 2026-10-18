@@ -1,0 +1,26 @@
+{
+  "date": "2026-10-18",
+  "native_pcb_sha256": "8609979c5573e02b512603f73ae9d8110b7f0629134f0aea8e1cb1a4cbeef666",
+  "archive_copper_and_properties_identical": true,
+  "archive_model_references_only_changed": true,
+  "local_library_and_used_3d_references_resolve": true,
+  "portable_drc_violations": 0,
+  "portable_unconnected_items": 0,
+  "portable_schematic_parity_issues": 0,
+  "portable_erc_violations": 0,
+  "drc_ignored_checks": [],
+  "bom_cpl_fitted_reference_match": true,
+  "fitted_components": 29,
+  "independent_can_topology_passed": true,
+  "mechanical_intersections_empty": true,
+  "signal_route_audit_source_sha256": "8609979c5573e02b512603f73ae9d8110b7f0629134f0aea8e1cb1a4cbeef666",
+  "swd_clip_pitch_mm": 2.54,
+  "swd_clip_power_input_v": 5,
+  "swd_logic_v": 3.3,
+  "component_free_jaw_strip_mm": [
+    11.5,
+    4
+  ],
+  "hardware_programmer_and_clip_not_tested": true,
+  "simulation_note": "Prior 2026-10-16 equivalent-load / I2C / reset studies retained as historical model calculations; no new full-board electrical simulation or bench qualification is claimed."
+}

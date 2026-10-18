@@ -1,0 +1,11 @@
+TI loaded reference, ported_trap
+.param V_out=3.3
+.include "/Users/sovest/Project/vptc-calc/electronics/encoder_can_v2/simulation/power/vendor/tps7a20-adj_trans_ngspice.lib"
+.options method=trap reltol=.001
+Vsrc vin 0 PWL(0 0 1m 0 1.01m 5 12m 5)
+XU vin 0 vin nc vout TPS7A20_ADJ_TRANS
+Cin vin 0 4.7u
+Cout vout 0 8u
+Rload vout 0 55
+.tran 1u 12m
+.end

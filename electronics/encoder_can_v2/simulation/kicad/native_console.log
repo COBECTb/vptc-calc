@@ -1,0 +1,11 @@
+distribution_0p2ohm_50nH_loadstep True
+input_sag_5_to_4p5V True
+input_sag_outside_range_3V True
+load_30_to_150mA_derated True
+load_60_to_150mA True
+overload_350mA_model_only True
+power_interruption_50us False
+source_2ohm_2uH_loadstep True
+startup_fast_derated True
+startup_fast_nominal True
+startup_slow_5ms True

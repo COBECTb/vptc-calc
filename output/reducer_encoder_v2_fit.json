@@ -1,5 +1,5 @@
 {
-  "source_pcb_sha256": "98eaa6d79fdc5223e9ca3ec1e0c02f57a0510de296ce1c1cc5d422511aec6f94",
+  "source_pcb_sha256": "8609979c5573e02b512603f73ae9d8110b7f0629134f0aea8e1cb1a4cbeef666",
   "cap": {
     "watertight": true,
     "solid_parts": 1,
@@ -191,5 +191,22 @@
     "output/reducer_encoder_v2_lid.stl": "c0d5f95e61963a79477d1b0e232e85a28ae0b7c1298c31c8a482355dc84168b3",
     "output/reducer_encoder_v2_output_connector.stl": "68b44a9c8b7936c9bda8a7c4e29dd0ee2e858ddffb0bd2f6b8b2eb04cac21edd",
     "output/reducer_encoder_v2_load_connector.stl": "4625a42d9e4caf16716a2d42d5017cce82d286fc74fd48e241cb88f9878403cc"
+  },
+  "revision_2026_10_18": {
+    "change": "SWD pads and two flat fiducials changed; component bodies, outline and mounts remain exactly identical. Three enclosure intersection probes rerun and empty; historical full-turn mechanical results retained because rotor and housing geometry are unchanged.",
+    "baseline_source_pcb_sha256": "98eaa6d79fdc5223e9ca3ec1e0c02f57a0510de296ce1c1cc5d422511aec6f94",
+    "body_geometry_identical": true,
+    "outline_and_mounts_identical": true,
+    "clip_contact_strip_report": "electronics/encoder_can_v2/design/swd_clip_audit.json",
+    "enclosure_intersections_rerun": [
+      "reducer_pcb: empty",
+      "reducer_lid: empty",
+      "knee_volume: empty after 0.001 mm intended contact exclusion"
+    ],
+    "fresh_logs": [
+      "electronics/encoder_can_v2/design/reducer-fit-final.log",
+      "electronics/encoder_can_v2/design/lid-fit-final.log",
+      "electronics/encoder_can_v2/design/knee-fit-final.log"
+    ]
   }
 }

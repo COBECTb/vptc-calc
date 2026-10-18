@@ -1,0 +1,8 @@
+SWD revision 2026-10-18; source PCB SHA256 8609979c5573e02b512603f73ae9d8110b7f0629134f0aea8e1cb1a4cbeef666
+OpenSCAD output/knee_encoder/v2/check_fit.scad; part=reducer_pcb
+Geometries in cache: 258
+Geometry cache size in bytes: 2232456
+CGAL Polyhedrons in cache: 47
+CGAL cache size in bytes: 61831016
+Total rendering time: 0:01:29.364
+Current top level object is empty.

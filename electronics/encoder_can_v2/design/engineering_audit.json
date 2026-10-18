@@ -1,0 +1,102 @@
+{
+  "source_pcb_sha256": "8609979c5573e02b512603f73ae9d8110b7f0629134f0aea8e1cb1a4cbeef666",
+  "can_topology": {
+    "CAN_H": {
+      "only_front_copper": true,
+      "vias": 0,
+      "transceiver_bypasses_tvs_pad": false,
+      "termination_branch_on_transceiver_side": true
+    },
+    "CAN_L": {
+      "only_front_copper": true,
+      "vias": 0,
+      "transceiver_bypasses_tvs_pad": false,
+      "termination_branch_on_transceiver_side": true
+    }
+  },
+  "hall_body_clearance": {
+    "U2": {
+      "nearest_front_body": [
+        1.299623216594398,
+        "C6"
+      ]
+    },
+    "U3": {
+      "nearest_front_body": [
+        0.979478077351796,
+        "C7"
+      ]
+    }
+  },
+  "bypass_capacitor_geometry": [
+    {
+      "ic": "U1",
+      "pin": "1",
+      "capacitor": "C1",
+      "between_pad_centres_mm": 1.3628319480717423,
+      "same_face": true
+    },
+    {
+      "ic": "U1",
+      "pin": "17",
+      "capacitor": "C2",
+      "between_pad_centres_mm": 2.4884321138632552,
+      "same_face": true
+    },
+    {
+      "ic": "U2",
+      "pin": "4",
+      "capacitor": "C6",
+      "between_pad_centres_mm": 1.8439595779799534,
+      "same_face": true
+    },
+    {
+      "ic": "U3",
+      "pin": "4",
+      "capacitor": "C7",
+      "between_pad_centres_mm": 1.5628734150432657,
+      "same_face": true
+    },
+    {
+      "ic": "U4",
+      "pin": "3",
+      "capacitor": "C8",
+      "between_pad_centres_mm": 2.48046175085608,
+      "same_face": true
+    },
+    {
+      "ic": "U5",
+      "pin": "1",
+      "capacitor": "C10",
+      "between_pad_centres_mm": 1.7871502396197694,
+      "same_face": true
+    },
+    {
+      "ic": "U5",
+      "pin": "5",
+      "capacitor": "C11",
+      "between_pad_centres_mm": 1.7214170947454985,
+      "same_face": true
+    }
+  ],
+  "fiducials": {
+    "F": [
+      "FIDF3",
+      "FIDF2",
+      "FIDF1"
+    ],
+    "B": [
+      "FIDB1",
+      "FIDB2",
+      "FIDB3"
+    ]
+  },
+  "clock_track_total_mm": {
+    "HSE_IN": 6.720255601838114,
+    "HSE_OUT": 9.041191394362489
+  },
+  "limits": [
+    "Geometry and topology checks do not simulate EMC, oscillator startup, thermal performance or magnetic angle accuracy.",
+    "Capacitor spacing is geometric pad-centre distance, not electrical loop inductance."
+  ]
+}

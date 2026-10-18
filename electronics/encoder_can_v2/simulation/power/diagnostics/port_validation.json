@@ -1,0 +1,58 @@
+{
+  "source": "https://raw.githubusercontent.com/imr/ngspice/master/src/xspice/icm/xtradev/pswitch/cfunc.mod",
+  "curves": [
+    {
+      "control_v": 0.0,
+      "original_mathematical_ohm": 1.0000000000000004e-06,
+      "ported_ngspice_measured_ohm": 0.001,
+      "ported_ngspice_predicted_ohm": 0.0010000000000000002
+    },
+    {
+      "control_v": 0.00025,
+      "original_mathematical_ohm": 7.498942093324561e-05,
+      "ported_ngspice_measured_ohm": 0.025482967479793468,
+      "ported_ngspice_predicted_ohm": 0.025482967479793468
+    },
+    {
+      "control_v": 0.0005000000000000007,
+      "original_mathematical_ohm": 1.0000000000000275,
+      "ported_ngspice_measured_ohm": 31.622776601684482,
+      "ported_ngspice_predicted_ohm": 31.62277660168445
+    },
+    {
+      "control_v": 0.0007500000000000013,
+      "original_mathematical_ohm": 13335.21432163378,
+      "ported_ngspice_measured_ohm": 39241.897584846534,
+      "ported_ngspice_predicted_ohm": 39241.897584846636
+    },
+    {
+      "control_v": 0.001000000000000002,
+      "original_mathematical_ohm": 999999.9999999995,
+      "ported_ngspice_measured_ohm": 1000000.0,
+      "ported_ngspice_predicted_ohm": 999999.9999999995
+    }
+  ],
+  "dc_reference": [
+    {
+      "name": "original_trap",
+      "vout_last_v": 3.292508073671752,
+      "time_last_s": 0.012,
+      "sane": true
+    },
+    {
+      "name": "ported_trap",
+      "vout_last_v": 3.295898160169926,
+      "time_last_s": 0.012,
+      "sane": true
+    },
+    {
+      "name": "ported_gear",
+      "vout_last_v": 3.295898160169787,
+      "time_last_s": 0.012,
+      "sane": true
+    }
+  ],
+  "ported_curve_relative_error_max": 0.000609219346485649,
+  "on_state_extra_drop_at150mA_v": 0.00014985,
+  "transition_error_note": "Ron lower clamp changes the nanosecond-scale intermediate resistance too; this is an explicit port approximation, not an exact PSpice equivalence."
+}

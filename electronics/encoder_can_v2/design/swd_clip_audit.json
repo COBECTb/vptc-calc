@@ -1,0 +1,97 @@
+{
+  "source_pcb_sha256": "8609979c5573e02b512603f73ae9d8110b7f0629134f0aea8e1cb1a4cbeef666",
+  "pinout": [
+    {
+      "pin": "1",
+      "net": "+5V",
+      "xy_mm": [
+        122.302544,
+        76.250202
+      ]
+    },
+    {
+      "pin": "2",
+      "net": "GND",
+      "xy_mm": [
+        120.563795,
+        78.101783
+      ]
+    },
+    {
+      "pin": "3",
+      "net": "SWDIO",
+      "xy_mm": [
+        118.825045,
+        79.953363
+      ]
+    },
+    {
+      "pin": "4",
+      "net": "SWCLK",
+      "xy_mm": [
+        117.086295,
+        81.804943
+      ]
+    },
+    {
+      "pin": "5",
+      "net": "NRST",
+      "xy_mm": [
+        115.347546,
+        83.656524
+      ]
+    }
+  ],
+  "pitch_mm": [
+    2.540000056016137,
+    2.5400000115944845,
+    2.5400000115944845,
+    2.540000056016157
+  ],
+  "pad_diameter_mm": 1,
+  "blank_contact_strip_mm": [
+    11.5,
+    4
+  ],
+  "nearest_component_clearance_mm": [
+    [
+      1.3489335022356228,
+      "R9",
+      "F"
+    ],
+    [
+      3.5790920616169157,
+      "C9",
+      "F"
+    ],
+    [
+      3.6470078060622737,
+      "U4",
+      "F"
+    ],
+    [
+      6.096926188415591,
+      "C8",
+      "F"
+    ],
+    [
+      6.8651870752101765,
+      "R2",
+      "B"
+    ]
+  ],
+  "copper_to_edge_mm": [
+    0.31897654400856407,
+    0.5322550657621212,
+    0.5556696170518702,
+    0.45816402991811,
+    0.3200320262526164
+  ],
+  "limits": [
+    "Program before mounting the PCB in its housing.",
+    "Choose a 1x5 P2.54 clip for 0.8 mm PCB, with tips <=1 mm and no alignment pins requiring holes.",
+    "Verify actual clip jaw dimensions; no particular commercial clip has been mechanically tested.",
+    "Pin 1 is +5V power input, not VTREF; use one power source only.",
+    "SWD logic is 3.3V. A probe needing VTREF requires a separate target 3.3V sense connection."
+  ]
+}

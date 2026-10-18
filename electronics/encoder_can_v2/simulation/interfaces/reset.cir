@@ -1,0 +1,29 @@
+V2 reset RC corners; POR/BOR and MCU are not modeled
+Vdd vdd 0 3.3
+Rext0 vdd nrst0 9900.0
+Rint0 vdd nrst0 25000
+Creset0 nrst0 0 9.000000000000001e-08 IC=0
+Rext1 vdd nrst1 9900.0
+Rint1 vdd nrst1 25000
+Creset1 nrst1 0 1.1000000000000002e-07 IC=0
+Rext2 vdd nrst2 9900.0
+Rint2 vdd nrst2 55000
+Creset2 nrst2 0 9.000000000000001e-08 IC=0
+Rext3 vdd nrst3 9900.0
+Rint3 vdd nrst3 55000
+Creset3 nrst3 0 1.1000000000000002e-07 IC=0
+Rext4 vdd nrst4 10100.0
+Rint4 vdd nrst4 25000
+Creset4 nrst4 0 9.000000000000001e-08 IC=0
+Rext5 vdd nrst5 10100.0
+Rint5 vdd nrst5 25000
+Creset5 nrst5 0 1.1000000000000002e-07 IC=0
+Rext6 vdd nrst6 10100.0
+Rint6 vdd nrst6 55000
+Creset6 nrst6 0 9.000000000000001e-08 IC=0
+Rext7 vdd nrst7 10100.0
+Rint7 vdd nrst7 55000
+Creset7 nrst7 0 1.1000000000000002e-07 IC=0
+.save v(nrst0) v(nrst1) v(nrst2) v(nrst3) v(nrst4) v(nrst5) v(nrst6) v(nrst7)
+.tran .5u 5m 0 .5u uic
+.end

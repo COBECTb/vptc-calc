@@ -1,0 +1,66 @@
+[
+  {
+    "name": "nrst0",
+    "external_ohm": 9900.0,
+    "assumed_internal_ohm": 25000,
+    "cap_f": 9.000000000000001e-08,
+    "t70_ms": 0.7684382062864643,
+    "independent_rc_ms": 0.7684382296951355
+  },
+  {
+    "name": "nrst1",
+    "external_ohm": 9900.0,
+    "assumed_internal_ohm": 25000,
+    "cap_f": 1.1000000000000002e-07,
+    "t70_ms": 0.939202288869045,
+    "independent_rc_ms": 0.9392022807384991
+  },
+  {
+    "name": "nrst2",
+    "external_ohm": 9900.0,
+    "assumed_internal_ohm": 55000,
+    "cap_f": 9.000000000000001e-08,
+    "t70_ms": 0.9091014968317211,
+    "independent_rc_ms": 0.909101498859669
+  },
+  {
+    "name": "nrst3",
+    "external_ohm": 9900.0,
+    "assumed_internal_ohm": 55000,
+    "cap_f": 1.1000000000000002e-07,
+    "t70_ms": 1.111124055363894,
+    "independent_rc_ms": 1.1111240541618177
+  },
+  {
+    "name": "nrst4",
+    "external_ohm": 10100.0,
+    "assumed_internal_ohm": 25000,
+    "cap_f": 9.000000000000001e-08,
+    "t70_ms": 0.7794951808701431,
+    "independent_rc_ms": 0.7794952130571767
+  },
+  {
+    "name": "nrst5",
+    "external_ohm": 10100.0,
+    "assumed_internal_ohm": 25000,
+    "cap_f": 1.1000000000000002e-07,
+    "t70_ms": 0.9527163798971962,
+    "independent_rc_ms": 0.9527163715143273
+  },
+  {
+    "name": "nrst6",
+    "external_ohm": 10100.0,
+    "assumed_internal_ohm": 55000,
+    "cap_f": 9.000000000000001e-08,
+    "t70_ms": 0.9246178247162474,
+    "independent_rc_ms": 0.9246178241516924
+  },
+  {
+    "name": "nrst7",
+    "external_ohm": 10100.0,
+    "assumed_internal_ohm": 55000,
+    "cap_f": 1.1000000000000002e-07,
+    "t70_ms": 1.1300884482280382,
+    "independent_rc_ms": 1.1300884517409573
+  }
+]

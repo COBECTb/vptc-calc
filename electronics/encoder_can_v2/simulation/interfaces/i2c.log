@@ -1,0 +1,34 @@
+stdout Note: Compatibility modes selected: ps
+stdout Circuit: v2 i2c rc sensitivity; driver switch is an assumption, not an ic model
+stdout Doing analysis at TEMP = 27.000000 and TNOM = 27.000000
+stdout Using SPARSE 1.3 as Direct Linear Solver
+stdout Initial Transient Solution
+stdout --------------------------
+stdout Node                                   Voltage
+stdout ----                                   -------
+stdout vdd                                        3.3
+stdout gate                                         1
+stdout bus0_30                              0.0482927
+stdout bus0_50                              0.0482927
+stdout bus0_100                             0.0482927
+stdout bus0_150                             0.0482927
+stdout bus0_160                             0.0482927
+stdout bus1_30                              0.0482927
+stdout bus1_50                              0.0482927
+stdout bus1_100                             0.0482927
+stdout bus1_150                             0.0482927
+stdout bus1_160                             0.0482927
+stdout bus2_30                              0.0482927
+stdout bus2_50                              0.0482927
+stdout bus2_100                             0.0482927
+stdout bus2_150                             0.0482927
+stdout bus2_160                             0.0482927
+stdout bus3_30                              0.0482927
+stdout bus3_50                              0.0482927
+stdout bus3_100                             0.0482927
+stdout bus3_150                             0.0482927
+stdout bus3_160                             0.0482927
+stdout vgate#branch                                 0
+stdout vdd#branch                          -0.0292683
+ Reference value :  4.49725e-06
+stdout No. of Data Rows : 20057

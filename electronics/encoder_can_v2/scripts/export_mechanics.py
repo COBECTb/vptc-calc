@@ -28,11 +28,15 @@ assert polygon.OutlineCount() == 1
 chain = polygon.Outline(0)
 outline = [position(chain.CPoint(i)) for i in range(chain.PointCount())]
 components, mounts = [], []
+swd_pads = []
 for footprint in board.GetFootprints():
     ref = footprint.GetReference()
     x, y = position(footprint.GetPosition())
     if ref in ('H1', 'H2'):
         mounts.append([x, y])
+    if ref == 'J2':
+        swd_pads = [dict(number=pad.GetNumber(), xy=position(pad.GetPosition()),
+                        net=pad.GetNetname()) for pad in footprint.Pads()]
     if ref in ('U2', 'U3') or ref not in sizes:
         continue
     components.append(dict(ref=ref, r=math.hypot(x, y),
@@ -49,6 +53,7 @@ header += 'function compact_source_pcb_sha256() = "' + digest + '";\n'
 header += 'function compact_mcu_height() = ' + str(sizes['U1'][2]) + ';\n'
 header += 'compact_outline = ' + json.dumps(outline) + ';\n'
 header += 'compact_mounts = ' + json.dumps(mounts) + ';\n'
+header += 'compact_swd_pads = ' + json.dumps([p['xy'] for p in swd_pads]) + ';\n'
 header += 'compact_components = ' + json.dumps([[c['r'], c['a'], c['angle'],
     c['front'], c['size_mm']] for c in components]) + ';\n'
 header += '''
@@ -72,6 +77,12 @@ module compact_pcb() {
             cube(c[4],center=true);
     color("Goldenrod") rotate(20) for(y=[-1.8,-.6,.6,1.8])
         translate([32.4,y,-.025]) cube([1.2,.8,.05],center=true);
+    // J2 on B.Cu: +5V input, GND, SWDIO, SWCLK, NRST; pitch 2.54 mm.
+    color("Goldenrod") for(i=[0:4])
+        translate([compact_swd_pads[i][0],compact_swd_pads[i][1],.8])
+            if(i==0) rotate(46.8) linear_extrude(.025)
+                offset(r=.25) square([.5,.5],center=true);
+            else cylinder(d=1,h=.025,$fn=32);
     color("OrangeRed") encoder_sensor_positions()
         translate([0,0,-encoder_hall_height()]) sphere(d=.35,$fn=16);
 }
@@ -81,6 +92,7 @@ OUT.mkdir(exist_ok=True)
 (ROOT / 'design/component_envelopes_v2.json').write_text(json.dumps(components, indent=2)+'\n')
 (ROOT / 'design/mechanics_v2.json').write_text(json.dumps(dict(
     source_pcb_sha256=digest, outline=outline, mounts=mounts,
-    thickness_mm=.8, span_deg=80), indent=2)+'\n')
+    thickness_mm=.8, span_deg=80, swd_pads=swd_pads,
+    swd_pitch_mm=2.54), indent=2)+'\n')
 print('Mechanical PCB library:', OUT / 'compact_encoder_pcb.scad')
 print('Source PCB SHA256:', digest)

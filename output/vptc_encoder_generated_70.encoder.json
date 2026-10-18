@@ -80,7 +80,20 @@
     "count": 28,
     "source_sha256": "47f620a4afcaf855fb9fe4f9b037aa41ffb146d775b7bcd35ffbf51e1659cf29",
     "revision": "V2",
-    "source_pcb_sha256": "98eaa6d79fdc5223e9ca3ec1e0c02f57a0510de296ce1c1cc5d422511aec6f94"
+    "source_pcb_sha256": "8609979c5573e02b512603f73ae9d8110b7f0629134f0aea8e1cb1a4cbeef666"
+  },
+  "programming_clip": {
+    "pitch_mm": 2.54,
+    "pins": [
+      "+5V input",
+      "GND",
+      "SWDIO",
+      "SWCLK",
+      "NRST"
+    ],
+    "pcb_face": "B.Cu",
+    "power_pin_is_vtref": false,
+    "flash_before_housing_installation": true
   },
   "pcb": {
     "thickness_mm": 0.8,
