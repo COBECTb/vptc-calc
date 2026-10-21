@@ -1,0 +1,439 @@
+{
+  "date": "2026-10-21",
+  "source_sha256": {
+    "electronics/encoder_can/design/placed_components.scad": "4852033cf44459bf76de46ccc366821237618610d48628652dcd19b082be583d",
+    "electronics/encoder_can_v2/encoder_can_v2.kicad_pcb": "8609979c5573e02b512603f73ae9d8110b7f0629134f0aea8e1cb1a4cbeef666",
+    "output/connector_clamp_magnets_5mm.scad": "fd9bf8827af805379da4f6a7bf9445177b6ec0e36627b7fc98805653390e0b36",
+    "output/encoder_can_pcb_layout.scad": "60dfb9126999a8e837052161dbb460a4699993d82d9d56170628f8b9187fa76c",
+    "output/foots.scad": "83d9130515681fa8055a356e0642bb3b0b93d6930498b1f60aa911b91f7c5cee",
+    "output/foots_h.scad": "f8fbc2072db27cd0360749aef87a0771eaf7694c88a465f85e2e84e0217a9873",
+    "output/knee_encoder/v2/compact_encoder_pcb.scad": "66edb36e55f7f0c76796a57af9b91a2b000cb69e284c6f8b8d19a426011724bc",
+    "output/knee_encoder/v2/knee_encoder_compact.scad": "664ce7449a9fb566ffd3040ab5b0395d278cc16a6efd3104cac9e3b72cf39820",
+    "output/knee_encoder/v2/knee_encoder_scene.scad": "4e6f98b1b4fd7e6fc5a42fc35568283451855afc6b42b455edd324f462f058c0",
+    "output/knee_encoder/v2/validation_parts.scad": "6fbc09125a682295f5ba488e0d545e2b8c9b7e7466f03eda54dfeb451dfa41ce",
+    "output/vptc_roller_19_4_5_70.scad": "75ec80a25d7283ca9e8bd8fdd5c854aca675c1d71ed74205cf411f37335d7c05"
+  },
+  "geometry": {
+    "hip": {
+      "volume_mm3": 112919.32727663417,
+      "bounds_mm": [
+        [
+          -15.2474,
+          -119.0,
+          -9.5
+        ],
+        [
+          38.0,
+          11.0,
+          23.5
+        ]
+      ],
+      "closed_components": 1
+    },
+    "hip_original": {
+      "volume_mm3": 119994.17760305063,
+      "bounds_mm": [
+        [
+          -12.0,
+          -119.0,
+          -9.5
+        ],
+        [
+          38.0,
+          11.0,
+          23.5
+        ]
+      ],
+      "closed_components": 1
+    },
+    "lower": {
+      "volume_mm3": 80475.82055923188,
+      "bounds_mm": [
+        [
+          -12.0,
+          -158.458,
+          -20.5
+        ],
+        [
+          38.0,
+          11.0,
+          -9.3
+        ]
+      ],
+      "closed_components": 1
+    },
+    "cover": {
+      "volume_mm3": 1604.858346936694,
+      "bounds_mm": [
+        [
+          -13.4237,
+          -46.6,
+          16.55
+        ],
+        [
+          37.8,
+          -10.4825,
+          23.5
+        ]
+      ],
+      "closed_components": 1
+    },
+    "pcb": {
+      "volume_mm3": 398.094705572393,
+      "bounds_mm": [
+        [
+          -12.5119,
+          -33.4,
+          14.3
+        ],
+        [
+          28.3248,
+          -11.4463,
+          17.25
+        ]
+      ],
+      "closed_components": 1
+    },
+    "shin": {
+      "volume_mm3": 27948.91916375321,
+      "bounds_mm": [
+        [
+          -69.0,
+          -33.0,
+          -9.5
+        ],
+        [
+          44.5,
+          9.0,
+          12.7
+        ]
+      ],
+      "closed_components": 1
+    },
+    "shin_original": {
+      "volume_mm3": 24293.828937475926,
+      "bounds_mm": [
+        [
+          -69.0,
+          -7.5,
+          -9.5
+        ],
+        [
+          44.5,
+          7.5,
+          10.5
+        ]
+      ],
+      "closed_components": 1
+    },
+    "rotor_base": {
+      "volume_mm3": 3946.032692546856,
+      "bounds_mm": [
+        [
+          -33.0,
+          -33.0,
+          -1.0
+        ],
+        [
+          33.0,
+          9.0,
+          12.7
+        ]
+      ],
+      "closed_components": 1
+    },
+    "magnet_ring": {
+      "volume_mm3": 438.77293312335945,
+      "bounds_mm": [
+        [
+          -33.0,
+          -33.0,
+          12.3
+        ],
+        [
+          33.0,
+          0.0,
+          13.1
+        ]
+      ],
+      "closed_components": 1
+    },
+    "magnet": {
+      "volume_mm3": 490.0860421051,
+      "bounds_mm": [
+        [
+          -31.7849,
+          -32.0,
+          12.3
+        ],
+        [
+          31.7849,
+          -0.567365,
+          13.3
+        ]
+      ],
+      "closed_components": 25
+    },
+    "cuff": {
+      "volume_mm3": 12839.896527899315,
+      "bounds_mm": [
+        [
+          -73.9669,
+          -15.9257,
+          -11.75
+        ],
+        [
+          -32.0,
+          12.0,
+          11.75
+        ]
+      ],
+      "closed_components": 1
+    },
+    "wires": {
+      "volume_mm3": 116.08031617593112,
+      "bounds_mm": [
+        [
+          13.6506,
+          -45.283,
+          14.667
+        ],
+        [
+          40.483,
+          -26.9821,
+          21.233
+        ]
+      ],
+      "closed_components": 4
+    },
+    "screws": {
+      "volume_mm3": 100.6177197575499,
+      "bounds_mm": [
+        [
+          -8.44906,
+          -39.4,
+          16.1
+        ],
+        [
+          29.1,
+          -19.1796,
+          23.4
+        ]
+      ],
+      "closed_components": 3
+    },
+    "envelope": {
+      "volume_mm3": 9815.187706525747,
+      "bounds_mm": [
+        [
+          -15.2474,
+          -48.0,
+          13.7
+        ],
+        [
+          38.0,
+          -8.55487,
+          23.5
+        ]
+      ],
+      "closed_components": 1
+    }
+  },
+  "overlap_mm3": {
+    "hip / pcb": 1.005379827512861e-15,
+    "cover / pcb": 2.6155567435956983e-16,
+    "cover / hip": 0.0,
+    "wires / hip": 0.0,
+    "wires / cover": 0.0,
+    "wires / pcb": 0.0,
+    "screws / pcb": 0.0,
+    "screws / wires": 0.0,
+    "magnet_ring / shin": 0.0
+  },
+  "service_insertion": [
+    {
+      "lift_mm": 0,
+      "pcb_hip_mm3": 8.682492169656844e-17,
+      "lid_hip_mm3": 0.0,
+      "lid_pcb_mm3": 2.6155567435956983e-16
+    },
+    {
+      "lift_mm": 0.1,
+      "pcb_hip_mm3": 0.0,
+      "lid_hip_mm3": 0.0,
+      "lid_pcb_mm3": 0.0
+    },
+    {
+      "lift_mm": 0.5,
+      "pcb_hip_mm3": 0.0,
+      "lid_hip_mm3": 0.0,
+      "lid_pcb_mm3": 0.0
+    },
+    {
+      "lift_mm": 1,
+      "pcb_hip_mm3": 0.0,
+      "lid_hip_mm3": 0.0,
+      "lid_pcb_mm3": 0.0
+    },
+    {
+      "lift_mm": 2,
+      "pcb_hip_mm3": 0.0,
+      "lid_hip_mm3": 0.0,
+      "lid_pcb_mm3": 0.0
+    },
+    {
+      "lift_mm": 4,
+      "pcb_hip_mm3": 0.0,
+      "lid_hip_mm3": 0.0,
+      "lid_pcb_mm3": 0.0
+    },
+    {
+      "lift_mm": 6,
+      "pcb_hip_mm3": 0.0,
+      "lid_hip_mm3": 0.0,
+      "lid_pcb_mm3": 0.0
+    },
+    {
+      "lift_mm": 10,
+      "pcb_hip_mm3": 0.0,
+      "lid_hip_mm3": 0.0,
+      "lid_pcb_mm3": 0.0
+    },
+    {
+      "lift_mm": 20,
+      "pcb_hip_mm3": 0.0,
+      "lid_hip_mm3": 0.0,
+      "lid_pcb_mm3": 0.0
+    }
+  ],
+  "carrier_attachment": {
+    "contacts": [
+      {
+        "overlap_mm3": 167.02986922308935,
+        "bounds_mm": [
+          [
+            -30.0,
+            -7.5,
+            7.0
+          ],
+          [
+            -20.0,
+            3.0,
+            9.0
+          ]
+        ]
+      },
+      {
+        "overlap_mm3": 123.91311964415056,
+        "bounds_mm": [
+          [
+            20.0,
+            -1.0,
+            -1.0
+          ],
+          [
+            30.0,
+            7.5,
+            2.868750926718266
+          ]
+        ]
+      }
+    ],
+    "support_root_diameter_mm": 10,
+    "inner_base_thickness_mm": 3.2,
+    "outer_lip_thickness_mm": 1.6
+  },
+  "motion": {
+    "range_deg": [
+      -44.6458,
+      54.204
+    ],
+    "positions": 201,
+    "maximum_overlap_mm3": {
+      "moving_fixed_mm3": 0.0,
+      "moving_added_mm3": 0.0,
+      "rod_added_mm3": 0.0,
+      "rod_carrier_mm3": 0.0
+    },
+    "minimum_carrier_to_hip_gap": {
+      "angle_deg": -42.174555,
+      "gap_mm": 0.4596434781774712
+    },
+    "critical_animation_frame": {
+      "animation_time": 0.27,
+      "initial_angle_deg": 0,
+      "angle_deg": 54.183477990750085,
+      "base_hip_overlap_mm3": 0.0,
+      "base_hip_gap_mm": 0.4624267892759702
+    },
+    "encoder_positive_envelope_min_z_mm": 13.7,
+    "modeled_moving_parts_max_z_mm": 13.3,
+    "continuous_axial_clearance_mm": 0.3999999999999986
+  },
+  "windows": [
+    {
+      "radius_mm": 23.5,
+      "xy_mm": [
+        7.2618993678112655,
+        -22.349828132936107
+      ],
+      "z_surfaces_mm": [
+        -9.5,
+        6.8,
+        13.7,
+        14.1
+      ],
+      "membrane_mm": 0.4,
+      "magnet_air_gap_mm": 0.4
+    },
+    {
+      "radius_mm": 29.5,
+      "xy_mm": [
+        9.11600133406095,
+        -28.05616723070703
+      ],
+      "z_surfaces_mm": [
+        -9.5,
+        6.8,
+        13.7,
+        14.1
+      ],
+      "membrane_mm": 0.4,
+      "magnet_air_gap_mm": 0.4
+    }
+  ],
+  "original_m3_head_bores_overlap_mm3": 0.0006945360010746615,
+  "original_m3_baseline_contact_mm3": 0.000694536001078238,
+  "added_material_in_original_m3_head_bores_mm3": 0.0,
+  "layout": {
+    "board_rotation_deg": -81,
+    "hall_azimuth_deg": -72,
+    "cover_face_z_mm": 23.5,
+    "screw_head_top_z_mm": 23.4,
+    "external_height_reduction_mm": 2.1,
+    "screw_count": 3,
+    "screws": "M2x6, low head <=3.8mm diameter x1.3mm height",
+    "cable_diameter_mm": 1,
+    "ring_thickness_mm": 0.8,
+    "magnet_count": [
+      12,
+      13
+    ],
+    "magnet_sector_deg": [
+      -180,
+      0
+    ],
+    "sensor_relative_angle_range_deg": [
+      -126.20400000000001,
+      -27.3542
+    ],
+    "minimum_sensor_to_sector_edge_deg": 27.3542
+  },
+  "limits": [
+    "Nominal CAD geometry, no deformation, printed/PCB/solder tolerance qualification.",
+    "Motion checks the encoder installation and local fixed fork; the whole shoulder linkage is not qualified.",
+    "Original rod/shin seating and procurement of its fasteners remain properties of the base mechanism.",
+    "Air-field comparison does not establish actual encoder accuracy; calibration and prototype tests required.",
+    "Use a service loop beyond the side exit; the harness outside this CAD envelope is not modeled."
+  ]
+}

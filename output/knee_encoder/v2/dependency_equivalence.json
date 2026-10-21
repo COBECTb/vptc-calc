@@ -1,0 +1,30 @@
+{
+  "date": "2026-10-22",
+  "scope": "All 14 used part CSG exports are byte-identical with committed shared dependencies and the working shared dependencies. Shared file changes are not required by this knee installation.",
+  "shared_inputs": {
+    "electronics/encoder_can/design/placed_components.scad": {
+      "committed_sha256": "8b5b6cf2c2a6a4a0f90f3d28a3d9b1295e6a4d9a7895240af991e5d7b7aab2ab",
+      "working_sha256": "4852033cf44459bf76de46ccc366821237618610d48628652dcd19b082be583d"
+    },
+    "output/vptc_roller_19_4_5_70.scad": {
+      "committed_sha256": "dd76fbb6a27879aea2daecc65f223922c9bfa0ff8ed577fac11e21fdab4afef0",
+      "working_sha256": "75ec80a25d7283ca9e8bd8fdd5c854aca675c1d71ed74205cf411f37335d7c05"
+    }
+  },
+  "part_csg_sha256": {
+    "hip": "f5d3253ac8463defb62016e13d420f78a576963b9727c0bc81e1a3c5833f84bd",
+    "hip_original": "6e234cd4e1cbe388b29f3a0da7dc94ecd77f001d902b7aded20532c178a6d1bd",
+    "lower": "b1c4457d64ac56459f4aeb415c5e733ccae56efd4f275b1e6d980b3aa5f6e2b0",
+    "cover": "53af2f1a789c839ffc19cef278a18b89855a9afbcb563c6eb9623c8e6a782179",
+    "pcb": "508b8f0c6d619938fba15abfba94ba7f4c9760281183e49ad1663c2814b1336e",
+    "shin": "ab7f482989701c9a9f0e2d0e49d7ef49b25dd3d42354e1406230ddc55f2efa87",
+    "shin_original": "90644b569f8b1d2cfd3af416c562b58c269b342f45b075a737ea6d68f60cdf0a",
+    "rotor_base": "a4eb0f387f97d53045f9cefa1ad4154e453ff41d61a222a7d4f502fbad46f9d2",
+    "magnet_ring": "3361de8b6062e7373405072f1a115a54b14d40b262246abf2c8b534f4d686474",
+    "magnet": "9cd92d896aecc850368fa172d36d290789e1eff15f45c1bea8712a5f1ce247dd",
+    "cuff": "d38c996c11fd309b0864e16f92feb77d9a65006cc35f47a01bb38247dc406a5c",
+    "wires": "686d748f7b090ec710c955ab7eeb05137108cfba2935287e2a235158461b1c22",
+    "screws": "24cd53cc35362f6aac5187308223e46e4eafdf3bdff649afd9ae8d97f9fa5422",
+    "envelope": "d71d5da01d9f98560934d33224bd6e35c6bf66f9ef6e43177739f527e7cd67a2"
+  }
+}
