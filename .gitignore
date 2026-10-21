@@ -1,3 +1,6 @@
 .DS_Store
 __pycache__/
 electronics/encoder_can/.history/
+
+# Distribution packages and downloaded archives stay local.
+*.zip
