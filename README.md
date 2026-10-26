@@ -592,9 +592,11 @@ load_connector_encoder();
 | `holes` | [1,0,1,0,1,0,1,0] | Маска потаев |
 | `bearing_inner / D_out` | 40 / 70 | Диаметр шейки / габарит основания |
 
-#### 18. Плата энкодера — механический контур
+#### 18. Плата энкодера с компонентами
 
-![Плата энкодера — механический контур](images/parts/encoder_pcb.png)
+![Плата энкодера CAN V2.4 / D70 с установленными компонентами, сторона Hall](images/parts/encoder_pcb_assembled.png)
+
+Вид из актуального проекта [KiCad CAN V2.4 / D70](electronics/encoder_can_v2/README.md), сторона Hall. Ниже — построение механического контура платы для сборки.
 
 [Открыть деталь](docs/parts/encoder_pcb.scad) · Источник: [reference_model.scad](docs/parts/reference_model.scad).
 
