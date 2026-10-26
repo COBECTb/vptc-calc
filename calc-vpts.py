@@ -87,6 +87,7 @@ mc_base_thickness = 4.0   # толщина нижней плиты
 mc_encoder_hole_d = 10.0  # центральное отверстие под магнит
 mc_motor_hole_1 = 16.0    # расстояние между первой парой отверстий
 mc_motor_hole_2 = 19.0    # расстояние между второй парой отверстий
+mc_adapter_angle = 45.0  # отверстия адаптера между осями крепления двигателя
 mc_nut_pad_radius = 24.0  # радиус закладных площадок
 mc_nut_pad_d = 6.0        # диаметр площадки под гайку
 mc_nut_pad_h = 3.0        # высота выступа площадки
@@ -364,6 +365,8 @@ mc_base_thickness = {mc_base_thickness:.1f};
 mc_encoder_hole_d = {mc_encoder_hole_d:.1f};
 mc_motor_hole_1 = {mc_motor_hole_1:.1f};
 mc_motor_hole_2 = {mc_motor_hole_2:.1f};
+mc_adapter_angle = {mc_adapter_angle:.1f};
+mc_adapter_angles = [for (i = [0:3]) mc_adapter_angle + 90*i];
 mc_nut_pad_radius = {mc_nut_pad_radius:.1f};
 mc_nut_pad_d = {mc_nut_pad_d:.1f};
 mc_nut_pad_h = {mc_nut_pad_h:.1f};
@@ -732,8 +735,8 @@ module motor_cover() {{
         }}
         // --- Закладные площадки под гайки (внутри кожуха, на верхней стороне плиты) ---
         {{
-            for (angle = motor_angles) {{
-                rotate([0, 0, angle+45]){{
+            for (angle = mc_adapter_angles) {{
+                rotate([0, 0, angle]){{
                     translate([mc_nut_pad_radius/2, 0, mc_base_thickness-2.49])
                         cylinder(h = mc_nut_pad_h, r = mc_nut_pad_d / 2, center = false);
                      translate([mc_nut_pad_radius/2, 0, 0])
@@ -1145,15 +1148,15 @@ module encoder_adapter(h=1.2){{
     difference() {{
         union() {{
             cylinder(h = h, r = mc_motor_plate_d / 2-5, center = false);
-            for (angle = motor_angles) {{
-                rotate([0, 0, angle+45]){{
+            for (angle = mc_adapter_angles) {{
+                rotate([0, 0, angle]){{
                     translate([mc_nut_pad_radius/2, 0, h])
                         cylinder(h = 2, r = 3);
                 }}
             }}
         }}
-        for (angle = motor_angles) {{
-            rotate([0, 0, angle+45]){{
+        for (angle = mc_adapter_angles) {{
+            rotate([0, 0, angle]){{
                 translate([mc_nut_pad_radius/2, 0, -0.01])
                     cylinder(h = h+2.02, r = 1.6);
             }}

@@ -144,6 +144,37 @@ class GeneratorIntegrationTests(unittest.TestCase):
                     self.assertNotIn('ERROR:',result.stderr)
 
     @unittest.skipUnless(OPENSCAD,'OpenSCAD CLI is not installed')
+    def test_motor_adapter_holes_leave_solid_webs(self):
+        # Probe the actual solids: both mating parts need four diagonal bores,
+        # and material must remain between them and the motor mounting bores.
+        models=[self.models[70],self.models[80],ROOT/'docs/parts/reference_model.scad']
+        probes={
+            'cover_holes': ('motor_cover();',
+                'for(a=[45:90:315]) rotate(a) translate([12,0,-.9]) cylinder(r=1.3,h=4.8,$fn=16);', True),
+            'adapter_holes': ('encoder_adapter();',
+                'for(a=[45:90:315]) rotate(a) translate([12,0,.1]) cylinder(r=1.3,h=3,$fn=16);', True),
+            'cover_webs': ('motor_cover();',
+                'for(x=[-1,1],y=[-1,1]) translate([x*(8+12/sqrt(2))/2,y*6/sqrt(2),2.2]) cylinder(r=.15,h=1,$fn=16);', False),
+        }
+        for index,model in enumerate(models):
+            for name,(part,probe,empty) in probes.items():
+                with self.subTest(model=model,name=name):
+                    source=self.work/f'motor_{index}_{name}.scad'
+                    source.write_text(f'use <{model}>\nintersection(){{ {part} union(){{ {probe} }} }}\n')
+                    stl=source.with_suffix('.stl')
+                    run=subprocess.run([OPENSCAD,'-o',str(stl),str(source)],capture_output=True,text=True,timeout=90)
+                    self.assertNotIn('WARNING:',run.stderr)
+                    self.assertNotIn('ERROR:',run.stderr)
+                    self.assertEqual(run.returncode,1 if empty else 0,run.stderr)
+                    if empty:
+                        self.assertIn('Current top level object is empty.',run.stderr)
+                    else:
+                        vertices=re.findall(r'vertex\s+([-\d.eE+]+)\s+([-\d.eE+]+)\s+([-\d.eE+]+)',stl.read_text())
+                        self.assertTrue(vertices)
+                        self.assertEqual({(float(x)>0,float(y)>0) for x,y,z in vertices},
+                                         {(False,False),(False,True),(True,False),(True,True)})
+
+    @unittest.skipUnless(OPENSCAD,'OpenSCAD CLI is not installed')
     def test_base_parts_remain_available(self):
         parts=['rigid_gear','rigid_gear_with_bracing','separator','reducer_connector',
                'connector_clamp','eccentric','cap','cap_with_bracing','eccentric_shaft',

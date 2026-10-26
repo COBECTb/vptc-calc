@@ -1,5 +1,5 @@
 {
-  "source_sha256": "d8175c84cbc1d6a0e9438eb9227b802e3b4cecdd7c5dbe4a5e7b38147bf42e62",
+  "source_sha256": "d90b00bf76ba7c94bc831972074fd6aea11d49e47ec0b55cacf6903e7f2c42ca",
   "reference_inputs": {
     "resolution": 600,
     "ratio": 19,
@@ -172,7 +172,7 @@
     },
     {
       "id": "motor_cover",
-      "triangles": 9268,
+      "triangles": 9480,
       "bounds_xyz_mm": [
         [
           -35.0,
@@ -185,7 +185,7 @@
           27.5
         ]
       ],
-      "export_signature": "a5c087807d296e8ef6a9db83d76844c6a39f7df281f0205c55a0f8ac12e4a79e",
+      "export_signature": "43e5a85494c10537bca70357cc187d90ede11050778d756953d520de54307687",
       "warnings": [],
       "image": "images/parts/motor_cover.png",
       "wrapper": "docs/parts/motor_cover.scad"
@@ -565,7 +565,7 @@
           3.200000047683716
         ]
       ],
-      "export_signature": "c6254d41de5357056c3c6abe3d019299ac43ecbefb09dc89d31bd895861bf19c",
+      "export_signature": "de924fa94d35628ffc1c8c537708ef623b440ec4cb7d5aaf83522558a4877501",
       "warnings": [],
       "image": "images/parts/encoder_adapter.png",
       "wrapper": "docs/parts/encoder_adapter.scad"

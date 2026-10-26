@@ -1,12 +1,12 @@
 {
   "source_pcb_sha256": "43237adbcdb743c33c8f1bdc61387ee4b917825291ee4f41e4ae68c7d174684c",
   "source_files_sha256": {
-    "calc-vpts.py": "ba70a3b4a5e7f7b17281337a059dfcfae33b33265eeec491a664bfccd0a8fe27",
+    "calc-vpts.py": "68a0e84d897fd240dbea6217bc67dcea6104d003de8a839670d211674bdfdbf2",
     "encoder_scad.py": "ecc5c8ae827f860aa8e2ac52fae1bc10dd0c6220f99ba2c7328c6aabd9820d28",
     "mechanical_package.py": "bd8c0bf9917b92e43f544744203d3f0826d5396fbe87be7de37583b73bb77f8b",
-    "tests/test_encoder_generator.py": "efe6c1df9b4dc86031aed402d21230646c322d584837986098620ec461b601c5",
+    "tests/test_encoder_generator.py": "5198a2fcf67249398b756f30b61d76a504ece6a89aab153cd58de8c76c581f9c",
     "tests/test_mechanical_package.py": "d1c6055beb292e07136c53399c0b581889aa2095783da3bfd323481d67b5a34b",
-    "output/vptc_roller.scad": "75ec80a25d7283ca9e8bd8fdd5c854aca675c1d71ed74205cf411f37335d7c05",
+    "output/vptc_roller.scad": "19131cda294ac85fda836c08bc8cdb87901d200a9a22d34cf91da7b9f45bdf6d",
     "output/foots.scad": "83d9130515681fa8055a356e0642bb3b0b93d6930498b1f60aa911b91f7c5cee",
     "output/foots_h.scad": "f8fbc2072db27cd0360749aef87a0771eaf7694c88a465f85e2e84e0217a9873",
     "output/foot/leg_motion.scad": "69671a2b73341f3b7306990fb31494a75118b12747f7ed4849e4e6a30e829ee8",
