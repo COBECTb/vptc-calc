@@ -1,125 +1,675 @@
 {
-  "source_sha256": "8609979c5573e02b512603f73ae9d8110b7f0629134f0aea8e1cb1a4cbeef666",
+  "source_sha256": "43237adbcdb743c33c8f1bdc61387ee4b917825291ee4f41e4ae68c7d174684c",
   "nets": [
     {
       "net": "NRST",
       "pads": 4,
-      "items": 30,
-      "suggested_remove": [],
+      "items": 27,
+      "suggested_remove": [
+        {
+          "uuid": "6f21b5b4-3ba2-4188-a5e2-c5f3eee05fa8",
+          "net": "NRST",
+          "kind": "track",
+          "layer": "B.Cu",
+          "length_mm": 0.106067
+        },
+        {
+          "uuid": "3e9246de-a8d8-40c8-9619-e10360d2feb2",
+          "net": "NRST",
+          "kind": "track",
+          "layer": "In2.Cu",
+          "length_mm": 0.111804
+        },
+        {
+          "uuid": "54622e14-d1dd-4e5e-bb30-be8086f07c64",
+          "net": "NRST",
+          "kind": "track",
+          "layer": "In2.Cu",
+          "length_mm": 0.199999
+        },
+        {
+          "uuid": "dfc4b080-ab4d-4345-874a-cc1da623af4d",
+          "net": "NRST",
+          "kind": "track",
+          "layer": "In2.Cu",
+          "length_mm": 0.070712
+        }
+      ],
       "retained_inside_round_pad": []
     },
     {
       "net": "CAN_H",
       "pads": 4,
-      "items": 17,
-      "suggested_remove": [],
+      "items": 18,
+      "suggested_remove": [
+        {
+          "uuid": "28517d23-23e1-47e9-b341-f80d982817c3",
+          "net": "CAN_H",
+          "kind": "track",
+          "layer": "F.Cu",
+          "length_mm": 0.45
+        },
+        {
+          "uuid": "a5df583c-d474-431a-84ad-da82775fcb18",
+          "net": "CAN_H",
+          "kind": "track",
+          "layer": "F.Cu",
+          "length_mm": 0.190394
+        },
+        {
+          "uuid": "a73bebf6-a4eb-44fd-8816-aef5c8c931a2",
+          "net": "CAN_H",
+          "kind": "track",
+          "layer": "F.Cu",
+          "length_mm": 0.178415
+        },
+        {
+          "uuid": "cd6b8a13-4fe6-4580-9c65-8b1a7115ba00",
+          "net": "CAN_H",
+          "kind": "track",
+          "layer": "F.Cu",
+          "length_mm": 0.152069
+        }
+      ],
       "retained_inside_round_pad": []
     },
     {
       "net": "CAN_L",
       "pads": 4,
-      "items": 18,
-      "suggested_remove": [],
+      "items": 30,
+      "suggested_remove": [
+        {
+          "uuid": "09be6878-bbae-45f0-aa95-ff2ec3af09ea",
+          "net": "CAN_L",
+          "kind": "track",
+          "layer": "F.Cu",
+          "length_mm": 0.145774
+        },
+        {
+          "uuid": "3eab613f-1d00-49f8-8985-043e04162e1b",
+          "net": "CAN_L",
+          "kind": "track",
+          "layer": "F.Cu",
+          "length_mm": 0.300375
+        },
+        {
+          "uuid": "54860c1e-326d-4399-9aff-fa789509ee3e",
+          "net": "CAN_L",
+          "kind": "track",
+          "layer": "F.Cu",
+          "length_mm": 0.145774
+        },
+        {
+          "uuid": "54904ce4-ede6-439e-a544-1de0d7f93045",
+          "net": "CAN_L",
+          "kind": "track",
+          "layer": "F.Cu",
+          "length_mm": 0.145773
+        },
+        {
+          "uuid": "96573f75-48fd-4fb6-bbc7-9ab8c3bebd79",
+          "net": "CAN_L",
+          "kind": "track",
+          "layer": "F.Cu",
+          "length_mm": 0.145773
+        },
+        {
+          "uuid": "9caae931-342e-4f7d-80f8-9883a8ecb7dd",
+          "net": "CAN_L",
+          "kind": "track",
+          "layer": "F.Cu",
+          "length_mm": 0.460786
+        },
+        {
+          "uuid": "b8694286-8a7e-4966-b94f-f9c4c59bb352",
+          "net": "CAN_L",
+          "kind": "track",
+          "layer": "F.Cu",
+          "length_mm": 0.145774
+        }
+      ],
       "retained_inside_round_pad": []
     },
     {
       "net": "I2C2_SCL",
       "pads": 3,
-      "items": 14,
-      "suggested_remove": [],
+      "items": 12,
+      "suggested_remove": [
+        {
+          "uuid": "1249fb5a-f4d5-45e1-a9bf-e90818c80587",
+          "net": "I2C2_SCL",
+          "kind": "track",
+          "layer": "B.Cu",
+          "length_mm": 0.048507
+        },
+        {
+          "uuid": "a545dace-5715-4396-94b5-adff866a9f4c",
+          "net": "I2C2_SCL",
+          "kind": "track",
+          "layer": "B.Cu",
+          "length_mm": 0.003031
+        }
+      ],
       "retained_inside_round_pad": []
     },
     {
       "net": "INT_OUTER",
       "pads": 3,
-      "items": 30,
-      "suggested_remove": [],
+      "items": 33,
+      "suggested_remove": [
+        {
+          "uuid": "48d4334b-bc3f-4948-b16c-865263cfa3f2",
+          "net": "INT_OUTER",
+          "kind": "track",
+          "layer": "B.Cu",
+          "length_mm": 0.103077
+        },
+        {
+          "uuid": "5c528907-ec2c-42ca-9603-3db501bd1030",
+          "net": "INT_OUTER",
+          "kind": "track",
+          "layer": "B.Cu",
+          "length_mm": 0.079056
+        },
+        {
+          "uuid": "83af56e7-1fc6-4208-b42e-88470c66c953",
+          "net": "INT_OUTER",
+          "kind": "track",
+          "layer": "B.Cu",
+          "length_mm": 0.265
+        },
+        {
+          "uuid": "0aab362e-38cc-41d5-befb-4beac893bd66",
+          "net": "INT_OUTER",
+          "kind": "track",
+          "layer": "In2.Cu",
+          "length_mm": 0.074999
+        },
+        {
+          "uuid": "a0681601-f8d2-4b81-b27b-80f40f056b30",
+          "net": "INT_OUTER",
+          "kind": "track",
+          "layer": "In2.Cu",
+          "length_mm": 0.050001
+        }
+      ],
       "retained_inside_round_pad": []
     },
     {
       "net": "I2C2_SDA",
       "pads": 3,
-      "items": 13,
-      "suggested_remove": [],
+      "items": 17,
+      "suggested_remove": [
+        {
+          "uuid": "5813aa05-8a66-4a1d-a19b-2f73eb2b695f",
+          "net": "I2C2_SDA",
+          "kind": "track",
+          "layer": "F.Cu",
+          "length_mm": 0.005272
+        }
+      ],
       "retained_inside_round_pad": []
     },
     {
       "net": "CAN_TX",
       "pads": 2,
-      "items": 13,
-      "suggested_remove": [],
+      "items": 21,
+      "suggested_remove": [
+        {
+          "uuid": "8c3b2857-d434-48a4-a603-935b56b1f5e7",
+          "net": "CAN_TX",
+          "kind": "track",
+          "layer": "B.Cu",
+          "length_mm": 0.141421
+        },
+        {
+          "uuid": "4b948630-217b-4d58-8cea-43a8e24ff400",
+          "net": "CAN_TX",
+          "kind": "track",
+          "layer": "In2.Cu",
+          "length_mm": 0.106066
+        },
+        {
+          "uuid": "504da4a7-a3dd-4ce6-b4fa-eec1744725ba",
+          "net": "CAN_TX",
+          "kind": "track",
+          "layer": "In2.Cu",
+          "length_mm": 0.149999
+        },
+        {
+          "uuid": "abc3a52a-0441-47fa-a6f7-33c704f0a482",
+          "net": "CAN_TX",
+          "kind": "track",
+          "layer": "In2.Cu",
+          "length_mm": 0.238812
+        },
+        {
+          "uuid": "f1d1ddf6-b3d2-4a2b-ad5e-16d62b379a9d",
+          "net": "CAN_TX",
+          "kind": "track",
+          "layer": "In2.Cu",
+          "length_mm": 0.106067
+        }
+      ],
       "retained_inside_round_pad": []
     },
     {
       "net": "CAN_RX",
       "pads": 2,
-      "items": 13,
-      "suggested_remove": [],
+      "items": 23,
+      "suggested_remove": [
+        {
+          "uuid": "92ea0fbe-0a16-4c17-992c-9c7a1a24297f",
+          "net": "CAN_RX",
+          "kind": "track",
+          "layer": "F.Cu",
+          "length_mm": 0.062501
+        },
+        {
+          "uuid": "83134115-5ba4-4320-823a-8a1dacd5ea76",
+          "net": "CAN_RX",
+          "kind": "track",
+          "layer": "In2.Cu",
+          "length_mm": 0.106066
+        },
+        {
+          "uuid": "87a81e26-7989-4dd0-8a8b-3b6bc0779fbb",
+          "net": "CAN_RX",
+          "kind": "track",
+          "layer": "In2.Cu",
+          "length_mm": 0.050001
+        }
+      ],
       "retained_inside_round_pad": []
     },
     {
       "net": "I2C1_SCL",
       "pads": 3,
-      "items": 27,
-      "suggested_remove": [],
+      "items": 47,
+      "suggested_remove": [
+        {
+          "uuid": "7bc21462-7be3-489a-b112-0c4f05467a29",
+          "net": "I2C1_SCL",
+          "kind": "track",
+          "layer": "B.Cu",
+          "length_mm": 0.035355
+        },
+        {
+          "uuid": "81c84096-f48c-40bc-b158-9f9dcd6ead1b",
+          "net": "I2C1_SCL",
+          "kind": "track",
+          "layer": "B.Cu",
+          "length_mm": 0.050001
+        },
+        {
+          "uuid": "82835f41-a507-4197-a9ac-d5ad8b565fe9",
+          "net": "I2C1_SCL",
+          "kind": "track",
+          "layer": "B.Cu",
+          "length_mm": 0.175001
+        },
+        {
+          "uuid": "b2d9b569-6578-4b69-a828-7104640f42aa",
+          "net": "I2C1_SCL",
+          "kind": "track",
+          "layer": "B.Cu",
+          "length_mm": 0.176777
+        },
+        {
+          "uuid": "156d3c94-4bca-45fe-a761-58c5de1fb052",
+          "net": "I2C1_SCL",
+          "kind": "track",
+          "layer": "In2.Cu",
+          "length_mm": 0.079057
+        },
+        {
+          "uuid": "16a69eb7-fab8-4219-bd9b-f7091e359bd0",
+          "net": "I2C1_SCL",
+          "kind": "track",
+          "layer": "In2.Cu",
+          "length_mm": 0.099999
+        },
+        {
+          "uuid": "575812cb-310d-4081-ba43-8ec446a0b641",
+          "net": "I2C1_SCL",
+          "kind": "track",
+          "layer": "In2.Cu",
+          "length_mm": 0.05
+        },
+        {
+          "uuid": "5c480920-4e68-44f4-a8be-7944251d00a6",
+          "net": "I2C1_SCL",
+          "kind": "track",
+          "layer": "In2.Cu",
+          "length_mm": 0.070711
+        },
+        {
+          "uuid": "91b26f91-445f-4a28-814d-80bbfa43fc89",
+          "net": "I2C1_SCL",
+          "kind": "track",
+          "layer": "In2.Cu",
+          "length_mm": 0.100001
+        },
+        {
+          "uuid": "ab1647da-f897-4393-8a9a-43175b21a096",
+          "net": "I2C1_SCL",
+          "kind": "track",
+          "layer": "In2.Cu",
+          "length_mm": 0.1
+        },
+        {
+          "uuid": "c3f66f3e-f2ea-4a98-8250-5655933e6fa2",
+          "net": "I2C1_SCL",
+          "kind": "track",
+          "layer": "In2.Cu",
+          "length_mm": 0.125
+        }
+      ],
       "retained_inside_round_pad": []
     },
     {
       "net": "INT_INNER",
       "pads": 3,
-      "items": 18,
-      "suggested_remove": [],
+      "items": 37,
+      "suggested_remove": [
+        {
+          "uuid": "3c92e785-231b-4e5a-a0bd-afe722490b68",
+          "net": "INT_INNER",
+          "kind": "track",
+          "layer": "B.Cu",
+          "length_mm": 0.079056
+        },
+        {
+          "uuid": "13619229-d278-4d4a-9fd4-711785f75995",
+          "net": "INT_INNER",
+          "kind": "track",
+          "layer": "In2.Cu",
+          "length_mm": 0.035355
+        },
+        {
+          "uuid": "b78c659d-bb7c-4f0e-b319-0d561fd5ad7d",
+          "net": "INT_INNER",
+          "kind": "track",
+          "layer": "In2.Cu",
+          "length_mm": 0.075
+        }
+      ],
       "retained_inside_round_pad": []
     },
     {
       "net": "I2C1_SDA",
       "pads": 3,
-      "items": 26,
-      "suggested_remove": [],
+      "items": 49,
+      "suggested_remove": [
+        {
+          "uuid": "4b4805f7-d42d-4e2e-986b-fb6c9022d153",
+          "net": "I2C1_SDA",
+          "kind": "track",
+          "layer": "In2.Cu",
+          "length_mm": 0.141421
+        },
+        {
+          "uuid": "5dd2c760-1e5b-458f-89a1-d4234d889ce0",
+          "net": "I2C1_SDA",
+          "kind": "track",
+          "layer": "In2.Cu",
+          "length_mm": 0.050001
+        },
+        {
+          "uuid": "99f18efc-0560-4eca-a6b2-f7a3a5ff4e88",
+          "net": "I2C1_SDA",
+          "kind": "track",
+          "layer": "In2.Cu",
+          "length_mm": 0.070711
+        },
+        {
+          "uuid": "c41cf6db-45e9-4b87-b6de-ac212b6b5962",
+          "net": "I2C1_SDA",
+          "kind": "track",
+          "layer": "In2.Cu",
+          "length_mm": 0.035355
+        },
+        {
+          "uuid": "f0185787-a21c-4d11-ac13-380df2e448ff",
+          "net": "I2C1_SDA",
+          "kind": "track",
+          "layer": "In2.Cu",
+          "length_mm": 0.097628
+        }
+      ],
       "retained_inside_round_pad": []
     },
     {
       "net": "BOOT0",
       "pads": 3,
-      "items": 21,
-      "suggested_remove": [],
-      "retained_inside_round_pad": [
+      "items": 70,
+      "suggested_remove": [
         {
-          "uuid": "e12a693a-5639-4994-8204-29f4fa4ca3f2",
+          "uuid": "3334e178-fb2b-466e-9d73-54df12004626",
+          "net": "BOOT0",
+          "kind": "track",
+          "layer": "F.Cu",
+          "length_mm": 0.103078
+        },
+        {
+          "uuid": "035313c3-bc17-4cbd-bcd8-5f6219dfa49d",
           "net": "BOOT0",
           "kind": "track",
           "layer": "B.Cu",
-          "length_mm": 0.275
+          "length_mm": 0.111803
+        },
+        {
+          "uuid": "6c3a5283-e168-4d85-b66d-65e824981f7e",
+          "net": "BOOT0",
+          "kind": "track",
+          "layer": "B.Cu",
+          "length_mm": 0.079057
+        },
+        {
+          "uuid": "c0d734d5-db69-465b-a205-7e79472bcc48",
+          "net": "BOOT0",
+          "kind": "track",
+          "layer": "B.Cu",
+          "length_mm": 0.2
+        },
+        {
+          "uuid": "cd0279c1-1d2d-4354-aa44-a840785ae7e1",
+          "net": "BOOT0",
+          "kind": "track",
+          "layer": "B.Cu",
+          "length_mm": 0.106066
+        },
+        {
+          "uuid": "2c124280-109b-4ba6-9484-f3d6df01c4c7",
+          "net": "BOOT0",
+          "kind": "track",
+          "layer": "In2.Cu",
+          "length_mm": 0.075
+        },
+        {
+          "uuid": "414d10bf-284b-4ffb-b2fc-de73bff269d8",
+          "net": "BOOT0",
+          "kind": "track",
+          "layer": "In2.Cu",
+          "length_mm": 0.050001
+        },
+        {
+          "uuid": "7d33fa9e-cb66-46e9-89cf-2fb991e3180f",
+          "net": "BOOT0",
+          "kind": "track",
+          "layer": "In2.Cu",
+          "length_mm": 0.075
+        },
+        {
+          "uuid": "87be1429-11ec-4587-b6a0-c61679db9cbb",
+          "net": "BOOT0",
+          "kind": "track",
+          "layer": "In2.Cu",
+          "length_mm": 0.106066
+        },
+        {
+          "uuid": "b1f4d154-727a-47cf-9222-740cfd61b0c1",
+          "net": "BOOT0",
+          "kind": "track",
+          "layer": "In2.Cu",
+          "length_mm": 0.353553
+        },
+        {
+          "uuid": "b20a7af8-7012-41e5-b0e1-3bf4a554156d",
+          "net": "BOOT0",
+          "kind": "track",
+          "layer": "In2.Cu",
+          "length_mm": 0.199999
+        },
+        {
+          "uuid": "e01e7e3f-3227-4b18-bd93-300b886f762c",
+          "net": "BOOT0",
+          "kind": "track",
+          "layer": "In2.Cu",
+          "length_mm": 0.035355
+        },
+        {
+          "uuid": "e3926eb9-8576-4d03-800d-69be690f578d",
+          "net": "BOOT0",
+          "kind": "track",
+          "layer": "In2.Cu",
+          "length_mm": 0.238812
         }
-      ]
+      ],
+      "retained_inside_round_pad": []
+    },
+    {
+      "net": "LED_PHASE_A",
+      "pads": 2,
+      "items": 5,
+      "suggested_remove": [
+        {
+          "uuid": "38c9ac31-29af-4173-bb9b-a76cbad3fd8f",
+          "net": "LED_PHASE_A",
+          "kind": "track",
+          "layer": "B.Cu",
+          "length_mm": 0.064032
+        }
+      ],
+      "retained_inside_round_pad": []
     },
     {
       "net": "HSE_OUT",
       "pads": 3,
-      "items": 10,
+      "items": 9,
       "suggested_remove": [],
       "retained_inside_round_pad": []
     },
     {
       "net": "HSE_IN",
       "pads": 3,
-      "items": 8,
+      "items": 7,
       "suggested_remove": [],
       "retained_inside_round_pad": []
     },
     {
       "net": "SWDIO",
       "pads": 2,
-      "items": 13,
-      "suggested_remove": [],
+      "items": 24,
+      "suggested_remove": [
+        {
+          "uuid": "3998094b-02e2-4ca0-9ede-52eb53dc078e",
+          "net": "SWDIO",
+          "kind": "track",
+          "layer": "B.Cu",
+          "length_mm": 0.106067
+        },
+        {
+          "uuid": "204a4c0b-8011-4276-a42d-51d20f634036",
+          "net": "SWDIO",
+          "kind": "track",
+          "layer": "In2.Cu",
+          "length_mm": 0.212132
+        }
+      ],
       "retained_inside_round_pad": []
     },
     {
       "net": "SWCLK",
       "pads": 2,
-      "items": 12,
+      "items": 37,
+      "suggested_remove": [
+        {
+          "uuid": "b95c1539-9efe-4245-9f03-5e73b824f360",
+          "net": "SWCLK",
+          "kind": "track",
+          "layer": "B.Cu",
+          "length_mm": 0.079057
+        },
+        {
+          "uuid": "b9cb122a-83b2-424b-8717-247e68cf9743",
+          "net": "SWCLK",
+          "kind": "track",
+          "layer": "B.Cu",
+          "length_mm": 0.035356
+        },
+        {
+          "uuid": "00367126-94f5-4182-953a-40ceab62a13f",
+          "net": "SWCLK",
+          "kind": "track",
+          "layer": "In2.Cu",
+          "length_mm": 0.099999
+        }
+      ],
+      "retained_inside_round_pad": []
+    },
+    {
+      "net": "LED_CMD",
+      "pads": 2,
+      "items": 10,
+      "suggested_remove": [
+        {
+          "uuid": "76fbbc67-60cb-4b76-baee-e73d225026e1",
+          "net": "LED_CMD",
+          "kind": "track",
+          "layer": "B.Cu",
+          "length_mm": 0.079057
+        }
+      ],
+      "retained_inside_round_pad": []
+    },
+    {
+      "net": "LED_PHASE",
+      "pads": 2,
+      "items": 19,
+      "suggested_remove": [
+        {
+          "uuid": "181d8c85-e29a-4416-ac27-be4974ede03a",
+          "net": "LED_PHASE",
+          "kind": "track",
+          "layer": "In2.Cu",
+          "length_mm": 0.106066
+        },
+        {
+          "uuid": "cb1b9fab-6657-4864-a9d2-d7e34a6bdc1b",
+          "net": "LED_PHASE",
+          "kind": "track",
+          "layer": "In2.Cu",
+          "length_mm": 0.1875
+        }
+      ],
+      "retained_inside_round_pad": []
+    },
+    {
+      "net": "LED_CMD_A",
+      "pads": 2,
+      "items": 3,
+      "suggested_remove": [],
+      "retained_inside_round_pad": []
+    },
+    {
+      "net": "LED_PWR_A",
+      "pads": 2,
+      "items": 3,
       "suggested_remove": [],
       "retained_inside_round_pad": []
     }
-  ]
+  ],
+  "minimum_connection_rule_required_mm": 0.125,
+  "pruning_limit": "Zero-width graph candidates only. A bridge can be required to avoid a narrow joint. Never prune without native DRC using min_connection>=0.125mm."
 }

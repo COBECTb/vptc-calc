@@ -1,0 +1,12 @@
+ECHO: "PCB front/rear Z:", 15.75, 16.55
+ECHO: "Magnet surface/window/Hall clearance:", 13.3, 13.7, 1.78
+ECHO: "Flush cover and recessed screw top Z:", 23.5, 23.4
+ECHO: "Board sensor azimuth:", -72
+ECHO: "PCB source SHA256:", "43237adbcdb743c33c8f1bdc61387ee4b917825291ee4f41e4ae68c7d174684c"
+ECHO: "Knee angle / animation t:", 0, 0
+Geometries in cache: 365
+Geometry cache size in bytes: 2753328
+CGAL Polyhedrons in cache: 62
+CGAL cache size in bytes: 85131872
+Total rendering time: 0:01:53.767
+Current top level object is empty.

@@ -1,0 +1,20 @@
+{
+  "date": "2026-10-26",
+  "native_pcb_sha256": "43237adbcdb743c33c8f1bdc61387ee4b917825291ee4f41e4ae68c7d174684c",
+  "archive_copper_and_properties_identical": true,
+  "archive_model_references_only_changed": true,
+  "archive_manifest_hashes_verified": true,
+  "manufacturing_hashes_verified": true,
+  "portable_drc_violations": 0,
+  "portable_unconnected_items": 0,
+  "portable_schematic_parity_issues": 0,
+  "portable_erc_violations": 0,
+  "bom_cpl_fitted_reference_match": true,
+  "fitted_components": 35,
+  "cpl_coordinates_angles_and_sides_match_saved_pcb": true,
+  "gerber_layers": 11,
+  "drill_files": 2,
+  "current_mechanical_probes_passed": 7,
+  "limits": "Factory stack/panel, exact sourcing and hardware qualification remain pending.",
+  "note": "Electrical and manufacturing consistency checks. Exact ZIP digest is in the source-project package_verification.json, outside the ZIP to avoid a circular checksum."
+}

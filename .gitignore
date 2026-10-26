@@ -4,3 +4,6 @@ electronics/encoder_can/.history/
 
 # Distribution packages and downloaded archives stay local.
 *.zip
+
+# Reproducible CAD packages and their STL exports.
+/output/generated/

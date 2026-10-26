@@ -1,0 +1,12 @@
+{
+  "source_pcb_sha256": "43237adbcdb743c33c8f1bdc61387ee4b917825291ee4f41e4ae68c7d174684c",
+  "reference_backup_sha256": "6a601b2dfb263b45a9ff7f087a4f258b40b9bd51b95fe169b25d75f368c36072",
+  "exact_original_edge_lines": true,
+  "profile_segments": 826,
+  "closed_internal_cutouts": 0,
+  "local_envelope_mm": [
+    16.85344021678225,
+    42.93821161096835
+  ],
+  "passed": true
+}

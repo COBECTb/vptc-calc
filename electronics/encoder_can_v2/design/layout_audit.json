@@ -1,14 +1,14 @@
 {
-  "date_utc": "2026-10-18T14:44:29.168974+00:00",
-  "source_sha256": "8609979c5573e02b512603f73ae9d8110b7f0629134f0aea8e1cb1a4cbeef666",
+  "date_utc": "2026-10-26T14:58:01.820953+00:00",
+  "source_sha256": "43237adbcdb743c33c8f1bdc61387ee4b917825291ee4f41e4ae68c7d174684c",
   "copper_layers": 4,
   "thickness_mm": 0.8,
-  "segments": 368,
-  "vias": 72,
+  "segments": 639,
+  "vias": 71,
   "layer_segments": {
-    "F.Cu": 153,
-    "B.Cu": 144,
-    "In2.Cu": 71
+    "F.Cu": 207,
+    "B.Cu": 192,
+    "In2.Cu": 240
   },
   "widths_mm": [
     0.127,
@@ -30,43 +30,71 @@
   "zones": [
     {
       "layer": "F.Cu",
+      "net": "",
+      "filled": false,
+      "filled_polygons": 0,
+      "area_mm2": 0.0
+    },
+    {
+      "layer": "F.Cu",
+      "net": "",
+      "filled": false,
+      "filled_polygons": 0,
+      "area_mm2": 0.0
+    },
+    {
+      "layer": "F.Cu",
       "net": "GND",
       "filled": true,
-      "filled_polygons": 3,
-      "area_mm2": 199.9024011578865
+      "filled_polygons": 9,
+      "area_mm2": 165.138251777792
+    },
+    {
+      "layer": "B.Cu",
+      "net": "",
+      "filled": false,
+      "filled_polygons": 0,
+      "area_mm2": 0.0
+    },
+    {
+      "layer": "B.Cu",
+      "net": "",
+      "filled": false,
+      "filled_polygons": 0,
+      "area_mm2": 0.0
     },
     {
       "layer": "B.Cu",
       "net": "GND",
       "filled": true,
-      "filled_polygons": 8,
-      "area_mm2": 220.463791983105
+      "filled_polygons": 5,
+      "area_mm2": 166.2053070438125
     },
     {
       "layer": "In1.Cu",
       "net": "GND",
       "filled": true,
       "filled_polygons": 1,
-      "area_mm2": 332.8497745011895
+      "area_mm2": 330.0413842380175
     },
     {
       "layer": "In2.Cu",
       "net": "+3V3",
       "filled": true,
-      "filled_polygons": 7,
-      "area_mm2": 269.4134769353825
+      "filled_polygons": 4,
+      "area_mm2": 116.7691124492185
     }
   ],
   "all_vias_tented_both_sides": true,
   "ignored_drc_checks": [],
   "via_drills_in_smd_pads": [],
-  "minimum_drill_edge_to_pad_enclosing_rectangle_mm": 0.1360095731091695,
+  "minimum_drill_edge_to_pad_enclosing_rectangle_mm": 0.5209879267649694,
   "minimum_drill_location": [
-    "C12",
-    "1",
+    "C11",
+    "2",
     [
-      129.043248,
-      100.867313
+      126.900164,
+      101.080186
     ]
   ],
   "unrelated_back_routes_under_crystal": [],
@@ -94,5 +122,8 @@
   "placement_errors": [],
   "drc_violations": 0,
   "unconnected": 0,
-  "schematic_parity_issues": 0
+  "schematic_parity_issues": 0,
+  "minimum_connection_width_mm": 0.125,
+  "connection_width_severity": "error",
+  "erc_violations": 0
 }

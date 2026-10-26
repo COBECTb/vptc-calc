@@ -6,8 +6,8 @@
   (paper "A3")
   (title_block
     (title "Dual-track absolute encoder / CAN")
-    (date "2026-10-12")
-    (rev "B prototype")
+    (date "2026-10-24")
+    (rev "V2.4 route cleanup prototype")
     (company "vptc-calc")
     (comment 1 "5 V input; 3.3 V logic; 2 x TMAG5273A2; 4 layers / 0.8 mm"))
   (lib_symbols
@@ -1852,6 +1852,157 @@
             (type default))
           (fill
             (type none))))
+      (embedded_fonts no))
+    (symbol "Device:LED"
+      (pin_numbers
+        (hide yes))
+      (pin_names
+        (offset 1.016)
+        (hide yes))
+      (exclude_from_sim no)
+      (in_bom yes)
+      (on_board yes)
+      (in_pos_files yes)
+      (duplicate_pin_numbers_are_jumpers no)
+      (property "Reference" "D"
+        (at 0 2.54 0)
+        (show_name no)
+        (do_not_autoplace no)
+        (effects
+          (font
+            (size 1.27 1.27))))
+      (property "Value" "LED"
+        (at 0 -2.54 0)
+        (show_name no)
+        (do_not_autoplace no)
+        (effects
+          (font
+            (size 1.27 1.27))))
+      (property "Footprint" ""
+        (at 0 0 0)
+        (show_name no)
+        (do_not_autoplace no)
+        (hide yes)
+        (effects
+          (font
+            (size 1.27 1.27))))
+      (property "Datasheet" ""
+        (at 0 0 0)
+        (show_name no)
+        (do_not_autoplace no)
+        (hide yes)
+        (effects
+          (font
+            (size 1.27 1.27))))
+      (property "Description" "Light emitting diode"
+        (at 0 0 0)
+        (show_name no)
+        (do_not_autoplace no)
+        (hide yes)
+        (effects
+          (font
+            (size 1.27 1.27))))
+      (property "Sim.Pins" "1=K 2=A"
+        (at 0 0 0)
+        (show_name no)
+        (do_not_autoplace no)
+        (hide yes)
+        (effects
+          (font
+            (size 1.27 1.27))))
+      (property "ki_keywords" "LED diode"
+        (at 0 0 0)
+        (show_name no)
+        (do_not_autoplace no)
+        (hide yes)
+        (effects
+          (font
+            (size 1.27 1.27))))
+      (property "ki_fp_filters" "LED* LED_SMD:* LED_THT:*"
+        (at 0 0 0)
+        (show_name no)
+        (do_not_autoplace no)
+        (hide yes)
+        (effects
+          (font
+            (size 1.27 1.27))))
+      (symbol "LED_0_1"
+        (polyline
+          (pts
+            (xy -3.048 -0.762)
+            (xy -4.572 -2.286)
+            (xy -3.81 -2.286)
+            (xy -4.572 -2.286)
+            (xy -4.572 -1.524))
+          (stroke
+            (width 0)
+            (type default))
+          (fill
+            (type none)))
+        (polyline
+          (pts
+            (xy -1.778 -0.762)
+            (xy -3.302 -2.286)
+            (xy -2.54 -2.286)
+            (xy -3.302 -2.286)
+            (xy -3.302 -1.524))
+          (stroke
+            (width 0)
+            (type default))
+          (fill
+            (type none)))
+        (polyline
+          (pts
+            (xy -1.27 0)
+            (xy 1.27 0))
+          (stroke
+            (width 0)
+            (type default))
+          (fill
+            (type none)))
+        (polyline
+          (pts
+            (xy -1.27 -1.27)
+            (xy -1.27 1.27))
+          (stroke
+            (width 0.254)
+            (type default))
+          (fill
+            (type none)))
+        (polyline
+          (pts
+            (xy 1.27 -1.27)
+            (xy 1.27 1.27)
+            (xy -1.27 0)
+            (xy 1.27 -1.27))
+          (stroke
+            (width 0.254)
+            (type default))
+          (fill
+            (type none))))
+      (symbol "LED_1_1"
+        (pin passive line
+          (at -3.81 0 0)
+          (length 2.54)
+          (name "K"
+            (effects
+              (font
+                (size 1.27 1.27))))
+          (number "1"
+            (effects
+              (font
+                (size 1.27 1.27)))))
+        (pin passive line
+          (at 3.81 0 180)
+          (length 2.54)
+          (name "A"
+            (effects
+              (font
+                (size 1.27 1.27))))
+          (number "2"
+            (effects
+              (font
+                (size 1.27 1.27))))))
       (embedded_fonts no)))
   (wire
     (pts
@@ -2099,12 +2250,6 @@
     (at 85.09 68.58)
     (uuid "9c42a57e-a438-529e-8a0f-afbb6295f71f"))
   (no_connect
-    (at 85.09 71.12)
-    (uuid "69c38556-f27b-5871-9dd2-da6417af46a7"))
-  (no_connect
-    (at 85.09 73.66)
-    (uuid "8bcd14a6-4b38-5ef5-8776-2dcc0b8dbc9e"))
-  (no_connect
     (at 85.09 76.2)
     (uuid "50b643c3-8812-5cc8-9d4d-bfc5d408a2c4"))
   (no_connect
@@ -2142,9 +2287,6 @@
         (size 0.95 0.95))
       (justify left))
     (uuid "5c1fb118-835b-5150-a572-dd49275183e8"))
-  (no_connect
-    (at 85.09 86.36)
-    (uuid "0c973abd-ffc1-5138-8123-cfad3daa33e0"))
   (wire
     (pts
       (xy 85.09 88.9)
@@ -5425,4 +5567,537 @@
       (font
         (size 1.15 1.15))
       (justify left))
-    (uuid "386264f3-6594-51ae-830f-d44841a61cc4")))
+    (uuid "386264f3-6594-51ae-830f-d44841a61cc4"))
+  (wire
+    (pts
+      (xy 85.09 71.12)
+      (xy 90.17 71.12))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid "7c7cd631-14e7-5afd-bbc4-0eb562348488"))
+  (global_label "LED_CMD"
+    (shape bidirectional)
+    (at 90.17 71.12 0)
+    (effects
+      (font
+        (size 0.95 0.95))
+      (justify left))
+    (uuid "64a35384-8061-5b18-912c-6eb0f923a92c"))
+  (wire
+    (pts
+      (xy 85.09 73.66)
+      (xy 90.17 73.66))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid "d89164ed-fe8d-52e8-ad79-ee8225a913ae"))
+  (global_label "LED_PHASE"
+    (shape bidirectional)
+    (at 90.17 73.66 0)
+    (effects
+      (font
+        (size 0.95 0.95))
+      (justify left))
+    (uuid "0bd0b99e-a5ce-5315-ba33-69980aabac7e"))
+  (wire
+    (pts
+      (xy 41.91 248.92)
+      (xy 36.83 248.92))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid "8587776a-faef-5014-9442-6486e6a7ab1a"))
+  (global_label "GND"
+    (shape bidirectional)
+    (at 36.83 248.92 0)
+    (effects
+      (font
+        (size 0.95 0.95))
+      (justify right))
+    (uuid "b7975db3-0919-5bc7-9980-647dbf56ad4c"))
+  (wire
+    (pts
+      (xy 49.53 248.92)
+      (xy 54.61 248.92))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid "b69973ff-59a8-5b1d-8224-da5137a859b3"))
+  (global_label "LED_PWR_A"
+    (shape bidirectional)
+    (at 54.61 248.92 0)
+    (effects
+      (font
+        (size 0.95 0.95))
+      (justify left))
+    (uuid "36199291-266c-5025-be83-9bd94d958c6b"))
+  (symbol
+    (lib_id "Device:LED")
+    (at 45.72 248.92 0)
+    (unit 1)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid "13510b47-7490-5d03-9fd0-99694b9810ea")
+    (property "Reference" "D2"
+      (at 54.61 246.38 0)
+      (effects
+        (font
+          (size 1 1))))
+    (property "Value" "LED green"
+      (at 54.61 248.92 0)
+      (effects
+        (font
+          (size 1 1))))
+    (property "Footprint" "Encoder_CAN:LED_Kingbright_APG1005"
+      (at 45.72 248.92 0)
+      (effects
+        (font
+          (size 1 1))
+        (hide yes)))
+    (property "Datasheet" "https://www.kingbrightusa.com/images/catalog/SPEC/APG1005CGC-T.pdf"
+      (at 45.72 248.92 0)
+      (effects
+        (font
+          (size 1 1))
+        (hide yes)))
+    (property "Manufacturer" "Kingbright"
+      (at 45.72 248.92 0)
+      (effects
+        (font
+          (size 1 1))
+        (hide yes)))
+    (property "MPN" "APG1005CGC-T"
+      (at 45.72 248.92 0)
+      (effects
+        (font
+          (size 1 1))
+        (hide yes)))
+    (pin "1"
+      (uuid "616f0080-2c9c-5dc6-a430-26d859300b9b"))
+    (pin "2"
+      (uuid "266bf1b0-abe0-534e-baea-b82568a8b359"))
+    (instances
+      (project "encoder_can_v2"
+        (path "/8153e096-2c81-518f-bf41-0e9144a1062a"
+          (reference "D2")
+          (unit 1)))))
+  (wire
+    (pts
+      (xy 130.81 248.92)
+      (xy 125.73 248.92))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid "3726b400-7c98-5388-b759-85744a7d53b2"))
+  (global_label "GND"
+    (shape bidirectional)
+    (at 125.73 248.92 0)
+    (effects
+      (font
+        (size 0.95 0.95))
+      (justify right))
+    (uuid "55e34d37-d369-53b8-8d5f-4927ed4f8df3"))
+  (wire
+    (pts
+      (xy 138.43 248.92)
+      (xy 143.51 248.92))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid "cdba41cf-b140-5736-82f1-8e12c83f0918"))
+  (global_label "LED_CMD_A"
+    (shape bidirectional)
+    (at 143.51 248.92 0)
+    (effects
+      (font
+        (size 0.95 0.95))
+      (justify left))
+    (uuid "606db44d-9e5d-5e41-95de-34cbc4db09aa"))
+  (symbol
+    (lib_id "Device:LED")
+    (at 134.62 248.92 0)
+    (unit 1)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid "35d0e69d-50db-5e09-aecf-48bd95c6dbae")
+    (property "Reference" "D3"
+      (at 143.51 246.38 0)
+      (effects
+        (font
+          (size 1 1))))
+    (property "Value" "LED yellow"
+      (at 143.51 248.92 0)
+      (effects
+        (font
+          (size 1 1))))
+    (property "Footprint" "Encoder_CAN:LED_Kingbright_APG1005"
+      (at 134.62 248.92 0)
+      (effects
+        (font
+          (size 1 1))
+        (hide yes)))
+    (property "Datasheet" "https://www.kingbrightusa.com/images/catalog/SPEC/APG1005SYC-T.pdf"
+      (at 134.62 248.92 0)
+      (effects
+        (font
+          (size 1 1))
+        (hide yes)))
+    (property "Manufacturer" "Kingbright"
+      (at 134.62 248.92 0)
+      (effects
+        (font
+          (size 1 1))
+        (hide yes)))
+    (property "MPN" "APG1005SYC-T"
+      (at 134.62 248.92 0)
+      (effects
+        (font
+          (size 1 1))
+        (hide yes)))
+    (pin "1"
+      (uuid "ebd6e9d4-f832-5cf4-b340-da928d7d82f7"))
+    (pin "2"
+      (uuid "ebdd4a4c-b9f6-59e2-9c7a-9304362b6a2d"))
+    (instances
+      (project "encoder_can_v2"
+        (path "/8153e096-2c81-518f-bf41-0e9144a1062a"
+          (reference "D3")
+          (unit 1)))))
+  (wire
+    (pts
+      (xy 219.71 248.92)
+      (xy 214.63 248.92))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid "29d1f944-1a7a-5596-925f-4238b57174f6"))
+  (global_label "GND"
+    (shape bidirectional)
+    (at 214.63 248.92 0)
+    (effects
+      (font
+        (size 0.95 0.95))
+      (justify right))
+    (uuid "ac722eef-30d3-5e1f-9f7d-7e3e6327abc9"))
+  (wire
+    (pts
+      (xy 227.33 248.92)
+      (xy 232.41 248.92))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid "7deeb454-9f5d-58f1-8771-e68c768dc0f2"))
+  (global_label "LED_PHASE_A"
+    (shape bidirectional)
+    (at 232.41 248.92 0)
+    (effects
+      (font
+        (size 0.95 0.95))
+      (justify left))
+    (uuid "ffeac298-8fc8-53ed-b084-7a6933282086"))
+  (symbol
+    (lib_id "Device:LED")
+    (at 223.52 248.92 0)
+    (unit 1)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid "312a9c39-083a-5b67-af16-08b65135b701")
+    (property "Reference" "D4"
+      (at 232.41 246.38 0)
+      (effects
+        (font
+          (size 1 1))))
+    (property "Value" "LED red"
+      (at 232.41 248.92 0)
+      (effects
+        (font
+          (size 1 1))))
+    (property "Footprint" "Encoder_CAN:LED_Kingbright_APG1005"
+      (at 223.52 248.92 0)
+      (effects
+        (font
+          (size 1 1))
+        (hide yes)))
+    (property "Datasheet" "https://www.kingbrightusa.com/images/catalog/SPEC/APG1005SEC-E-T.pdf"
+      (at 223.52 248.92 0)
+      (effects
+        (font
+          (size 1 1))
+        (hide yes)))
+    (property "Manufacturer" "Kingbright"
+      (at 223.52 248.92 0)
+      (effects
+        (font
+          (size 1 1))
+        (hide yes)))
+    (property "MPN" "APG1005SEC/E-T"
+      (at 223.52 248.92 0)
+      (effects
+        (font
+          (size 1 1))
+        (hide yes)))
+    (pin "1"
+      (uuid "b050235d-1940-5342-9e06-87cace4522fe"))
+    (pin "2"
+      (uuid "031196e5-eaec-52f9-b2bd-ad6b889e1c85"))
+    (instances
+      (project "encoder_can_v2"
+        (path "/8153e096-2c81-518f-bf41-0e9144a1062a"
+          (reference "D4")
+          (unit 1)))))
+  (wire
+    (pts
+      (xy 45.72 217.17)
+      (xy 45.72 212.09))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid "0166b685-7374-59f3-8539-0766fda9b74a"))
+  (global_label "+3V3"
+    (shape bidirectional)
+    (at 45.72 212.09 90)
+    (effects
+      (font
+        (size 0.95 0.95))
+      (justify left))
+    (uuid "fab1d0c3-9dd4-57be-bdd1-68a86893ab75"))
+  (wire
+    (pts
+      (xy 45.72 224.79)
+      (xy 45.72 229.87))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid "000a01d4-a79a-5f1f-97a9-a8a6111b4319"))
+  (global_label "LED_PWR_A"
+    (shape bidirectional)
+    (at 45.72 229.87 90)
+    (effects
+      (font
+        (size 0.95 0.95))
+      (justify left))
+    (uuid "c76841ba-02fe-53f1-b10e-f6a2ad2a2624"))
+  (symbol
+    (lib_id "Device:R")
+    (at 45.72 220.98 0)
+    (unit 1)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid "5adafaca-be03-59de-8da1-d98e95827bf8")
+    (property "Reference" "R10"
+      (at 54.61 218.44 0)
+      (effects
+        (font
+          (size 1 1))))
+    (property "Value" "1k"
+      (at 54.61 220.98 0)
+      (effects
+        (font
+          (size 1 1))))
+    (property "Footprint" "Encoder_CAN:R_0402_Status"
+      (at 45.72 220.98 0)
+      (effects
+        (font
+          (size 1 1))
+        (hide yes)))
+    (property "Datasheet" ""
+      (at 45.72 220.98 0)
+      (effects
+        (font
+          (size 1 1))
+        (hide yes)))
+    (property "Manufacturer" "YAGEO"
+      (at 45.72 220.98 0)
+      (effects
+        (font
+          (size 1 1))
+        (hide yes)))
+    (property "MPN" "RC0402FR-071KL"
+      (at 45.72 220.98 0)
+      (effects
+        (font
+          (size 1 1))
+        (hide yes)))
+    (pin "1"
+      (uuid "a84e316f-5d2a-5fb4-b161-74f99957038d"))
+    (pin "2"
+      (uuid "dffc7375-ad67-5230-8be6-9dbc29cb4d4b"))
+    (instances
+      (project "encoder_can_v2"
+        (path "/8153e096-2c81-518f-bf41-0e9144a1062a"
+          (reference "R10")
+          (unit 1)))))
+  (wire
+    (pts
+      (xy 134.62 217.17)
+      (xy 134.62 212.09))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid "842977cd-c2b3-5712-954c-e173f56c0631"))
+  (global_label "LED_CMD"
+    (shape bidirectional)
+    (at 134.62 212.09 90)
+    (effects
+      (font
+        (size 0.95 0.95))
+      (justify left))
+    (uuid "6075d3e8-a77b-537f-8bf1-b894f5b39294"))
+  (wire
+    (pts
+      (xy 134.62 224.79)
+      (xy 134.62 229.87))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid "668c5846-16a5-562f-b055-0fa31911b055"))
+  (global_label "LED_CMD_A"
+    (shape bidirectional)
+    (at 134.62 229.87 90)
+    (effects
+      (font
+        (size 0.95 0.95))
+      (justify left))
+    (uuid "a5fe53f5-fdaa-5768-b1a9-db98a6e2d718"))
+  (symbol
+    (lib_id "Device:R")
+    (at 134.62 220.98 0)
+    (unit 1)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid "2ec073ee-3b1c-55d2-8307-8ddc27bb6584")
+    (property "Reference" "R11"
+      (at 143.51 218.44 0)
+      (effects
+        (font
+          (size 1 1))))
+    (property "Value" "1k"
+      (at 143.51 220.98 0)
+      (effects
+        (font
+          (size 1 1))))
+    (property "Footprint" "Encoder_CAN:R_0402_Status"
+      (at 134.62 220.98 0)
+      (effects
+        (font
+          (size 1 1))
+        (hide yes)))
+    (property "Datasheet" ""
+      (at 134.62 220.98 0)
+      (effects
+        (font
+          (size 1 1))
+        (hide yes)))
+    (property "Manufacturer" "YAGEO"
+      (at 134.62 220.98 0)
+      (effects
+        (font
+          (size 1 1))
+        (hide yes)))
+    (property "MPN" "RC0402FR-071KL"
+      (at 134.62 220.98 0)
+      (effects
+        (font
+          (size 1 1))
+        (hide yes)))
+    (pin "1"
+      (uuid "274c1d4f-94c3-58ef-a902-dd38bf8a4093"))
+    (pin "2"
+      (uuid "f05c362d-9c30-5585-b86b-4aff65cf6700"))
+    (instances
+      (project "encoder_can_v2"
+        (path "/8153e096-2c81-518f-bf41-0e9144a1062a"
+          (reference "R11")
+          (unit 1)))))
+  (wire
+    (pts
+      (xy 223.52 217.17)
+      (xy 223.52 212.09))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid "eed1a6e7-d036-5cb5-8a11-b1cf2a73f142"))
+  (global_label "LED_PHASE"
+    (shape bidirectional)
+    (at 223.52 212.09 90)
+    (effects
+      (font
+        (size 0.95 0.95))
+      (justify left))
+    (uuid "9f5591c4-a0ca-5db4-9413-62c8ea081709"))
+  (wire
+    (pts
+      (xy 223.52 224.79)
+      (xy 223.52 229.87))
+    (stroke
+      (width 0)
+      (type default))
+    (uuid "43e22a87-c466-5d92-9fe3-41a6012950f1"))
+  (global_label "LED_PHASE_A"
+    (shape bidirectional)
+    (at 223.52 229.87 90)
+    (effects
+      (font
+        (size 0.95 0.95))
+      (justify left))
+    (uuid "bfdec0e3-e128-54c6-8b63-a4c540d04b43"))
+  (symbol
+    (lib_id "Device:R")
+    (at 223.52 220.98 0)
+    (unit 1)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid "a643472c-2a2a-5922-b761-2640faf1bd20")
+    (property "Reference" "R12"
+      (at 232.41 218.44 0)
+      (effects
+        (font
+          (size 1 1))))
+    (property "Value" "1k"
+      (at 232.41 220.98 0)
+      (effects
+        (font
+          (size 1 1))))
+    (property "Footprint" "Encoder_CAN:R_0402_Status"
+      (at 223.52 220.98 0)
+      (effects
+        (font
+          (size 1 1))
+        (hide yes)))
+    (property "Datasheet" ""
+      (at 223.52 220.98 0)
+      (effects
+        (font
+          (size 1 1))
+        (hide yes)))
+    (property "Manufacturer" "YAGEO"
+      (at 223.52 220.98 0)
+      (effects
+        (font
+          (size 1 1))
+        (hide yes)))
+    (property "MPN" "RC0402FR-071KL"
+      (at 223.52 220.98 0)
+      (effects
+        (font
+          (size 1 1))
+        (hide yes)))
+    (pin "1"
+      (uuid "4d075d21-a0a7-5806-b839-8ef31bcb0424"))
+    (pin "2"
+      (uuid "cd8a0106-2545-5711-b0f6-f19f2c914053"))
+    (instances
+      (project "encoder_can_v2"
+        (path "/8153e096-2c81-518f-bf41-0e9144a1062a"
+          (reference "R12")
+          (unit 1)))))
+  (no_connect
+    (at 85.09 86.36)
+    (uuid "ff688fba-8dfe-5c68-89dd-6125e285ad5e")))

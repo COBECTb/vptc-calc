@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "date": "2026-10-18",
-  "status": "Compact universal V2, routed; ERC/DRC/parity passed. Prototype qualification pending.",
+  "date": "2026-10-25",
+  "status": "V2.2 solder-margin prototype: 1 mm via-to-land spacing, no vias under component envelopes; native checks clean; hardware qualification pending.",
   "power": {
     "input_net": "+5V",
     "input_nominal_v": 5,
@@ -12,7 +12,7 @@
     "logic_net": "+3V3",
     "logic_v": 3.3,
     "ldo_rated_ma": 300,
-    "estimated_board_average_ma": 60,
+    "estimated_board_average_ma": 64,
     "qualification_peak_budget_ma": 150,
     "ldo_heat_at_budget_w": 0.255,
     "battery_connection_allowed": false
@@ -23,10 +23,10 @@
     "passives": "0402 except 0603 bulk capacitors",
     "sensor_side": "F.Cu",
     "other_components_side": "mixed; see placement.json and native PCB",
-    "rear_clearance_strategy": "Dedicated V2 OpenSCAD pockets follow actual rear bodies; M2 mounts R30.5 at -11/29 deg.",
+    "rear_clearance_strategy": "Current native PCB bodies drive the main Python/OpenSCAD pockets; M2 mounts local (33,+/-11.5) mm in the 9-degree radial frame.",
     "layer_roles": {
       "F.Cu": "Hall sensors, CAN transceiver, LDO, TVS, selected passives and signals; GND pour",
-      "In1.Cu": "Continuous GND reference; no routed signal tracks",
+      "In1.Cu": "One connected GND reference polygon; no signal tracks.",
       "In2.Cu": "+3V3 pour plus selected routed signals and power bridges",
       "B.Cu": "MCU, crystal, selected passives, SWD pads, signals; GND pour"
     },
@@ -41,11 +41,14 @@
     "minimum_track_clearance_mm": 0.127,
     "minimum_edge_copper_clearance_mm": 0.25,
     "mechanical_envelope_mm": [
-      16.85344021678225,
-      42.93821161096835
+      21.3344885431,
+      37.77481209
     ],
     "fiducials": "3 global optical fiducials per face; 1 mm copper, 2 mm mask aperture; no paste",
-    "tvs_layout": "CAN_H/L are front-only, connector -> D1 pad -> transceiver; two ground vias, no pre-TVS branch to transceiver."
+    "tvs_layout": "CAN_H/L front-only: connector -> D1 pad -> transceiver, no bypass; ground via centre 1.768 mm from D1.3, linked by front ground copper.",
+    "minimum_connection_width_mm": 0.125,
+    "minimum_via_copper_to_solder_land_mm": 1.0,
+    "mount_head_exterior_copper_keepout_diameter_mm": 4.4
   },
   "interfaces": {
     "I2C1": {
@@ -86,6 +89,12 @@
       "load_caps_initial_pf": 18,
       "load_caps_must_be_verified": true,
       "note": "Exact full MPN catalogued and in stock at DigiKey on 2026-10-12; supplier code recorded. Max body height 0.70 mm. C13/C14 remain 18 pF initial values. Standard ESR150 version is NOT an automatic substitute."
+    },
+    "indicators": {
+      "power": "D2 green, +3V3 via R10 1k",
+      "command": "D3 yellow, PA4/pin9 active high via R11 1k",
+      "phase": "D4 red, PA5/pin10 active high via R12 1k",
+      "firmware": "Set output data low before selecting push-pull output; low speed. Stretch event pulses without blocking the CAN/encoder loop."
     }
   },
   "components": [
@@ -107,8 +116,8 @@
         "6": "INT_OUTER",
         "7": null,
         "8": null,
-        "9": null,
-        "10": null,
+        "9": "LED_CMD",
+        "10": "LED_PHASE",
         "11": null,
         "12": null,
         "13": null,
@@ -179,16 +188,14 @@
       "nc_pins": [
         "7",
         "8",
-        "9",
-        "10",
         "11",
         "12",
         "13",
-        "20",
         "26",
         "27",
         "28",
-        "29"
+        "29",
+        "20"
       ],
       "supplier": "LCSC",
       "supplier_stock_code": "C529358",
@@ -418,12 +425,12 @@
         "4": "CASE"
       },
       "nc_pins": [],
-      "supplier": "DigiKey",
-      "supplier_stock_code": "535-ABM10-16.000MHZ-12-R80-3-D30-TCT-ND",
-      "supplier_url": "https://www.digikey.com/en/products/detail/abracon-llc/ABM10-16-000MHZ-12-R80-3-D30-T/15908860",
+      "supplier": "ЧИП и ДИП",
+      "supplier_stock_code": "8063649242",
+      "supplier_url": "https://www.chipdip.ru/product/abm10-16.000mhz-12-r80-3-d30-t-16-mhz-25ppm-crystal-abracon-8063649242",
       "stock_verified_date": "2026-10-12",
       "stock_observed_qty": 984,
-      "procurement_status": "catalogued exact MPN in stock; external sourcing or consigned assembly",
+      "procurement_status": "Exact MPN catalogued at ChipDip 2026-10-24: MOQ1, 7–8weeks, from10 130RUB/each; no stock in Moscow shops; not reserved. Alternative8070563644 MOQ269,4weeks.",
       "datasheet": "https://abracon.com/datasheets/ABM10.pdf"
     },
     {
@@ -1177,6 +1184,159 @@
       },
       "nc_pins": [],
       "side": "B"
+    },
+    {
+      "ref": "D2",
+      "value": "LED green",
+      "manufacturer": "Kingbright",
+      "mpn": "APG1005CGC-T",
+      "footprint": "Encoder_CAN:LED_Kingbright_APG1005",
+      "package": "0402",
+      "side": "B",
+      "max_height_mm": 0.3,
+      "pins": {
+        "1": "GND",
+        "2": "LED_PWR_A"
+      },
+      "pin_names": {
+        "1": "K",
+        "2": "A"
+      },
+      "nc_pins": [],
+      "datasheet": "https://www.kingbrightusa.com/images/catalog/SPEC/APG1005CGC-T.pdf",
+      "notes": [
+        "Top-emitting ultra-thin LED; pin1 cathode. 1k series resistor; nominal current about 1.3mA, actual brightness to be checked on prototype.",
+        "Maker land pattern 0.7x0.5 mm, inner gap0.2 mm; stencil80% area, 80–100 um recommendation; cathode pad1. Max2 reflow passes."
+      ],
+      "procurement_status": "Catalogued internationally; exact low-profile MPN required. Assembler must confirm delivery/reservation."
+    },
+    {
+      "ref": "D3",
+      "value": "LED yellow",
+      "manufacturer": "Kingbright",
+      "mpn": "APG1005SYC-T",
+      "footprint": "Encoder_CAN:LED_Kingbright_APG1005",
+      "package": "0402",
+      "side": "B",
+      "max_height_mm": 0.3,
+      "pins": {
+        "1": "GND",
+        "2": "LED_CMD_A"
+      },
+      "pin_names": {
+        "1": "K",
+        "2": "A"
+      },
+      "nc_pins": [],
+      "datasheet": "https://www.kingbrightusa.com/images/catalog/SPEC/APG1005SYC-T.pdf",
+      "notes": [
+        "Top-emitting ultra-thin LED; pin1 cathode. 1k series resistor; nominal current about 1.3mA, actual brightness to be checked on prototype.",
+        "Maker land pattern 0.7x0.5 mm, inner gap0.2 mm; stencil80% area, 80–100 um recommendation; cathode pad1. Max2 reflow passes."
+      ],
+      "procurement_status": "Catalogued internationally; exact low-profile MPN required. Assembler must confirm delivery/reservation."
+    },
+    {
+      "ref": "D4",
+      "value": "LED red",
+      "manufacturer": "Kingbright",
+      "mpn": "APG1005SEC/E-T",
+      "footprint": "Encoder_CAN:LED_Kingbright_APG1005",
+      "package": "0402",
+      "side": "B",
+      "max_height_mm": 0.3,
+      "pins": {
+        "1": "GND",
+        "2": "LED_PHASE_A"
+      },
+      "pin_names": {
+        "1": "K",
+        "2": "A"
+      },
+      "nc_pins": [],
+      "datasheet": "https://www.kingbrightusa.com/images/catalog/SPEC/APG1005SEC-E-T.pdf",
+      "notes": [
+        "Top-emitting ultra-thin LED; pin1 cathode. 1k series resistor; nominal current about 1.3mA, actual brightness to be checked on prototype.",
+        "Maker land pattern 0.7x0.5 mm, inner gap0.2 mm; stencil80% area, 80–100 um recommendation; cathode pad1. Max2 reflow passes."
+      ],
+      "procurement_status": "Catalogued internationally; exact low-profile MPN required. Assembler must confirm delivery/reservation."
+    },
+    {
+      "ref": "R10",
+      "value": "1k",
+      "manufacturer": "YAGEO",
+      "mpn": "RC0402FR-071KL",
+      "footprint": "Encoder_CAN:R_0402_Status",
+      "package": "0402",
+      "side": "B",
+      "max_height_mm": 0.4,
+      "pins": {
+        "1": "+3V3",
+        "2": "LED_PWR_A"
+      },
+      "pin_names": {
+        "1": "1",
+        "2": "2"
+      },
+      "nc_pins": [],
+      "notes": [
+        "1%; LED series resistor."
+      ],
+      "procurement_status": "Exact resistor MPN; assembler sourcing/reservation required.",
+      "tolerance_percent": 1,
+      "power_w": 0.0625,
+      "voltage_v": 50
+    },
+    {
+      "ref": "R11",
+      "value": "1k",
+      "manufacturer": "YAGEO",
+      "mpn": "RC0402FR-071KL",
+      "footprint": "Encoder_CAN:R_0402_Status",
+      "package": "0402",
+      "side": "B",
+      "max_height_mm": 0.4,
+      "pins": {
+        "1": "LED_CMD",
+        "2": "LED_CMD_A"
+      },
+      "pin_names": {
+        "1": "1",
+        "2": "2"
+      },
+      "nc_pins": [],
+      "notes": [
+        "1%; LED series resistor."
+      ],
+      "procurement_status": "Exact resistor MPN; assembler sourcing/reservation required.",
+      "tolerance_percent": 1,
+      "power_w": 0.0625,
+      "voltage_v": 50
+    },
+    {
+      "ref": "R12",
+      "value": "1k",
+      "manufacturer": "YAGEO",
+      "mpn": "RC0402FR-071KL",
+      "footprint": "Encoder_CAN:R_0402_Status",
+      "package": "0402",
+      "side": "B",
+      "max_height_mm": 0.4,
+      "pins": {
+        "1": "LED_PHASE",
+        "2": "LED_PHASE_A"
+      },
+      "pin_names": {
+        "1": "1",
+        "2": "2"
+      },
+      "nc_pins": [],
+      "notes": [
+        "1%; LED series resistor."
+      ],
+      "procurement_status": "Exact resistor MPN; assembler sourcing/reservation required.",
+      "tolerance_percent": 1,
+      "power_w": 0.0625,
+      "voltage_v": 50
     }
   ],
   "firmware_requirements": [
@@ -1187,7 +1347,8 @@
     "Configure nSWBOOT0/nBOOT0 deliberately;10k physical BOOT0 pulldown remains present.",
     "Sample both rings at a common time or compensate acquisition skew; TMAG angle register is track phase, not full mechanical angle.",
     "Calibrate each assembled joint with both rings; check absolute sector uniqueness under eccentricity and cross-track fields.",
-    "CAN node IDs1..12 stored in flash; identical PCB hardware, termination DNP by default."
+    "CAN node IDs1..12 stored in flash; identical PCB hardware, termination DNP by default.",
+    "LED_CMD PA4 pin9 and LED_PHASE PA5 pin10: active high, low-speed GPIO, initial low; nonblocking 20–50 ms pulse stretching. Configure events in firmware; no firmware implementation is supplied."
   ],
   "sources": [
     {
@@ -1234,6 +1395,7 @@
     }
   ],
   "nets": [
+    "",
     "+3V3",
     "+5V",
     "BOOT0",
@@ -1250,6 +1412,11 @@
     "I2C2_SDA",
     "INT_INNER",
     "INT_OUTER",
+    "LED_CMD",
+    "LED_CMD_A",
+    "LED_PHASE",
+    "LED_PHASE_A",
+    "LED_PWR_A",
     "NRST",
     "SWCLK",
     "SWDIO"
@@ -1262,14 +1429,6 @@
     {
       "ref": "U1",
       "pin": "8"
-    },
-    {
-      "ref": "U1",
-      "pin": "9"
-    },
-    {
-      "ref": "U1",
-      "pin": "10"
     },
     {
       "ref": "U1",
@@ -1319,13 +1478,14 @@
   "procurement": {
     "verified_date": "2026-10-12",
     "all_fitted_mpn_selected": true,
-    "all_fitted_supplier_codes_recorded": true,
+    "all_fitted_supplier_codes_recorded": false,
     "stock_snapshot": "Retail distributor stock observed, not reserved; JLCPCB assembly inventory is separate and must be checked during quote.",
-    "assembly_sourcing": "LCSC MPN/code for all fitted parts except Y1; Y1 DigiKey exact code via external sourcing or consignment.",
-    "default_fitted_per_board": 29,
+    "assembly_sourcing": "Exact MPNs listed; LCSC codes for original parts, Y1 ChipDip8063649242. New indicators/resistors require assembler sourcing; no stock reservation.",
+    "default_fitted_per_board": 35,
     "board_quantity_reference": 12,
-    "minimum_fitted_total_for_12_boards": 348,
+    "minimum_fitted_total_for_12_boards": 420,
     "purchase_authorized": false,
-    "prototype_qualification_required": true
+    "prototype_qualification_required": true,
+    "latest_review": "design/procurement_2026-10-24.md; LED supplier order codes and assembly sourcing still need confirmation."
   }
 }

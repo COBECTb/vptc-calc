@@ -137,6 +137,10 @@ def encoder_manifest(d):
     native_compatible=native_pcb_compatible(d,m)
     components, source=native_pcb_components(d,m)
     layout=native_pcb_layout(d,m)
+    if layout:
+        mount_r=sum(math.hypot(*point) for point in layout['mounts'])/len(layout['mounts'])
+    mount_angles=([math.degrees(math.atan2(point[1],point[0])) for point in layout['mounts']]
+                  if layout else [sensor_a-68,sensor_a+68])
     mcu=next((c for c in components if c['ref']=='U1'),None)
     return dict(schema_version=1,available=True,dimensions=asdict(d),derived=m,
         magnet_carrier=dict(separate=True,body_halves=2,rings=1,ring_halves=2,halves=True,
@@ -158,9 +162,10 @@ def encoder_manifest(d):
         pcb=dict(thickness_mm=.8,inner_r_mm=m['inner_track_r']-1.9,
             local_inner_relief_r_mm=m['inner_track_r']-2.2,
             local_relief_angles_deg=[sensor_a-10,sensor_a+10],transition_deg=2,
-            outer_r_mm=m['outer_track_r']+3.9,span_deg=80 if native_compatible else 160,center_angle_deg=sensor_a,
+            outer_r_mm=layout.get('outer_radius_mm',m['outer_track_r']+3.9),span_deg=80 if native_compatible else 160,center_angle_deg=sensor_a,
             bolt_keepout_r_mm=3.4 if native_compatible else 4.5,mount_hole_d_mm=2.2,mount_r_mm=mount_r,
-            mount_angles_deg=[sensor_a-20,sensor_a+20] if native_compatible else [sensor_a-68,sensor_a+68],
+            mount_angles_deg=mount_angles,
+            mount_points_mm=layout.get('mounts'),
             front_sensor_hall_radii_mm=[m['inner_track_r'],m['outer_track_r']],
             hall_from_body_radial_tangent_mm=[-.12,-.4],
             rear_pocket_inner_r_mm=d.bearing_outer/2+1,rear_pocket_outer_r_mm=d.diameter/2-1.3,

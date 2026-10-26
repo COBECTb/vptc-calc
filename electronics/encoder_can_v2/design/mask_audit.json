@@ -1,0 +1,230 @@
+{
+  "source_pcb_sha256": "43237adbcdb743c33c8f1bdc61387ee4b917825291ee4f41e4ae68c7d174684c",
+  "all_mask_openings_from_footprint_pads": true,
+  "additional_mask_openings": 0,
+  "components": [
+    {
+      "ref": "C8",
+      "side": "F",
+      "ground_solder_land_area_under_body_mm2": 0.14871078789883546,
+      "unintended_bare_ground_area_mm2": 0.0
+    },
+    {
+      "ref": "C5",
+      "side": "F",
+      "ground_solder_land_area_under_body_mm2": 0.14871078789884254,
+      "unintended_bare_ground_area_mm2": 0.0
+    },
+    {
+      "ref": "C3",
+      "side": "F",
+      "ground_solder_land_area_under_body_mm2": 0.37459198866370874,
+      "unintended_bare_ground_area_mm2": 0.0
+    },
+    {
+      "ref": "R6",
+      "side": "F",
+      "ground_solder_land_area_under_body_mm2": 0.0,
+      "unintended_bare_ground_area_mm2": 0.0
+    },
+    {
+      "ref": "R9",
+      "side": "F",
+      "ground_solder_land_area_under_body_mm2": 0.0,
+      "unintended_bare_ground_area_mm2": 0.0
+    },
+    {
+      "ref": "C7",
+      "side": "F",
+      "ground_solder_land_area_under_body_mm2": 0.1487107878988364,
+      "unintended_bare_ground_area_mm2": 0.0
+    },
+    {
+      "ref": "C6",
+      "side": "F",
+      "ground_solder_land_area_under_body_mm2": 0.14871078789883546,
+      "unintended_bare_ground_area_mm2": 0.0
+    },
+    {
+      "ref": "C10",
+      "side": "F",
+      "ground_solder_land_area_under_body_mm2": 0.37459198866369997,
+      "unintended_bare_ground_area_mm2": 0.0
+    },
+    {
+      "ref": "C11",
+      "side": "F",
+      "ground_solder_land_area_under_body_mm2": 0.37459198866371524,
+      "unintended_bare_ground_area_mm2": 0.0
+    },
+    {
+      "ref": "C9",
+      "side": "F",
+      "ground_solder_land_area_under_body_mm2": 0.14871078789884246,
+      "unintended_bare_ground_area_mm2": 0.0
+    },
+    {
+      "ref": "D1",
+      "side": "F",
+      "ground_solder_land_area_under_body_mm2": 0.7200000000000087,
+      "unintended_bare_ground_area_mm2": 0.0
+    },
+    {
+      "ref": "U3",
+      "side": "F",
+      "ground_solder_land_area_under_body_mm2": 0.11785250268425214,
+      "unintended_bare_ground_area_mm2": 0.0
+    },
+    {
+      "ref": "U4",
+      "side": "F",
+      "ground_solder_land_area_under_body_mm2": 0.5057891968997593,
+      "unintended_bare_ground_area_mm2": 0.0
+    },
+    {
+      "ref": "C4",
+      "side": "F",
+      "ground_solder_land_area_under_body_mm2": 0.14871078789883543,
+      "unintended_bare_ground_area_mm2": 0.0
+    },
+    {
+      "ref": "U2",
+      "side": "F",
+      "ground_solder_land_area_under_body_mm2": 0.11785250268425296,
+      "unintended_bare_ground_area_mm2": 0.0
+    },
+    {
+      "ref": "R5",
+      "side": "F",
+      "ground_solder_land_area_under_body_mm2": 0.1292944939943288,
+      "unintended_bare_ground_area_mm2": 0.0
+    },
+    {
+      "ref": "U5",
+      "side": "F",
+      "ground_solder_land_area_under_body_mm2": 0.6053375100620789,
+      "unintended_bare_ground_area_mm2": 0.0
+    },
+    {
+      "ref": "D4",
+      "side": "B",
+      "ground_solder_land_area_under_body_mm2": 0.22499983976905963,
+      "unintended_bare_ground_area_mm2": 0.0
+    },
+    {
+      "ref": "C14",
+      "side": "B",
+      "ground_solder_land_area_under_body_mm2": 0.14871078789883643,
+      "unintended_bare_ground_area_mm2": 0.0
+    },
+    {
+      "ref": "C12",
+      "side": "B",
+      "ground_solder_land_area_under_body_mm2": 0.14871078789884248,
+      "unintended_bare_ground_area_mm2": 0.0
+    },
+    {
+      "ref": "C1",
+      "side": "B",
+      "ground_solder_land_area_under_body_mm2": 0.14871078789884182,
+      "unintended_bare_ground_area_mm2": 0.0
+    },
+    {
+      "ref": "C13",
+      "side": "B",
+      "ground_solder_land_area_under_body_mm2": 0.14871078789884182,
+      "unintended_bare_ground_area_mm2": 0.0
+    },
+    {
+      "ref": "U1",
+      "side": "B",
+      "ground_solder_land_area_under_body_mm2": 12.309966875091261,
+      "unintended_bare_ground_area_mm2": 0.0
+    },
+    {
+      "ref": "R3",
+      "side": "B",
+      "ground_solder_land_area_under_body_mm2": 0.0,
+      "unintended_bare_ground_area_mm2": 0.0
+    },
+    {
+      "ref": "R2",
+      "side": "B",
+      "ground_solder_land_area_under_body_mm2": 0.0,
+      "unintended_bare_ground_area_mm2": 0.0
+    },
+    {
+      "ref": "C2",
+      "side": "B",
+      "ground_solder_land_area_under_body_mm2": 0.14871078789883552,
+      "unintended_bare_ground_area_mm2": 0.0
+    },
+    {
+      "ref": "Y1",
+      "side": "B",
+      "ground_solder_land_area_under_body_mm2": 1.5200002113816273,
+      "unintended_bare_ground_area_mm2": 0.0
+    },
+    {
+      "ref": "R11",
+      "side": "B",
+      "ground_solder_land_area_under_body_mm2": 0.0,
+      "unintended_bare_ground_area_mm2": 0.0
+    },
+    {
+      "ref": "D2",
+      "side": "B",
+      "ground_solder_land_area_under_body_mm2": 0.2249998397690608,
+      "unintended_bare_ground_area_mm2": 0.0
+    },
+    {
+      "ref": "R8",
+      "side": "B",
+      "ground_solder_land_area_under_body_mm2": 0.0,
+      "unintended_bare_ground_area_mm2": 0.0
+    },
+    {
+      "ref": "R1",
+      "side": "B",
+      "ground_solder_land_area_under_body_mm2": 0.0,
+      "unintended_bare_ground_area_mm2": 0.0
+    },
+    {
+      "ref": "R10",
+      "side": "B",
+      "ground_solder_land_area_under_body_mm2": 0.0,
+      "unintended_bare_ground_area_mm2": 0.0
+    },
+    {
+      "ref": "R12",
+      "side": "B",
+      "ground_solder_land_area_under_body_mm2": 0.0,
+      "unintended_bare_ground_area_mm2": 0.0
+    },
+    {
+      "ref": "R7",
+      "side": "B",
+      "ground_solder_land_area_under_body_mm2": 0.0,
+      "unintended_bare_ground_area_mm2": 0.0
+    },
+    {
+      "ref": "R4",
+      "side": "B",
+      "ground_solder_land_area_under_body_mm2": 0.0,
+      "unintended_bare_ground_area_mm2": 0.0
+    },
+    {
+      "ref": "D3",
+      "side": "B",
+      "ground_solder_land_area_under_body_mm2": 0.22499983976905838,
+      "unintended_bare_ground_area_mm2": 0.0
+    }
+  ],
+  "mandatory_u1_ep_ground_pad_preserved": true,
+  "violations": [],
+  "passed": true,
+  "limits": [
+    "Nominal CAD apertures only; mask registration and fabrication process remain to be agreed.",
+    "Required numbered GND solder lands remain exposed; removing or covering U1 exposed pad would change its required assembly."
+  ]
+}

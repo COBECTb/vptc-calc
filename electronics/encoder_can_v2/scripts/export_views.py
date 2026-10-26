@@ -1,12 +1,12 @@
 """Extract exact native board copper for standalone review figures."""
 from pathlib import Path
-import json
+import json,hashlib
 import pcbnew as p
 R=Path(__file__).resolve().parents[1];b=p.LoadBoard(str(R/'encoder_can_v2.kicad_pcb'))
 def xy(q):return [p.ToMM(q.x),p.ToMM(q.y)]
 def chain(q):return [xy(q.CPoint(i)) for i in range(q.PointCount())]
 poly=p.SHAPE_POLY_SET();assert b.GetBoardPolygonOutlines(poly,False)
-d=dict(outline=chain(poly.Outline(0)),pads=[],tracks=[],zones=[],components=[])
+d=dict(source_pcb_sha256=hashlib.sha256((R/'encoder_can_v2.kicad_pcb').read_bytes()).hexdigest(),outline=chain(poly.Outline(0)),outline_holes=[chain(poly.Hole(0,i)) for i in range(poly.HoleCount(0))],pads=[],tracks=[],zones=[],components=[])
 sizes={c['ref']:c['size_mm'] for c in json.loads((R/'design/component_envelopes.json').read_text())}
 sizes.update({'U2':[1.7,3,1.45],'U3':[1.7,3,1.45]})
 for f in b.GetFootprints():

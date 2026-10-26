@@ -4,18 +4,22 @@ GetConnectedItems is deliberately not used: it returns the complete component.
 Edges here require native copper-shape contact on a shared layer.
 The suggested tree retains a path to every numbered electrical pad.
 Never apply its suggestions without native DRC and topology verification.
+In particular, a bridge can be redundant for zero-width connectivity while
+required for a full-width joint. Keep min_connection >=0.125 mm enabled.
 """
 from pathlib import Path
 import pcbnew as p
 import json, math, heapq, hashlib
 R=Path(__file__).resolve().parents[1]
 b=p.LoadBoard(str(R/'encoder_can_v2.kicad_pcb'))
+footprints=list(b.GetFootprints())
+electrical_pads=[q for f in footprints for q in f.Pads()]
 layers=[p.F_Cu,p.In1_Cu,p.In2_Cu,p.B_Cu]
 objects={}
 for t in b.GetTracks():
     if t.GetNetname() not in ['GND','+3V3','+5V']:
         objects.setdefault(t.GetNetname(),[]).append(t)
-for f in b.GetFootprints():
+for f in footprints:
     for q in f.Pads():
         if q.GetNumber() and q.GetNetname() in objects:
             objects[q.GetNetname()].append(q)
@@ -57,8 +61,10 @@ for net,items in objects.items():
         inside=not isinstance(q,p.PCB_VIA) and any(items[j].GetShape()==p.PAD_SHAPE_CIRCLE and items[j].IsOnLayer(q.GetLayer()) and max((q.GetStart()-items[j].GetPosition()).EuclideanNorm(),(q.GetEnd()-items[j].GetPosition()).EuclideanNorm())+q.GetWidth()/2 <= items[j].GetSize().x/2 for j in pads)
         (internal if inside else remove).append(entry)
     result.append(dict(net=net,pads=len(pads),items=len(items),suggested_remove=remove,retained_inside_round_pad=internal))
-report=dict(source_sha256=hashlib.sha256((R/'encoder_can_v2.kicad_pcb').read_bytes()).hexdigest(),nets=result)
+report=dict(source_sha256=hashlib.sha256((R/'encoder_can_v2.kicad_pcb').read_bytes()).hexdigest(),nets=result,
+    minimum_connection_rule_required_mm=.125,
+    pruning_limit='Zero-width graph candidates only. A bridge can be required to avoid a narrow joint. Never prune without native DRC using min_connection>=0.125mm.')
 (R/'design/signal_route_audit.json').write_text(json.dumps(report,indent=2)+'\n')
-print('External redundant signal candidates:',sum(len(n['suggested_remove']) for n in result))
+print('Zero-width graph candidates (not automatic removals):',sum(len(n['suggested_remove']) for n in result))
 for n in result:
     if n['suggested_remove']:print(n['net'],len(n['suggested_remove']),round(sum(q['length_mm'] for q in n['suggested_remove']),3),'mm')

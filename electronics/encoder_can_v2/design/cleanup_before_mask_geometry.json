@@ -1,0 +1,979 @@
+{
+  "source_pcb_sha256": "7c8b58b013487e32ac1b537c52ac633c13515375b1cb563ce53e77f437293794",
+  "apertures": [
+    {
+      "ref": "C8",
+      "num": "1",
+      "side": "F",
+      "net": "+3V3",
+      "mask_expansion_mm": 0.0
+    },
+    {
+      "ref": "C8",
+      "num": "2",
+      "side": "F",
+      "net": "GND",
+      "mask_expansion_mm": 0.0
+    },
+    {
+      "ref": "C5",
+      "num": "1",
+      "side": "F",
+      "net": "+3V3",
+      "mask_expansion_mm": 0.0
+    },
+    {
+      "ref": "C5",
+      "num": "2",
+      "side": "F",
+      "net": "GND",
+      "mask_expansion_mm": 0.0
+    },
+    {
+      "ref": "C3",
+      "num": "1",
+      "side": "F",
+      "net": "+3V3",
+      "mask_expansion_mm": 0.0
+    },
+    {
+      "ref": "C3",
+      "num": "2",
+      "side": "F",
+      "net": "GND",
+      "mask_expansion_mm": 0.0
+    },
+    {
+      "ref": "R6",
+      "num": "1",
+      "side": "F",
+      "net": "+3V3",
+      "mask_expansion_mm": 0.0
+    },
+    {
+      "ref": "R6",
+      "num": "2",
+      "side": "F",
+      "net": "NRST",
+      "mask_expansion_mm": 0.0
+    },
+    {
+      "ref": "R9",
+      "num": "1",
+      "side": "F",
+      "net": "CAN_H",
+      "mask_expansion_mm": 0.0
+    },
+    {
+      "ref": "R9",
+      "num": "2",
+      "side": "F",
+      "net": "CAN_L",
+      "mask_expansion_mm": 0.0
+    },
+    {
+      "ref": "C7",
+      "num": "1",
+      "side": "F",
+      "net": "+3V3",
+      "mask_expansion_mm": 0.0
+    },
+    {
+      "ref": "C7",
+      "num": "2",
+      "side": "F",
+      "net": "GND",
+      "mask_expansion_mm": 0.0
+    },
+    {
+      "ref": "C6",
+      "num": "1",
+      "side": "F",
+      "net": "+3V3",
+      "mask_expansion_mm": 0.0
+    },
+    {
+      "ref": "C6",
+      "num": "2",
+      "side": "F",
+      "net": "GND",
+      "mask_expansion_mm": 0.0
+    },
+    {
+      "ref": "C10",
+      "num": "1",
+      "side": "F",
+      "net": "+5V",
+      "mask_expansion_mm": 0.0
+    },
+    {
+      "ref": "C10",
+      "num": "2",
+      "side": "F",
+      "net": "GND",
+      "mask_expansion_mm": 0.0
+    },
+    {
+      "ref": "C11",
+      "num": "1",
+      "side": "F",
+      "net": "+3V3",
+      "mask_expansion_mm": 0.0
+    },
+    {
+      "ref": "C11",
+      "num": "2",
+      "side": "F",
+      "net": "GND",
+      "mask_expansion_mm": 0.0
+    },
+    {
+      "ref": "C9",
+      "num": "1",
+      "side": "F",
+      "net": "+3V3",
+      "mask_expansion_mm": 0.0
+    },
+    {
+      "ref": "C9",
+      "num": "2",
+      "side": "F",
+      "net": "GND",
+      "mask_expansion_mm": 0.0
+    },
+    {
+      "ref": "FIDF3",
+      "num": "",
+      "side": "F",
+      "net": "",
+      "mask_expansion_mm": 0.5
+    },
+    {
+      "ref": "D1",
+      "num": "1",
+      "side": "F",
+      "net": "CAN_H",
+      "mask_expansion_mm": 0.0
+    },
+    {
+      "ref": "D1",
+      "num": "2",
+      "side": "F",
+      "net": "CAN_L",
+      "mask_expansion_mm": 0.0
+    },
+    {
+      "ref": "D1",
+      "num": "3",
+      "side": "F",
+      "net": "GND",
+      "mask_expansion_mm": 0.0
+    },
+    {
+      "ref": "U3",
+      "num": "1",
+      "side": "F",
+      "net": "I2C2_SCL",
+      "mask_expansion_mm": 0.0
+    },
+    {
+      "ref": "U3",
+      "num": "2",
+      "side": "F",
+      "net": "GND",
+      "mask_expansion_mm": 0.0
+    },
+    {
+      "ref": "U3",
+      "num": "3",
+      "side": "F",
+      "net": "GND",
+      "mask_expansion_mm": 0.0
+    },
+    {
+      "ref": "U3",
+      "num": "4",
+      "side": "F",
+      "net": "+3V3",
+      "mask_expansion_mm": 0.0
+    },
+    {
+      "ref": "U3",
+      "num": "5",
+      "side": "F",
+      "net": "INT_OUTER",
+      "mask_expansion_mm": 0.0
+    },
+    {
+      "ref": "U3",
+      "num": "6",
+      "side": "F",
+      "net": "I2C2_SDA",
+      "mask_expansion_mm": 0.0
+    },
+    {
+      "ref": "J1",
+      "num": "1",
+      "side": "F",
+      "net": "+5V",
+      "mask_expansion_mm": 0.0
+    },
+    {
+      "ref": "J1",
+      "num": "2",
+      "side": "F",
+      "net": "GND",
+      "mask_expansion_mm": 0.0
+    },
+    {
+      "ref": "J1",
+      "num": "3",
+      "side": "F",
+      "net": "CAN_H",
+      "mask_expansion_mm": 0.0
+    },
+    {
+      "ref": "J1",
+      "num": "4",
+      "side": "F",
+      "net": "CAN_L",
+      "mask_expansion_mm": 0.0
+    },
+    {
+      "ref": "U4",
+      "num": "1",
+      "side": "F",
+      "net": "CAN_TX",
+      "mask_expansion_mm": 0.0
+    },
+    {
+      "ref": "U4",
+      "num": "2",
+      "side": "F",
+      "net": "GND",
+      "mask_expansion_mm": 0.0
+    },
+    {
+      "ref": "U4",
+      "num": "3",
+      "side": "F",
+      "net": "+3V3",
+      "mask_expansion_mm": 0.0
+    },
+    {
+      "ref": "U4",
+      "num": "4",
+      "side": "F",
+      "net": "CAN_RX",
+      "mask_expansion_mm": 0.0
+    },
+    {
+      "ref": "U4",
+      "num": "5",
+      "side": "F",
+      "net": "unconnected-(U4-NC-Pad5)",
+      "mask_expansion_mm": 0.0
+    },
+    {
+      "ref": "U4",
+      "num": "6",
+      "side": "F",
+      "net": "CAN_L",
+      "mask_expansion_mm": 0.0
+    },
+    {
+      "ref": "U4",
+      "num": "7",
+      "side": "F",
+      "net": "CAN_H",
+      "mask_expansion_mm": 0.0
+    },
+    {
+      "ref": "U4",
+      "num": "8",
+      "side": "F",
+      "net": "unconnected-(U4-NC-Pad8)",
+      "mask_expansion_mm": 0.0
+    },
+    {
+      "ref": "FIDF2",
+      "num": "",
+      "side": "F",
+      "net": "",
+      "mask_expansion_mm": 0.5
+    },
+    {
+      "ref": "FIDF1",
+      "num": "",
+      "side": "F",
+      "net": "",
+      "mask_expansion_mm": 0.5
+    },
+    {
+      "ref": "C4",
+      "num": "1",
+      "side": "F",
+      "net": "+3V3",
+      "mask_expansion_mm": 0.0
+    },
+    {
+      "ref": "C4",
+      "num": "2",
+      "side": "F",
+      "net": "GND",
+      "mask_expansion_mm": 0.0
+    },
+    {
+      "ref": "U2",
+      "num": "1",
+      "side": "F",
+      "net": "I2C1_SCL",
+      "mask_expansion_mm": 0.0
+    },
+    {
+      "ref": "U2",
+      "num": "2",
+      "side": "F",
+      "net": "GND",
+      "mask_expansion_mm": 0.0
+    },
+    {
+      "ref": "U2",
+      "num": "3",
+      "side": "F",
+      "net": "GND",
+      "mask_expansion_mm": 0.0
+    },
+    {
+      "ref": "U2",
+      "num": "4",
+      "side": "F",
+      "net": "+3V3",
+      "mask_expansion_mm": 0.0
+    },
+    {
+      "ref": "U2",
+      "num": "5",
+      "side": "F",
+      "net": "INT_INNER",
+      "mask_expansion_mm": 0.0
+    },
+    {
+      "ref": "U2",
+      "num": "6",
+      "side": "F",
+      "net": "I2C1_SDA",
+      "mask_expansion_mm": 0.0
+    },
+    {
+      "ref": "R5",
+      "num": "1",
+      "side": "F",
+      "net": "BOOT0",
+      "mask_expansion_mm": 0.0
+    },
+    {
+      "ref": "R5",
+      "num": "2",
+      "side": "F",
+      "net": "GND",
+      "mask_expansion_mm": 0.0
+    },
+    {
+      "ref": "U5",
+      "num": "1",
+      "side": "F",
+      "net": "+5V",
+      "mask_expansion_mm": 0.0
+    },
+    {
+      "ref": "U5",
+      "num": "2",
+      "side": "F",
+      "net": "GND",
+      "mask_expansion_mm": 0.0
+    },
+    {
+      "ref": "U5",
+      "num": "3",
+      "side": "F",
+      "net": "+5V",
+      "mask_expansion_mm": 0.0
+    },
+    {
+      "ref": "U5",
+      "num": "4",
+      "side": "F",
+      "net": "unconnected-(U5-NC-Pad4)",
+      "mask_expansion_mm": 0.0
+    },
+    {
+      "ref": "U5",
+      "num": "5",
+      "side": "F",
+      "net": "+3V3",
+      "mask_expansion_mm": 0.0
+    },
+    {
+      "ref": "D4",
+      "num": "1",
+      "side": "B",
+      "net": "GND",
+      "mask_expansion_mm": 0.0
+    },
+    {
+      "ref": "D4",
+      "num": "2",
+      "side": "B",
+      "net": "LED_PHASE_A",
+      "mask_expansion_mm": 0.0
+    },
+    {
+      "ref": "C14",
+      "num": "1",
+      "side": "B",
+      "net": "HSE_OUT",
+      "mask_expansion_mm": 0.0
+    },
+    {
+      "ref": "C14",
+      "num": "2",
+      "side": "B",
+      "net": "GND",
+      "mask_expansion_mm": 0.0
+    },
+    {
+      "ref": "C12",
+      "num": "1",
+      "side": "B",
+      "net": "NRST",
+      "mask_expansion_mm": 0.0
+    },
+    {
+      "ref": "C12",
+      "num": "2",
+      "side": "B",
+      "net": "GND",
+      "mask_expansion_mm": 0.0
+    },
+    {
+      "ref": "C1",
+      "num": "1",
+      "side": "B",
+      "net": "+3V3",
+      "mask_expansion_mm": 0.0
+    },
+    {
+      "ref": "C1",
+      "num": "2",
+      "side": "B",
+      "net": "GND",
+      "mask_expansion_mm": 0.0
+    },
+    {
+      "ref": "C13",
+      "num": "1",
+      "side": "B",
+      "net": "HSE_IN",
+      "mask_expansion_mm": 0.0
+    },
+    {
+      "ref": "C13",
+      "num": "2",
+      "side": "B",
+      "net": "GND",
+      "mask_expansion_mm": 0.0
+    },
+    {
+      "ref": "TP1",
+      "num": "1",
+      "side": "B",
+      "net": "BOOT0",
+      "mask_expansion_mm": 0.0
+    },
+    {
+      "ref": "J2",
+      "num": "1",
+      "side": "B",
+      "net": "+5V",
+      "mask_expansion_mm": 0.0
+    },
+    {
+      "ref": "J2",
+      "num": "2",
+      "side": "B",
+      "net": "GND",
+      "mask_expansion_mm": 0.0
+    },
+    {
+      "ref": "J2",
+      "num": "3",
+      "side": "B",
+      "net": "SWDIO",
+      "mask_expansion_mm": 0.0
+    },
+    {
+      "ref": "J2",
+      "num": "4",
+      "side": "B",
+      "net": "SWCLK",
+      "mask_expansion_mm": 0.0
+    },
+    {
+      "ref": "J2",
+      "num": "5",
+      "side": "B",
+      "net": "NRST",
+      "mask_expansion_mm": 0.0
+    },
+    {
+      "ref": "U1",
+      "num": "1",
+      "side": "B",
+      "net": "+3V3",
+      "mask_expansion_mm": 0.0
+    },
+    {
+      "ref": "U1",
+      "num": "2",
+      "side": "B",
+      "net": "HSE_IN",
+      "mask_expansion_mm": 0.0
+    },
+    {
+      "ref": "U1",
+      "num": "3",
+      "side": "B",
+      "net": "HSE_OUT",
+      "mask_expansion_mm": 0.0
+    },
+    {
+      "ref": "U1",
+      "num": "4",
+      "side": "B",
+      "net": "NRST",
+      "mask_expansion_mm": 0.0
+    },
+    {
+      "ref": "U1",
+      "num": "5",
+      "side": "B",
+      "net": "INT_INNER",
+      "mask_expansion_mm": 0.0
+    },
+    {
+      "ref": "U1",
+      "num": "6",
+      "side": "B",
+      "net": "INT_OUTER",
+      "mask_expansion_mm": 0.0
+    },
+    {
+      "ref": "U1",
+      "num": "7",
+      "side": "B",
+      "net": "unconnected-(U1-PA2-Pad7)",
+      "mask_expansion_mm": 0.0
+    },
+    {
+      "ref": "U1",
+      "num": "8",
+      "side": "B",
+      "net": "unconnected-(U1-PA3-Pad8)",
+      "mask_expansion_mm": 0.0
+    },
+    {
+      "ref": "U1",
+      "num": "9",
+      "side": "B",
+      "net": "LED_CMD",
+      "mask_expansion_mm": 0.0
+    },
+    {
+      "ref": "U1",
+      "num": "10",
+      "side": "B",
+      "net": "LED_PHASE",
+      "mask_expansion_mm": 0.0
+    },
+    {
+      "ref": "U1",
+      "num": "11",
+      "side": "B",
+      "net": "unconnected-(U1-PA6-Pad11)",
+      "mask_expansion_mm": 0.0
+    },
+    {
+      "ref": "U1",
+      "num": "12",
+      "side": "B",
+      "net": "unconnected-(U1-PA7-Pad12)",
+      "mask_expansion_mm": 0.0
+    },
+    {
+      "ref": "U1",
+      "num": "13",
+      "side": "B",
+      "net": "unconnected-(U1-PB0-Pad13)",
+      "mask_expansion_mm": 0.0
+    },
+    {
+      "ref": "U1",
+      "num": "14",
+      "side": "B",
+      "net": "GND",
+      "mask_expansion_mm": 0.0
+    },
+    {
+      "ref": "U1",
+      "num": "15",
+      "side": "B",
+      "net": "+3V3",
+      "mask_expansion_mm": 0.0
+    },
+    {
+      "ref": "U1",
+      "num": "16",
+      "side": "B",
+      "net": "GND",
+      "mask_expansion_mm": 0.0
+    },
+    {
+      "ref": "U1",
+      "num": "17",
+      "side": "B",
+      "net": "+3V3",
+      "mask_expansion_mm": 0.0
+    },
+    {
+      "ref": "U1",
+      "num": "18",
+      "side": "B",
+      "net": "I2C2_SDA",
+      "mask_expansion_mm": 0.0
+    },
+    {
+      "ref": "U1",
+      "num": "19",
+      "side": "B",
+      "net": "I2C2_SCL",
+      "mask_expansion_mm": 0.0
+    },
+    {
+      "ref": "U1",
+      "num": "20",
+      "side": "B",
+      "net": "unconnected-(U1-PA10-Pad20)",
+      "mask_expansion_mm": 0.0
+    },
+    {
+      "ref": "U1",
+      "num": "21",
+      "side": "B",
+      "net": "CAN_RX",
+      "mask_expansion_mm": 0.0
+    },
+    {
+      "ref": "U1",
+      "num": "22",
+      "side": "B",
+      "net": "CAN_TX",
+      "mask_expansion_mm": 0.0
+    },
+    {
+      "ref": "U1",
+      "num": "23",
+      "side": "B",
+      "net": "SWDIO",
+      "mask_expansion_mm": 0.0
+    },
+    {
+      "ref": "U1",
+      "num": "24",
+      "side": "B",
+      "net": "SWCLK",
+      "mask_expansion_mm": 0.0
+    },
+    {
+      "ref": "U1",
+      "num": "25",
+      "side": "B",
+      "net": "I2C1_SCL",
+      "mask_expansion_mm": 0.0
+    },
+    {
+      "ref": "U1",
+      "num": "26",
+      "side": "B",
+      "net": "unconnected-(U1-PB3-Pad26)",
+      "mask_expansion_mm": 0.0
+    },
+    {
+      "ref": "U1",
+      "num": "27",
+      "side": "B",
+      "net": "unconnected-(U1-PB4-Pad27)",
+      "mask_expansion_mm": 0.0
+    },
+    {
+      "ref": "U1",
+      "num": "28",
+      "side": "B",
+      "net": "unconnected-(U1-PB5-Pad28)",
+      "mask_expansion_mm": 0.0
+    },
+    {
+      "ref": "U1",
+      "num": "29",
+      "side": "B",
+      "net": "unconnected-(U1-PB6-Pad29)",
+      "mask_expansion_mm": 0.0
+    },
+    {
+      "ref": "U1",
+      "num": "30",
+      "side": "B",
+      "net": "I2C1_SDA",
+      "mask_expansion_mm": 0.0
+    },
+    {
+      "ref": "U1",
+      "num": "31",
+      "side": "B",
+      "net": "BOOT0",
+      "mask_expansion_mm": 0.0
+    },
+    {
+      "ref": "U1",
+      "num": "32",
+      "side": "B",
+      "net": "GND",
+      "mask_expansion_mm": 0.0
+    },
+    {
+      "ref": "U1",
+      "num": "33",
+      "side": "B",
+      "net": "GND",
+      "mask_expansion_mm": 0.0
+    },
+    {
+      "ref": "R3",
+      "num": "1",
+      "side": "B",
+      "net": "+3V3",
+      "mask_expansion_mm": 0.0
+    },
+    {
+      "ref": "R3",
+      "num": "2",
+      "side": "B",
+      "net": "I2C2_SCL",
+      "mask_expansion_mm": 0.0
+    },
+    {
+      "ref": "R2",
+      "num": "1",
+      "side": "B",
+      "net": "+3V3",
+      "mask_expansion_mm": 0.0
+    },
+    {
+      "ref": "R2",
+      "num": "2",
+      "side": "B",
+      "net": "I2C1_SDA",
+      "mask_expansion_mm": 0.0
+    },
+    {
+      "ref": "FIDB1",
+      "num": "",
+      "side": "B",
+      "net": "",
+      "mask_expansion_mm": 0.5
+    },
+    {
+      "ref": "C2",
+      "num": "1",
+      "side": "B",
+      "net": "+3V3",
+      "mask_expansion_mm": 0.0
+    },
+    {
+      "ref": "C2",
+      "num": "2",
+      "side": "B",
+      "net": "GND",
+      "mask_expansion_mm": 0.0
+    },
+    {
+      "ref": "Y1",
+      "num": "1",
+      "side": "B",
+      "net": "HSE_IN",
+      "mask_expansion_mm": 0.0
+    },
+    {
+      "ref": "Y1",
+      "num": "2",
+      "side": "B",
+      "net": "GND",
+      "mask_expansion_mm": 0.0
+    },
+    {
+      "ref": "Y1",
+      "num": "3",
+      "side": "B",
+      "net": "HSE_OUT",
+      "mask_expansion_mm": 0.0
+    },
+    {
+      "ref": "Y1",
+      "num": "4",
+      "side": "B",
+      "net": "GND",
+      "mask_expansion_mm": 0.0
+    },
+    {
+      "ref": "R11",
+      "num": "1",
+      "side": "B",
+      "net": "LED_CMD",
+      "mask_expansion_mm": 0.0
+    },
+    {
+      "ref": "R11",
+      "num": "2",
+      "side": "B",
+      "net": "LED_CMD_A",
+      "mask_expansion_mm": 0.0
+    },
+    {
+      "ref": "D2",
+      "num": "1",
+      "side": "B",
+      "net": "GND",
+      "mask_expansion_mm": 0.0
+    },
+    {
+      "ref": "D2",
+      "num": "2",
+      "side": "B",
+      "net": "LED_PWR_A",
+      "mask_expansion_mm": 0.0
+    },
+    {
+      "ref": "FIDB2",
+      "num": "",
+      "side": "B",
+      "net": "",
+      "mask_expansion_mm": 0.5
+    },
+    {
+      "ref": "R8",
+      "num": "1",
+      "side": "B",
+      "net": "+3V3",
+      "mask_expansion_mm": 0.0
+    },
+    {
+      "ref": "R8",
+      "num": "2",
+      "side": "B",
+      "net": "INT_OUTER",
+      "mask_expansion_mm": 0.0
+    },
+    {
+      "ref": "R1",
+      "num": "1",
+      "side": "B",
+      "net": "+3V3",
+      "mask_expansion_mm": 0.0
+    },
+    {
+      "ref": "R1",
+      "num": "2",
+      "side": "B",
+      "net": "I2C1_SCL",
+      "mask_expansion_mm": 0.0
+    },
+    {
+      "ref": "R10",
+      "num": "1",
+      "side": "B",
+      "net": "+3V3",
+      "mask_expansion_mm": 0.0
+    },
+    {
+      "ref": "R10",
+      "num": "2",
+      "side": "B",
+      "net": "LED_PWR_A",
+      "mask_expansion_mm": 0.0
+    },
+    {
+      "ref": "R12",
+      "num": "1",
+      "side": "B",
+      "net": "LED_PHASE",
+      "mask_expansion_mm": 0.0
+    },
+    {
+      "ref": "R12",
+      "num": "2",
+      "side": "B",
+      "net": "LED_PHASE_A",
+      "mask_expansion_mm": 0.0
+    },
+    {
+      "ref": "R7",
+      "num": "1",
+      "side": "B",
+      "net": "+3V3",
+      "mask_expansion_mm": 0.0
+    },
+    {
+      "ref": "R7",
+      "num": "2",
+      "side": "B",
+      "net": "INT_INNER",
+      "mask_expansion_mm": 0.0
+    },
+    {
+      "ref": "R4",
+      "num": "1",
+      "side": "B",
+      "net": "+3V3",
+      "mask_expansion_mm": 0.0
+    },
+    {
+      "ref": "R4",
+      "num": "2",
+      "side": "B",
+      "net": "I2C2_SDA",
+      "mask_expansion_mm": 0.0
+    },
+    {
+      "ref": "D3",
+      "num": "1",
+      "side": "B",
+      "net": "GND",
+      "mask_expansion_mm": 0.0
+    },
+    {
+      "ref": "D3",
+      "num": "2",
+      "side": "B",
+      "net": "LED_CMD_A",
+      "mask_expansion_mm": 0.0
+    },
+    {
+      "ref": "FIDB3",
+      "num": "",
+      "side": "B",
+      "net": "",
+      "mask_expansion_mm": 0.5
+    }
+  ],
+  "additional_mask_drawings": []
+}

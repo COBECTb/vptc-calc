@@ -7,4 +7,5 @@
  (lib (name "TestPoint")(type "KiCad")(uri "${KIPRJMOD}/vendor/TestPoint.pretty")(options "")(descr "Pinned project footprints"))
  (lib (name "MountingHole")(type "KiCad")(uri "${KIPRJMOD}/vendor/MountingHole.pretty")(options "")(descr "Pinned project footprints"))
   (lib (name "Fiducial")(type "KiCad")(uri "${KIPRJMOD}/vendor/Fiducial.pretty")(options "")(descr "Pinned KiCad optical fiducials"))
+ (lib (name "LED_SMD")(type "KiCad")(uri "${KIPRJMOD}/vendor/LED_SMD.pretty")(options "")(descr "Pinned status LED footprints"))
 )

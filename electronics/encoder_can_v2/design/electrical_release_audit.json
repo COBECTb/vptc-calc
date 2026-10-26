@@ -1,0 +1,487 @@
+{
+  "date": "2026-10-26",
+  "source_pcb_sha256": "43237adbcdb743c33c8f1bdc61387ee4b917825291ee4f41e4ae68c7d174684c",
+  "checks": [
+    {
+      "check": "U1 package pin functions",
+      "passed": true,
+      "detail": {
+        "actual": {
+          "4": "PG10",
+          "2": "PF0",
+          "3": "PF1",
+          "13": "PB0",
+          "26": "PB3",
+          "27": "PB4",
+          "28": "PB5",
+          "29": "PB6",
+          "30": "PB7",
+          "31": "PB8",
+          "1": "VDD",
+          "17": "VDD",
+          "16": "VSS",
+          "32": "VSS",
+          "33": "VSS",
+          "15": "VDDA",
+          "14": "VSSA",
+          "5": "PA0",
+          "6": "PA1",
+          "7": "PA2",
+          "8": "PA3",
+          "9": "PA4",
+          "10": "PA5",
+          "11": "PA6",
+          "12": "PA7",
+          "18": "PA8",
+          "19": "PA9",
+          "20": "PA10",
+          "21": "PA11",
+          "22": "PA12",
+          "23": "PA13",
+          "24": "PA14",
+          "25": "PA15"
+        },
+        "expected": {
+          "1": "VDD",
+          "2": "PF0",
+          "3": "PF1",
+          "4": "PG10",
+          "5": "PA0",
+          "6": "PA1",
+          "7": "PA2",
+          "8": "PA3",
+          "9": "PA4",
+          "10": "PA5",
+          "11": "PA6",
+          "12": "PA7",
+          "13": "PB0",
+          "14": "VSSA",
+          "15": "VDDA",
+          "16": "VSS",
+          "17": "VDD",
+          "18": "PA8",
+          "19": "PA9",
+          "20": "PA10",
+          "21": "PA11",
+          "22": "PA12",
+          "23": "PA13",
+          "24": "PA14",
+          "25": "PA15",
+          "26": "PB3",
+          "27": "PB4",
+          "28": "PB5",
+          "29": "PB6",
+          "30": "PB7",
+          "31": "PB8",
+          "32": "VSS",
+          "33": "VSS"
+        }
+      }
+    },
+    {
+      "check": "U2 package pin functions",
+      "passed": true,
+      "detail": {
+        "actual": {
+          "1": "SCL",
+          "6": "SDA",
+          "5": "INT",
+          "4": "VCC",
+          "2": "GND",
+          "3": "TEST/GND"
+        },
+        "expected": {
+          "1": "SCL",
+          "2": "GND",
+          "3": "TEST",
+          "4": "VCC",
+          "5": "INT",
+          "6": "SDA"
+        }
+      }
+    },
+    {
+      "check": "U3 package pin functions",
+      "passed": true,
+      "detail": {
+        "actual": {
+          "1": "SCL",
+          "6": "SDA",
+          "5": "INT",
+          "4": "VCC",
+          "2": "GND",
+          "3": "TEST/GND"
+        },
+        "expected": {
+          "1": "SCL",
+          "2": "GND",
+          "3": "TEST",
+          "4": "VCC",
+          "5": "INT",
+          "6": "SDA"
+        }
+      }
+    },
+    {
+      "check": "U4 package pin functions",
+      "passed": true,
+      "detail": {
+        "actual": {
+          "1": "TXD",
+          "4": "RXD",
+          "5": "NC",
+          "8": "NC",
+          "3": "VCC",
+          "2": "GND",
+          "7": "CANH",
+          "6": "CANL"
+        },
+        "expected": {
+          "1": "TXD",
+          "2": "GND",
+          "3": "VCC",
+          "4": "RXD",
+          "5": "NC",
+          "6": "CANL",
+          "7": "CANH",
+          "8": "NC"
+        }
+      }
+    },
+    {
+      "check": "U5 package pin functions",
+      "passed": true,
+      "detail": {
+        "actual": {
+          "1": "IN",
+          "3": "EN",
+          "5": "OUT",
+          "4": "NC",
+          "2": "GND"
+        },
+        "expected": {
+          "1": "IN",
+          "2": "GND",
+          "3": "EN",
+          "4": "NC",
+          "5": "OUT"
+        }
+      }
+    },
+    {
+      "check": "U1 physical pad nets",
+      "passed": true,
+      "detail": {
+        "1": "+3V3",
+        "2": "HSE_IN",
+        "3": "HSE_OUT",
+        "4": "NRST",
+        "5": "INT_INNER",
+        "6": "INT_OUTER",
+        "9": "LED_CMD",
+        "10": "LED_PHASE",
+        "14": "GND",
+        "15": "+3V3",
+        "16": "GND",
+        "17": "+3V3",
+        "18": "I2C2_SDA",
+        "19": "I2C2_SCL",
+        "21": "CAN_RX",
+        "22": "CAN_TX",
+        "23": "SWDIO",
+        "24": "SWCLK",
+        "25": "I2C1_SCL",
+        "30": "I2C1_SDA",
+        "31": "BOOT0",
+        "32": "GND",
+        "33": "GND"
+      }
+    },
+    {
+      "check": "U2 physical pad nets",
+      "passed": true,
+      "detail": {
+        "1": "I2C1_SCL",
+        "2": "GND",
+        "3": "GND",
+        "4": "+3V3",
+        "5": "INT_INNER",
+        "6": "I2C1_SDA"
+      }
+    },
+    {
+      "check": "U3 physical pad nets",
+      "passed": true,
+      "detail": {
+        "1": "I2C2_SCL",
+        "2": "GND",
+        "3": "GND",
+        "4": "+3V3",
+        "5": "INT_OUTER",
+        "6": "I2C2_SDA"
+      }
+    },
+    {
+      "check": "U4 physical pad nets",
+      "passed": true,
+      "detail": {
+        "1": "CAN_TX",
+        "2": "GND",
+        "3": "+3V3",
+        "4": "CAN_RX",
+        "6": "CAN_L",
+        "7": "CAN_H"
+      }
+    },
+    {
+      "check": "U5 physical pad nets",
+      "passed": true,
+      "detail": {
+        "1": "+5V",
+        "2": "GND",
+        "3": "+5V",
+        "5": "+3V3"
+      }
+    },
+    {
+      "check": "D1 physical pad nets",
+      "passed": true,
+      "detail": {
+        "1": "CAN_H",
+        "2": "CAN_L",
+        "3": "GND"
+      }
+    },
+    {
+      "check": "Y1 physical pad nets",
+      "passed": true,
+      "detail": {
+        "1": "HSE_IN",
+        "2": "GND",
+        "3": "HSE_OUT",
+        "4": "GND"
+      }
+    },
+    {
+      "check": "J1 physical pad nets",
+      "passed": true,
+      "detail": {
+        "1": "+5V",
+        "2": "GND",
+        "3": "CAN_H",
+        "4": "CAN_L"
+      }
+    },
+    {
+      "check": "J2 physical pad nets",
+      "passed": true,
+      "detail": {
+        "1": "+5V",
+        "2": "GND",
+        "3": "SWDIO",
+        "4": "SWCLK",
+        "5": "NRST"
+      }
+    },
+    {
+      "check": "U4 NC pads",
+      "passed": true,
+      "detail": [
+        "5",
+        "8"
+      ]
+    },
+    {
+      "check": "U5 NC pads",
+      "passed": true,
+      "detail": [
+        "4"
+      ]
+    },
+    {
+      "check": "Unchanged Hall footprints",
+      "passed": true,
+      "detail": {
+        "U2": "TMAG5273A2QDBVR",
+        "U3": "TMAG5273A2QDBVR"
+      }
+    },
+    {
+      "check": "Exact crystal",
+      "passed": true,
+      "detail": {
+        "mpn": "ABM10-16.000MHZ-12-R80-3-D30-T",
+        "load_caps_pf": 18
+      }
+    },
+    {
+      "check": "Optional CAN termination",
+      "passed": true,
+      "detail": "Only two bus ends may be terminated"
+    },
+    {
+      "check": "Bypass/reset capacitor values",
+      "passed": true,
+      "detail": {
+        "C1": "100nF",
+        "C2": "100nF",
+        "C3": "4.7uF",
+        "C4": "10nF",
+        "C5": "1uF",
+        "C6": "100nF",
+        "C7": "100nF",
+        "C8": "100nF",
+        "C9": "1uF",
+        "C10": "4.7uF",
+        "C11": "4.7uF",
+        "C12": "100nF"
+      }
+    },
+    {
+      "check": "Supply and reset constraints",
+      "passed": true,
+      "detail": {
+        "i2c_pullups_ohm": 2200,
+        "reset_irq_boot_ohm": 10000
+      }
+    },
+    {
+      "check": "D2 Kingbright lands",
+      "passed": true,
+      "detail": {
+        "pad_size_mm": [
+          [
+            0.7,
+            0.5
+          ],
+          [
+            0.7,
+            0.5
+          ]
+        ],
+        "pitch_mm": 0.9000006409242158,
+        "paste_area_ratios": [
+          0.8000019582857143,
+          0.8000019582857143
+        ],
+        "cathode_net": "GND"
+      }
+    },
+    {
+      "check": "D3 Kingbright lands",
+      "passed": true,
+      "detail": {
+        "pad_size_mm": [
+          [
+            0.7,
+            0.5
+          ],
+          [
+            0.7,
+            0.5
+          ]
+        ],
+        "pitch_mm": 0.9000006409242158,
+        "paste_area_ratios": [
+          0.8000019582857143,
+          0.8000019582857143
+        ],
+        "cathode_net": "GND"
+      }
+    },
+    {
+      "check": "D4 Kingbright lands",
+      "passed": true,
+      "detail": {
+        "pad_size_mm": [
+          [
+            0.7,
+            0.5
+          ],
+          [
+            0.7,
+            0.5
+          ]
+        ],
+        "pitch_mm": 0.9000006409242158,
+        "paste_area_ratios": [
+          0.8000019582857143,
+          0.8000019582857143
+        ],
+        "cathode_net": "GND"
+      }
+    },
+    {
+      "check": "LED series resistors",
+      "passed": true,
+      "detail": {
+        "max_current_per_channel_at_zero_vf_ma": 3.3833333333333333,
+        "max_resistor_power_w": 0.011332475
+      }
+    },
+    {
+      "check": "MCU thermal pad paste coverage",
+      "passed": true,
+      "detail": {
+        "copper_mm2": 11.902500000000002,
+        "paste_mm2": 7.227422104446697,
+        "paste_windows": 9,
+        "coverage_ratio": 0.6072188283509091
+      }
+    }
+  ],
+  "led_assembly": [
+    {
+      "ref": "D2",
+      "rotation_deg": -171.0,
+      "position_mm": [
+        122.701502,
+        86.077291
+      ],
+      "cathode_pad": 1,
+      "anode_pad": 2
+    },
+    {
+      "ref": "D3",
+      "rotation_deg": -81.0,
+      "position_mm": [
+        121.066908,
+        86.943664
+      ],
+      "cathode_pad": 1,
+      "anode_pad": 2
+    },
+    {
+      "ref": "D4",
+      "rotation_deg": 99.0,
+      "position_mm": [
+        125.461494,
+        106.699426
+      ],
+      "cathode_pad": 1,
+      "anode_pad": 2
+    }
+  ],
+  "derived": {
+    "logic_supply_with_1p5pct_tolerance_v": [
+      3.2504999999999997,
+      3.3494999999999995
+    ],
+    "i2c_capacitance_budget_at_300ns_pf": 159.34556986915496,
+    "ldo_peak_dissipation_at_5p5V_150mA_w": 0.33
+  },
+  "sources": [
+    "https://www.st.com/resource/en/datasheet/stm32g431kb.pdf",
+    "https://www.ti.com/lit/ds/symlink/tmag5273.pdf",
+    "https://www.ti.com/lit/ds/symlink/tcan332g.pdf",
+    "https://www.ti.com/lit/ds/symlink/tps7a20.pdf",
+    "https://assets.nexperia.com/documents/data-sheet/PESD5V0S2BT.pdf",
+    "https://www.kingbrightusa.com/images/catalog/SPEC/APG1005SYC-T.pdf"
+  ],
+  "limits": [
+    "Pin/function checks are based on reviewed primary documentation; not device simulation.",
+    "C13/C14 are initial load values; oscillator safety factor and drive level need hardware characterization.",
+    "64mA average is a planning estimate. Check actual power and thermals; 150mA is a qualification budget.",
+    "I2C bus capacitance, CAN immunity, power sequencing and magnetic accuracy are not measured here."
+  ]
+}

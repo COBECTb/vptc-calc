@@ -19,6 +19,13 @@ assert [p['net'] for p in pads] == ['+5V', 'GND', 'SWDIO', 'SWCLK', 'NRST']
 assert all(p['side'] == 'B' and p['size'] == [1, 1] for p in pads)
 pitch = [math.dist(a['xy'], b['xy']) for a, b in zip(pads, pads[1:])]
 assert all(abs(v - 2.54) < 0.000003 for v in pitch)
+
+# Fixed clip location from the accepted five-contact board, independent of placement.json.
+fixed_xy = [[122.302544,76.250202], [120.563795,78.101783],
+            [118.825045,79.953363], [117.086295,81.804943],
+            [115.347546,83.656524]]
+assert all(math.dist(p['xy'], q) < .000002 for p,q in zip(pads,fixed_xy)), 'J2 has moved'
+
 center = pads[2]['xy']
 strip = translate(rotate(box(-5.75, -2, 5.75, 2), -46.8,
                          origin=(0, 0)), *center)
@@ -31,7 +38,7 @@ for part in data['components']:
                             origin=(0, 0)), *part['xy'])
     assert not body.intersects(strip), ('clip jaw meets component', part['ref'])
     body_clearances.append((strip.distance(body), part['ref'], part['side']))
-outline = Polygon(data['outline'])
+outline = Polygon(data['outline'], data.get('outline_holes', []))
 edge_clearances = []
 for pad in pads:
     if pad['round']:
@@ -46,7 +53,7 @@ assert min(edge_clearances) >= .25
 report = dict(
     source_pcb_sha256=hashlib.sha256((ROOT/'encoder_can_v2.kicad_pcb').read_bytes()).hexdigest(),
     pinout=[dict(pin=p['num'], net=p['net'], xy_mm=p['xy']) for p in pads],
-    pitch_mm=pitch, pad_diameter_mm=1,
+    pitch_mm=pitch, pad_diameter_mm=1, fixed_positions_preserved=True,
     blank_contact_strip_mm=[11.5, 4],
     nearest_component_clearance_mm=sorted(body_clearances)[:5],
     copper_to_edge_mm=edge_clearances,

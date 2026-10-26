@@ -4,8 +4,8 @@ import math
 import argparse
 import json
 from pathlib import Path
-from os.path import relpath
 from encoder_scad import EncoderDimensions, encoder_metrics, encoder_manifest, generate_encoder_scad
+from mechanical_package import PART_NAMES, prepare_package, write_package, export_stl
 
 parser = argparse.ArgumentParser(description="Параметрический генератор редуктора и вариантов с абсолютным энкодером")
 parser.add_argument("--output", default="output/vptc_roller.scad", help="Путь нового SCAD; существующий файл защищён от перезаписи")
@@ -18,11 +18,13 @@ parser.add_argument("--roller-h", type=float)
 parser.add_argument("--rout", type=float)
 parser.add_argument("--diameter", type=float)
 parser.add_argument("--hole-angle", type=float, help="Угол первого основного отверстия;39 воспроизводит текущую плату Ø70")
-parser.add_argument("--part", default="legacy", choices=["legacy", "encoder_assembly", "encoder_section",
-    "encoder_exploded", "encoder_cap", "encoder_lid", "encoder_print", "encoder_clamp",
-    "encoder_clamp_half", "encoder_magnet_ring", "encoder_clamp_print",
-    "encoder_connector", "encoder_load_connector", "encoder_pcb"])
+parser.add_argument("--part", default="legacy", choices=PART_NAMES)
+parser.add_argument("--export-stl", action="store_true", help="Экспортировать отдельные печатные детали через OpenSCAD")
+parser.add_argument("--stl-part", action="append", help="Экспортировать только указанную печатную деталь; можно повторять")
+parser.add_argument("--openscad", help="Путь OpenSCAD CLI для --export-stl")
 args = parser.parse_args()
+if args.stl_part and not args.export_stl:
+    parser.error("--stl-part используется вместе с --export-stl")
 manifest_file = Path(args.manifest) if args.manifest else Path(args.output).with_suffix('.encoder.json')
 if manifest_file.resolve() == Path(args.output).resolve():
     parser.error("SCAD и JSON-манифест должны иметь разные пути")
@@ -52,8 +54,7 @@ if RESOLUTION < 30 or i < 2 or min(d_roller,h_roller,Rout,D) <= 0:
 u = 1
 # Базовое имя напечатанных STL, на которые ссылается визуальная сборка body()
 stl_base = f"vptc_roller_{i}_{d_roller:g}_{h_roller:g}_{D:g}"
-foot_scad_ref = Path(relpath(Path(__file__).resolve().parent / 'output' / 'foots.scad',
-                            Path(args.output).resolve().parent)).as_posix()
+foot_scad_ref = 'foots.scad'  # Copied from cad/ into the portable generated assets.
 
 # === Расчёты ===
 e = 0.2 * d_roller
@@ -214,7 +215,7 @@ for deg in range(0, 360, 1):
 
 if args.hole_angle is not None:
     best_angle = np.deg2rad(args.hole_angle)
-elif args.part != "legacy" and abs(D-70) < 1e-9:
+elif abs(D-70) < 1e-9:
     # Match the existing encoder PCB; the profile has symmetric optimal phases.
     best_angle = np.deg2rad(39)
 
@@ -313,18 +314,22 @@ encoder_dimensions = EncoderDimensions(D, bearing_inner, bearing_outer, bearing_
     separator_h, flange_extra, chamfer_z_offset, cap_thickness, tuple(zip(hole_x,hole_y)))
 try:
     encoder_info = encoder_metrics(encoder_dimensions)
-    encoder_data = encoder_manifest(encoder_dimensions)
-    encoder_code = generate_encoder_scad(encoder_dimensions)
-    print("\nВариант энкодера: {inner_magnet_count}/{outer_magnet_count} магнитов; "
-          "шейка соединителя {connector_stem_h:.2f} мм".format(**encoder_info))
-    if not encoder_data['native_pcb_compatible']:
-        print("Внимание: существующая KiCad-плата Ø70 не соответствует этим размерам/отверстиям; нужна новая разводка.")
 except ValueError as error:
     if args.part != "legacy":
         parser.error(str(error))
     print(f"\nВариант энкодера недоступен: {error}")
     encoder_code = 'module encoder_selected_part(part) { assert(false, "Два кольца магнитов не помещаются при выбранных размерах"); }'
     encoder_data = dict(schema_version=1,available=False,reason=str(error))
+else:
+    try:
+        encoder_data = encoder_manifest(encoder_dimensions)
+        encoder_code = generate_encoder_scad(encoder_dimensions)
+    except ValueError as error:
+        parser.error(str(error))
+    print("\nВариант энкодера: {inner_magnet_count}/{outer_magnet_count} магнитов; "
+          "шейка соединителя {connector_stem_h:.2f} мм".format(**encoder_info))
+    if not encoder_data['native_pcb_compatible']:
+        print("Внимание: существующая KiCad-плата Ø70 не соответствует этим размерам/отверстиям; нужна новая разводка.")
 
 # === Генерация OpenSCAD-кода ===
 openscad_code = f"""// ВПТК редуктор с роликами (для 3D-печати)
@@ -852,7 +857,7 @@ module shoulder_top(){{
             translate([10, 46.01, 26.5]) rotate([90,0,180]) cylinder(h=19, r=3 );
             // Отверстия под винты (группа A)
             rotate([0,0,-2])
-            for (i = [0 : 5]) {{
+            for (i = [0 : {n_holes-1}]) {{
                 x_hole = [{', '.join([f'{x:.5f}' for x in hole_x])}][i];
                 y_hole = [{', '.join([f'{y:.5f}' for y in hole_y])}][i];
                 // Сквозное отверстие
@@ -1407,14 +1412,25 @@ difference() {{
 }}
 """
 
-# === Сохранение ===
+# === Полный воспроизводимый комплект CAD и печатных деталей ===
 output_file = Path(args.output)
-output_file.parent.mkdir(parents=True, exist_ok=True)
-with output_file.open("w" if args.overwrite else "x", encoding="utf-8") as f:
-    f.write(openscad_code)
-manifest_file.parent.mkdir(parents=True, exist_ok=True)
-with manifest_file.open("w" if args.overwrite else "x", encoding="utf-8") as f:
-    json.dump(encoder_data,f,ensure_ascii=False,indent=2)
-    f.write('\n')
+try:
+    master, package_files, catalog = prepare_package(openscad_code, encoder_dimensions,
+        encoder_data, dict(h_reducer=h_reducer,side_short=side_short,side_long=side_long,Rsep_out=Rsep_out), output_file)
+    if args.part.startswith('knee_') or args.part=='leg_assembly':
+        if not catalog['native_v2_compatible']:
+            parser.error("Колено и нога с готовой платой V2 требуют штатного D70 и отверстий при 39°")
+    if args.stl_part:
+        known={p['name'] for p in catalog['parts']}
+        if set(args.stl_part)-known:
+            parser.error("Неизвестные/недоступные печатные детали: "+', '.join(sorted(set(args.stl_part)-known)))
+    encoder_data['print_package'] = catalog
+    write_package(output_file, master.replace('__PART__',json.dumps(args.part)),
+                  package_files, manifest_file, encoder_data, overwrite=args.overwrite)
+    if args.export_stl:
+        export_stl(output_file,catalog,args.openscad,selected=args.stl_part,overwrite=args.overwrite)
+except (ValueError, OSError, RuntimeError) as error:
+    parser.error(str(error))
 print(f"\n✅ OpenSCAD-модель сохранена в: {output_file}")
 print(f"Механические параметры платы: {manifest_file}")
+print(f"Отдельные детали для печати: {output_file.parent / (output_file.stem+'_print')}")

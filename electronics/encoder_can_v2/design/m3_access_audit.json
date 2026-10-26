@@ -1,0 +1,67 @@
+{
+  "source_pcb_sha256": "43237adbcdb743c33c8f1bdc61387ee4b917825291ee4f41e4ae68c7d174684c",
+  "required_M3_access_radius_mm": 3.4,
+  "original_M3_pitch_radius_mm": 31.5,
+  "polygon_boundary_allowance_mm": 0.01,
+  "checks": [
+    {
+      "angle_deg": 39,
+      "center_mm": [
+        124.48009778589459,
+        80.17640768193013
+      ],
+      "pcb_in_access_area_mm2": 0.0,
+      "clear": true
+    },
+    {
+      "angle_deg": 99,
+      "center_mm": [
+        95.07231435123273,
+        68.88781727125316
+      ],
+      "pcb_in_access_area_mm2": 0.0,
+      "clear": true
+    },
+    {
+      "angle_deg": 159,
+      "center_mm": [
+        70.59221656533815,
+        88.71140958932304
+      ],
+      "pcb_in_access_area_mm2": 0.0,
+      "clear": true
+    },
+    {
+      "angle_deg": 219,
+      "center_mm": [
+        75.51990221410543,
+        119.82359231806988
+      ],
+      "pcb_in_access_area_mm2": 0.0,
+      "clear": true
+    },
+    {
+      "angle_deg": 279,
+      "center_mm": [
+        104.92768564876727,
+        131.11218272874683
+      ],
+      "pcb_in_access_area_mm2": 0.0,
+      "clear": true
+    },
+    {
+      "angle_deg": 339,
+      "center_mm": [
+        129.40778343466184,
+        111.28859041067697
+      ],
+      "pcb_in_access_area_mm2": 0.0,
+      "clear": true
+    }
+  ],
+  "passed": true,
+  "limits": [
+    "Nominal D70 geometry; tool envelope and real screw tolerances require assembly validation.",
+    "Does not replace the independent copper-to-edge DRC or M2 mounting audit."
+  ]
+}

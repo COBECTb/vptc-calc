@@ -106,11 +106,18 @@ class GeneratorIntegrationTests(unittest.TestCase):
         self.assertAlmostEqual(current['pcb']['local_inner_relief_r_mm'],21.3)
         self.assertEqual(current['pcb']['mcu_relief']['body_size_mm'],[5.1,5.1,.6])
         self.assertAlmostEqual(current['pcb']['mcu_relief']['bottom_z_mm'],10.25)
-        self.assertAlmostEqual(current['pcb']['mcu_relief']['center_r_mm'],29.5)
+        self.assertAlmostEqual(current['pcb']['mcu_relief']['center_r_mm'],math.hypot(28.65,-.6),places=5)
         self.assertEqual(current['native_components']['revision'],'V2')
         self.assertEqual(current['pcb']['span_deg'],80)
-        self.assertEqual(current['pcb']['mount_angles_deg'],[-11,29])
+        mount_points=[(26.92,-9.605),(29.5*math.cos(math.radians(19))+.3,29.5*math.sin(math.radians(19)))]
+        expected_angles=sorted(9+math.degrees(math.atan2(y,x)) for x,y in mount_points)
+        for actual,expected in zip(sorted(current['pcb']['mount_angles_deg']),expected_angles):
+            self.assertAlmostEqual(actual,expected,places=5)
         self.assertEqual((larger['derived']['inner_magnet_count'],larger['derived']['outer_magnet_count']),(30,32))
+        instructions=(self.models[80].parent/(self.models[80].stem+'_print')/'README.md').read_text()
+        self.assertIn('30 внутренних и 32 наружных',instructions)
+        self.assertIn('внутреннего ряда — противоположна',instructions)
+        self.assertIn('внешнего ряда — та же',instructions)
 
     def test_explicit_hole_phase_is_honoured(self):
         path=self.work/'phase.scad'
@@ -231,7 +238,12 @@ class GeneratorIntegrationTests(unittest.TestCase):
     def test_mcu_relief_preserves_its_floor_and_bearing_stop(self):
         # The new shallow MCU relief cuts only the top of the outer wall.
         # One probe crosses the actual V2 MCU pocket; another crosses the bearing lip.
-        mcu_probe=[27.2*math.cos(math.radians(9)),27.2*math.sin(math.radians(9))]
+        manifest=json.loads(self.models[70].with_suffix('.encoder.json').read_text())
+        relief=manifest['pcb']['mcu_relief']
+        # Probe the actual pocket centre outside the R27.08 underside counterbore.
+        probe_r=relief['center_r_mm']
+        probe_a=math.radians(relief['center_angle_deg'])
+        mcu_probe=[probe_r*math.cos(probe_a),probe_r*math.sin(probe_a)]
         for name,xy,zmin,zmax in [('mcu_relief_floor',mcu_probe,0,10.25),
                                   ('encoder_bearing_stop',[25,0],10,10.75)]:
             source=self.work/f'{name}.scad'

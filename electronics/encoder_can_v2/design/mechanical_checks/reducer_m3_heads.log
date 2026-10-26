@@ -1,0 +1,11 @@
+ECHO: "Магнитный торец от исходной крышки, мм:", 3.85
+ECHO: "Увеличение относительно измеренного зазора, мм:", 2.85
+ECHO: "Магнит — корпус датчика, мм:", 1
+ECHO: "Магнит — Hall-точка по модели корпуса TI, мм:", 1.78
+ECHO: "Длина шейки соединителя редуктора, мм:", 6.75
+Geometries in cache: 440
+Geometry cache size in bytes: 5422528
+CGAL Polyhedrons in cache: 53
+CGAL cache size in bytes: 102939032
+Total rendering time: 0:04:21.346
+Current top level object is empty.

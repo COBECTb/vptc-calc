@@ -1,0 +1,15 @@
+{
+  "source_pcb_sha256": "43237adbcdb743c33c8f1bdc61387ee4b917825291ee4f41e4ae68c7d174684c",
+  "profile_segments": 826,
+  "closed_profile_loops": 1,
+  "closed_internal_cutouts": 0,
+  "gerber_profile_matches_saved_pcb": true,
+  "pth_holes": 71,
+  "npth_holes": 2,
+  "drill_rounding_allowance_mm": 0.00072,
+  "drill_coordinates_and_diameters_match": true,
+  "passed": true,
+  "limits": [
+    "Checks profile and drills, not assembly-process qualification or factory DFM."
+  ]
+}

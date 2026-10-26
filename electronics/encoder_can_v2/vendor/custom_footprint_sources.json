@@ -1,0 +1,20 @@
+{
+  "date": "2026-10-25",
+  "footprints": {
+    "Encoder_CAN:LED_Kingbright_APG1005": {
+      "sha256": "bf5d296557d4a43efb547aee52f92cdc7d09547b5856c9fbb65765b24ab4f0fb",
+      "source": "https://www.kingbrightusa.com/images/catalog/SPEC/APG1005SYC-T.pdf",
+      "drawing": "Recommended Soldering Pattern, page 1",
+      "land_mm": [
+        0.7,
+        0.5
+      ],
+      "land_pitch_mm": 0.9,
+      "inner_gap_mm": 0.2,
+      "paste_area_ratio": 0.8,
+      "cathode_pad": 1,
+      "courtyard": "Maximum 1.1 x 0.6 mm body plus 0.25 mm all around",
+      "model_limit": "Scaled generic KiCad model, approximate visual aid only"
+    }
+  }
+}

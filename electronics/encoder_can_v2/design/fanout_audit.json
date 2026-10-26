@@ -1,0 +1,287 @@
+{
+  "source_pcb_sha256": "43237adbcdb743c33c8f1bdc61387ee4b917825291ee4f41e4ae68c7d174684c",
+  "expected_escape_count": 14,
+  "checked_escapes": [
+    {
+      "group": "bottom",
+      "pin": "4",
+      "net": "NRST",
+      "pad_xy": [
+        129.019363,
+        98.479148
+      ],
+      "kind": "through_via",
+      "via_xy": [
+        129.199263,
+        99.61499
+      ],
+      "exit_xy": [
+        129.199263,
+        99.61499
+      ],
+      "normal_distance_mm": 1.1500004604190113,
+      "direct_track": true
+    },
+    {
+      "group": "bottom",
+      "pin": "5",
+      "net": "INT_INNER",
+      "pad_xy": [
+        128.525519,
+        98.557365
+      ],
+      "kind": "same_face_bend",
+      "via_xy": null,
+      "exit_xy": [
+        128.785591,
+        100.199396
+      ],
+      "normal_distance_mm": 1.6624990977877079,
+      "direct_track": true
+    },
+    {
+      "group": "bottom",
+      "pin": "6",
+      "net": "INT_OUTER",
+      "pad_xy": [
+        128.031675,
+        98.635582
+      ],
+      "kind": "through_via",
+      "via_xy": [
+        128.211575,
+        99.771424
+      ],
+      "exit_xy": [
+        128.211575,
+        99.771424
+      ],
+      "normal_distance_mm": 1.1500004604189973,
+      "direct_track": true
+    },
+    {
+      "group": "top",
+      "pin": "18",
+      "net": "I2C2_SDA",
+      "pad_xy": [
+        126.775213,
+        93.898819
+      ],
+      "kind": "through_via",
+      "via_xy": [
+        126.595313,
+        92.762977
+      ],
+      "exit_xy": [
+        126.595313,
+        92.762977
+      ],
+      "normal_distance_mm": 1.150000460418995,
+      "direct_track": true
+    },
+    {
+      "group": "top",
+      "pin": "19",
+      "net": "I2C2_SCL",
+      "pad_xy": [
+        127.269057,
+        93.820603
+      ],
+      "kind": "same_face_bend",
+      "via_xy": null,
+      "exit_xy": [
+        126.96401,
+        91.894611
+      ],
+      "normal_distance_mm": 1.9499997067366461,
+      "direct_track": true
+    },
+    {
+      "group": "top",
+      "pin": "21",
+      "net": "CAN_RX",
+      "pad_xy": [
+        128.256745,
+        93.664167
+      ],
+      "kind": "through_via",
+      "via_xy": [
+        128.076845,
+        92.528325
+      ],
+      "exit_xy": [
+        128.076845,
+        92.528325
+      ],
+      "normal_distance_mm": 1.1500004604190113,
+      "direct_track": true
+    },
+    {
+      "group": "top",
+      "pin": "22",
+      "net": "CAN_TX",
+      "pad_xy": [
+        128.750589,
+        93.58595
+      ],
+      "kind": "through_via",
+      "via_xy": [
+        128.445542,
+        91.659958
+      ],
+      "exit_xy": [
+        128.445542,
+        91.659958
+      ],
+      "normal_distance_mm": 1.949999706736632,
+      "direct_track": true
+    },
+    {
+      "group": "top",
+      "pin": "23",
+      "net": "SWDIO",
+      "pad_xy": [
+        129.244433,
+        93.507733
+      ],
+      "kind": "through_via",
+      "via_xy": [
+        129.064533,
+        92.371891
+      ],
+      "exit_xy": [
+        129.064533,
+        92.371891
+      ],
+      "normal_distance_mm": 1.1500004604189928,
+      "direct_track": true
+    },
+    {
+      "group": "top",
+      "pin": "24",
+      "net": "SWCLK",
+      "pad_xy": [
+        129.738278,
+        93.429515
+      ],
+      "kind": "through_via",
+      "via_xy": [
+        129.433231,
+        91.503523
+      ],
+      "exit_xy": [
+        129.433231,
+        91.503523
+      ],
+      "normal_distance_mm": 1.949999706736632,
+      "direct_track": true
+    },
+    {
+      "group": "left",
+      "pin": "9",
+      "net": "LED_CMD",
+      "pad_xy": [
+        126.257402,
+        98.22053
+      ],
+      "kind": "same_face_bend",
+      "via_xy": null,
+      "exit_xy": [
+        124.343755,
+        98.523621
+      ],
+      "normal_distance_mm": 1.937500708358371,
+      "direct_track": true
+    },
+    {
+      "group": "left",
+      "pin": "10",
+      "net": "LED_PHASE",
+      "pad_xy": [
+        126.179185,
+        97.726685
+      ],
+      "kind": "through_via",
+      "via_xy": [
+        125.043343,
+        97.906585
+      ],
+      "exit_xy": [
+        125.043343,
+        97.906585
+      ],
+      "normal_distance_mm": 1.1500004604190113,
+      "direct_track": true
+    },
+    {
+      "group": "right",
+      "pin": "25",
+      "net": "I2C1_SCL",
+      "pad_xy": [
+        130.524862,
+        94.001002
+      ],
+      "kind": "through_via",
+      "via_xy": [
+        131.660704,
+        93.821102
+      ],
+      "exit_xy": [
+        131.660704,
+        93.821102
+      ],
+      "normal_distance_mm": 1.1500004604189973,
+      "direct_track": true
+    },
+    {
+      "group": "right",
+      "pin": "30",
+      "net": "I2C1_SDA",
+      "pad_xy": [
+        130.915948,
+        96.470223
+      ],
+      "kind": "through_via",
+      "via_xy": [
+        132.545634,
+        96.212106
+      ],
+      "exit_xy": [
+        132.545634,
+        96.212106
+      ],
+      "normal_distance_mm": 1.6500002558439375,
+      "direct_track": true
+    },
+    {
+      "group": "right",
+      "pin": "31",
+      "net": "BOOT0",
+      "pad_xy": [
+        130.994165,
+        96.964067
+      ],
+      "kind": "through_via",
+      "via_xy": [
+        132.130007,
+        96.784167
+      ],
+      "exit_xy": [
+        132.130007,
+        96.784167
+      ],
+      "normal_distance_mm": 1.1500004604189973,
+      "direct_track": true
+    }
+  ],
+  "expected_through_vias": 11,
+  "expected_same_face_bends": 3,
+  "straight_track_min_width_mm": 0.125,
+  "collinearity_tolerance_mm": 0.002,
+  "minimum_stagger_mm": 0.45,
+  "violations": [],
+  "passed": true,
+  "limits": [
+    "Nominal geometry only; native DRC, body/land clearance and electrical/mechanical audits are required separately."
+  ]
+}

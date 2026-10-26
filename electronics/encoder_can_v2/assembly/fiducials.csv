@@ -1,6 +1,6 @@
-Ref,PosX_mm,PosY_mm_KiCad_CPL,Side,Copper_diameter_mm,Mask_aperture_mm
+﻿Ref,PosX_mm,PosY_mm_KiCad_CPL,Side,Copper_diameter_mm,Mask_aperture_mm
 FIDB1,117.947154,-84.065771,bottom,1,2
-FIDB2,132.004778,-102.625676,bottom,1,2
+FIDB2,131.507864,-107.159226,bottom,1,2
 FIDB3,122.203961,-111.062736,bottom,1,2
 FIDF1,115.980731,-83.737889,top,1,2
 FIDF2,132.004778,-102.625676,top,1,2

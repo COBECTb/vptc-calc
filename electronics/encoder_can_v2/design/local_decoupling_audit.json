@@ -1,0 +1,66 @@
+{
+  "source_pcb_sha256": "43237adbcdb743c33c8f1bdc61387ee4b917825291ee4f41e4ae68c7d174684c",
+  "checks": [
+    {
+      "ic": "U1",
+      "capacitor": "C1",
+      "face": "B",
+      "supply_connected_on_same_face": true,
+      "return_connected_on_same_face": true,
+      "supply_pad_center_distance_mm": 2.0940894151141163
+    },
+    {
+      "ic": "U1",
+      "capacitor": "C2",
+      "face": "B",
+      "supply_connected_on_same_face": true,
+      "return_connected_on_same_face": true,
+      "supply_pad_center_distance_mm": 3.031636479768143
+    },
+    {
+      "ic": "U2",
+      "capacitor": "C6",
+      "face": "F",
+      "supply_connected_on_same_face": true,
+      "return_connected_on_same_face": true,
+      "supply_pad_center_distance_mm": 2.8779834778075015
+    },
+    {
+      "ic": "U3",
+      "capacitor": "C7",
+      "face": "F",
+      "supply_connected_on_same_face": true,
+      "return_connected_on_same_face": true,
+      "supply_pad_center_distance_mm": 2.358521758593088
+    },
+    {
+      "ic": "U4",
+      "capacitor": "C8",
+      "face": "F",
+      "supply_connected_on_same_face": true,
+      "return_connected_on_same_face": true,
+      "supply_pad_center_distance_mm": 2.317636624046358
+    },
+    {
+      "ic": "U5",
+      "capacitor": "C10",
+      "face": "F",
+      "supply_connected_on_same_face": true,
+      "return_connected_on_same_face": true,
+      "supply_pad_center_distance_mm": 1.8114645955253987
+    },
+    {
+      "ic": "U5",
+      "capacitor": "C11",
+      "face": "F",
+      "supply_connected_on_same_face": true,
+      "return_connected_on_same_face": true,
+      "supply_pad_center_distance_mm": 2.5393455261820943
+    }
+  ],
+  "passed": true,
+  "limits": [
+    "Same-face geometric connectivity includes filled ground pours.",
+    "This does not measure loop inductance, supply impedance or EMC."
+  ]
+}

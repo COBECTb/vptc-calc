@@ -1,0 +1,25 @@
+{
+  "source_pcb_sha256": "43237adbcdb743c33c8f1bdc61387ee4b917825291ee4f41e4ae68c7d174684c",
+  "source_files_sha256": {
+    "calc-vpts.py": "ba70a3b4a5e7f7b17281337a059dfcfae33b33265eeec491a664bfccd0a8fe27",
+    "encoder_scad.py": "ecc5c8ae827f860aa8e2ac52fae1bc10dd0c6220f99ba2c7328c6aabd9820d28",
+    "mechanical_package.py": "bd8c0bf9917b92e43f544744203d3f0826d5396fbe87be7de37583b73bb77f8b",
+    "tests/test_encoder_generator.py": "efe6c1df9b4dc86031aed402d21230646c322d584837986098620ec461b601c5",
+    "tests/test_mechanical_package.py": "d1c6055beb292e07136c53399c0b581889aa2095783da3bfd323481d67b5a34b",
+    "output/vptc_roller.scad": "75ec80a25d7283ca9e8bd8fdd5c854aca675c1d71ed74205cf411f37335d7c05",
+    "output/foots.scad": "83d9130515681fa8055a356e0642bb3b0b93d6930498b1f60aa911b91f7c5cee",
+    "output/foots_h.scad": "f8fbc2072db27cd0360749aef87a0771eaf7694c88a465f85e2e84e0217a9873",
+    "output/foot/leg_motion.scad": "69671a2b73341f3b7306990fb31494a75118b12747f7ed4849e4e6a30e829ee8",
+    "output/foot/foot_kinematics.py": "7a9eddb5481e13a707abd27dc63d145d907d148f862ac4d2c9c4a84f8ae94289",
+    "cad/clamp_v2.scad": "a2e1e9b6058e8313f1b3162fe3fa2fdc40d67611ed4e22b12be87a552e7b5be3",
+    "cad/foots.scad": "83d9130515681fa8055a356e0642bb3b0b93d6930498b1f60aa911b91f7c5cee",
+    "cad/foots_h.scad": "4b5c2046ade057dd969b0960495289e0d9bfb2401485873e7a4a7a06b597e948",
+    "cad/knee_v2.scad": "a525a32da1e5c51829ecf6eb022f657900684890e11f26bb081a7853b85cccfe",
+    "cad/pcb_v2.scad": "b817b715751758c6012f23a1b1cf60286217c40d20acbbfb425551d185fb8bfb",
+    "cad/reducer_v2.scad": "3e01ba5d7e1098cbcb149b29c10702776ec21423e85abee2c8f7972138d0450d",
+    "cad/sensors_v2.scad": "c4a217a0710ac05ac5ccfbd133b6213555bdafc2f113c21d26fb8ed70c0de9ec"
+  },
+  "returncode": 0,
+  "passed": true,
+  "log": "design/mechanical_checks/integration-tests.log"
+}

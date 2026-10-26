@@ -1,0 +1,53 @@
+{
+  "source_pcb_sha256": "43237adbcdb743c33c8f1bdc61387ee4b917825291ee4f41e4ae68c7d174684c",
+  "baseline_pcb_sha256": "7c8b58b013487e32ac1b537c52ac633c13515375b1cb563ce53e77f437293794",
+  "outline_and_all_component_pad_positions_unchanged": true,
+  "retained_via_positions_and_drills_unchanged": true,
+  "removed_unused_vias": [
+    {
+      "xy": [
+        117.900708,
+        86.609858
+      ],
+      "diameter_mm": 0.45,
+      "drill_mm": 0.2,
+      "net": "+3V3"
+    },
+    {
+      "xy": [
+        121.074113,
+        91.144253
+      ],
+      "diameter_mm": 0.45,
+      "drill_mm": 0.2,
+      "net": "+3V3"
+    }
+  ],
+  "solder_mask_apertures_unchanged": true,
+  "in1_ground_symmetric_difference_mm2": 0.9118222491435691,
+  "in1_ground_area_before_mm2": 329.12956450576274,
+  "in1_ground_area_after_mm2": 330.04138423800606,
+  "in1_changes_limited_to_removed_via_antipads": true,
+  "statistics": [
+    {
+      "version": "before",
+      "track_segments": 1821,
+      "via_count": 73,
+      "sum_track_lengths_mm": 862.6905729533773,
+      "segments_shorter_than_point1mm": 1092
+    },
+    {
+      "version": "after",
+      "track_segments": 639,
+      "via_count": 71,
+      "sum_track_lengths_mm": 688.0110141979219,
+      "segments_shorter_than_point1mm": 39
+    }
+  ],
+  "passed": true,
+  "limits": [
+    "No unwanted mask apertures were present: mask openings remain the required solder lands and fiducials. U1 EP33 stays exposed for soldering.",
+    "Removed duplicate detours, tiny jogs and unnecessary parallel connections. Necessary capacitor return branches remain.",
+    "Statistics count native segments and summed lengths, including overlapping segments; they are not a physical copper-area measurement."
+  ]
+}

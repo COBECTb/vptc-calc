@@ -53,4 +53,13 @@ for ref in ['U2','U3']:
  f=fps[ref];o=op[ref];hall.append(dict(ref=ref,position_mm=xy(f.GetPosition()),angle=f.GetOrientationDegrees(),unchanged_from_v1=math.dist(xy(f.GetPosition()),o['position_mm'])<1e-6 and abs(f.GetOrientationDegrees()-o['angle_deg'])<1e-6))
 drc=json.loads((R/'design/drc-final.json').read_text());erc=json.loads((R/'design/erc.json').read_text())
 report=dict(date_utc=datetime.datetime.now(datetime.timezone.utc).isoformat(),source_sha256=hashlib.sha256((R/'encoder_can_v2.kicad_pcb').read_bytes()).hexdigest(),copper_layers=b.GetCopperLayerCount(),thickness_mm=p.ToMM(b.GetDesignSettings().GetBoardThickness()),segments=len(tracks),vias=len(vias),layer_segments=dict(collections.Counter(t.GetLayerName() for t in tracks)),widths_mm=sorted({round(p.ToMM(t.GetWidth()),6) for t in tracks}),via_dimensions_mm=sorted({(round(p.ToMM(v.GetWidth(p.F_Cu)),6),round(p.ToMM(v.GetDrill()),6)) for v in vias}),ground_plane_signal_tracks=sum(t.GetLayer()==p.In1_Cu for t in tracks),zones=[dict(layer=b.GetLayerName(z.GetLayer()),net=z.GetNetname(),filled=z.IsFilled(),filled_polygons=z.GetFilledPolysList(z.GetLayer()).OutlineCount(),area_mm2=z.GetFilledPolysList(z.GetLayer()).Area()/1e12) for z in b.Zones()],all_vias_tented_both_sides=all(v.IsTented(p.F_Cu) and v.IsTented(p.B_Cu) for v in vias),ignored_drc_checks=drc.get('ignored_checks',[]),via_drills_in_smd_pads=vip,minimum_drill_edge_to_pad_enclosing_rectangle_mm=mindrill[0],minimum_drill_location=mindrill[1],unrelated_back_routes_under_crystal=under,clock_vias=sum(v.GetNetname() in ['HSE_IN','HSE_OUT'] for v in vias),hall_positions=hall,placement_errors=placement_errors,drc_violations=len(drc['violations']),unconnected=len(drc['unconnected_items']),schematic_parity_issues=len(drc.get('schematic_parity',[])))
+project=json.loads((R/'encoder_can_v2.kicad_pro').read_text())['board']['design_settings']
+report['minimum_connection_width_mm']=project['rules']['min_connection']
+report['connection_width_severity']=project['rule_severities']['connection_width']
+report['erc_violations']=sum(len(sheet.get('violations',[])) for sheet in erc.get('sheets',[]))
 (R/'design/layout_audit.json').write_text(json.dumps(report,indent=2));print(json.dumps(report,indent=2))
+
+assert not vip and not under and not placement_errors,'Geometry audit failed; inspect layout_audit.json'
+assert all(q['unchanged_from_v1'] for q in hall),'Hall placement changed'
+assert report['minimum_connection_width_mm']>=.125 and report['connection_width_severity']=='error','Connection neck check must be enforced'
+assert not any(report[k] for k in ['drc_violations','unconnected','schematic_parity_issues','erc_violations']),'CAD checks are not clean'

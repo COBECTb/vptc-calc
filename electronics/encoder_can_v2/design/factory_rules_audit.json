@@ -1,0 +1,209 @@
+{
+  "source_pcb_sha256": "43237adbcdb743c33c8f1bdc61387ee4b917825291ee4f41e4ae68c7d174684c",
+  "published_limits_review_date": "2026-10-26",
+  "required_rule_minima_mm": {
+    "min_track_width": 0.125,
+    "min_clearance": 0.125,
+    "min_copper_edge_clearance": 0.25,
+    "min_hole_clearance": 0.25,
+    "min_hole_to_hole": 0.2,
+    "min_via_annular_width": 0.1,
+    "min_text_height": 1.0,
+    "min_text_thickness": 0.15
+  },
+  "enforced_rule_values_mm": {
+    "min_track_width": 0.127,
+    "min_clearance": 0.127,
+    "min_copper_edge_clearance": 0.25,
+    "min_hole_clearance": 0.25,
+    "min_hole_to_hole": 0.25,
+    "min_via_annular_width": 0.1,
+    "min_text_height": 1.0,
+    "min_text_thickness": 0.15
+  },
+  "printed_markings": [
+    {
+      "ref": "C3",
+      "shape": true,
+      "stroke_mm": 0.15
+    },
+    {
+      "ref": "C3",
+      "shape": true,
+      "stroke_mm": 0.15
+    },
+    {
+      "ref": "R9",
+      "shape": true,
+      "stroke_mm": 0.15
+    },
+    {
+      "ref": "R9",
+      "shape": true,
+      "stroke_mm": 0.15
+    },
+    {
+      "ref": "C10",
+      "shape": true,
+      "stroke_mm": 0.15
+    },
+    {
+      "ref": "C10",
+      "shape": true,
+      "stroke_mm": 0.15
+    },
+    {
+      "ref": "C11",
+      "shape": true,
+      "stroke_mm": 0.15
+    },
+    {
+      "ref": "C11",
+      "shape": true,
+      "stroke_mm": 0.15
+    },
+    {
+      "ref": "D1",
+      "shape": true,
+      "stroke_mm": 0.15
+    },
+    {
+      "ref": "D1",
+      "shape": true,
+      "stroke_mm": 0.15
+    },
+    {
+      "ref": "D1",
+      "shape": true,
+      "stroke_mm": 0.15
+    },
+    {
+      "ref": "D1",
+      "shape": true,
+      "stroke_mm": 0.15
+    },
+    {
+      "ref": "U3",
+      "text": "U3",
+      "height_mm": 1.0,
+      "stroke_mm": 0.15
+    },
+    {
+      "ref": "U3",
+      "shape": true,
+      "stroke_mm": 0.15
+    },
+    {
+      "ref": "U3",
+      "shape": true,
+      "stroke_mm": 0.15
+    },
+    {
+      "ref": "U3",
+      "shape": true,
+      "stroke_mm": 0.15
+    },
+    {
+      "ref": "U4",
+      "shape": true,
+      "stroke_mm": 0.15
+    },
+    {
+      "ref": "U4",
+      "shape": true,
+      "stroke_mm": 0.15
+    },
+    {
+      "ref": "U4",
+      "shape": true,
+      "stroke_mm": 0.15
+    },
+    {
+      "ref": "U4",
+      "shape": true,
+      "stroke_mm": 0.15
+    },
+    {
+      "ref": "U2",
+      "text": "U2",
+      "height_mm": 1.0,
+      "stroke_mm": 0.15
+    },
+    {
+      "ref": "U2",
+      "shape": true,
+      "stroke_mm": 0.15
+    },
+    {
+      "ref": "U2",
+      "shape": true,
+      "stroke_mm": 0.15
+    },
+    {
+      "ref": "U2",
+      "shape": true,
+      "stroke_mm": 0.15
+    },
+    {
+      "ref": "U5",
+      "shape": true,
+      "stroke_mm": 0.15
+    },
+    {
+      "ref": "U5",
+      "shape": true,
+      "stroke_mm": 0.15
+    },
+    {
+      "ref": "U5",
+      "shape": true,
+      "stroke_mm": 0.15
+    },
+    {
+      "ref": "U5",
+      "shape": true,
+      "stroke_mm": 0.15
+    },
+    {
+      "ref": "TP1",
+      "shape": true,
+      "stroke_mm": 0.15
+    },
+    {
+      "ref": "U1",
+      "shape": true,
+      "stroke_mm": 0.0
+    },
+    {
+      "ref": "Y1",
+      "shape": true,
+      "stroke_mm": 0.15
+    },
+    {
+      "ref": "Y1",
+      "shape": true,
+      "stroke_mm": 0.15
+    },
+    {
+      "ref": "board",
+      "text": "V2  5V",
+      "height_mm": 1.0,
+      "stroke_mm": 0.15
+    }
+  ],
+  "base_copper_requested_um": 18,
+  "finished_pcb_thickness_requested_mm": 0.8,
+  "factory_stackup_agreed": false,
+  "assembly_panel_agreed": false,
+  "passed": true,
+  "sources": [
+    "https://www.rezonit.ru/pcb/mnogosloynye-pechatnye-platy/serial/",
+    "https://www.rezonit.ru/assembly/prototyping/"
+  ],
+  "limits": [
+    "Published rules comparison; not manufacturer DFM approval.",
+    "Base18um advanced PCB class requested; actual stack and finished copper/tolerances need confirmation.",
+    "0.8mm assembly and 4-up carrier >=70x70mm, solder profile and EP X-ray are to be agreed.",
+    "Assembly page excludes wire soldering; J1 wires require a separate operation."
+  ]
+}

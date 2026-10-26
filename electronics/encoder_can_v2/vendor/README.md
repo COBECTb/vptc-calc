@@ -36,3 +36,7 @@ TMAG5273 — рекомендуемый land pattern TI. Контакты про
 Их исходная версия — официальная библиотека 9.0.6; лицензия сохранена рядом.
 
 В V2 15.10.2026 добавлены локальные производные `Encoder_CAN:SOT-23_TVS_CompactCourtyard` и `MountingHole_2.2mm_M2_LowHead`: площадки сохранены, изменён только монтажный контур под фактическую сборку. В закреплённых символах MCU, TCAN и разъёмов расширены фильтры посадочных мест; электрические выводы сохранены. Модель Hall — стандартная SOT-23-6 из установленной KiCad, не модель кристалла датчика.
+
+25.10.2026 добавлено локальное посадочное место `Encoder_CAN:LED_Kingbright_APG1005`: рекомендуемые Kingbright площадки 0,70×0,50 мм с зазором 0,20 мм и 80% площади пасты. Катод — контакт 1. Источники и контрольная сумма — `custom_footprint_sources.json`. Стандартная 3D-модель 0402 масштабирована только для предварительного просмотра; это не точная модель корпуса APG1005.
+
+V2.3, 2026-10-26: in the pinned R_0402_1005Metric and C_0402_1005Metric footprints, only the two nonpolar decorative silkscreen bars are removed. Copper lands, paste, mask, fabrication outline, courtyard and models are unchanged. This matches the saved PCB and avoids sub-0.15mm ink strokes in dense banks.

@@ -1,0 +1,49 @@
+{
+  "source_pcb_sha256": "43237adbcdb743c33c8f1bdc61387ee4b917825291ee4f41e4ae68c7d174684c",
+  "required_via_to_land_mm": 0.5,
+  "required_via_to_body_mm": 0.1,
+  "same_net_included": true,
+  "contact_pads_J1_J2_included": true,
+  "via_count": 71,
+  "minimum_via_to_land_mm": 0.5049997651950866,
+  "minimum_via_to_land": {
+    "via_xy": [
+      124.382551,
+      108.99649
+    ],
+    "via_net": "BOOT0",
+    "ref": "R12",
+    "pad": "2",
+    "pad_net": "LED_PHASE_A",
+    "gap_mm": 0.5049997651950866
+  },
+  "minimum_via_to_body_mm": 0.12495420745173591,
+  "minimum_via_to_body": {
+    "via_xy": [
+      122.615687,
+      94.165292
+    ],
+    "via_net": "CAN_RX",
+    "ref": "U2",
+    "gap_mm": 0.12495420745173591
+  },
+  "minimum_via_to_via_mm": 0.19999957020865156,
+  "nearest_via_pair": {
+    "a": [
+      126.000744,
+      92.844491
+    ],
+    "b": [
+      125.552144,
+      92.40931
+    ],
+    "gap_mm": 0.19999957020865156
+  },
+  "violations": [],
+  "passed": true,
+  "limits": [
+    "Maximum nominal body envelopes; fabrication and assembly tolerances still apply.",
+    "Includes pads on both faces. Via-to-via separation is reported independently.",
+    "Does not predict solder bridging probability or prove electrical qualification."
+  ]
+}

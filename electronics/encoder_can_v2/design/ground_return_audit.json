@@ -1,0 +1,221 @@
+{
+  "source_pcb_sha256": "43237adbcdb743c33c8f1bdc61387ee4b917825291ee4f41e4ae68c7d174684c",
+  "in1_signal_free": true,
+  "in1_connected_filled_polygons": 1,
+  "in1_ground_area_mm2": 330.04138423800606,
+  "ground_vias": 11,
+  "ground_lands_checked": [
+    [
+      "C8",
+      "2"
+    ],
+    [
+      "C5",
+      "2"
+    ],
+    [
+      "C3",
+      "2"
+    ],
+    [
+      "C7",
+      "2"
+    ],
+    [
+      "C6",
+      "2"
+    ],
+    [
+      "C10",
+      "2"
+    ],
+    [
+      "C11",
+      "2"
+    ],
+    [
+      "C9",
+      "2"
+    ],
+    [
+      "D1",
+      "3"
+    ],
+    [
+      "U3",
+      "2"
+    ],
+    [
+      "U3",
+      "3"
+    ],
+    [
+      "J1",
+      "2"
+    ],
+    [
+      "U4",
+      "2"
+    ],
+    [
+      "C4",
+      "2"
+    ],
+    [
+      "U2",
+      "2"
+    ],
+    [
+      "U2",
+      "3"
+    ],
+    [
+      "R5",
+      "2"
+    ],
+    [
+      "U5",
+      "2"
+    ],
+    [
+      "D4",
+      "1"
+    ],
+    [
+      "C14",
+      "2"
+    ],
+    [
+      "C12",
+      "2"
+    ],
+    [
+      "C1",
+      "2"
+    ],
+    [
+      "C13",
+      "2"
+    ],
+    [
+      "J2",
+      "2"
+    ],
+    [
+      "U1",
+      "14"
+    ],
+    [
+      "U1",
+      "16"
+    ],
+    [
+      "U1",
+      "32"
+    ],
+    [
+      "U1",
+      "33"
+    ],
+    [
+      "C2",
+      "2"
+    ],
+    [
+      "Y1",
+      "2"
+    ],
+    [
+      "Y1",
+      "4"
+    ],
+    [
+      "D2",
+      "1"
+    ],
+    [
+      "D3",
+      "1"
+    ]
+  ],
+  "all_ground_copper_connected_to_in1": true,
+  "orphan_ground_copper": [],
+  "supply_connectivity": [
+    {
+      "net": "+3V3",
+      "source": [
+        "U5",
+        "5"
+      ],
+      "lands_checked": 25,
+      "fill_polygons": 4,
+      "all_copper_connected_to_source": true
+    },
+    {
+      "net": "+5V",
+      "source": [
+        "J1",
+        "1"
+      ],
+      "lands_checked": 5,
+      "fill_polygons": 0,
+      "all_copper_connected_to_source": true
+    }
+  ],
+  "reference_projection": [
+    {
+      "net": "HSE_IN",
+      "track_length_mm": 4.99309059955433,
+      "centerline_not_directly_above_in1_mm": 0.0,
+      "max_sampled_distance_to_in1_mm": 0.0
+    },
+    {
+      "net": "HSE_OUT",
+      "track_length_mm": 8.232500612253112,
+      "centerline_not_directly_above_in1_mm": 0.0,
+      "max_sampled_distance_to_in1_mm": 0.0
+    },
+    {
+      "net": "CAN_H",
+      "track_length_mm": 16.62313758415601,
+      "centerline_not_directly_above_in1_mm": 0.0,
+      "max_sampled_distance_to_in1_mm": 0.0
+    },
+    {
+      "net": "CAN_L",
+      "track_length_mm": 18.020796500363794,
+      "centerline_not_directly_above_in1_mm": 0.0,
+      "max_sampled_distance_to_in1_mm": 0.0
+    },
+    {
+      "net": "CAN_TX",
+      "track_length_mm": 20.30715857729632,
+      "centerline_not_directly_above_in1_mm": 2.198786150453016,
+      "max_sampled_distance_to_in1_mm": 0.35049939640532735
+    },
+    {
+      "net": "CAN_RX",
+      "track_length_mm": 25.26855057357619,
+      "centerline_not_directly_above_in1_mm": 1.409836763767966,
+      "max_sampled_distance_to_in1_mm": 0.3504993964053173
+    },
+    {
+      "net": "SWCLK",
+      "track_length_mm": 30.97175181602709,
+      "centerline_not_directly_above_in1_mm": 2.831808972651347,
+      "max_sampled_distance_to_in1_mm": 0.3504993964053274
+    },
+    {
+      "net": "SWDIO",
+      "track_length_mm": 23.430562732053136,
+      "centerline_not_directly_above_in1_mm": 2.868272578716248,
+      "max_sampled_distance_to_in1_mm": 0.35049939640533234
+    }
+  ],
+  "passed": true,
+  "limits": [
+    "Two-dimensional nominal connectivity through plated vias, not impedance/EMC or current-density simulation.",
+    "Reference interruptions include antipads at signal vias and NPTH holes; sampled maximum distance does not qualify signal integrity.",
+    "B.Cu faces the fragmented +3V3 layer before In1; actual layer spacing and high-frequency return impedance require the factory stack and hardware tests."
+  ]
+}

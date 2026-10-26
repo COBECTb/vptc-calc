@@ -1,5 +1,5 @@
-use <foots.scad>
 // ВПТК редуктор с роликами (для 3D-печати)
+use <foots.scad>
 $fn = 60;
 eps = 0.01; // Выход вычитателей за открытые поверхности; глухие глубины сохранены.
 // Параметры
@@ -602,7 +602,7 @@ module shoulder_horn() {
             color("blue") translate([0, 0, -shoulder_horn_h2]) cylinder(h = 2, r1 = shoulder_bearing_id/2+2,  r2 = shoulder_bearing_id/2, center = false);
 
             cylinder(h = shoulder_horn_h1+1.5, r = bearing_inner/2+2, center = false);
-    		color("green") translate([bearing_inner/2-4, -15/2, -0.01]) cube([15,15,shoulder_horn_h1]);
+            color("green") translate([bearing_inner/2-4, -15/2, -0.01]) cube([15,15,shoulder_horn_h1]);
             color("lightgreen") translate([shoulder_horn_r, 0, -1]) cylinder(h = shoulder_horn_h1+1, r = 15/2, center = false);
         }
         // Посадочные места под крепеж нагрузки m3
@@ -1166,6 +1166,7 @@ module body(a1=0,a2=0,parts=false){
 // Для других габаритов платы нужна отдельная электрическая разводка.
 encoder_magnet_d = 5;
 encoder_magnet_h = 1;
+encoder_magnet_recess_depth = 0.4;
 encoder_magnet_clearance = 0.2;
 encoder_rim_wall = 0.6;
 encoder_rim_h = 0.4;
@@ -1174,8 +1175,12 @@ encoder_sensor_angle = 9.000000000;
 encoder_body_bolts = [[-29.407783435,11.288590411], [-24.480097786,-19.823592318], [4.927685649,-31.112182729], [29.407783435,-11.288590411], [24.480097786,19.823592318], [-4.927685649,31.112182729]];
 encoder_separator_total_h = 18.500000000;
 encoder_separator_bearing_step = 11.5;
+// Native PCB body envelopes; source SHA256: 06bff4c53965bdceb5cb1050a268093edc0ef2067780bc5193bdcda59fa44f3d
+encoder_native_components = [[29.29999857, -5.00007236, -90.0, false, [5.1, 5.1, 0.6]], [30.00003342, 23.99997306, 0.0, false, [3, 3, 1.45]], [28.60017482, 57.42125341, 90.0, false, [3, 3, 1.45]], [31.41854548, 62.82327335, 0.0, false, [3, 3, 1.1]], [29.49660997, 6.61905332, 45.0, false, [2.5, 2, 0.7]], [22.7178344, 20.34941528, -90.0, true, [1, 0.5, 0.4]], [25.64702712, 17.94042293, -90.0, true, [1, 0.5, 0.4]], [28.93872838, 17.49575788, -90.0, true, [1, 0.5, 0.4]], [31.8127333, 15.87117861, -90.0, true, [1, 0.5, 0.4]], [24.85819784, -3.92139889, 180.0, true, [1, 0.5, 0.4]], [27.80287755, 0.82434282, 0.0, true, [1, 0.5, 0.4]], [26.73667893, 12.52880771, -90.0, true, [1, 0.5, 0.4]], [32.55614381, 12.77696379, -90.0, true, [1, 0.5, 0.4]], [30.62972319, 20.44657757, 0.0, true, [1.6, 0.8, 0.55]], [27.1207227, 2.23994767, 180.0, false, [1, 0.5, 0.55]], [32.30061821, -11.06641852, 0.0, false, [1, 0.5, 0.55]], [24.68299009, -6.98105741, 0.0, true, [1.6, 0.8, 0.95]], [31.89043744, -4.31602752, 90.0, true, [1, 0.5, 0.55]], [29.59746611, -4.65110804, 90.0, true, [1, 0.5, 0.55]], [26.03766503, 3.08218082, 0.0, true, [1, 0.5, 0.55]], [32.15960199, 5.71059314, -90.0, true, [1, 0.5, 0.55]], [27.41550656, 27.12584025, 180.0, false, [1, 0.5, 0.55]], [27.98303057, 29.31313936, 180.0, false, [1, 0.5, 0.55]], [29.39459984, 52.11646857, 90.0, false, [1.6, 0.8, 0.95]], [31.94526569, 54.17042484, 0.0, false, [1.6, 0.8, 0.95]], [23.91024885, 1.67763947, 90.0, true, [1, 0.5, 0.55]], [26.87905504, 4.39543561, 180.0, false, [1, 0.5, 0.55]], [31.85671044, 3.41926782, 0.0, false, [1, 0.5, 0.55]]];
 
 encoder_clamp_h = 12;
+encoder_clamp_body_h = encoder_clamp_h-encoder_magnet_recess_depth;
+encoder_magnet_ring_h = encoder_magnet_recess_depth+encoder_rim_h;
 encoder_pocket_d = encoder_magnet_d+encoder_magnet_clearance;
 encoder_rim_d = encoder_pocket_d+2*encoder_rim_wall;
 encoder_outer_track_r = D_out/2-2-encoder_rim_d/2-0.3;
@@ -1201,9 +1206,9 @@ encoder_body_bolt_keepout = 4.5;
 encoder_rear_inner_r = bearing_outer/2+1;
 encoder_rear_outer_r = D_out/2-1.3;
 encoder_rear_depth = 2.3;
-encoder_mcu_r = encoder_outer_track_r+0.2;
+encoder_mcu_r = encoder_outer_track_r-0.2;
 encoder_mcu_angle = encoder_sensor_angle-14;
-encoder_mcu_rotation = encoder_sensor_angle-9;
+encoder_mcu_rotation = len(encoder_native_components)>0 ? -90 : encoder_sensor_angle-9;
 encoder_mcu_body = [5.1,5.1,0.6];
 encoder_mcu_xy_clearance = 0.2;
 encoder_mcu_axial_clearance = 0.15;
@@ -1224,10 +1229,12 @@ encoder_lid_top_z = encoder_pocket_ceiling_z+encoder_window_h;
 encoder_main_ceiling_z = encoder_pocket_ceiling_z-encoder_roof_extra_h;
 encoder_magnet_bottom_z = encoder_lid_top_z+encoder_magnet_air_gap;
 encoder_glue_face_z = encoder_magnet_bottom_z+encoder_magnet_h;
+encoder_clamp_face_z = encoder_glue_face_z-encoder_magnet_recess_depth;
 encoder_bearing_bottom_z = cap_thickness-1-bearing_width-0.5+encoder_separator_lift;
 encoder_separator_base_z = encoder_bearing_bottom_z-encoder_separator_bearing_step;
 encoder_separator_top_z = encoder_separator_base_z+encoder_separator_total_h;
-encoder_connector_contact_z = encoder_glue_face_z+5.9;
+encoder_connector_contact_z = encoder_clamp_face_z+5.9;
+// Recessed magnets shorten the output stem by0.4mm while preserving the sensor gap.
 encoder_connector_stem_h = encoder_connector_contact_z-4-encoder_separator_top_z;
 encoder_load_connector_h = 15;
 encoder_screw_head_h = 1.3;
@@ -1243,6 +1250,9 @@ module encoder_validate() {
     for(t=[0:1]) assert(2*encoder_track_radii[t]*sin(180/encoder_track_counts[t])
         >=encoder_pocket_d+encoder_rim_wall,"Недостаточна перемычка между магнитами");
     assert(encoder_connector_stem_h>0,"Неположительная длина соединителя");
+    assert(encoder_magnet_recess_depth>=0 && encoder_magnet_recess_depth<encoder_clamp_h,
+        "Недопустимая глубина посадок магнитов");
+    assert(encoder_clamp_body_h>10.2,"Под отдельным кольцом не остаётся верхней стенки зажима");
     assert(encoder_separator_lift<=0.5,"Подшипник поднят выше сохранённого упора крышки");
     assert(encoder_screw_ceiling_z<=encoder_lid_top_z-encoder_window_h,
         "Головка M2 не помещается под крышкой");
@@ -1295,14 +1305,20 @@ module encoder_pcb_model() {
     color("DimGray") encoder_sensor_positions()
         translate([0,0,encoder_pcb_top_z]) linear_extrude(height=encoder_sensor_envelope_h)
             encoder_sensor_outline();
-    // Mechanical budget only; the electrical KiCad board is supplied separately.
-    rotate([0,0,encoder_mcu_angle])
+    if(len(encoder_native_components)>0) {
+        for(c=encoder_native_components)
+            rotate([0,0,c[1]]) translate([c[0],0,c[3] ? encoder_pcb_top_z+c[4][2]/2 : encoder_pcb_bottom_z-c[4][2]/2])
+                rotate([0,0,c[2]-c[1]]) color("DimGray") cube(c[4],center=true);
+    } else {
+      // Other diameters retain a mechanical budget pending a new PCB layout.
+      rotate([0,0,encoder_mcu_angle])
         translate([encoder_mcu_r,0,encoder_pcb_bottom_z-encoder_mcu_body[2]/2])
             rotate([0,0,encoder_mcu_rotation-encoder_mcu_angle])
                 color("DimGray") cube(encoder_mcu_body,center=true);
     for(c=[[encoder_sensor_angle+15,3,3,1.45],[encoder_sensor_angle+49,3,3,1.45]])
         rotate([0,0,c[0]]) translate([encoder_outer_track_r+0.5,0,encoder_pcb_bottom_z-c[3]/2])
             color("DimGray") cube([c[1],c[2],c[3]],center=true);
+    }
     color("Silver") encoder_mount_positions() translate([0,0,encoder_pcb_top_z])
         cylinder(d=3.5,h=encoder_screw_head_h);
 }
@@ -1312,25 +1328,48 @@ module encoder_track_positions(full_circle=false) {
         for(j=[0:(full_circle ? n-1 : n/2-1)]) let(a=(j+.5)*360/n)
             translate([r*cos(a),r*sin(a),encoder_clamp_h]) children();
 }
-module encoder_magnet_rims() {
+module encoder_magnet_carrier_ring(full_circle=true) {
     intersection() {
         difference() {
-            encoder_track_positions(true) translate([0,0,-eps])
-                cylinder(d=encoder_rim_d,h=encoder_rim_h+eps);
-            encoder_track_positions(true) translate([0,0,-2*eps])
-                cylinder(d=encoder_pocket_d,h=encoder_rim_h+3*eps);
+            translate([0,0,encoder_clamp_body_h])
+                cylinder(r=D_out/2-2,h=encoder_magnet_ring_h);
+            translate([0,0,encoder_clamp_body_h-eps])
+                cylinder(r=bearing_inner/2,h=encoder_magnet_ring_h+2*eps);
+            encoder_track_positions(true) translate([0,0,-encoder_magnet_recess_depth-eps])
+                cylinder(d=encoder_pocket_d,h=encoder_magnet_ring_h+2*eps);
         }
-        translate([-D_out,0,encoder_clamp_h-2*eps]) cube([2*D_out,D_out,encoder_rim_h+4*eps]);
+        translate([-D_out,full_circle ? -D_out : 0,encoder_clamp_body_h-eps])
+            cube([2*D_out,full_circle ? 2*D_out : D_out,encoder_magnet_ring_h+2*eps]);
     }
+}
+// Compatibility view: two half rings appear as one full ring in the assembly.
+module encoder_magnet_rims() { encoder_magnet_carrier_ring(full_circle=false); }
+module encoder_magnet_ring_for_print() {
+    translate([0,0,-encoder_clamp_body_h]) encoder_magnet_carrier_ring();
 }
 module encoder_magnets(second_half=false) {
     for(t=[0:1]) let(n=encoder_track_counts[t],r=encoder_track_radii[t])
         for(j=[0:n/2-1]) let(a=(j+.5)*360/n,index=j+(second_half ? n/2 : 0))
             color(index%2==0 ? "Firebrick" : "RoyalBlue")
-                translate([r*cos(a),r*sin(a),encoder_clamp_h]) cylinder(d=encoder_magnet_d,h=encoder_magnet_h);
+                translate([r*cos(a),r*sin(a),encoder_clamp_h-encoder_magnet_recess_depth])
+                    cylinder(d=encoder_magnet_d,h=encoder_magnet_h);
+}
+module connector_clamp_encoder_body_half() {
+    encoder_validate() difference() {
+        connector_clamp();
+        if(encoder_magnet_recess_depth>0)
+            translate([-D_out,-eps,encoder_clamp_body_h])
+                cube([2*D_out,D_out+2*eps,encoder_magnet_recess_depth+eps]);
+    }
 }
 module connector_clamp_encoder_half() {
-    encoder_validate() union() { connector_clamp(); encoder_magnet_rims(); }
+    union() {
+        connector_clamp_encoder_body_half();
+        encoder_magnet_rims();
+    }
+}
+module encoder_clamp_body_for_print() {
+    translate([0,encoder_clamp_body_h,0]) rotate([90,0,0]) connector_clamp_encoder_body_half();
 }
 module connector_clamp_encoder(show_magnets=false) {
     for(half=[0:1]) rotate([0,0,180*half]) {
@@ -1364,6 +1403,14 @@ module encoder_mcu_clearance() {
                           encoder_mcu_body[1]+2*encoder_mcu_xy_clearance,
                           encoder_mcu_body[2]+encoder_mcu_axial_clearance+eps]);
 }
+module encoder_native_rear_clearances() {
+    for(c=encoder_native_components) if(!c[3])
+        rotate([0,0,c[1]]) translate([c[0],0,encoder_pcb_bottom_z-c[4][2]-encoder_mcu_axial_clearance])
+            rotate([0,0,c[2]-c[1]])
+                translate([-c[4][0]/2-encoder_mcu_xy_clearance,-c[4][1]/2-encoder_mcu_xy_clearance,0])
+                    cube([c[4][0]+2*encoder_mcu_xy_clearance,c[4][1]+2*encoder_mcu_xy_clearance,
+                          c[4][2]+encoder_mcu_axial_clearance+eps]);
+}
 module cap_encoder(with_bracing=true) {
     encoder_validate() difference() {
         union() {
@@ -1376,7 +1423,8 @@ module cap_encoder(with_bracing=true) {
                 encoder_pcb_outline(encoder_pcb_clearance);
         translate([0,0,encoder_pcb_bottom_z-encoder_rear_depth])
             linear_extrude(height=encoder_rear_depth+eps) encoder_rear_pocket();
-        encoder_mcu_clearance();
+        if(len(encoder_native_components)>0) encoder_native_rear_clearances();
+        else encoder_mcu_clearance();
         encoder_mount_positions() translate([0,0,encoder_pcb_bottom_z-2]) cylinder(d=1.6,h=2+eps);
         encoder_body_bolt_positions() translate([0,0,cap_thickness-eps]) cylinder(d=3.2,h=5);
         rotate([0,0,encoder_sensor_angle+59])
@@ -1414,7 +1462,7 @@ module encoder_assembly(exploded=false,section=false,with_bracing=true,show_elec
             color("LightSteelBlue") translate([0,0,encoder_connector_contact_z+(exploded ? 20 : 0)])
                 mirror([0,0,1]) reducer_connector_encoder();
             color("SteelBlue") translate([0,0,encoder_connector_contact_z+(exploded ? 32 : 0)]) load_connector_encoder();
-            translate([0,0,encoder_glue_face_z+encoder_clamp_h+(exploded ? 20 : 0)]) mirror([0,0,1])
+            translate([0,0,encoder_clamp_face_z+encoder_clamp_h+(exploded ? 20 : 0)]) mirror([0,0,1])
                 for(half=[0:1]) rotate([0,0,180*half]) {
                     color("SlateGray") connector_clamp_encoder_half();
                     if(show_magnets) encoder_magnets(half==1);
@@ -1437,7 +1485,13 @@ module encoder_selected_part(part) {
         translate([D_out/2+4,0,-encoder_lid_base_z]) lid_encoder();
     }
     else if(part=="encoder_clamp") connector_clamp_encoder(show_magnets=true);
-    else if(part=="encoder_clamp_half") connector_clamp_encoder_half();
+    else if(part=="encoder_clamp_half") connector_clamp_encoder_body_half();
+    else if(part=="encoder_magnet_ring") encoder_magnet_ring_for_print();
+    else if(part=="encoder_clamp_print") {
+        translate([-D_out/2-4,0,0]) encoder_clamp_body_for_print();
+        translate([D_out/2+4,0,0]) encoder_clamp_body_for_print();
+        translate([0,encoder_clamp_body_h+D_out/2+7,0]) encoder_magnet_ring_for_print();
+    }
     else if(part=="encoder_connector") reducer_connector_encoder();
     else if(part=="encoder_load_connector") load_connector_encoder();
     else if(part=="encoder_pcb") encoder_pcb_bare();
@@ -1468,8 +1522,8 @@ difference() {
         //translate([0, 0, -mc_total_height]) motor_cover(); // кожух снизу
         //translate([0,D_out/2+8+zazor,(h_reducer+cap_thickness)/2]) rotate([90,45/2,0]) reducer_connector();
         //translate([0,0,h_reducer+zazor+cap_thickness+6.5]) rotate([180,0,0])reducer_connector();
-        leg();
-        //body(a1=0,a2=leg_angle1,parts=true);
+        //leg();
+        body(a1=0,a2=leg_angle1,parts=true);
         //shin();
         //import("vptc_roller_19_4_5_70_reducer_with_bracing_and_connector.stl");
         //color("lightgray")import("vptc_roller_19_4_5_70_reducer.stl");
